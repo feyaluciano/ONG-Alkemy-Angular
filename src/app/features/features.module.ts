@@ -5,7 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { BackofficeModule } from "./backoffice/backoffice.module";
 import { PublicModule } from "./public/public.module";
 
-
+ 
 @NgModule({
   declarations: [],
   exports: [RouterModule,AppRoutingModule],
@@ -13,8 +13,7 @@ import { PublicModule } from "./public/public.module";
     CommonModule,
     AppRoutingModule,
     RouterModule,
-    PublicModule,
-    BackofficeModule,
+    
   ],
 })
 export class FeaturesModule {}

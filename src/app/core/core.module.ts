@@ -8,7 +8,7 @@ import { HttpService } from "./services/http.service";
 
 @NgModule({
   declarations: [HeaderComponent],
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule,],
   providers: [HttpService],
   exports: [HeaderComponent]
 })
