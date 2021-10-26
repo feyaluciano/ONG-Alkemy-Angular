@@ -3,20 +3,50 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 
+
 const routes: Routes = [
-  { 
-    path: "actividades", 
-    component: ActivityFormComponent },
+
+
   {
-    path: "",
-    redirectTo: "actividades",
-    pathMatch: "full",
+    path: 'public',
+    loadChildren: () => import('./public/public.module').then(
+      m => m.PublicModule
+      ),         
   },
   {
-    path: "**",
-    redirectTo: "actividades",
-    pathMatch: "full",
+    path: 'backoffice',
+    loadChildren: () => import('./backoffice/backoffice.module').then(
+      m => m.BackofficeModule
+      ),         
   },
+  
+    // { 
+    //   path: "home", 
+    //   component: HomeComponent },
+    //   { 
+    //     path: "backoffice", 
+    //     component: BackofficeComponent },
+
+
+
+
+
+
+        
+  //     { 
+  //       path: "actividades", 
+  //       component: ActivityFormComponent },
+
+  // {
+  //   path: "",
+  //   redirectTo: "home",
+  //   pathMatch: "full",
+  // },
+  // {
+  //   path: "**",
+  //   redirectTo: "actividades",
+  //   pathMatch: "full",
+  // },
 ];
 
 @NgModule({
