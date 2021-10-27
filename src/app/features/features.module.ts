@@ -8,13 +8,17 @@ import { PublicModule } from "./public/public.module";
  
 @NgModule({
   declarations: [],
-  exports: [RouterModule,AppRoutingModule],
+  exports: [
+    RouterModule,
+    AppRoutingModule],
   imports: [
     CommonModule,
     AppRoutingModule,
     RouterModule,
     PublicModule,
     BackofficeModule,
+    
+    
   ],
 })
 export class FeaturesModule {}

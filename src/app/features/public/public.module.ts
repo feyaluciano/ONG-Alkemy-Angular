@@ -6,15 +6,16 @@ import { HomeComponent } from "./pages/home/home.component";
 import { BackofficeRoutingModule } from "../backoffice/backoffice-routing.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RegisterFormComponent } from "./pages/auth/register-form/register-form.component";
+import { TitlesComponentComponent } from './components/titles-component/titles-component.component';
 
 @NgModule({
-  declarations: [HomeComponent,RegisterFormComponent],
+  declarations: [HomeComponent,RegisterFormComponent, TitlesComponentComponent],
   imports: [
     CommonModule,
     PublicRoutingModule,
     ReactiveFormsModule,
     BackofficeRoutingModule,
   ],
-  exports: [HomeComponent,RegisterFormComponent],
+  exports: [HomeComponent,RegisterFormComponent, TitlesComponentComponent],
 })
 export class PublicModule {}
