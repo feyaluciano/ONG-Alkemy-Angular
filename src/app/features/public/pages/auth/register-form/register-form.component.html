@@ -1,0 +1,43 @@
+
+<div class="container">
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark" style="background-image: url(assets/images/header1.png);height:250px" >               
+    </div>
+</div>
+<main class="form-signin">
+  <form [formGroup]="form" class="needs-validation" novalidate>
+    <div class="row g-3">
+      <div class="col-sm-12">
+        <label for="firstName" class="form-label">Email</label>
+        <!-- [valido]="haveErrorInputForm('title')" -->
+        <input formControlName="email" type="text" class="form-control" id="title"  id="name" placeholder="" value="">
+        <div class="text-error-form"  *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">Ingrese un email</div>
+        <div class="text-error-form"  *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">Ingrese un email</div>
+      </div>
+    
+      <div class="col-sm-12">
+        <label for="firstName" class="form-label">Contraseña</label>
+        <!-- [valido]="haveErrorInputForm('title')" -->        
+        <input formControlName="password" type="password" class="form-control" id="title"  id="name" placeholder="" value="" >
+        <div class="text-error-form" *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">Ingrese un password</div>
+        <div class="text-error-form" *ngIf="form.get('password')?.hasError('pattern') && form.get('password')?.touched">La contraseña debe contener al menos un número, una letra y un símbolo (por ejemplo: @#$%).</div>              
+      </div>
+
+
+      <div class="col-sm-12">
+        <label for="firstName" class="form-label">Repetir Contraseña</label>
+        <!-- [valido]="haveErrorInputForm('title')" -->
+        <input formControlName="confirmPassword" type="password" class="form-control" id="title"  id="name" placeholder="" value="" >
+        <div class="text-error-form" *ngIf="form.get('confirmPassword')?.hasError('required') && form.get('confirmPassword')?.touched">Ingrese un password</div>
+        <div class="text-error-form" *ngIf="passwordsAreEqualValue">La contraseñas no coiniciden</div>
+      </div>
+      
+                                                                                                                              
+    </div>
+
+    <hr class="my-4">
+                                      																	    
+    <button  (click)="save()" type="button" class="w-100 btn btn-primary btn-lg" >Registrarme</button>
+
+   
+  </form>
+  </main>
