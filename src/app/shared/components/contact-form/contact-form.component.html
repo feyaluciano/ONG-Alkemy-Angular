@@ -1,0 +1,112 @@
+<div class="container">
+  
+  <h2 class="text-center">Contacto</h2>
+  
+  <form
+    [formGroup]="contactForm"
+    class="needs-validation"
+    novalidate
+    (ngSubmit)="onSubmit()"
+  >
+
+    <div class="mb-3 position-relative">
+      <label for="name" class="form-label">Nombre</label>
+      <input
+        [ngClass]="{
+          'is-valid': contactForm.get('name')?.touched && contactForm.get('name')?.valid,
+          'is-invalid': contactForm.get('name')?.touched && contactForm.get('name')?.invalid
+        }"
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Ingrese aquí su nombre"
+        formControlName="name"
+        required
+      >
+      <div
+        class="invalid-tooltip"
+        *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.hasError('required')">
+        Por favor, ingrese su nombre.
+      </div>
+    </div>
+    
+    <div class="mb-3 position-relative">
+      <label for="email" class="form-label">Email</label>
+      <input
+        [ngClass]="{
+          'is-valid': contactForm.get('email')?.touched && contactForm.get('email')?.valid,
+          'is-invalid': contactForm.get('email')?.touched && contactForm.get('email')?.invalid
+        }"
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Ingrese aquí su email"
+        formControlName="email"
+        required
+      >
+      <div
+        class="invalid-tooltip"
+        *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.hasError('required')">
+        Por favor, ingrese su email.
+      </div>
+      <div
+        class="invalid-tooltip"
+        *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.hasError('email')">
+        Por favor, proporcione un email válido.
+      </div>
+    </div>
+    
+    <div class="mb-3 position-relative">
+      <label for="phone" class="form-label">Teléfono</label>
+      <input
+        [ngClass]="{
+          'is-valid': contactForm.get('phone')?.touched && contactForm.get('phone')?.valid,
+          'is-invalid': contactForm.get('phone')?.touched && contactForm.get('phone')?.invalid
+        }"
+        type="text"
+        class="form-control"
+        id="phone"
+        placeholder="Ingrese aquí su número telefónico"
+        formControlName="phone"
+        required
+      >
+      <div
+        class="invalid-tooltip"
+        *ngIf="contactForm.get('phone')?.touched && contactForm.get('phone')?.hasError('required')">
+        Por favor, ingrese su número telefónico.
+      </div>
+      <div
+        class="invalid-tooltip"
+        *ngIf="contactForm.get('phone')?.touched && (contactForm.get('phone')?.hasError('pattern') || contactForm.get('phone')?.hasError('minLength'))">
+        Por favor, ingrese un número telefónico válido (mínimo 8 dígitos).
+      </div>
+    </div>
+    
+    <div class="mb-3 position-relative">
+      <label for="message" class="form-label">Mensaje</label>
+      <textarea
+        [ngClass]="{
+          'is-valid': contactForm.get('mensaje')?.touched && contactForm.get('message')?.valid,
+          'is-invalid': contactForm.get('message')?.touched && contactForm.get('message')?.invalid
+        }"
+        class="form-control"
+        id="message"
+        rows="3"
+        formControlName="message"
+        required
+      ></textarea>
+      <div
+        class="invalid-tooltip"
+        *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.hasError('required')">
+        Por favor, proporcione un mensaje.
+      </div>
+    </div>
+    
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="contactForm.invalid"
+    >Enviar</button>
+
+  </form>
+</div>
