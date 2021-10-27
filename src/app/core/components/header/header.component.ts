@@ -21,9 +21,8 @@ export class HeaderComponent implements OnInit {
     let userTemp = JSON.parse(
       JSON.stringify(localStorage.getItem("userLogged"))
     );
-    alert(userTemp);
+    
     let user: User = JSON.parse(userTemp);
-
     if (user === null) {
       this.template = this.headerBackoffice;
     } else {

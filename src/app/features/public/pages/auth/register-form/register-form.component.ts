@@ -14,10 +14,18 @@ export class RegisterFormComponent implements OnInit {
   constructor(private _builder:FormBuilder,private router:Router) {
     this.form=this._builder.group({
       Email:['',[Validators.required,Validators.email]],
-      Password: ['', [Validators.required]],
+      Password: ['', [Validators.required,Validators.pattern(
+        /^(?=.*[A-Za-z])(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,20}$/
+        )]],
       ConfirmPassword: ['', [Validators.required]],   
     });
    }
+
+
+   passwordMatchValidator(g: FormGroup) {
+    return this.form.get('Password')?.value === this.form.get('ConfirmPassword')?.value
+        ? null : { 'mismatch': true };
+}  
 
 save(){
   //this functionality is temporary and will be replaced by a service
