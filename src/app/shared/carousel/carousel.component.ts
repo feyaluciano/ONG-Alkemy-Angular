@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Datum, HTTPResponse } from 'src/app/core/interfaces/httpResponse.interface';
+import { Datum } from 'src/app/core/interfaces/httpResponse.interface';
 
 
 

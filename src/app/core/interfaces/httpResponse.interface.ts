@@ -11,8 +11,15 @@ export interface Datum {
     image:       null | string;
     order:       number | null;
     user_id:     null;
-    created_at:  Date;
-    updated_at:  Date;
+    created_at:  String;
+    updated_at:  String;
     deleted_at:  null;
     group_id:    number | null;
 }
+
+
+/**
+ * 
+ * created_at:  Date; 
+ * updated_at:  Date;
+ */
