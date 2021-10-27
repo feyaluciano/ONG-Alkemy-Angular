@@ -20,8 +20,8 @@ export class RegisterFormComponent implements OnInit {
   passwordsAreEqualValue: boolean = false;
   constructor(private _builder: FormBuilder, private router: Router) {
     this.form = this._builder.group({
-      Email: ["", [Validators.required, Validators.email]],
-      Password: [
+      email: ["", [Validators.required, Validators.email]],
+      password: [
         "",
         [
           Validators.required,
@@ -30,7 +30,7 @@ export class RegisterFormComponent implements OnInit {
           ),
         ],
       ],
-      ConfirmPassword: ["", [Validators.required]],
+      confirmPassword: ["", [Validators.required]],
     });
   }
 

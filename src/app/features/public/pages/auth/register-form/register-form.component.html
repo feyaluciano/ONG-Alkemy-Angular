@@ -9,26 +9,26 @@
       <div class="col-sm-12">
         <label for="firstName" class="form-label">Email</label>
         <!-- [valido]="haveErrorInputForm('title')" -->
-        <input formControlName="Email" type="text" class="form-control" id="title"  id="name" placeholder="" value="" required>
-        <div style="color:#FF084E" *ngIf="form.get('Email')?.hasError('required') && form.get('Email')?.touched">Ingrese un email</div>
-        <div style="color:#FF084E" *ngIf="form.get('Email')?.hasError('email') && form.get('Email')?.touched">Ingrese un email</div>
+        <input formControlName="email" type="text" class="form-control" id="title"  id="name" placeholder="" value="">
+        <div class="text-error-form"  *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">Ingrese un email</div>
+        <div class="text-error-form"  *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">Ingrese un email</div>
       </div>
     
       <div class="col-sm-12">
         <label for="firstName" class="form-label">Contraseña</label>
         <!-- [valido]="haveErrorInputForm('title')" -->        
-        <input formControlName="Password" type="password" class="form-control" id="title"  id="name" placeholder="" value="" required>
-        <div style="color:#FF084E" *ngIf="form.get('Password')?.hasError('required') && form.get('Password')?.touched">Ingrese un password</div>
-        <div style="color:#FF084E" *ngIf="form.get('Password')?.hasError('pattern') && form.get('Password')?.touched">La contraseña debe contener al menos un número, una letra y un símbolo (por ejemplo: @#$%).</div>              
+        <input formControlName="password" type="password" class="form-control" id="title"  id="name" placeholder="" value="" >
+        <div class="text-error-form" *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">Ingrese un password</div>
+        <div class="text-error-form" *ngIf="form.get('password')?.hasError('pattern') && form.get('password')?.touched">La contraseña debe contener al menos un número, una letra y un símbolo (por ejemplo: @#$%).</div>              
       </div>
 
 
       <div class="col-sm-12">
         <label for="firstName" class="form-label">Repetir Contraseña</label>
         <!-- [valido]="haveErrorInputForm('title')" -->
-        <input formControlName="ConfirmPassword" type="password" class="form-control" id="title"  id="name" placeholder="" value="" required>
-        <div style="color:#FF084E" *ngIf="form.get('ConfirmPassword')?.hasError('required') && form.get('ConfirmPassword')?.touched">Ingrese un password</div>
-        <div style="color:#FF084E" *ngIf="passwordsAreEqualValue">La contraseñas no coiniciden</div>
+        <input formControlName="confirmPassword" type="password" class="form-control" id="title"  id="name" placeholder="" value="" >
+        <div class="text-error-form" *ngIf="form.get('confirmPassword')?.hasError('required') && form.get('confirmPassword')?.touched">Ingrese un password</div>
+        <div class="text-error-form" *ngIf="passwordsAreEqualValue">La contraseñas no coiniciden</div>
       </div>
       
                                                                                                                               
