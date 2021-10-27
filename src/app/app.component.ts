@@ -12,6 +12,7 @@ public originUrl:String="/home";
 
   constructor(private router:Router,private route:ActivatedRoute){}        
   ngOnInit(){
+    //ACA ME FALTA OBTENER LA RUTA ACTUAL
     this.originUrl="/home"
   }    
 }
