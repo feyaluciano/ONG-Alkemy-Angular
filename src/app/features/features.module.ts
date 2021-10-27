@@ -13,7 +13,8 @@ import { PublicModule } from "./public/public.module";
     CommonModule,
     AppRoutingModule,
     RouterModule,
-    
+    PublicModule,
+    BackofficeModule,
   ],
 })
 export class FeaturesModule {}

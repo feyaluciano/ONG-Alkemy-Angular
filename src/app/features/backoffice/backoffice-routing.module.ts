@@ -7,7 +7,7 @@ const routes:Routes=[
   {
     path:'',
     children: [      
-      { path: 'dashboard', component: DashboardComponent },               
+      { path: 'dashboard', component: DashboardComponent ,data : {origin : 'home'}},               
     ]   
   }  
   ]
