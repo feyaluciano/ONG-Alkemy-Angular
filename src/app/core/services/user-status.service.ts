@@ -10,11 +10,11 @@ export class UserStatusService {
   constructor() {}
 
   isUserLoggedIn(): boolean {
-    return this.getUser() != undefined;
+    return Boolean(this.getUser()) === false;
   }
 
   getUser() {
-    var user;
+    let user;
     try {
       this.user = JSON.parse(
         JSON.stringify(localStorage.getItem("userLogged"))
@@ -24,8 +24,7 @@ export class UserStatusService {
     }
     return this.user;
   }
-  async setUser(user: User) {
-    var token = "";
+  setUser(user: User) {
     try {
       localStorage.setItem("userLogged", JSON.stringify(user));
     } catch (Error) {
