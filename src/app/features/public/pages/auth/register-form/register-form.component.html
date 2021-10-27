@@ -13,7 +13,7 @@
         <div style="color:#FF084E" *ngIf="form.get('Email')?.hasError('required') && form.get('Email')?.touched">Ingrese un email</div>
         <div style="color:#FF084E" *ngIf="form.get('Email')?.hasError('email') && form.get('Email')?.touched">Ingrese un email</div>
       </div>
-      {{ this.form.errors | json}}
+    
       <div class="col-sm-12">
         <label for="firstName" class="form-label">Contraseña</label>
         <!-- [valido]="haveErrorInputForm('title')" -->

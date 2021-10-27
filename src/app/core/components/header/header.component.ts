@@ -21,12 +21,12 @@ export class HeaderComponent implements OnInit {
     let userTemp = JSON.parse(
       JSON.stringify(localStorage.getItem("userLogged"))
     );
-    
+
+    this.template = this.headerPublic;
+
     let user: User = JSON.parse(userTemp);
-    if (user === null) {
+    if (user !== null) {
       this.template = this.headerBackoffice;
-    } else {
-      this.template = this.headerPublic;
     }
   }
 }

@@ -21,16 +21,12 @@ export class RegisterFormComponent implements OnInit {
     });
    }
 
-
-   passwordMatchValidator(g: FormGroup) {
-    return this.form.get('Password')?.value === this.form.get('ConfirmPassword')?.value
-        ? null : { 'mismatch': true };
-}  
+   
 
 save(){
   //this functionality is temporary and will be replaced by a service
   if (this.form.valid) {
-        const user:User={"Email":this.form.get('Email')?.value,"Password":this.form.get('Password')?.value} 
+        const user:User={"email":this.form.get('Email')?.value,"password":this.form.get('Password')?.value} 
         localStorage.setItem('userLogged', JSON.stringify(user));
         this.router.navigate(['/home']);  
   }
