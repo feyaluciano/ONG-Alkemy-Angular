@@ -1,26 +1,40 @@
 
-<app-header></app-header>
-
 <div class="container">
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark" style="background-image: url(assets/images/header1.png);height:250px" >               
     </div>
 </div>
 <main class="form-signin">
-    <form>      
-      <h1 class="h3 mb-3 fw-normal">Registro</h1>  
-      <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
+  <form [formGroup]="form" class="needs-validation" novalidate>
+    <div class="row g-3">
+      <div class="col-sm-12">
+        <label for="firstName" class="form-label">Email</label>
+        <!-- [valido]="haveErrorInputForm('title')" -->
+        <input formControlName="Email" type="text" class="form-control" id="title"  id="name" placeholder="" value="" required>
+        <div name="dtitle" id="dtitle"   mensajeError="Please enter a title"   class="form-text"> Eror  </div>
       </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
+
+      <div class="col-sm-12">
+        <label for="firstName" class="form-label">Contraseña</label>
+        <!-- [valido]="haveErrorInputForm('title')" -->
+        <input formControlName="Password" type="text" class="form-control" id="title"  id="name" placeholder="" value="" required>
+        <div name="dtitle" id="dtitle"   mensajeError="Please enter a title"   class="form-text">  Error </div>
       </div>
-  
-      <div class="checkbox mb-3">
-       
+
+
+      <div class="col-sm-12">
+        <label for="firstName" class="form-label">Repetir Contraseña</label>
+        <!-- [valido]="haveErrorInputForm('title')" -->
+        <input formControlName="ConfirmPassword" type="text" class="form-control" id="title"  id="name" placeholder="" value="" required>
+        <div name="dtitle" id="dtitle" appMsgErrorForm  mensajeError="Please enter a title"   class="form-text">   </div>
       </div>
-      <button class="w-100 btn btn-lg btn-primary" type="submit">Registrarme</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
-    </form>
+      
+                                                                                                                              
+    </div>
+
+    <hr class="my-4">
+                                      																	    
+    <button  (click)="save()" type="button" class="w-100 btn btn-primary btn-lg" >Registrarme</button>
+
+   
+  </form>
   </main>
