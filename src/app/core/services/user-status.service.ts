@@ -10,7 +10,7 @@ export class UserStatusService {
   constructor() {}
 
   isUserLoggedIn(): boolean {
-    return Boolean(this.getUser()) === false;
+    return Boolean(this.getUser());
   }
 
   getUser() {
