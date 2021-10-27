@@ -1,11 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Datum, HTTPResponse } from 'src/app/core/interfaces/httpResponse.interface';
 
-/** Interface momentanea */
-interface Slides {
-  title: string;
-  description: string;
-  image: string;
-}
+
+
 
 @Component({
   selector: 'app-carousel',
@@ -14,27 +11,13 @@ interface Slides {
 })
 export class CarouselComponent implements OnInit {
 
-  carousel: Slides[] = [
-    {
-      title: 'Primer slide',
-      description: 'Esta descripción pertenece al primer slide.',
-      image: 'assets/slides1.jpg'
-    },
-    {
-      title: 'Segundo slide',
-      description: 'Esta descripción pertenece al segundo slide.',
-      image: 'assets/slides2.jpg'
-    },
-    {
-      title: 'Tercer slide',
-      description: 'Esta descripción pertenece al tercer slide',
-      image: 'assets/slides3.jpg'
-    }
-  ];
+  @Input() carousel!: Datum[];
 
   constructor() { }
 
   ngOnInit(): void {
+
+    
   }
 
 }
