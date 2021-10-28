@@ -3,8 +3,10 @@
   <h2 class="text-center">Categorías</h2>
   
   <form
+    [formGroup]="categoriesForm"
     class="needs-validation"
     novalidate
+    (ngSubmit)="onSubmit()"
   >
 
     <div class="mb-3 position-relative">
