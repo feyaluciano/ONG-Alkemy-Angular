@@ -1,3 +1,18 @@
+https://drive.google.com/file/d/1chnWpXP4uCcwgVJR3fv8gjyMF4nPY59V/viewNew 
+
+Caso 1: ONG - Somos Más.
+
+Nombre de la ONG: Somos Más
+
+Datos de contacto:
+Mail: somosfundacionmas@gmail.com
+Instagram: SomosMás
+Facebook: Somos_Más
+Teléfono de contacto: 1160112988
+
+
+
+
 # BaseOngAngularClient
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
