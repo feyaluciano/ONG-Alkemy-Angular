@@ -6,6 +6,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { Router } from "@angular/router";
+import { UserStatusService } from "src/app/core/services/user-status.service";
 import { passwordMatchValidator } from "src/app/shared/utils/password-match-validator";
 import { User } from "../../../models/User";
 
@@ -18,7 +19,7 @@ export class RegisterFormComponent implements OnInit {
   form: FormGroup;
   editing: boolean = false;
   passwordsAreEqualValue: boolean = false;
-  constructor(private _builder: FormBuilder, private router: Router) {
+  constructor(private userStatusService:UserStatusService,private _builder: FormBuilder, private router: Router) {
     this.form = this._builder.group({
       email: ["", [Validators.required, Validators.email]],
       password: [
@@ -55,7 +56,7 @@ export class RegisterFormComponent implements OnInit {
         email: this.form.get("Email")?.value,
         password: this.form.get("Password")?.value,
       };
-      localStorage.setItem("userLogged", JSON.stringify(user));
+      this.userStatusService.setUser(user);      
       this.router.navigate(["/home"]);
     } else {
       this.form.markAllAsTouched();
