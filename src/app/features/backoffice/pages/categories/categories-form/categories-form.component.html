@@ -17,28 +17,11 @@
         formControlName="name"
         required
       >
-      <div
-        class="invalid-tooltip"
-        *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.hasError('required')">
-        Por favor, ingrese el nombre de la categoría.
-      </div>
     </div>
         
     <div class="mb-3 position-relative">
       <label for="description" class="form-label">Description</label>
       <app-ckeditor></app-ckeditor>
-      <!-- <textarea
-        class="form-control"
-        id="message"
-        rows="3"
-        formControlName="message"
-        required
-      ></textarea> -->
-      <div
-        class="invalid-tooltip"
-        *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.hasError('required')">
-        Por favor, proporcione un mensaje.
-      </div>
     </div>
     
     <button
