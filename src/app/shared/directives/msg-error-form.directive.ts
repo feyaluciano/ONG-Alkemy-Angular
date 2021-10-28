@@ -1,12 +1,12 @@
-import { Directive, ElementRef, Input } from "@angular/core";
+import { Directive, ElementRef, Input } from '@angular/core';
 
 @Directive({
-  selector: "[appMsgErrorForm]",
+  selector: '[appMsgErrorForm]',
 })
 export class MsgErrorFormDirective {
   htmlElement: ElementRef<HTMLElement>;
-  public _colorText: string = "red";
-  private _menssageError: string = "Este campo es requerido";
+  public _colorText: string = 'red';
+  private _messageError: string = 'Este campo es requerido';
 
   //@Input() colorText:string='red';
   @Input() set colorText(value: string) {
@@ -14,17 +14,17 @@ export class MsgErrorFormDirective {
     this.htmlElement.nativeElement.style.color = value;
   }
 
-  //@Input() mensajeError:string;
-  @Input() set menssageError(value: string) {
-    this._menssageError = value;
+  //@Input() messageError:string;
+  @Input() set messageError(value: string) {
+    this._messageError = value;
     this.htmlElement.nativeElement.innerText = value;
   }
 
-  @Input() set valid(value: boolean) {
+  @Input() set valido(value: boolean) {    
     if (value === true) {
-      this.htmlElement.nativeElement.style.display = "";
+      this.htmlElement.nativeElement.style.display = '';
     } else {
-      this.htmlElement.nativeElement.style.display = "none";
+      this.htmlElement.nativeElement.style.display = 'none';
     }
   }
 
@@ -38,8 +38,9 @@ export class MsgErrorFormDirective {
   }
 
   setMensaje(): void {
-    this.htmlElement.nativeElement.innerHTML = this._menssageError;
+    this.htmlElement.nativeElement.innerHTML = this._messageError;
   }
+
   setColor(): void {
     this.htmlElement.nativeElement.style.color = this._colorText;
   }

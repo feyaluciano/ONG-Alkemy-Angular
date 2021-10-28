@@ -10,26 +10,20 @@ import { MsgErrorFormDirective } from './directives/msg-error-form.directive';
 
 @NgModule({
   declarations: [
-<<<<<<< HEAD
-    ContactFormComponent,MsgErrorFormDirective
-=======
     ContactFormComponent,
     CarouselComponent,
-    ImgCarouselPipe
->>>>>>> main
+    ImgCarouselPipe,
+    MsgErrorFormDirective
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,    
   ],
   exports: [
-<<<<<<< HEAD
-    CarouselComponent,MsgErrorFormDirective
-=======
     CarouselComponent,
     ImgCarouselPipe,
-    ContactFormComponent
->>>>>>> main
+    ContactFormComponent,
+    MsgErrorFormDirective
   ]
 })
 export class SharedModule { }

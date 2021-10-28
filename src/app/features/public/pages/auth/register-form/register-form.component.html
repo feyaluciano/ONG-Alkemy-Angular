@@ -8,26 +8,23 @@
     <div class="row g-3">
       <div class="col-sm-12">
         <label for="firstName" class="form-label">Email</label>
-        <!-- [valido]="haveErrorInputForm('title')" -->
         <input formControlName="email" type="text" class="form-control" id="title"  id="name" placeholder="" value="">
-        <div appMsgErrorForm  messageError="Ingrese un email"  valid="form.get('email')?.hasError('required') && form.get('email')?.touched"></div>
-        <div class="text-error-form"  *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">Ingrese un email</div>
+        <div appMsgErrorForm  messageError="Ingrese un email válido"  [valido]="haveErrorsInputForm('email','email')" ></div>
+        <div appMsgErrorForm  messageError="Este campo es requerido"  [valido]="haveErrorsInputForm('email','required')" ></div>
       </div>
     
       <div class="col-sm-12">
         <label for="firstName" class="form-label">Contraseña</label>
-        <!-- [valido]="haveErrorInputForm('title')" -->        
         <input formControlName="password" type="password" class="form-control" id="title"  id="name" placeholder="" value="" >
-        <div class="text-error-form" *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">Ingrese un password</div>
-        <div class="text-error-form" *ngIf="form.get('password')?.hasError('pattern') && form.get('password')?.touched">La contraseña debe contener al menos un número, una letra y un símbolo (por ejemplo: @#$%).</div>              
+        <div appMsgErrorForm  messageError="La contraseña debe contener al menos un número, una letra y un símbolo (por ejemplo: @#$%)"  [valido]="haveErrorsInputForm('password','pattern')" ></div>
+        <div appMsgErrorForm  messageError="Este campo es requerido"  [valido]="haveErrorsInputForm('password','required')" ></div>        
       </div>
 
 
       <div class="col-sm-12">
         <label for="firstName" class="form-label">Repetir Contraseña</label>
-        <!-- [valido]="haveErrorInputForm('title')" -->
         <input formControlName="confirmPassword" type="password" class="form-control" id="title"  id="name" placeholder="" value="" >
-        <div class="text-error-form" *ngIf="form.get('confirmPassword')?.hasError('required') && form.get('confirmPassword')?.touched">Ingrese un password</div>
+        <div appMsgErrorForm  messageError="Este campo es requerido"  [valido]="haveErrorsInputForm('confirmPassword','required')" ></div>        
         <div class="text-error-form" *ngIf="passwordsAreEqualValue">La contraseñas no coiniciden</div>
       </div>
       
