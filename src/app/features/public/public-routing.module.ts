@@ -7,7 +7,6 @@ import { HomeComponent } from './pages/home/home.component';
 
 const routes:Routes=[      
   {path : '' , redirectTo : '/home' , pathMatch : 'full'},
-  {path : 'login' , component:LoginFormComponent},
   {
     path:'',
     children: [      
@@ -15,7 +14,8 @@ const routes:Routes=[
       {
         path:'',
         children: [      
-          { path: 'register', component: RegisterFormComponent ,data : {origin : 'home'}},               
+          { path: 'register', component: RegisterFormComponent ,data : {origin : 'home'}},
+          { path : 'login' , component:LoginFormComponent},               
         ]   
       }               
     ]   
