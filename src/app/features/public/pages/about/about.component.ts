@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
+  title: string = 'Nosotros';
+
+  dinamicText: string = 'SOBRE NOSOTROS';
+
   constructor() { }
 
   ngOnInit(): void {
