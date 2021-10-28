@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AboutComponent implements OnInit {
 
   title: string = 'Nosotros';
-  imgUrl: string = 'assets/slides1.jpg'
+  imgUrl: string = 'http://ongapi.alkemy.org/storage/02Vknf6gzU.jpeg'
 
   us: string = `
   Desde 1997 en Somos Más trabajamos con los chicos y chicas, mamás y papás,
