@@ -34,10 +34,14 @@ export class RegisterFormComponent implements OnInit {
     });
   }
 
+
+  haveErrorsInputForm(input:string,type:string){    
+    return Boolean (this.form.get(input)?.hasError(type) && this.form.get(input)?.touched)    
+  }
+
   passwordsAreEqual() {
     if (
-      this.form.get("Password")?.value ===
-      this.form.get("ConfirmPassword")?.value
+      this.form.get("password")?.value ===this.form.get("confirmPassword")?.value
     ) {
       return true;
     }
