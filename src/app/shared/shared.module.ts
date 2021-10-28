@@ -9,16 +9,18 @@ import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
 
 @NgModule({
   declarations: [
-    ContactFormComponent
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
+    ContactFormComponent,
     CarouselComponent,
     ImgCarouselPipe
   ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,    
+  ],
   exports: [
-    CarouselComponent
+    CarouselComponent,
+    ImgCarouselPipe,
+    ContactFormComponent
   ]
 })
 export class SharedModule { }
