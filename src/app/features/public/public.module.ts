@@ -9,10 +9,9 @@ import { RegisterFormComponent } from "./pages/auth/register-form/register-form.
 import { TitlesComponentComponent } from './components/titles-component/titles-component.component';
 import { LoginFormComponent } from "./pages/auth/login-form/login-form.component";
 import { AboutComponent } from './pages/about/about.component';
-import { AboutUsComponent } from './components/about-us/about-us.component';
 
 @NgModule({
-  declarations: [HomeComponent,RegisterFormComponent, TitlesComponentComponent, LoginFormComponent, AboutComponent, AboutUsComponent],
+  declarations: [HomeComponent,RegisterFormComponent, TitlesComponentComponent, LoginFormComponent, AboutComponent],
   imports: [
     CommonModule,
     PublicRoutingModule,

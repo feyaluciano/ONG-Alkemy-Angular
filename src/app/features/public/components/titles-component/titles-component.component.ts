@@ -6,9 +6,12 @@ import { Component, Input, OnInit } from "@angular/core";
   styleUrls: ["./titles-component.component.scss"],
 })
 export class TitlesComponentComponent implements OnInit {
+
   @Input() title!: string;
   @Input() image!: string;
+  
   public defaultImage: string = "assets/images/background-text-defect.png";
+
   constructor() {}
 
   ngOnInit(): void {

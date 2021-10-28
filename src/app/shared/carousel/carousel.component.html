@@ -7,8 +7,11 @@
           
           <img [src]="slides | imgCarousel" class="d-block w-100" alt="slider ong image">
           <div class="carousel-caption d-none d-md-block">
-              <h2> {{slides.name}} </h2>
-              <p>{{slides.description}}</p>
+              <div class="bg-text">
+                <h2> {{slides.name}} </h2>
+                <p>{{slides.description}}</p>
+                
+              </div>
           </div>
         </div>
       </ng-container>      
