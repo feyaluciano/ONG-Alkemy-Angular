@@ -7,9 +7,10 @@ import { BackofficeRoutingModule } from "../backoffice/backoffice-routing.module
 import { ReactiveFormsModule } from "@angular/forms";
 import { RegisterFormComponent } from "./pages/auth/register-form/register-form.component";
 import { TitlesComponentComponent } from './components/titles-component/titles-component.component';
+import { LoginFormComponent } from "./pages/auth/login-form/login-form.component";
 
 @NgModule({
-  declarations: [HomeComponent,RegisterFormComponent, TitlesComponentComponent],
+  declarations: [HomeComponent,RegisterFormComponent, TitlesComponentComponent, LoginFormComponent],
   imports: [
     CommonModule,
     PublicRoutingModule,
