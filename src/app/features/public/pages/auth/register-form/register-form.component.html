@@ -10,7 +10,7 @@
         <label for="firstName" class="form-label">Email</label>
         <!-- [valido]="haveErrorInputForm('title')" -->
         <input formControlName="email" type="text" class="form-control" id="title"  id="name" placeholder="" value="">
-        <div class="text-error-form"  *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">Ingrese un email</div>
+        <div appMsgErrorForm  messageError="Ingrese un email"  valid="form.get('email')?.hasError('required') && form.get('email')?.touched"></div>
         <div class="text-error-form"  *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">Ingrese un email</div>
       </div>
     

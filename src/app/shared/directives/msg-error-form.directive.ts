@@ -1,10 +1,46 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef, Input } from "@angular/core";
 
 @Directive({
-  selector: '[appMsgErrorForm]'
+  selector: "[appMsgErrorForm]",
 })
 export class MsgErrorFormDirective {
+  htmlElement: ElementRef<HTMLElement>;
+  public _colorText: string = "red";
+  private _menssageError: string = "Este campo es requerido";
 
-  constructor() { }
+  //@Input() colorText:string='red';
+  @Input() set colorText(value: string) {
+    this._colorText = value;
+    this.htmlElement.nativeElement.style.color = value;
+  }
 
+  //@Input() mensajeError:string;
+  @Input() set menssageError(value: string) {
+    this._menssageError = value;
+    this.htmlElement.nativeElement.innerText = value;
+  }
+
+  @Input() set valid(value: boolean) {
+    if (value === true) {
+      this.htmlElement.nativeElement.style.display = "";
+    } else {
+      this.htmlElement.nativeElement.style.display = "none";
+    }
+  }
+
+  constructor(private el: ElementRef<HTMLElement>) {
+    this.htmlElement = el;
+  }
+
+  ngOnInit() {
+    this.setColor();
+    this.setMensaje();
+  }
+
+  setMensaje(): void {
+    this.htmlElement.nativeElement.innerHTML = this._menssageError;
+  }
+  setColor(): void {
+    this.htmlElement.nativeElement.style.color = this._colorText;
+  }
 }
