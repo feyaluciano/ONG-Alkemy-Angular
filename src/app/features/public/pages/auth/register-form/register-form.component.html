@@ -8,14 +8,14 @@
     <div class="row g-3">
       <div class="col-sm-12">
         <label for="firstName" class="form-label">Email</label>
-        <input formControlName="email" type="text" class="form-control" id="title"  id="name" placeholder="" value="">
+        <input formControlName="email" type="text" class="form-control" id="email"  id="email" >
         <div appMsgErrorForm  messageError="Ingrese un email válido"  [valido]="haveErrorsInputForm('email','email')" ></div>
         <div appMsgErrorForm  messageError="Este campo es requerido"  [valido]="haveErrorsInputForm('email','required')" ></div>
       </div>
     
       <div class="col-sm-12">
         <label for="firstName" class="form-label">Contraseña</label>
-        <input formControlName="password" type="password" class="form-control" id="title"  id="name" placeholder="" value="" >
+        <input formControlName="password" type="password" class="form-control" id="password"  id="password"  >
         <div appMsgErrorForm  messageError="La contraseña debe contener al menos un número, una letra y un símbolo (por ejemplo: @#$%)"  [valido]="haveErrorsInputForm('password','pattern')" ></div>
         <div appMsgErrorForm  messageError="Este campo es requerido"  [valido]="haveErrorsInputForm('password','required')" ></div>        
       </div>
@@ -23,7 +23,7 @@
 
       <div class="col-sm-12">
         <label for="firstName" class="form-label">Repetir Contraseña</label>
-        <input formControlName="confirmPassword" type="password" class="form-control" id="title"  id="name" placeholder="" value="" >
+        <input formControlName="confirmPassword" type="password" class="form-control" id="title"  id="name"  >
         <div appMsgErrorForm  messageError="Este campo es requerido"  [valido]="haveErrorsInputForm('confirmPassword','required')" ></div>        
         <div class="text-error-form" *ngIf="passwordsAreEqualValue">La contraseñas no coiniciden</div>
       </div>
