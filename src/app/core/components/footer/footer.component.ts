@@ -9,10 +9,10 @@ import { UserStatusService } from "../../services/user-status.service";
 })
 export class FooterComponent implements OnInit {
   public user!: User;
-  constructor(private userStatusService: UserStatusService) {
-    this.user = this.userStatusService.getUser();
+  constructor(private userStatusService: UserStatusService) {    
   }
 
-  ngOnInit(): void {   
+  async ngOnInit(): Promise<void> { 
+    this.user = await this.userStatusService.getUser();  
   }
 }

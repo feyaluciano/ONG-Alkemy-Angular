@@ -1,6 +1,6 @@
-<app-header [origin]="originUrl" ></app-header>
+<app-header  ></app-header>
 <div class="container">
-    <app-carousel [carousel]="data" class="m-2"></app-carousel>
+    <app-carousel *ngIf="showSlider" [carousel]="data" class="m-2"></app-carousel>
 </div>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
