@@ -29,6 +29,7 @@ import { CkeditorComponent } from './components/ckeditor/ckeditor.component';
     ImgCarouselPipe,
     ContactFormComponent,
     MsgErrorFormDirective,
+    // CKEditorModule,
     CkeditorComponent
   ]
 })

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BackofficeRoutingModule } from './backoffice-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
 
 
 
@@ -13,7 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     BackofficeRoutingModule,
-
+    SharedModule
   ],
   exports: []
 
