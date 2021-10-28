@@ -4,13 +4,15 @@ Caso 1: ONG - Somos Más.
 
 Nombre de la ONG: Somos Más
 
-Datos de contacto:
+Datos de contacto:X
 Mail: somosfundacionmas@gmail.com
 Instagram: SomosMás
 Facebook: Somos_Más
 Teléfono de contacto: 1160112988
 
 sss
+
+Ong Somos mas
 
 
 # BaseOngAngularClient
