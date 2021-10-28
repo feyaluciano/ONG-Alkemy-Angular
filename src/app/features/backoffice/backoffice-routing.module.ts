@@ -22,6 +22,6 @@ const routes:Routes=[
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  declarations: [DashboardComponent]
+  declarations: []
 })
 export class BackofficeRoutingModule { }
