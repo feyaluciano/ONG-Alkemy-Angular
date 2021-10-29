@@ -9,8 +9,8 @@ export class UserStatusService {
 
   constructor() {}
 
-  async isUserLoggedIn() {      
-    let isLogged=await this.getUser();
+   isUserLoggedIn() {      
+    let isLogged= this.getUser();
     if (isLogged==="null") {       
         return false;
      } else {      
@@ -18,7 +18,7 @@ export class UserStatusService {
      }
   }
 
-  async getUser() {
+   getUser() {
     let user;
     try {
       this.user = JSON.parse(

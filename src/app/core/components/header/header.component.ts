@@ -15,23 +15,30 @@ export class HeaderComponent implements OnInit {
   @ViewChild("headerPublic", { static: true }) headerPublic!: TemplateRef<any>;
   @ViewChild(TemplateRef, { static: true }) template!: TemplateRef<any>;
 
-  constructor(private router:Router,private userStatusService:UserStatusService) {}
-
-
-  async signOut(){
-    await this.userStatusService.deleteUser();
-    this.router.navigate(["/home"]);
-  }
-
-  async ngOnInit(): Promise<void> {
-   
-  }
-  async ngAfterViewInit() {
+  constructor(private router:Router,private userStatusService:UserStatusService) {
     this.template = this.headerPublic;   
-    let isLogged=await this.userStatusService.isUserLoggedIn();    
+    let isLogged= this.userStatusService.isUserLoggedIn();    
     if (isLogged) {      
       this.template = this.headerBackoffice;
     }
+
+  }
+
+
+  signOut(){
+    this.userStatusService.deleteUser();
+    this.router.navigate(["/home"]);
+  }
+
+   ngOnInit() {
+   
+  }
+   ngAfterViewInit() {
+    // this.template = this.headerPublic;   
+    // let isLogged= this.userStatusService.isUserLoggedIn();    
+    // if (isLogged) {      
+    //   this.template = this.headerBackoffice;
+    // }
    
   }
 }
