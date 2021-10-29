@@ -10,7 +10,7 @@ import { UserStatusService } from 'src/app/core/services/user-status.service';
 }) 
 export class ActivityFormComponent implements OnInit {
   title = 'app-activity-form';
-  form!: FormGroup;
+  form: FormGroup;
   editing: boolean = false;
   constructor(private userStatusService:UserStatusService,private _builder: FormBuilder, private router: Router) { 
 

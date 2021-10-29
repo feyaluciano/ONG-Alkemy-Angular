@@ -10,7 +10,7 @@ import { UserStatusService } from './core/services/user-status.service';
 })
 export class AppComponent  {
 
-  public originUrl:String="/home";
+  
   public showSlider:boolean = false;
 
   data: Datum[] = [
@@ -55,9 +55,12 @@ export class AppComponent  {
   constructor(private router:Router,private route:ActivatedRoute,private userStatusService:UserStatusService){
     
   }        
-  ngOnInit(){
-    this.showSlider= !this.userStatusService.isUserLoggedIn();
-    //ACA ME FALTA OBTENER LA RUTA ACTUAL
-    this.originUrl="/home"
-  }    
+  async ngOnInit(){
+   
+  } 
+  
+  async ngAfterViewInit(){
+    let req=await this.userStatusService.isUserLoggedIn();  
+    this.showSlider= !req;
+  }
 }
