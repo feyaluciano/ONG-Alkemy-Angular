@@ -37,7 +37,7 @@ export class ActivityFormComponent implements OnInit {
     this.form = this._builder.group({
       name: ["", [Validators.required]],
       description: ["",],
-      image: ["", [Validators.required,UrlImageValidator.urlValidate]],
+      image: ["", [Validators.required]],
 
     });
   }
@@ -51,11 +51,11 @@ export class ActivityFormComponent implements OnInit {
   save() {
     //WITH DE CUSTOM VALIDATION TO IMAGE URL, THE FORM IS ALLWAYS INVALID, CHECK!
     if (this.form.valid) {
-      this.sending = true;
+      this.sending = true;      
       let activity: Activity = {
         name: this.form.get("name")?.value,
         image: this.form.get("image")?.value,
-        description: this.form.get("description")?.value,
+        description: this.textEditor,
       };
       if (this.editing) {
         this.alertMessage = "La actividad fue editada correctamente";
@@ -68,7 +68,7 @@ export class ActivityFormComponent implements OnInit {
           .subscribe((result) => {
             let resultData: any = JSON.parse(JSON.stringify(result));
             Swal.fire(this.alertMessage.toString()).then(() => {
-            //  this.router.navigate(["/dashboard"]);
+              this.router.navigate(["/dashboard"]);
             });
           });
       } else {
@@ -103,7 +103,7 @@ export class ActivityFormComponent implements OnInit {
       this.httpService.get(url).subscribe((result) => {
         let resultData: any = JSON.parse(JSON.stringify(result));
         this.anActivity = JSON.parse(JSON.stringify(resultData.data));
-        
+        this.ckeditorSvc.textEditor$.next(this.anActivity.description!)
         this.form.setValue({
           name: this.anActivity.name,
           image: this.anActivity.image,
@@ -115,14 +115,9 @@ export class ActivityFormComponent implements OnInit {
       this.action = "New activity";
     }
 
-
-    this.ckeditorSvc.ckeditorTrigger.subscribe((data: any) => {
-      
-      this.form.value.description = data.data;
-
-      
+    this.ckeditorSvc.getHandlerTextEditor$().subscribe((text) => {
+      this.textEditor=text;
     });
-
   }
   
 }

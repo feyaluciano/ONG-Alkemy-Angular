@@ -52,10 +52,11 @@
               <div class="row mb-3">
                 <div class="col-md-4">
                   <label for="firstName" class="form-label">Descripción</label>
-                  <input formControlName="description" type="text" class="form-control" id="description"
+                  <app-ckeditor></app-ckeditor>
+                  <!-- <input formControlName="description" type="text" class="form-control" id="description"
                     id="description">
                   <div appMsgErrorForm messageError="Este campo es requerido"
-                    [valido]="haveErrorsInputForm('description','required')"></div>
+                    [valido]="haveErrorsInputForm('description','required')"></div> -->
                 </div>
               </div>
 
