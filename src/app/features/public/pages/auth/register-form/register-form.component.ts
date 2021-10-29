@@ -6,6 +6,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { Router } from "@angular/router";
+import { UserStatusService } from "src/app/core/services/user-status.service";
 import { passwordMatchValidator } from "src/app/shared/utils/password-match-validator";
 import { User } from "../../../models/User";
 
@@ -18,11 +19,11 @@ export class RegisterFormComponent implements OnInit {
   form: FormGroup;
   editing: boolean = false;
   passwordsAreEqualValue: boolean = false;
-  constructor(private _builder: FormBuilder, private router: Router) {
+  constructor(private userStatusService:UserStatusService,private _builder: FormBuilder, private router: Router) {
     this.form = this._builder.group({
-      email: ["", [Validators.required, Validators.email]],
+      email: ["ejemplo@gmail.com", [Validators.required, Validators.email]],
       password: [
-        "",
+        "aaaaaa5%",
         [
           Validators.required,
           Validators.pattern(
@@ -30,7 +31,7 @@ export class RegisterFormComponent implements OnInit {
           ),
         ],
       ],
-      confirmPassword: ["", [Validators.required]],
+      confirmPassword: ["aaaaaa5%", [Validators.required]],
     });
   }
 
@@ -48,15 +49,15 @@ export class RegisterFormComponent implements OnInit {
     return false;
   }
 
-  save() {
+  async save() {
     this.passwordsAreEqualValue = !this.passwordsAreEqual();
     if (this.form.valid && this.passwordsAreEqual()) {
       const user: User = {
-        email: this.form.get("Email")?.value,
-        password: this.form.get("Password")?.value,
+        email: this.form.get("email")?.value,
+        password: this.form.get("password")?.value,
       };
-      localStorage.setItem("userLogged", JSON.stringify(user));
-      this.router.navigate(["/home"]);
+      await this.userStatusService.setUser(user);      
+      this.router.navigate(["/dashboard"]);
     } else {
       this.form.markAllAsTouched();
     }
