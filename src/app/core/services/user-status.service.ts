@@ -9,22 +9,27 @@ export class UserStatusService {
 
   constructor() {}
 
-  isUserLoggedIn(): boolean {
-    return Boolean(this.getUser());
+  async isUserLoggedIn() {      
+    let isLogged=await this.getUser();
+    if (isLogged==="null") {       
+        return false;
+     } else {      
+        return true;
+     }
   }
 
-  getUser() {
+  async getUser() {
     let user;
     try {
       this.user = JSON.parse(
         JSON.stringify(localStorage.getItem("userLogged"))
       );
     } catch (Error) {
-      this.user = {};
+      this.user = null!;
     }
     return this.user;
   }
-  setUser(user: User) {
+   async setUser(user: User) {
     try {
       localStorage.setItem("userLogged", JSON.stringify(user));
     } catch (Error) {
@@ -32,7 +37,7 @@ export class UserStatusService {
     }
     return this.user;
   }
-  deleteUser() {
+  async deleteUser() {
     localStorage.setItem("userLogged", null!);
   }
 }

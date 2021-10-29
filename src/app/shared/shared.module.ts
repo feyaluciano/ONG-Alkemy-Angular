@@ -4,6 +4,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
+import { MsgErrorFormDirective } from './directives/msg-error-form.directive';
 
 
 
@@ -11,7 +12,8 @@ import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
   declarations: [
     ContactFormComponent,
     CarouselComponent,
-    ImgCarouselPipe
+    ImgCarouselPipe,
+    MsgErrorFormDirective
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
   exports: [
     CarouselComponent,
     ImgCarouselPipe,
-    ContactFormComponent
+    ContactFormComponent,
+    MsgErrorFormDirective
   ]
 })
 export class SharedModule { }
