@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/core/services/http.service';
 import { UserStatusService } from 'src/app/core/services/user-status.service';
 import { Activity } from 'src/app/features/public/models/Activity';
+import { UrlImageValidator } from 'src/app/shared/utils/url-image.validator';
 import { environment } from 'src/environments/environment';
 import Swal from'sweetalert2';
 
@@ -29,7 +30,9 @@ export class ActivityFormComponent implements OnInit {
   ) {
     this.form = this._builder.group({
       name: ["", [Validators.required]],
-      description: ["", [Validators.required]],
+      description: ["",],
+      image: ["", [Validators.required,UrlImageValidator.urlValidate]],
+
     });
   }
 
@@ -40,17 +43,19 @@ export class ActivityFormComponent implements OnInit {
   }
 
   save() {
+    //WITH DE CUSTOM VALIDATION TO IMAGE URL, THE FORM IS ALLWAYS INVALID, CHECK!
     if (this.form.valid) {
       this.sending = true;
       let activity: Activity = {
         name: this.form.get("name")?.value,
+        image: this.form.get("image")?.value,
         description: this.form.get("description")?.value,
       };
       if (this.editing) {
         this.alertMessage = "La actividad fue editada correctamente";
         activity.id = this.anActivity.id;
         this.httpService
-          .put(
+          .patch(
             environment.apiUrl + "/activities/" + this.anActivity.id,
             activity
           )
@@ -94,6 +99,7 @@ export class ActivityFormComponent implements OnInit {
         this.anActivity = JSON.parse(JSON.stringify(resultData.data));
         this.form.setValue({
           name: this.anActivity.name,
+          image: this.anActivity.image,
           description: this.anActivity.description,
         });
       });
