@@ -7,9 +7,15 @@ import { ActivityFormComponent } from './pages/activity-form/activity-form.compo
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 
 @NgModule({
-  declarations: [ActivityFormComponent, NavbarComponent,NavbarComponent,DashboardComponent],
+  declarations: [
+    ActivityFormComponent,
+    NavbarComponent,
+    DashboardComponent,
+    CategoriesFormComponent
+  ],
   imports: [
     CommonModule,
     BackofficeRoutingModule,

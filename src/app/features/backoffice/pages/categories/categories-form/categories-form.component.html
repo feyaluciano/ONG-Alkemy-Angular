@@ -1,1 +1,35 @@
-<p>categories-form works!</p>
+<div class="container">
+  
+  <h2 class="text-center">Categorías</h2>
+  
+  <form
+    [formGroup]="categoriesForm"
+    class="needs-validation"
+    novalidate
+  >
+
+    <div class="mb-3 position-relative">
+      <label for="name" class="form-label">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Ingrese aquí el nombre de la categoría"
+        formControlName="name"
+        required
+      >
+    </div>
+        
+    <div class="mb-3 position-relative">
+      <label for="description" class="form-label">Description</label>
+      <app-ckeditor></app-ckeditor>
+    </div>
+    
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="onSubmit()"
+    >Enviar</button>
+
+  </form>
+</div>
