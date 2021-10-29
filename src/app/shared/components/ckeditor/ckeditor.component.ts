@@ -23,9 +23,7 @@ export class CkeditorComponent implements OnInit {
   ngOnInit(): void {
     this.ckeditorSvc.getHandlerTextEditor$().subscribe((text) => {
       this.model.editorData=text;
-    });
-
-   
+    });   
   }
   
   onBlur() {

@@ -5,6 +5,7 @@ import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { HttpService } from 'src/app/core/services/http.service';
 import { UserStatusService } from 'src/app/core/services/user-status.service';
 import { Activity } from 'src/app/features/public/models/Activity';
+import { ImageFile } from 'src/app/features/public/models/ImageFile';
 import { UrlImageValidator } from 'src/app/shared/utils/url-image.validator';
 import { environment } from 'src/environments/environment';
 import Swal from'sweetalert2';
@@ -24,7 +25,9 @@ export class ActivityFormComponent implements OnInit {
   private alertMessage!: String;
   public textEditor!:string;
 
-  
+  private imageFile!:ImageFile;
+  public imageError=false;
+  public anImage!:string;
 
   constructor(
     private userStatusService: UserStatusService,
@@ -38,7 +41,6 @@ export class ActivityFormComponent implements OnInit {
       name: ["", [Validators.required]],
       description: ["",],
       image: ["", [Validators.required]],
-
     });
   }
 
@@ -49,17 +51,17 @@ export class ActivityFormComponent implements OnInit {
   }
 
   save() {
-    //WITH DE CUSTOM VALIDATION TO IMAGE URL, THE FORM IS ALLWAYS INVALID, CHECK!
-    if (this.form.valid) {
+    if (this.form.valid && !this.imageError) {
       this.sending = true;      
       let activity: Activity = {
         name: this.form.get("name")?.value,
-        image: this.form.get("image")?.value,
+        image: this.anImage,
         description: this.textEditor,
       };
       if (this.editing) {
         this.alertMessage = "La actividad fue editada correctamente";
         activity.id = this.anActivity.id;
+        activity.image = this.anImage;                
         this.httpService
           .put(
             environment.apiUrl + "/activities/" + this.anActivity.id,
@@ -71,9 +73,10 @@ export class ActivityFormComponent implements OnInit {
               this.router.navigate(["/dashboard"]);
             });
           });
-      } else {
+      } else {        
         this.alertMessage = "La actividad fue agregada correctamente";
         this.anActivity.id = "0";
+        this.anActivity.image = this.anImage;
         this.httpService
           .post(environment.apiUrl + "/activities", activity)
           .subscribe((result) => {
@@ -119,5 +122,63 @@ export class ActivityFormComponent implements OnInit {
       this.textEditor=text;
     });
   }
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------upload image----------------------------------------------------
+fileEvent(event:any) {
+  this.imageFile={ id: "0"}; 
+  let reader = new FileReader();
+  if(event.target.files && event.target.files.length > 0) {
+    let file = event.target.files[0];   
+    if ( (file.type!="image/jpeg") && (file.type!="image/png")   )    {
+      this.imageError=true;      
+      return false;
+    }
+    
+
+    if ( (file.type!="image/jpeg") && (file.type!="image/png")   )    {
+      this.imageError=true;      
+      return false;
+    }
+   
+    reader.readAsDataURL(file);
+    reader.onload = () => {               
+      this.anImage="data:image/png;base64,"+reader.result!.toString().split(',')[1];         
+      var img = new Image();             
+      img.addEventListener('load',
+    function(){
+      var formElement = <HTMLFormElement>document.getElementById('imageError');       
+      // if (( img.width !== 590) || ( img.height !== 340) )    {  
+      //   formElement.value="true";               
+      // } else {
+      //   formElement.value="false";
+      // }
+     }    
+    ,false);
+
+    img.src = this.anImage;    
+    this.imageFile.imageFile=reader.result!.toString().split(',')[1];            
+    };
+
+
+  }
+  return true;
+}
+
+//------------------------------------------------end upload image----------------------------------------------------
+
+
+
+
   
 }
