@@ -45,7 +45,7 @@
                   </div>                              
                   <input formControlName="image" type="file" id="avatar" (change)="fileEvent($event)" #fileInput>
                   <input type="hidden" id="errorEnImagen" value="{{imageError}}">
-                  <div style="color:#FF084E" *ngIf="imageError">La imagen debe ser formato jpg o png.</div>  
+                  <div class="text-error-form" *ngIf="imageError">La imagen debe ser formato jpg o png.</div>  
                   <div appMsgErrorForm messageError="Este campo es requerido"
                   [valido]="haveErrorsInputForm('image','required')"></div>
 
