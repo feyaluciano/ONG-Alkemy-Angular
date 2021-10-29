@@ -41,7 +41,7 @@
                   <label for="firstName" class="form-label">Imagen</label>
 
                   <div class="text-center">                  
-                    <img class="img-fluid mb-2" id="imgTipoRecurso"  [src]="anImage">
+                    <img class="img-fluid mb-2" id="imagenUrl"  [src]="anActivity.image">
                   </div>                              
                   <input formControlName="image" type="file" id="avatar" (change)="fileEvent($event)" #fileInput>
                   <input type="hidden" id="errorEnImagen" value="{{imageError}}">
