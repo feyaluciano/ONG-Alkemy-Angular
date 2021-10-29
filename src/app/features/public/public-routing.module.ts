@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginFormComponent } from './pages/auth/login-form/login-form.component';
 import { RegisterFormComponent } from './pages/auth/register-form/register-form.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AboutComponent } from './pages/about/about.component';
 
 
 const routes:Routes=[      
@@ -15,7 +16,8 @@ const routes:Routes=[
         path:'',
         children: [      
           { path: 'register', component: RegisterFormComponent ,data : {origin : 'home'}},
-          { path : 'login' , component:LoginFormComponent},               
+          { path : 'login' , component:LoginFormComponent},
+          { path: 'nosotros', component: AboutComponent }             
         ]   
       }               
     ]   
