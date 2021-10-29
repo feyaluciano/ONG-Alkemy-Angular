@@ -13,7 +13,8 @@ const routes:Routes=[
   {
     path:'',
     children: [      
-      { path: 'activity', component: ActivityFormComponent },               
+      { path: 'activity', component: ActivityFormComponent },
+      { path: 'activity/:idActivity', component: ActivityFormComponent },               
     ]   
   },
   
