@@ -15,6 +15,9 @@ export class CategoriesFormComponent implements OnInit {
     ]),
     description: new FormControl(null, [
       Validators.required
+    ]),
+    image: new FormControl(null, [
+      Validators.required
     ])
   });
 
@@ -39,6 +42,7 @@ export class CategoriesFormComponent implements OnInit {
     console.log(this.categoriesForm.value);
   }
 
+  // https://stackoverflow.com/questions/48216410/angular-4-base64-upload-component
   handleInputChange(e: any) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     var pattern = /image-*/;
@@ -53,7 +57,9 @@ export class CategoriesFormComponent implements OnInit {
   _handleReaderLoaded(e: any) {
     let reader = e.target;
     this.imageSrc = reader.result;
-    console.log(this.imageSrc)
+
+    this.categoriesForm.value.image = this.imageSrc;
+
   }
 
 }
