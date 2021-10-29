@@ -24,7 +24,12 @@
       <label for="description" class="form-label">Description</label>
       <app-ckeditor></app-ckeditor>
     </div>
-    
+
+    <div class="mb-3 position-relative">
+      <img [src]="imageSrc" style="max-width:300px;max-height:300px"/>
+      <input name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event)" />
+    </div>
+      
     <button
       type="submit"
       class="btn btn-primary"
