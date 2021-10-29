@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { HttpService } from 'src/app/core/services/http.service';
 import { UserStatusService } from 'src/app/core/services/user-status.service';
 import { Activity } from 'src/app/features/public/models/Activity';
@@ -15,18 +16,23 @@ import Swal from'sweetalert2';
   styleUrls: ["./activity-form.component.scss"],
 })
 export class ActivityFormComponent implements OnInit {
-  form: FormGroup;
-  editing: boolean = false;
-  sending: boolean = false;
+  public form: FormGroup;
+  public editing: boolean = false;
+  public sending: boolean = false;
   public action: string = "";
   public anActivity: Activity = {};
-  alertMessage!: String;
+  private alertMessage!: String;
+  public textEditor!:string;
+
+  
+
   constructor(
     private userStatusService: UserStatusService,
     private _builder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private httpService: HttpService
+    private httpService: HttpService,
+    private ckeditorSvc: CkeditorService
   ) {
     this.form = this._builder.group({
       name: ["", [Validators.required]],
@@ -55,14 +61,14 @@ export class ActivityFormComponent implements OnInit {
         this.alertMessage = "La actividad fue editada correctamente";
         activity.id = this.anActivity.id;
         this.httpService
-          .patch(
+          .put(
             environment.apiUrl + "/activities/" + this.anActivity.id,
             activity
           )
           .subscribe((result) => {
             let resultData: any = JSON.parse(JSON.stringify(result));
             Swal.fire(this.alertMessage.toString()).then(() => {
-              this.router.navigate(["/dashboard"]);
+            //  this.router.navigate(["/dashboard"]);
             });
           });
       } else {
@@ -97,6 +103,7 @@ export class ActivityFormComponent implements OnInit {
       this.httpService.get(url).subscribe((result) => {
         let resultData: any = JSON.parse(JSON.stringify(result));
         this.anActivity = JSON.parse(JSON.stringify(resultData.data));
+        
         this.form.setValue({
           name: this.anActivity.name,
           image: this.anActivity.image,
@@ -107,5 +114,15 @@ export class ActivityFormComponent implements OnInit {
       this.editing = false;
       this.action = "New activity";
     }
+
+
+    this.ckeditorSvc.ckeditorTrigger.subscribe((data: any) => {
+      
+      this.form.value.description = data.data;
+
+      
+    });
+
   }
+  
 }
