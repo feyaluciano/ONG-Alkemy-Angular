@@ -1,1 +1,6 @@
-<ckeditor [editor]="Editor"></ckeditor>
+<ckeditor
+  tagName="textarea"
+  [(ngModel)]="model.editorData"
+  (blur)="onBlur()"
+  [editor]="Editor"
+></ckeditor>

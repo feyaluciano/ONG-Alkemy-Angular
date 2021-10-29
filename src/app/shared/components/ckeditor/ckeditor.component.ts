@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 
 @Component({
   selector: 'app-ckeditor',
@@ -10,9 +11,22 @@ export class CkeditorComponent implements OnInit {
 
   public Editor = ClassicEditor;
 
-  constructor() { }
+  public model = {
+    editorData: ''
+  };
+
+  constructor(
+    private ckeditorSvc: CkeditorService
+  ) { }
 
   ngOnInit(): void {
+  }
+  
+  onBlur() {
+    this.ckeditorSvc.ckeditorTrigger.emit({
+      data: this.model.editorData
+    });
+
   }
 
 }

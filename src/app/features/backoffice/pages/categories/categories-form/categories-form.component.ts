@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CkeditorService } from '../../../../../core/services/ckeditor.service';
 
 @Component({
   selector: 'app-categories-form',
@@ -17,14 +18,23 @@ export class CategoriesFormComponent implements OnInit {
     ])
   });
 
-  constructor() { }
+  constructor(
+    private ckeditorSvc: CkeditorService
+  ) {
+    this.ckeditorSvc.ckeditorTrigger.subscribe((data: any) => {
+      
+      this.categoriesForm.value.description = data.data;
 
+      
+    });
+  }
+  
   ngOnInit(): void {
   }
-
+  
   onSubmit() {
-    console.log(this.categoriesForm.value.description);
     
+    console.log(this.categoriesForm.value);
   }
 
 }

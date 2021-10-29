@@ -6,7 +6,6 @@
     [formGroup]="categoriesForm"
     class="needs-validation"
     novalidate
-    (ngSubmit)="onSubmit()"
   >
 
     <div class="mb-3 position-relative">
@@ -29,6 +28,7 @@
     <button
       type="submit"
       class="btn btn-primary"
+      (click)="onSubmit()"
     >Enviar</button>
 
   </form>
