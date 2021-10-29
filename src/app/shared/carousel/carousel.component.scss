@@ -1,19 +1,13 @@
-.slide img {
-    height: 600px;
-    // background-image: url('https://educowebmedia.blob.core.windows.net/educowebmedia/educospain/media/images/blog/ong-y-ods.jpg');
-    background-color: #000000db;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
 .bg-text {
     color: rgb(247, 240, 240);
     text-align: center;
-    //background-color: rgb(255 127 80 / 26%);
     padding: 10px;
 }
 
-.bg {
-    
-    background: red;
+img {
+    filter: brightness(.6);
+}
+
+.slide img {
+    height: 50vh;
 }
