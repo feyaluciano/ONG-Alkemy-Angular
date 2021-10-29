@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  title: string = 'Nosotros';
-  imgUrl: string = 'http://ongapi.alkemy.org/storage/02Vknf6gzU.jpeg'
+  title: string = 'nosotros';
 
+  imgUrl: string = 'assets/slides1.jpg';  
+  
   us: string = `
   Desde 1997 en Somos Más trabajamos con los chicos y chicas, mamás y papás,
   abuelos y vecinos del barrio La Cava generando procesos de crecimiento y de

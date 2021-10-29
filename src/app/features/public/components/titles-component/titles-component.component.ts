@@ -10,13 +10,15 @@ export class TitlesComponentComponent implements OnInit {
   @Input() title!: string;
   @Input() image!: string;
 
-  public defaultImage: string = "assets/images/background-text-defect.png";
+  public defaultImage: string = "assets/slides3.jpg";
 
   constructor() {}
 
   ngOnInit(): void {
+
     if (!Boolean(this.image)) {      
       this.image = this.defaultImage;
     }
+
   }
 }

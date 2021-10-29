@@ -5,12 +5,15 @@
       <ng-container *ngFor="let slides of carousel; let i = index">
         <div class="carousel-item" data-bs-interval="5000"  [ngClass]="{'active':i==0}">
           
-          <img [src]="slides | imgCarousel" class="d-block w-100" alt="slider ong image">
+          
+            <div class="bg">
+              <img [src]="slides | imgCarousel" class="d-block w-100" alt="slider ong image">
+            </div>
+          
           <div class="carousel-caption d-none d-md-block">
               <div class="bg-text">
                 <h2> {{slides.name}} </h2>
-                <p>{{slides.description}}</p>
-                
+                <p>{{slides.description}}</p>                
               </div>
           </div>
         </div>
