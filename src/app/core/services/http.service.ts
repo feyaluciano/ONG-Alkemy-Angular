@@ -22,6 +22,14 @@ export class HttpService {
     return this.http.put<T>(url, data, activateHeader ? { headers: this._headers }: {});
   }
 
+  public patch<T>(url: string, data: any, activateHeader:boolean = false ):Observable<T> {
+    return this.http.patch<T>(url, data, activateHeader ? { headers: this._headers }: {});
+  }
+
+  public delete<T>(url: string, activateHeader:boolean = false ):Observable<T> {   
+    return this.http.delete<T>(url, activateHeader ? { headers: this._headers }: {});
+  } 
+
   public post<T>(url: string, data: any, activateHeader:boolean = false ):Observable<T> {
     return this.http.post<T>(url, data, activateHeader ? { headers: this._headers }: {});
   }
