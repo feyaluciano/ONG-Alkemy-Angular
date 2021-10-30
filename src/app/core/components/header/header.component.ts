@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/features/public/models/User';
+import { User } from 'src/app/features/models/User';
 import { UserStatusService } from '../../services/user-status.service';
 
 @Component({

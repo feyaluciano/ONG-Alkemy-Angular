@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { HttpService } from 'src/app/core/services/http.service';
-import { Member } from 'src/app/features/public/models/Member';
-import { ImageFile } from 'src/app/features/public/models/ImageFile';
+import { Member } from 'src/app/features/models/Member';
+import { ImageFile } from 'src/app/features/models/ImageFile';
 import { environment } from 'src/environments/environment';
 import Swal from'sweetalert2';
 
