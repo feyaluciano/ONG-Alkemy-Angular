@@ -9,6 +9,7 @@ import { ActivityFormComponent } from './pages/activity-form/activity-form.compo
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BackofficeHomeComponent } from './pages/backoffice-home/backoffice-home.component';
+import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BackofficeHomeComponent } from './pages/backoffice-home/backoffice-home
     NavbarComponent,
     NavbarComponent,
     DashboardComponent,
-    BackofficeHomeComponent],
+    BackofficeHomeComponent,
+    CategoriesFormComponent],
   imports: [
     CommonModule,
     BackofficeRoutingModule,
