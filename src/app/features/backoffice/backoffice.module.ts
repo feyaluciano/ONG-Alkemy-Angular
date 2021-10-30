@@ -9,6 +9,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { MemberFormComponent } from './pages/member-form/member-form.component';
+import { AppBackofficeComponent } from './app-backoffice.component';
+import { HeaderBackofficeComponent } from './components/header-backoffice/header-backoffice.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { MemberFormComponent } from './pages/member-form/member-form.component';
     NavbarComponent,
     DashboardComponent,
     CategoriesFormComponent,
-    MemberFormComponent
+    MemberFormComponent,
+    AppBackofficeComponent,
+    HeaderBackofficeComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +31,7 @@ import { MemberFormComponent } from './pages/member-form/member-form.component';
     BackofficeRoutingModule,
     SharedModule
   ],
-  exports: [],
+  exports: [HeaderBackofficeComponent,],
 
  })
 export class BackofficeModule { }
