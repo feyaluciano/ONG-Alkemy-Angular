@@ -8,7 +8,7 @@ import {
 import { Router } from "@angular/router";
 import { UserStatusService } from "src/app/core/services/user-status.service";
 import { passwordMatchValidator } from "src/app/shared/utils/password-match-validator";
-import { User } from "../../../models/User";
+import { User } from "../../../../models/User";
 
 @Component({
   selector: "app-register-form",
