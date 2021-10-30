@@ -8,13 +8,15 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
+import { SlideComponent } from './pages/slide/slide.component';
 
 @NgModule({
   declarations: [
     ActivityFormComponent,
     NavbarComponent,
     DashboardComponent,
-    CategoriesFormComponent
+    CategoriesFormComponent,
+    SlideComponent
   ],
   imports: [
     CommonModule,
