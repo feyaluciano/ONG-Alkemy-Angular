@@ -5,13 +5,12 @@ import {
 } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { FooterComponent } from "./components/footer/footer.component";
-import { HeaderComponent } from "./components/header/header.component";
 import { HttpService } from "./services/http.service";
 
 @NgModule({
-  declarations: [HeaderComponent,FooterComponent],
+  declarations: [FooterComponent],
   imports: [CommonModule, HttpClientModule,RouterModule],
   providers: [HttpService],
-  exports: [HeaderComponent,FooterComponent],
+  exports: [FooterComponent],
 })
 export class CoreModule {}
