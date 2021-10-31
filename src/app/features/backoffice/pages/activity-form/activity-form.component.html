@@ -48,12 +48,6 @@
                   <div class="text-error-form" *ngIf="imageError">La imagen debe ser formato jpg o png.</div>  
                   <div appMsgErrorForm messageError="Este campo es requerido"
                   [valido]="haveErrorsInputForm('image','required')"></div>
-
-                  <!-- <input formControlName="image" type="text" class="form-control" id="image" name="image">
-                  <div appMsgErrorForm messageError="Este campo es requerido"
-                    [valido]="haveErrorsInputForm('image','required')"></div>
-                  <div appMsgErrorForm messageError="Deben ser imagenes .jpeg .png o .jpg"
-                  [valido]="haveErrorsInputForm('image','isurlimage')"></div> -->
                 </div>               
               </div>
 
@@ -62,11 +56,7 @@
               <div class="row mb-3">
                 <div class="col-md-4">
                   <label for="firstName" class="form-label">Descripción</label>
-                  <app-ckeditor></app-ckeditor>
-                  <!-- <input formControlName="description" type="text" class="form-control" id="description"
-                    id="description">
-                  <div appMsgErrorForm messageError="Este campo es requerido"
-                    [valido]="haveErrorsInputForm('description','required')"></div> -->
+                  <app-ckeditor ></app-ckeditor>                 
                 </div>
               </div>
 

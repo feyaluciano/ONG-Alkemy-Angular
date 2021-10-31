@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService } from 'src/app/core/services/http.service';
 import { environment } from 'src/environments/environment';
-import { Activity } from '../../../models/Activity';
 
 @Component({
   selector: 'app-detail',
