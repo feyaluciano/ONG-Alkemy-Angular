@@ -3,10 +3,23 @@
         <div class="col-12 col-md-12 mt-5">
             <h1>Formulario Edición Home</h1>
             <hr>
-            <div class="mb-3">
-               <label for="txtBienvenida" class="form-label">Texto de Bienvenida</label>
-               <textarea class="form-control" id="txtBienvenida" rows="3"></textarea>
-            </div>
+            <form 
+            [formGroup]="homeForm"
+            autocomplete="off"
+            (ngSubmit)="edit()">
+                <div class="mb-3">
+                    <label for="txtBienvenida" class="form-label">Texto de Bienvenida</label>
+                    <textarea class="form-control" id="txtBienvenida" rows="3" formControlName="txtWelcome"></textarea>
+                 </div>
+                 <div appMsgErrorForm messageError="Este campo es requerido"
+                      [valido]="errorMsg('txtWelcome','required')">
+                </div>
+                <div appMsgErrorForm messageError="Mínimo 20 caracteres"
+                      [valido]="errorMsg('txtWelcome','minlength')">
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Editar</button>
+            </form>
+           
         </div>
     </div>
 </div>
