@@ -4,24 +4,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { HttpService } from 'src/app/core/services/http.service';
 import { UserStatusService } from 'src/app/core/services/user-status.service';
-import { Activity } from 'src/app/features/models/Activity';
 import { ImageFile } from 'src/app/features/models/ImageFile';
-import { UrlImageValidator } from 'src/app/shared/utils/url-image.validator';
+import { Slide } from 'src/app/features/public/models/slide';
 import { environment } from 'src/environments/environment';
-import Swal from'sweetalert2';
-
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: "app-activity-form",
-  templateUrl: "./activity-form.component.html",
-  styleUrls: ["./activity-form.component.scss"],
+  selector: 'app-slide',
+  templateUrl: './slide.component.html',
+  styleUrls: ['./slide.component.scss']
 })
-export class ActivityFormComponent implements OnInit {
+export class SlideComponent implements OnInit {
+
+
+  
+
   public form: FormGroup;
   public editing: boolean = false;
   public sending: boolean = false;
   public action: string = "";
-  public anActivity: Activity = {};
+  public anSlide: Slide = {};
   private alertMessage!: String;
   public textEditor!:string;
 
@@ -53,19 +55,19 @@ export class ActivityFormComponent implements OnInit {
   save() {
     if (this.form.valid && !this.imageError) {
       this.sending = true;      
-      let activity: Activity = {
+      let slide: Slide = {
         name: this.form.get("name")?.value,
         image: this.anImage,
         description: this.textEditor,
       };
       if (this.editing) {
         this.alertMessage = "La actividad fue editada correctamente";
-        activity.id = this.anActivity.id;
-        activity.image = this.anImage;                
+        slide.id = this.anSlide.id;
+        slide.image = this.anImage;                
         this.httpService
           .put(
-            environment.apiUrl + "/activities/" + this.anActivity.id,
-            activity
+            environment.apiUrl + "/slides/" + this.anSlide.id,
+            slide
           )
           .subscribe((result) => {
             let resultData: any = JSON.parse(JSON.stringify(result));
@@ -75,10 +77,10 @@ export class ActivityFormComponent implements OnInit {
           });
       } else {        
         this.alertMessage = "La actividad fue agregada correctamente";
-        this.anActivity.id = "0";
-        this.anActivity.image = this.anImage;
+        this.anSlide.id = "0";
+        this.anSlide.image = this.anImage;
         this.httpService
-          .post(environment.apiUrl + "/activities", activity)
+          .post(environment.apiUrl + "/slides", slide)
           .subscribe((result) => {
             let resultData: any = JSON.parse(JSON.stringify(result));
             this.alertMessage = resultData.message;
@@ -96,26 +98,26 @@ export class ActivityFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (typeof this.route.snapshot.params["idActivity"] !== "undefined") {
+    if (typeof this.route.snapshot.params["id"] !== "undefined") {
       this.editing = true;
-      this.action = "Edit activity";
+      this.action = "Edit Slide";
       const url: string =
         environment.apiUrl +
-        "/activities/" +
-        this.route.snapshot.params["idActivity"];
+        "/slides/" +
+        this.route.snapshot.params["id"];
       this.httpService.get(url).subscribe((result) => {
         let resultData: any = JSON.parse(JSON.stringify(result));
-        this.anActivity = JSON.parse(JSON.stringify(resultData.data));
-        this.ckeditorSvc.textEditor$.next(this.anActivity.description!)
+        this.anSlide = JSON.parse(JSON.stringify(resultData.data));
+        this.ckeditorSvc.textEditor$.next(this.anSlide.description!)
         this.form.setValue({
-          name: this.anActivity.name,
-          image: this.anActivity.image,
-          description: this.anActivity.description,
+          name: this.anSlide.name,
+          image: this.anSlide.image,
+          description: this.anSlide.description,
         });
       });
     } else {
       this.editing = false;
-      this.action = "New activity";
+      this.action = "New Slide";
     }
 
     this.ckeditorSvc.getHandlerTextEditor$().subscribe((text) => {
@@ -175,10 +177,4 @@ fileEvent(event:any) {
   return true;
 }
 
-//------------------------------------------------end upload image----------------------------------------------------
-
-
-
-
-  
 }
