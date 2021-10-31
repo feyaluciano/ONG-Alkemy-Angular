@@ -5,6 +5,7 @@ import { HttpService } from 'src/app/core/services/http.service';
 import { environment } from 'src/environments/environment.prod';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ImageFile } from '../../../../models/ImageFile';
 
 @Component({
   selector: 'app-categories-form',
@@ -15,23 +16,25 @@ export class CategoriesFormComponent implements OnInit {
 
   categoriesForm = new FormGroup({
     name: new FormControl(null, [
-      Validators.required
+      Validators.required,
+      Validators.minLength(4)
     ]),
-    description: new FormControl(null, [
-      Validators.required
-    ]),
+    description: new FormControl(null),
     image: new FormControl(null, [
-      Validators.required
+      Validators.required,
     ])
   });
 
-  public imageSrc: string = '';
+  imageSrc!: string | ArrayBuffer | null;
   aCategory: any = {};
   alertMessage: any;
   editing: boolean = false;
   textEditor!: string;
   description!: boolean;
   action: string = '';
+  sending!: boolean;
+  imageError: boolean = false;
+  imageFile!: ImageFile;
 
   constructor(
     private ckeditorSvc: CkeditorService,
@@ -74,7 +77,7 @@ export class CategoriesFormComponent implements OnInit {
       this.ckeditorSvc.textEditor$.next(this.aCategory.description!);
       this.categoriesForm.setValue({
         name: this.aCategory.name,
-        image: this.aCategory.image,
+        image: '',
         description: this.aCategory.description,
       });
     });
@@ -82,43 +85,84 @@ export class CategoriesFormComponent implements OnInit {
   
   onSubmit() {
 
-    let category: any = {
-      name: this.categoriesForm.value.name,
-      image: this.imageSrc,
-      description: this.categoriesForm.value.description,
-    };
-    
-    this.aCategory.id = '0';
-    this.aCategory.image = this.imageSrc;
-    this.httpSvc
-      .post(`${environment.apiUrl}/categories`, category)
-      .subscribe((result) => {
-        let resultData: any = JSON.parse(JSON.stringify(result));
-        this.alertMessage = resultData.message;
-        Swal.fire(this.alertMessage.toString()).then(() => {
-          this.router.navigate(['/dashboard']);
+    if (this.categoriesForm.valid && !this.imageError) {
+      this.sending = true;
+
+      let category: any = {
+        name: this.categoriesForm.value.name,
+        image: this.imageSrc,
+        description: this.categoriesForm.value.description,
+      };
+  
+      if (this.editing) {
+        this.alertMessage = 'La categoría fue editada correctamente';
+        this.httpSvc
+        .put( `${environment.apiUrl}/categories/${this.actRoute.snapshot.params['id']}`, category )
+        .subscribe((result) => {
+          JSON.parse(JSON.stringify(result));
+          Swal.fire(this.alertMessage.toString()).then(() => {
+            this.router.navigate(['/dashboard']);
+          });
         });
-      });
+      } else {
+        this.alertMessage = "La categoría fue agregada correctamente";
+        this.aCategory.id = '0';
+        this.aCategory.image = this.imageSrc;
+        this.httpSvc
+          .post(`${environment.apiUrl}/categories`, category)
+          .subscribe((result) => {
+            let resultData: any = JSON.parse(JSON.stringify(result));
+            this.alertMessage = resultData.message;
+            Swal.fire(this.alertMessage.toString()).then(() => {
+              this.router.navigate(['/dashboard']);
+            });
+          });
+      }
+
+    } else {
+      this.sending = false;
+      this.categoriesForm.markAllAsTouched();
+      this.alertMessage = "Por favor complete los campos requeridos";
+      Swal.fire(this.alertMessage.toString()).then(() => {});
+    }
+    
+    
+    
   }
 
   // https://stackoverflow.com/questions/48216410/angular-4-base64-upload-component
-  handleInputChange(e: any) {
-    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-    var pattern = /image-*/;
-    var reader = new FileReader();
+  handleInputChange(event: any) {
+    this.imageFile = { id: '0'}; 
+    let reader = new FileReader();
+    let file = event.dataTransfer ? event.dataTransfer.files[0] : event.target.files[0];
+    const pattern = /image*/;
     if (!file.type.match(pattern)) {
-      alert('invalid format');
-      return;
+      this.imageError = true;
+      return false;
     }
-    reader.onload = this._handleReaderLoaded.bind(this);
+    this.imageError = false;
     reader.readAsDataURL(file);
-  }
-  _handleReaderLoaded(e: any) {
-    let reader = e.target;
+    reader.onload = () => {               
+      this.categoriesForm.value.image = `data:image/png;base64,${reader.result!.toString().split(',')[1]}`;         
+      let img = new Image();   
+      
+      img.addEventListener('load', function(){
+        let formElement = <HTMLFormElement>document.getElementById('imageError');       
+        // if (( img.width !== 590) || ( img.height !== 340) )    {  
+        //   formElement.value="true";               
+        // } else {
+        //   formElement.value="false";
+        // }
+       }    
+      , false);
+
+    img.src = this.categoriesForm.value.image;    
+    this.imageFile.imageFile=reader.result!.toString().split(',')[1];            
     this.imageSrc = reader.result;
-
     this.categoriesForm.value.image = this.imageSrc;
+    };
 
+    return true;
   }
 
 }
