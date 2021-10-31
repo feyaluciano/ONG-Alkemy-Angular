@@ -8,6 +8,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
+import { SlideComponent } from './pages/slide/slide.component';
 import { MemberFormComponent } from './pages/member-form/member-form.component';
 import { AppBackofficeComponent } from './app-backoffice.component';
 import { HeaderBackofficeComponent } from './components/header-backoffice/header-backoffice.component';
@@ -22,16 +23,17 @@ import { HeaderBackofficeComponent } from './components/header-backoffice/header
     MemberFormComponent,
     AppBackofficeComponent,
     HeaderBackofficeComponent,
+    SlideComponent,
+    MemberFormComponent
   ],
   imports: [
     CommonModule,
     BackofficeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    BackofficeRoutingModule,
     SharedModule
   ],
-  exports: [HeaderBackofficeComponent,],
+  exports: [HeaderBackofficeComponent],
 
  })
 export class BackofficeModule { }

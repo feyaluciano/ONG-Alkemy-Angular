@@ -6,6 +6,9 @@ import { ActivityFormComponent } from './pages/activity-form/activity-form.compo
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MemberFormComponent } from './pages/member-form/member-form.component';
+import { SlideComponent } from './pages/slide/slide.component';
+
+
 const routes: Routes = [
   {
     path: '',
@@ -17,12 +20,16 @@ const routes: Routes = [
       },
       { path: 'activity', component: ActivityFormComponent },
       { path: 'activity/:idActivity', component: ActivityFormComponent },
+      { path: 'slide', component: SlideComponent },
+      { path: 'slide/:id', component: SlideComponent },
       { path: 'categories', component: CategoriesFormComponent } ,
       { path: 'member', component: MemberFormComponent },
       { path: 'member/edit/:idMember', component: MemberFormComponent}
     ]
     }
 ]
+
+
 
 
 @NgModule({

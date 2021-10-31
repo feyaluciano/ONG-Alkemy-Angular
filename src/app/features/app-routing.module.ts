@@ -4,13 +4,6 @@ import { RouterModule, Routes } from "@angular/router";
 
 
 const routes: Routes = [
-  // {    
-  //   path: '',
-  //   loadChildren: () => import('./public/public.module').then(
-  //     m => m.PublicModule
-  //     ),         
-  // },
-  // {path:'',redirectTo:''},
   {
     path: 'backoffice',
     loadChildren: () => import('./backoffice/backoffice.module').then(
