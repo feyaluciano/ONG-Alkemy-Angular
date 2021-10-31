@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from '../public/pages/home/home.component';
 import { AppBackofficeComponent } from './app-backoffice.component';
 import { ActivityFormComponent } from './pages/activity-form/activity-form.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
@@ -22,7 +21,8 @@ const routes: Routes = [
       { path: 'slide/:id', component: SlideComponent },
       { path: 'categories', component: CategoriesFormComponent } ,
       { path: 'member', component: MemberFormComponent },
-      { path: 'member/edit/:idMember', component: MemberFormComponent}
+      { path: 'member/edit/:idMember', component: MemberFormComponent},
+      { path: 'home', component: BackofficeHomeComponent }
     ]
     }
 ]

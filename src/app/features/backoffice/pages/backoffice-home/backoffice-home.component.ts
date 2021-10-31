@@ -8,12 +8,20 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class BackofficeHomeComponent implements OnInit {
 
+  img1: string = '';
+  img2: string = '';
+  img3: string = '';
+
 
   homeForm: FormGroup = this.fb.group({
-    txtWelcome: [ '',[Validators.required, Validators.minLength(20)]],
-    title1: ['', Validators.required ],
-    title2: ['', Validators.required ],
-    title3: ['', Validators.required ]
+    txtWelcome: [ null , [Validators.required, Validators.minLength(20)] ],
+    title1: [null],
+    title2: [null],
+    title3: [null],
+    img1:   [null],
+    img2:   [null],
+    img3:   [null]
+
   });
 
   constructor( private fb: FormBuilder ) { }
@@ -26,16 +34,70 @@ export class BackofficeHomeComponent implements OnInit {
   }
 
 
-  /** FALTAN los formControlName de los demás campos y guardar objeto en localStorage */
+  uploadImg(event: any, controlImg: string){
+    //console.log(event);
 
-  uploadImg(event: Event){
-    console.log(event.type);
+    let imgBase64: string = '';
+
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    
+    reader.readAsDataURL(file);
+    
+    if(controlImg == 'img1'){
+      reader.onload = () => { 
+        imgBase64 = "data:image/png;base64," + reader.result?.toString().split(',')[1];
+        
+        this.img1 = imgBase64;
+        
+       };
+    } else if(controlImg == 'img2'){
+      reader.onload = () => { 
+        imgBase64 = "data:image/png;base64," + reader.result?.toString().split(',')[1];
+        
+        this.img1 = imgBase64;
+        
+       };
+    } else {
+      reader.onload = () => { 
+        imgBase64 = "data:image/png;base64," + reader.result?.toString().split(',')[1];
+        
+        this.img1 = imgBase64;
+        
+       };
+    }
+    
   }
 
   edit(){
-    console.log(this.homeForm);
-    // console.log('required', this.homeForm.controls['txtWelcome'].hasError('required'));
-    // console.log('minLength', this.homeForm.controls['txtWelcome'].hasError('minlength'));
+    //this.homeForm.controls['txtWelcome'].setValue('Bienvenidos a Somos más!');
+    //console.log(this.homeForm);
+    
+    if( this.homeForm.valid ){
+
+      let data = [
+        {
+          txtWelcome: this.homeForm.controls['txtWelcome'].value
+        },
+        {
+          title1: this.homeForm.controls['title1'].value,
+          image: this.img1
+        },
+        {
+          title2: this.homeForm.controls['title2'].value,
+          image: this.img2
+        },
+        {
+          title3: this.homeForm.controls['title3'].value,
+          image: this.img3
+        }
+      ];
+
+      localStorage.setItem('data', JSON.stringify(data) );
+
+    } else {
+      this.homeForm.markAllAsTouched();
+    }
     
   }
 
