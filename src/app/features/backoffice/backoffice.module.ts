@@ -10,6 +10,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { SlideComponent } from './pages/slide/slide.component';
 import { MemberFormComponent } from './pages/member-form/member-form.component';
+import { OrganizationComponent } from './pages/organization/organization.component';
+import { EditComponent } from './pages/organization/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { MemberFormComponent } from './pages/member-form/member-form.component';
     DashboardComponent,
     CategoriesFormComponent,
     SlideComponent,
-    MemberFormComponent
+    MemberFormComponent,
+    OrganizationComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,

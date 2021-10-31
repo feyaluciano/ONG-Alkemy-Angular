@@ -1,0 +1,33 @@
+    <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-2">
+        <app-navbar></app-navbar>
+      </div>
+      <div class="col-md-10 text-center p-3">
+
+        
+        <form class="m-5 p-3 login text-center" [formGroup]=form (ngSubmit)="save()">
+            <img src="../../../../../../assets/images/LOGO-SOMOS.png" alt="">
+                <h2>Editar informacion de la organizacion</h2>
+               
+                  <div class="m-2">
+                    <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                    <input [class.is-invalid]="nameInvalid" formControlName="name" type="nave" class="form-control" id="name" aria-describedby="nameHelp">
+                    <small *ngIf="nameInvalid">Ingrese un nombre</small>
+                  </div>
+
+  
+                  <div class="m-2">
+                    <label for="exampleInputPassword1" class="form-label">Descripcion</label>
+                    <textarea rows="5" [class.is-invalid]="descriptionInvalid" formControlName="description" type="description" class="form-control" id="description"></textarea>
+                    <small *ngIf="descriptionInvalid">Ingrese una Descripcion</small>
+                  </div>
+                  <button type="submit" class="btn btn-primary m-1">Enviar</button>
+                  <button  routerLink="/organization" class="btn btn-danger">Volver</button>
+               
+          </form>
+
+        </div>
+      </div>
+    </div>
+
