@@ -15,8 +15,8 @@ import { PublicModule } from "./public/public.module";
     CommonModule,
     AppRoutingModule,
     RouterModule,
-    PublicModule,
-    BackofficeModule,
+    // PublicModule,
+    // BackofficeModule,
     
     
   ],
