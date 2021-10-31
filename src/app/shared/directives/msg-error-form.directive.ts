@@ -22,8 +22,8 @@ export class MsgErrorFormDirective {
 
   @Input() set valido(value: boolean) {    
     if (value === true) {
-      this.htmlElement.nativeElement.style.display = '';
-    } else {
+      this.htmlElement.nativeElement.style.display = '';     
+    } else {     
       this.htmlElement.nativeElement.style.display = 'none';
     }
   }
@@ -33,12 +33,17 @@ export class MsgErrorFormDirective {
   }
 
   ngOnInit() {
-    this.setColor();
+    this.setClass();
+    //this.setColor();
     this.setMensaje();
   }
 
   setMensaje(): void {
     this.htmlElement.nativeElement.innerHTML = this._messageError;
+  }
+
+  setClass(): void {
+    this.htmlElement.nativeElement.classList.add("text-error-form");
   }
 
   setColor(): void {

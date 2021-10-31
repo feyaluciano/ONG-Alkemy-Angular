@@ -4,28 +4,31 @@ import { LoginFormComponent } from './pages/auth/login-form/login-form.component
 import { RegisterFormComponent } from './pages/auth/register-form/register-form.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
+import { AppPublicComponent } from './app-public.component';
 import { DetailComponent } from './views/activities/detail/detail.component';
 
 
-const routes:Routes=[      
-  {path : '' , redirectTo : '/home' , pathMatch : 'full'},
+const routes: Routes = [
   {
-    path:'',
-    children: [      
-      { path: 'home', component: HomeComponent,data : {origin : 'home'} },
+    path: '',
+    component: AppPublicComponent,
+    children: [  
+      {path:'',redirectTo:"home"},       
       {
-        path:'',
-        children: [      
-          { path: 'register', component: RegisterFormComponent ,data : {origin : 'home'}},
+        path: 'home',
+        component: HomeComponent,        
+      },
+          { path: 'register', component: RegisterFormComponent },
           { path : 'login' , component:LoginFormComponent},
           { path: 'nosotros', component: AboutComponent } ,
-          { path: 'actividades/:id', component: DetailComponent }             
-        ]   
-      }               
-    ]   
-  }
- 
-  ]
+          { path: 'nosotros', component: AboutComponent } ,
+          { path: 'actividades/:id', component: DetailComponent }          
+    ]
+    }
+]
+
+                     
+        
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

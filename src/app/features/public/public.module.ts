@@ -10,6 +10,8 @@ import { LoginFormComponent } from "./pages/auth/login-form/login-form.component
 import { AboutComponent } from './pages/about/about.component';
 import { SharedModule } from "src/app/shared/shared.module";
 import { HomeComponent } from "./pages/home/home.component";
+import { HeaderPublicComponent } from "./components/header-public/header-public.component";
+import { AppPublicComponent } from "./app-public.component";
 import { DetailComponent } from './views/activities/detail/detail.component';
 
 @NgModule({
@@ -18,6 +20,9 @@ import { DetailComponent } from './views/activities/detail/detail.component';
     RegisterFormComponent, 
     TitlesComponentComponent, 
     LoginFormComponent, 
+    AboutComponent,
+    AppPublicComponent,
+    HeaderPublicComponent,
     AboutComponent, DetailComponent
   ],
   imports: [
