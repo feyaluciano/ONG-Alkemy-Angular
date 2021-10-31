@@ -10,7 +10,10 @@ export class BackofficeHomeComponent implements OnInit {
 
 
   homeForm: FormGroup = this.fb.group({
-    txtWelcome: [ '',[Validators.required, Validators.minLength(20)]]
+    txtWelcome: [ '',[Validators.required, Validators.minLength(20)]],
+    title1: ['', Validators.required ],
+    title2: ['', Validators.required ],
+    title3: ['', Validators.required ]
   });
 
   constructor( private fb: FormBuilder ) { }
@@ -20,6 +23,13 @@ export class BackofficeHomeComponent implements OnInit {
 
   errorMsg(controlName: string, error: string){
     return Boolean( this.homeForm.get(controlName)?.hasError(error) && this.homeForm.get(controlName)?.touched );
+  }
+
+
+  /** FALTAN los formControlName de los demás campos y guardar objeto en localStorage */
+
+  uploadImg(event: Event){
+    console.log(event.type);
   }
 
   edit(){
