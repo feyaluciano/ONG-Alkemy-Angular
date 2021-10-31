@@ -10,7 +10,9 @@ import { LoginFormComponent } from "./pages/auth/login-form/login-form.component
 import { AboutComponent } from './pages/about/about.component';
 import { SharedModule } from "src/app/shared/shared.module";
 import { HomeComponent } from "./pages/home/home.component";
-import { DetailComponent } from './views/activities/detail/detail.component';
+
+import { CoreModule } from "src/app/core/core.module";
+import { DetailComponent } from "./views/activities/detail/detail.component";
 
 @NgModule({
   declarations: [
@@ -25,12 +27,15 @@ import { DetailComponent } from './views/activities/detail/detail.component';
     PublicRoutingModule,
     ReactiveFormsModule,
     BackofficeRoutingModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   exports: [
     HomeComponent,
     RegisterFormComponent, 
     TitlesComponentComponent,
-    AboutComponent],
+    AboutComponent, 
+    CoreModule
+  ],
 })
 export class PublicModule {}
