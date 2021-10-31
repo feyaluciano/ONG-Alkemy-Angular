@@ -8,10 +8,14 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
-import { SlideComponent } from './pages/slide/slide.component';
+
 import { MemberFormComponent } from './pages/member-form/member-form.component';
 import { OrganizationComponent } from './pages/organization/organization.component';
 import { EditComponent } from './pages/organization/edit/edit.component';
+import { AppBackofficeComponent } from './app-backoffice.component';
+import { HeaderBackofficeComponent } from './components/header-backoffice/header-backoffice.component';
+import { SlideComponent } from './pages/slide/slide.component';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +23,9 @@ import { EditComponent } from './pages/organization/edit/edit.component';
     NavbarComponent,
     DashboardComponent,
     CategoriesFormComponent,
+    MemberFormComponent,
+    AppBackofficeComponent,
+    HeaderBackofficeComponent,
     SlideComponent,
     MemberFormComponent,
     OrganizationComponent,
@@ -29,10 +36,9 @@ import { EditComponent } from './pages/organization/edit/edit.component';
     BackofficeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    BackofficeRoutingModule,
     SharedModule
   ],
-  exports: [],
+  exports: [HeaderBackofficeComponent],
 
  })
 export class BackofficeModule { }

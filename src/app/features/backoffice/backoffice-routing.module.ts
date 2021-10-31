@@ -1,25 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from '../public/pages/home/home.component';
+import { AppBackofficeComponent } from './app-backoffice.component';
 import { ActivityFormComponent } from './pages/activity-form/activity-form.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MemberFormComponent } from './pages/member-form/member-form.component';
 import { EditComponent } from './pages/organization/edit/edit.component';
 import { OrganizationComponent } from './pages/organization/organization.component';
+
 import { SlideComponent } from './pages/slide/slide.component';
 
 
-const routes:Routes=[      
-  {path : '' , redirectTo : '/backoffice/dashboard' , pathMatch : 'full'},
+const routes: Routes = [
   {
-    path:'',
-    children: [      
-      { path: 'dashboard', component: DashboardComponent },               
-    ]   
-  },
-  {
-    path:'',
-    children: [      
+    path: '',
+    component: AppBackofficeComponent,
+    children: [         
+      {
+        path: 'dashboard',
+        component: DashboardComponent,        
+      },
       { path: 'activity', component: ActivityFormComponent },
       { path: 'activity/:idActivity', component: ActivityFormComponent },
       { path: 'slide', component: SlideComponent },
