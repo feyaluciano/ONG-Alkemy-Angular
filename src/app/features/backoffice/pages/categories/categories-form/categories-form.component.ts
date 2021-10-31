@@ -31,6 +31,7 @@ export class CategoriesFormComponent implements OnInit {
   editing: boolean = false;
   textEditor!: string;
   description!: boolean;
+  action: string = '';
 
   constructor(
     private ckeditorSvc: CkeditorService,
@@ -49,6 +50,7 @@ export class CategoriesFormComponent implements OnInit {
       this.editCategory();
     } else {
       this.editing = false;
+      this.action = 'New Category';
     }
 
     this.ckeditorSvc.getHandlerTextEditor$().subscribe((text) => {
@@ -63,7 +65,8 @@ export class CategoriesFormComponent implements OnInit {
   }
 
   editCategory() {
-    this.editing = true;  
+    this.editing = true; 
+    this.action = 'Edit Category'; 
     const url: string = `${environment.apiUrl}/categories/${this.actRoute.snapshot.params['id']}`;
     this.httpSvc.get(url).subscribe((result) => {
       let resultData: any = JSON.parse(JSON.stringify(result));
@@ -78,10 +81,9 @@ export class CategoriesFormComponent implements OnInit {
   }
   
   onSubmit() {
-    console.log(this.categoriesForm.value);
 
     let category: any = {
-      name: this.categoriesForm.get("name")?.value,
+      name: this.categoriesForm.value.name,
       image: this.imageSrc,
       description: this.categoriesForm.value.description,
     };
