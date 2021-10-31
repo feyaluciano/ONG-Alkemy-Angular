@@ -18,16 +18,31 @@
         formControlName="name"
         required
       >
+      <div
+        appMsgErrorForm
+        messageError="Este campo es requerido"
+        [valido]="haveErrorsInputForm('name','required')"
+      ></div>
     </div>
     
     <div class="mb-3 position-relative">
       <input formControlName="image" type="file" accept="image/*" (change)="handleInputChange($event)" />
       <img [src]="imageSrc" style="max-width:150px;max-height:150px"/>
+      <div
+        appMsgErrorForm
+        messageError="Este campo es requerido"
+        [valido]="haveErrorsInputForm('image','required')"
+      ></div>
     </div>
 
     <div class="mb-3 position-relative">
       <label for="description" class="form-label">Description</label>
       <app-ckeditor></app-ckeditor>
+      <div
+        appMsgErrorForm
+        messageError="Este campo es requerido"
+        [valido]="description"
+      ></div>
     </div>
 
     <button
