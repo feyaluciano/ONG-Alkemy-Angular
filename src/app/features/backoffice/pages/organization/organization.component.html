@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-12 mt-5">
+            <h1>Formulario Edición Organización</h1>
+            <hr>
+
+            <div class="card border-dark mb-3 animate__animated animate__zoomIn">
+                <form 
+                
+                autocomplete="off"
+                (ngSubmit)="editOrganization()">
+                    <!-- name -->
+                    <div class="input-group mb-3">                    
+                        <span class="input-group-text">Nombre</span>
+                        <input type="text" class="form-control" formControlName="nombre">
+                    </div>
+                    <!-- <div class="mb-3" appMsgErrorForm messageError="Este campo es requerido"
+                        [valido]="errorMsg('txtWelcome','required')">
+                    </div>
+                    <div class="mb-3" appMsgErrorForm messageError="Mínimo 20 caracteres"
+                        [valido]="errorMsg('txtWelcome','minlength')">
+                    </div> -->
+
+                    <!-- logo -->
+                    <div class="mb-2">
+                        <input type="file" class="form-control" id="inputGroupFile01" (change)="uploadImg($event)" formControlName="logo">
+                    </div>
+
+                    <!-- shortDescription -->
+                    <div class="mb-2">
+                        <app-ckeditor></app-ckeditor>
+                    </div>
+
+                    <!-- longDescription -->
+                    <div class="mb-2">
+                        <textarea class="form-control" id="txtBienvenida" rows="3" formControlName="txtWelcome" placeholder="Descripción larga..."></textarea>
+                    </div>
+                    <!-- <div class="mb-3" appMsgErrorForm messageError="Este campo es requerido"
+                        [valido]="errorMsg('txtWelcome','required')">
+                    </div> -->
+
+                    <!-- URL Facebook -->
+                    <div class="mb-2">
+                        <div class="input-group mb-3">                    
+                            <span class="input-group-text">URL</span>
+                            <input type="text" class="form-control" formControlName="facebook" placeholder="Facebook">
+                        </div>
+                        <!-- <div class="mb-3" appMsgErrorForm messageError="Es necesario un título"
+                        [valido]="errorMsg('title2','required')">
+                        </div> -->
+                    </div>
+
+                    <!-- URL LinkedIn -->
+                    <div class="mb-2">
+                        <div class="input-group mb-3">                    
+                            <span class="input-group-text">URL</span>
+                            <input type="text" class="form-control" formControlName="linkedin" placeholder="LinkedIn">
+                        </div>
+                        <!-- <div class="mb-3" appMsgErrorForm messageError="Es necesario un título"
+                        [valido]="errorMsg('title3','required')">
+                        </div> -->
+                    </div>
+
+                    <!-- URL Instagram -->
+                    <div class="mb-2">
+                        <div class="input-group mb-3">                    
+                            <span class="input-group-text">URL</span>
+                            <input type="text" class="form-control" formControlName="instagram" placeholder="Instagram">
+                        </div>
+                        <!-- <div class="mb-3" appMsgErrorForm messageError="Es necesario un título"
+                        [valido]="errorMsg('title3','required')">
+                        </div> -->
+                    </div>
+
+                    <!-- URL Twitter -->
+                    <div class="mb-2">
+                        <div class="input-group mb-3">                    
+                            <span class="input-group-text">URL</span>
+                            <input type="text" class="form-control" formControlName="twitter" placeholder="Twitter">
+                        </div>
+                        <!-- <div class="mb-3" appMsgErrorForm messageError="Es necesario un título"
+                        [valido]="errorMsg('title3','required')">
+                        </div> -->
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mt-2 float-end">Editar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
