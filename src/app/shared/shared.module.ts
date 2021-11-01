@@ -11,6 +11,7 @@ import { CkeditorComponent } from './components/ckeditor/ckeditor.component';
 
 
 
+
 @NgModule({
   declarations: [
     ContactFormComponent,
@@ -30,7 +31,6 @@ import { CkeditorComponent } from './components/ckeditor/ckeditor.component';
     ImgCarouselPipe,
     ContactFormComponent,
     MsgErrorFormDirective,
-    // CKEditorModule,
     CkeditorComponent
   ]
 })
