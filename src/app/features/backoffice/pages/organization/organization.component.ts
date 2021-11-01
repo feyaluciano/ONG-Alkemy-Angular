@@ -50,7 +50,7 @@ export class OrganizationComponent implements OnInit {
 
     this.ckeditorService.getHandlerTextEditor$().subscribe( (r) => { 
       this.textCKEditor = r; 
-      this.ckEditorError = false;
+      
     });
     
       
@@ -84,7 +84,8 @@ export class OrganizationComponent implements OnInit {
 
       } else {
         
-        this.ckEditorError = true;      }
+        this.ckEditorError = true;
+      }
 
     } 
 
