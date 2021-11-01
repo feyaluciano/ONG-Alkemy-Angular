@@ -6,24 +6,16 @@
 
             <div class="card border-dark mb-3 animate__animated animate__zoomIn">
                 <form 
-                
+                [formGroup]="organizationForm"
                 autocomplete="off"
                 (ngSubmit)="editOrganization()">
                     <!-- name -->
                     <div class="input-group mb-3">                    
                         <span class="input-group-text">Nombre</span>
-                        <input type="text" class="form-control" formControlName="nombre">
+                        <input type="text" class="form-control" formControlName="name">
                     </div>
-                    <!-- <div class="mb-3" appMsgErrorForm messageError="Este campo es requerido"
-                        [valido]="errorMsg('txtWelcome','required')">
-                    </div>
-                    <div class="mb-3" appMsgErrorForm messageError="Mínimo 20 caracteres"
-                        [valido]="errorMsg('txtWelcome','minlength')">
-                    </div> -->
-
-                    <!-- logo -->
-                    <div class="mb-2">
-                        <input type="file" class="form-control" id="inputGroupFile01" (change)="uploadImg($event)" formControlName="logo">
+                    <div class="mb-3" appMsgErrorForm messageError="Ingrese un nombre"
+                        [valido]="errorMsg('name','required')">
                     </div>
 
                     <!-- shortDescription -->
@@ -33,54 +25,55 @@
 
                     <!-- longDescription -->
                     <div class="mb-2">
-                        <textarea class="form-control" id="txtBienvenida" rows="3" formControlName="txtWelcome" placeholder="Descripción larga..."></textarea>
+                        <textarea class="form-control" rows="3" formControlName="longDescription" placeholder="Descripción larga..."></textarea>
                     </div>
-                    <!-- <div class="mb-3" appMsgErrorForm messageError="Este campo es requerido"
-                        [valido]="errorMsg('txtWelcome','required')">
-                    </div> -->
+                    <div class="mb-3" appMsgErrorForm messageError="Ingrese una descripción larga"
+                        [valido]="errorMsg('longDescription','required')">
+                    </div>
+                    
 
                     <!-- URL Facebook -->
                     <div class="mb-2">
                         <div class="input-group mb-3">                    
                             <span class="input-group-text">URL</span>
-                            <input type="text" class="form-control" formControlName="facebook" placeholder="Facebook">
+                            <input type="text" class="form-control" formControlName="facebook_url" placeholder="Facebook">
                         </div>
-                        <!-- <div class="mb-3" appMsgErrorForm messageError="Es necesario un título"
-                        [valido]="errorMsg('title2','required')">
-                        </div> -->
+                        <div class="mb-3" appMsgErrorForm messageError="Ingrese su red social de facebook"
+                        [valido]="errorMsg('facebook_url','required')">
+                        </div>
                     </div>
 
                     <!-- URL LinkedIn -->
                     <div class="mb-2">
                         <div class="input-group mb-3">                    
                             <span class="input-group-text">URL</span>
-                            <input type="text" class="form-control" formControlName="linkedin" placeholder="LinkedIn">
+                            <input type="text" class="form-control" formControlName="linkedin_url" placeholder="LinkedIn">
                         </div>
-                        <!-- <div class="mb-3" appMsgErrorForm messageError="Es necesario un título"
-                        [valido]="errorMsg('title3','required')">
-                        </div> -->
+                        <div class="mb-3" appMsgErrorForm messageError="Ingrese su red social de linkedin"
+                        [valido]="errorMsg('linkedin_url','required')">
+                        </div>
                     </div>
 
                     <!-- URL Instagram -->
                     <div class="mb-2">
                         <div class="input-group mb-3">                    
                             <span class="input-group-text">URL</span>
-                            <input type="text" class="form-control" formControlName="instagram" placeholder="Instagram">
+                            <input type="text" class="form-control" formControlName="instagram_url" placeholder="Instagram">
                         </div>
-                        <!-- <div class="mb-3" appMsgErrorForm messageError="Es necesario un título"
-                        [valido]="errorMsg('title3','required')">
-                        </div> -->
+                        <div class="mb-3" appMsgErrorForm messageError="Ingrese su red social de instagram"
+                        [valido]="errorMsg('instagram_url','required')">
+                        </div>
                     </div>
 
                     <!-- URL Twitter -->
                     <div class="mb-2">
                         <div class="input-group mb-3">                    
                             <span class="input-group-text">URL</span>
-                            <input type="text" class="form-control" formControlName="twitter" placeholder="Twitter">
+                            <input type="text" class="form-control" formControlName="twitter_url" placeholder="Twitter">
                         </div>
-                        <!-- <div class="mb-3" appMsgErrorForm messageError="Es necesario un título"
-                        [valido]="errorMsg('title3','required')">
-                        </div> -->
+                        <div class="mb-3" appMsgErrorForm messageError="Ingrese su red social de twitter"
+                        [valido]="errorMsg('twitter_url','required')">
+                        </div>
                     </div>
                     
                     <button type="submit" class="btn btn-primary mt-2 float-end">Editar</button>
@@ -89,3 +82,5 @@
         </div>
     </div>
 </div>
+
+
