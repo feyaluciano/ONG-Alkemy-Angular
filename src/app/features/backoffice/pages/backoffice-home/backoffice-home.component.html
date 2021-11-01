@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-12 mt-5">
+            <h1>Formulario Edición Home</h1>
+            <hr>
+
+            <div class="card border-dark mb-3 animate__animated animate__zoomIn">
+                <form 
+                [formGroup]="homeForm"
+                autocomplete="off"
+                (ngSubmit)="edit()">
+                    <!-- welcome -->
+                    <div class="mb-2">
+                        <label for="txtBienvenida" class="form-label">Texto de Bienvenida</label>
+                        <textarea class="form-control" id="txtBienvenida" rows="3" formControlName="txtWelcome"></textarea>
+                    </div>
+                    <div class="mb-3" appMsgErrorForm messageError="Este campo es requerido"
+                        [valido]="errorMsg('txtWelcome','required')">
+                    </div>
+                    <div class="mb-3" appMsgErrorForm messageError="Mínimo 20 caracteres"
+                        [valido]="errorMsg('txtWelcome','minlength')">
+                    </div>
+
+                    <!-- CONTINUAR ACÁ -->
+
+                    <!-- slide 1-->
+                    <div class="mb-2">
+                        <label for="txtBienvenida" class="form-label">Primer Slide</label>
+                        <div class="input-group mb-3">                    
+                            <span class="input-group-text">Título</span>
+                            <input type="text" class="form-control" formControlName="title1">
+                        </div>
+                        <!-- <div class="mb-3" appMsgErrorForm messageError="Es necesario un título"
+                        [valido]="errorMsg('title1','required')">
+                        </div> -->
+                        <input type="file" class="form-control" id="inputGroupFile01" (change)="uploadImg($event, 'img1')" formControlName="img1">
+                    </div>
+                    <!-- slide 2 -->
+                    <div class="mb-2">
+                        <label for="txtBienvenida" class="form-label">Segundo Slide</label>
+                        <div class="input-group mb-3">                    
+                            <span class="input-group-text">Título</span>
+                            <input type="text" class="form-control" formControlName="title2">
+                        </div>
+                        <!-- <div class="mb-3" appMsgErrorForm messageError="Es necesario un título"
+                        [valido]="errorMsg('title2','required')">
+                        </div> -->
+                        <input type="file" class="form-control" id="inputGroupFile01" (change)="uploadImg($event, 'img2')" formControlName="img2">
+                    </div>
+                    <!-- slide 3 -->
+                    <div class="mb-2">
+                        <label for="txtBienvenida" class="form-label">Tercer Slide</label>
+                        <div class="input-group mb-3">                    
+                            <span class="input-group-text">Título</span>
+                            <input type="text" class="form-control" formControlName="title3">
+                        </div>
+                        <!-- <div class="mb-3" appMsgErrorForm messageError="Es necesario un título"
+                        [valido]="errorMsg('title3','required')">
+                        </div> -->
+                        <input type="file" class="form-control" id="inputGroupFile01" (change)="uploadImg($event, 'img3')" formControlName="img3">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mt-2 float-end">Editar</button>
+                </form>
+            </div>
+
+            
+           
+        </div>
+    </div>
+</div>

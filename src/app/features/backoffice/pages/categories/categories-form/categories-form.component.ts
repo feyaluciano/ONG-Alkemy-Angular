@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CkeditorService } from '../../../../../core/services/ckeditor.service';
+import { CkeditorService } from 'src/app/core/services/ckeditor.service';
+
 
 @Component({
   selector: 'app-categories-form',
