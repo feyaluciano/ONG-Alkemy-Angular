@@ -23,10 +23,8 @@
         formControlName="name"
         required
       >
-      <div
-        class="invalid-tooltip"
-        *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.hasError('required')">
-        Por favor, ingrese su nombre.
+      <div appMsgErrorForm messageError="Este campo es requerido"
+        [valido]="haveErrorsInputForm('name','required')">
       </div>
     </div>
     
@@ -44,15 +42,11 @@
         formControlName="email"
         required
       >
-      <div
-        class="invalid-tooltip"
-        *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.hasError('required')">
-        Por favor, ingrese su email.
+      <div appMsgErrorForm messageError="Este campo es requerido"
+        [valido]="haveErrorsInputForm('email','required')">
       </div>
-      <div
-        class="invalid-tooltip"
-        *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.hasError('email')">
-        Por favor, proporcione un email válido.
+      <div appMsgErrorForm messageError="Proporcione un email válido"
+        [valido]="haveErrorsInputForm('email','email')">
       </div>
     </div>
     
@@ -70,15 +64,14 @@
         formControlName="phone"
         required
       >
-      <div
-        class="invalid-tooltip"
-        *ngIf="contactForm.get('phone')?.touched && contactForm.get('phone')?.hasError('required')">
-        Por favor, ingrese su número telefónico.
+      <div appMsgErrorForm messageError="Este campo es requerido"
+        [valido]="haveErrorsInputForm('phone','required')">
       </div>
-      <div
-        class="invalid-tooltip"
-        *ngIf="contactForm.get('phone')?.touched && (contactForm.get('phone')?.hasError('pattern') || contactForm.get('phone')?.hasError('minLength'))">
-        Por favor, ingrese un número telefónico válido (mínimo 8 dígitos).
+      <div appMsgErrorForm messageError="Sólo se admiten números"
+        [valido]="haveErrorsInputForm('phone','pattern')">
+      </div>
+      <div appMsgErrorForm messageError="Ingrese un número telefónico válido (mínimo 8 dígitos)"
+        [valido]="haveErrorsInputForm('phone','minLength')">
       </div>
     </div>
     
@@ -95,10 +88,8 @@
         formControlName="message"
         required
       ></textarea>
-      <div
-        class="invalid-tooltip"
-        *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.hasError('required')">
-        Por favor, proporcione un mensaje.
+      <div appMsgErrorForm messageError="Este campo es requerido"
+        [valido]="haveErrorsInputForm('message','required')">
       </div>
     </div>
     

@@ -45,4 +45,10 @@ export class ContactFormComponent implements OnInit {
     
   }
 
+  haveErrorsInputForm(input: string, type: string) {
+    return Boolean(
+      this.contactForm.get(input)?.hasError(type) && this.contactForm.get(input)?.touched
+    );
+  }
+
 }
