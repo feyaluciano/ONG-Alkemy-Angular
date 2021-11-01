@@ -1,17 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ChangeEvent, CKEditorComponent } from '@ckeditor/ckeditor5-angular';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { Organization } from 'src/app/features/models/organization.interface';
 
-
 @Component({
-  selector: 'app-organization',
-  templateUrl: './organization.component.html',
-  styleUrls: ['./organization.component.scss']
+  selector: 'app-organization-edit',
+  templateUrl: './organization-edit.component.html',
+  styleUrls: ['./organization-edit.component.scss']
 })
-export class OrganizationComponent implements OnInit {
+export class OrganizationEditComponent implements OnInit {
 
   //editor = ClassicEditor;
   textCKEditor: string = '';
@@ -121,5 +120,4 @@ export class OrganizationComponent implements OnInit {
 
   }
 
-  
 }

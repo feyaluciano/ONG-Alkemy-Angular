@@ -7,7 +7,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BackofficeHomeComponent } from './pages/backoffice-home/backoffice-home.component';
 import { MemberFormComponent } from './pages/member-form/member-form.component';
 import { SlideComponent } from './pages/slide/slide.component';
-import { OrganizationComponent } from './pages/organization/organization.component';
+import { OrganizationEditComponent } from './pages/organization-edit/organization-edit.component';
 
 
 const routes: Routes = [
@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: 'member', component: MemberFormComponent },
       { path: 'member/edit/:idMember', component: MemberFormComponent},
       { path: 'home', component: BackofficeHomeComponent },
-      { path: 'organization/edit', component: OrganizationComponent }
+      { path: 'organization/edit', component: OrganizationEditComponent }
     ]
     }
 ]
