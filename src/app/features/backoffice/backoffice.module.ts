@@ -14,6 +14,7 @@ import { SlideComponent } from './pages/slide/slide.component';
 import { MemberFormComponent } from './pages/member-form/member-form.component';
 import { AppBackofficeComponent } from './app-backoffice.component';
 import { HeaderBackofficeComponent } from './components/header-backoffice/header-backoffice.component';
+import { OrganizationComponent } from './pages/organization/organization.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { HeaderBackofficeComponent } from './components/header-backoffice/header
     AppBackofficeComponent,
     HeaderBackofficeComponent,
     SlideComponent,
-    MemberFormComponent
+    MemberFormComponent,
+    OrganizationComponent
   ],
   imports: [
     CommonModule,
