@@ -20,7 +20,10 @@
 
                     <!-- shortDescription -->
                     <div class="mb-2">
+                        <label for="shortDescription" class="form-label">Descripción corta</label>
                         <app-ckeditor></app-ckeditor>
+                        <div class="mb-3" appMsgErrorForm messageError="Ingrese una descripción corta" *ngIf="ckEditorError">
+                    </div>
                     </div>
 
                     <!-- longDescription -->
@@ -29,6 +32,18 @@
                     </div>
                     <div class="mb-3" appMsgErrorForm messageError="Ingrese una descripción larga"
                         [valido]="errorMsg('longDescription','required')">
+                    </div>
+
+                    <!-- logo -->
+                    <div class="mb-2">
+                        <!-- <div class="mb-3" appMsgErrorForm messageError="Es necesario un título"
+                        [valido]="errorMsg('title2','required')">
+                        </div> -->
+                        <input type="file" class="form-control" id="logo" (change)="uploadImg($event)" formControlName="logo">
+                        <div class="mb-3" appMsgErrorForm messageError="Ingrese una imagen"
+                        [valido]="errorMsg('logo','required')">
+                        </div>
+                        <div class="mt-2 mb-3" appMsgErrorForm messageError="Formato incorrecto. Solo .jpg o .png" *ngIf="imgError"></div>
                     </div>
                     
 
@@ -40,6 +55,9 @@
                         </div>
                         <div class="mb-3" appMsgErrorForm messageError="Ingrese su red social de facebook"
                         [valido]="errorMsg('facebook_url','required')">
+                        </div>
+                        <div class="mb-3" appMsgErrorForm messageError="Formato URL inválido"
+                        [valido]="errorMsg('facebook_url','pattern')">
                         </div>
                     </div>
 
@@ -63,6 +81,9 @@
                         <div class="mb-3" appMsgErrorForm messageError="Ingrese su red social de instagram"
                         [valido]="errorMsg('instagram_url','required')">
                         </div>
+                        <div class="mb-3" appMsgErrorForm messageError="Formato URL inválido"
+                        [valido]="errorMsg('instagram_url','pattern')">
+                        </div>
                     </div>
 
                     <!-- URL Twitter -->
@@ -73,6 +94,9 @@
                         </div>
                         <div class="mb-3" appMsgErrorForm messageError="Ingrese su red social de twitter"
                         [valido]="errorMsg('twitter_url','required')">
+                        </div>
+                        <div class="mb-3" appMsgErrorForm messageError="Formato URL inválido"
+                        [valido]="errorMsg('twitter_url','pattern')">
                         </div>
                     </div>
                     

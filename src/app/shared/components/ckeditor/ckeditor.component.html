@@ -3,4 +3,5 @@
   [(ngModel)]="model.editorData"
   (blur)="onBlur()"
   [editor]="Editor"
+  [config]="{toolbar: { shouldNotGroupWhenFull: true}}"
 ></ckeditor>
