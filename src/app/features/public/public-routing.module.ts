@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { AppPublicComponent } from './app-public.component';
 import { DetailComponent } from './views/activities/detail/detail.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
           { path : 'login' , component:LoginFormComponent},
           { path: 'nosotros', component: AboutComponent } ,
           { path: 'nosotros', component: AboutComponent } ,
-          { path: 'actividades/:id', component: DetailComponent }          
+          { path: 'actividades/:id', component: DetailComponent },
+          { path: 'contacto', component: ContactComponent }         
     ]
     }
 ]
