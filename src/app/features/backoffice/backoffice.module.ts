@@ -10,10 +10,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BackofficeHomeComponent } from './pages/backoffice-home/backoffice-home.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
-import { SlideComponent } from './pages/slide/slide.component';
+
 import { MemberFormComponent } from './pages/member-form/member-form.component';
+import { OrganizationComponent } from './pages/organization/organization.component';
+import { EditComponent } from './pages/organization/edit/edit.component';
 import { AppBackofficeComponent } from './app-backoffice.component';
 import { HeaderBackofficeComponent } from './components/header-backoffice/header-backoffice.component';
+import { SlideComponent } from './pages/slide/slide.component';
 
 
 @NgModule({
@@ -28,7 +31,9 @@ import { HeaderBackofficeComponent } from './components/header-backoffice/header
     AppBackofficeComponent,
     HeaderBackofficeComponent,
     SlideComponent,
-    MemberFormComponent
+    MemberFormComponent,
+    OrganizationComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,
