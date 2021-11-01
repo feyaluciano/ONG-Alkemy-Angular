@@ -12,7 +12,7 @@ export class DetailComponent implements OnInit {
   titulo!:string;
   description!:string;
   image!:string;
-  id:number = 2;
+  id!:number;
   constructor(private http:HttpService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
@@ -22,6 +22,7 @@ export class DetailComponent implements OnInit {
       this.description = resp.data.description;
       this.image = resp.data.image;
       console.log(this.titulo)
+      console.log(this.image)
     })
   }
 

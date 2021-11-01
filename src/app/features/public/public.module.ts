@@ -13,6 +13,7 @@ import { HomeComponent } from "./pages/home/home.component";
 import { HeaderPublicComponent } from "./components/header-public/header-public.component";
 import { AppPublicComponent } from "./app-public.component";
 import { DetailComponent } from './views/activities/detail/detail.component';
+import { ActivityComponent } from './components/activity/activity.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { DetailComponent } from './views/activities/detail/detail.component';
     AboutComponent,
     AppPublicComponent,
     HeaderPublicComponent,
-    AboutComponent, DetailComponent
+    AboutComponent, DetailComponent, ActivityComponent
   ],
   imports: [
     CommonModule,

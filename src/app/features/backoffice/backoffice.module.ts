@@ -10,10 +10,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BackofficeHomeComponent } from './pages/backoffice-home/backoffice-home.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
-import { SlideComponent } from './pages/slide/slide.component';
+
 import { MemberFormComponent } from './pages/member-form/member-form.component';
+import { OrganizationComponent } from './pages/organization/organization.component';
 import { AppBackofficeComponent } from './app-backoffice.component';
 import { HeaderBackofficeComponent } from './components/header-backoffice/header-backoffice.component';
+import { SlideComponent } from './pages/slide/slide.component';
 
 import { OrganizationEditComponent } from './pages/organization-edit/organization-edit.component';
 
@@ -31,7 +33,8 @@ import { OrganizationEditComponent } from './pages/organization-edit/organizatio
     HeaderBackofficeComponent,
     SlideComponent,
     MemberFormComponent,
-    OrganizationEditComponent
+    OrganizationEditComponent,
+    OrganizationComponent
   ],
   imports: [
     CommonModule,
