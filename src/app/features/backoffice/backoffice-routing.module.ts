@@ -28,6 +28,7 @@ const routes: Routes = [
       { path: 'member', component: MemberFormComponent },
       { path: 'member/edit/:idMember', component: MemberFormComponent},
       { path: 'home', component: BackofficeHomeComponent },
+      { path: 'organization', component: OrganizationComponent },
       { path: 'organization/edit', component: OrganizationEditComponent }
     ]
     }
