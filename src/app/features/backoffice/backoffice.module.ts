@@ -13,7 +13,6 @@ import { CategoriesFormComponent } from './pages/categories/categories-form/cate
 
 import { MemberFormComponent } from './pages/member-form/member-form.component';
 import { OrganizationComponent } from './pages/organization/organization.component';
-import { EditComponent } from './pages/organization/edit/edit.component';
 import { AppBackofficeComponent } from './app-backoffice.component';
 import { HeaderBackofficeComponent } from './components/header-backoffice/header-backoffice.component';
 import { SlideComponent } from './pages/slide/slide.component';
@@ -32,8 +31,7 @@ import { SlideComponent } from './pages/slide/slide.component';
     HeaderBackofficeComponent,
     SlideComponent,
     MemberFormComponent,
-    OrganizationComponent,
-    EditComponent
+    OrganizationComponent
   ],
   imports: [
     CommonModule,
