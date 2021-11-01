@@ -1,35 +1,75 @@
-<div class="container">
-  
-  <h2 class="text-center">Categorías</h2>
-  
-  <form
-    [formGroup]="categoriesForm"
-    class="needs-validation"
-    novalidate
-  >
-
-    <div class="mb-3 position-relative">
-      <label for="name" class="form-label">Nombre</label>
-      <input
-        type="text"
-        class="form-control"
-        id="name"
-        placeholder="Ingrese aquí el nombre de la categoría"
-        formControlName="name"
-        required
-      >
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-2">
+      <app-navbar></app-navbar>
     </div>
-        
-    <div class="mb-3 position-relative">
-      <label for="description" class="form-label">Description</label>
-      <app-ckeditor></app-ckeditor>
-    </div>
-    
-    <button
-      type="submit"
-      class="btn btn-primary"
-      (click)="onSubmit()"
-    >Enviar</button>
+    <div class="col-md-10">
 
-  </form>
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Panel</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+          </div>
+        </div>
+      </div>
+      <div class="m-4">
+        <h3>{{action}}</h3>
+      </div>
+      <div class="m-4">
+        <form
+          [formGroup]="categoriesForm"
+          class="needs-validation"
+          novalidate
+        >
+
+          <div class="mb-3 position-relative">
+            <label for="name" class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Ingrese aquí el nombre de la categoría"
+              formControlName="name"
+              required
+            >
+            <div
+              appMsgErrorForm
+              messageError="Este campo es requerido"
+              [valido]="haveErrorsInputForm('name','required')"
+            ></div>
+          </div>
+          
+          <div class="mb-3 position-relative">
+            <input formControlName="image" type="file" accept="image/*" (change)="handleInputChange($event)" />
+            <img [src]="imageSrc" style="max-width:150px;max-height:150px"/>
+            <div
+              appMsgErrorForm
+              messageError="Este campo es requerido"
+              [valido]="haveErrorsInputForm('image','required')"
+            ></div>
+          </div>
+
+          <div class="mb-3 position-relative">
+            <label for="description" class="form-label">Description</label>
+            <app-ckeditor></app-ckeditor>
+            <!-- <div
+              appMsgErrorForm
+              messageError="Este campo es requerido"
+              [valido]="description"
+            ></div> -->
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            (click)="onSubmit()"
+          >Enviar</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
