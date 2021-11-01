@@ -9,6 +9,7 @@ import { MemberFormComponent } from './pages/member-form/member-form.component';
 import { SlideComponent } from './pages/slide/slide.component';
 
 
+
 const routes: Routes = [
   {
     path: '',
@@ -19,12 +20,13 @@ const routes: Routes = [
       { path: 'activity/:idActivity', component: ActivityFormComponent },
       { path: 'slide', component: SlideComponent },
       { path: 'slide/:id', component: SlideComponent },
-      { path: 'categories', component: CategoriesFormComponent } ,
+      { path: 'category', component: CategoriesFormComponent },
+      { path: 'category/:id', component: CategoriesFormComponent },
       { path: 'member', component: MemberFormComponent },
       { path: 'member/edit/:idMember', component: MemberFormComponent},
       { path: 'home', component: BackofficeHomeComponent }
     ]
-    }
+  }
 ]
 
 
