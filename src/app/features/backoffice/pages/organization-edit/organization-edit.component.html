@@ -1,0 +1,108 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-12 mt-5">
+            <h1>Formulario Edición Organización</h1>
+            <hr>
+
+            <div class="card border-dark mb-3 animate__animated animate__zoomIn">
+                <form 
+                [formGroup]="organizationForm"
+                autocomplete="off"
+                (ngSubmit)="editOrganization()">
+                    <!-- name -->
+                    <div class="input-group mb-3">                    
+                        <span class="input-group-text">Nombre</span>
+                        <input type="text" class="form-control" formControlName="name">
+                    </div>
+                    <div class="mb-3" appMsgErrorForm messageError="Ingrese un nombre"
+                        [valido]="errorMsg('name','required')">
+                    </div>
+
+                    <!-- shortDescription -->
+                    <div class="mb-2">
+                        <label for="shortDescription" class="form-label">Descripción corta</label>
+                        <app-ckeditor></app-ckeditor>
+                        <div class="mb-3" appMsgErrorForm messageError="Ingrese una descripción corta" *ngIf="ckEditorError">
+                    </div>
+                    </div>
+
+                    <!-- longDescription -->
+                    <div class="mb-2">
+                        <textarea class="form-control" rows="3" formControlName="longDescription" placeholder="Descripción larga..."></textarea>
+                    </div>
+                    <div class="mb-3" appMsgErrorForm messageError="Ingrese una descripción larga"
+                        [valido]="errorMsg('longDescription','required')">
+                    </div>
+
+                    <!-- logo -->
+                    <div class="mb-2">
+                        <!-- <div class="mb-3" appMsgErrorForm messageError="Es necesario un título"
+                        [valido]="errorMsg('title2','required')">
+                        </div> -->
+                        <input type="file" class="form-control" id="logo" (change)="uploadImg($event)" formControlName="logo">
+                        <div class="mb-3" appMsgErrorForm messageError="Ingrese una imagen"
+                        [valido]="errorMsg('logo','required')">
+                        </div>
+                        <div class="mt-2 mb-3" appMsgErrorForm messageError="Formato incorrecto. Solo .jpg o .png" *ngIf="imgError"></div>
+                    </div>
+                    
+
+                    <!-- URL Facebook -->
+                    <div class="mb-2">
+                        <div class="input-group mb-3">                    
+                            <span class="input-group-text">URL</span>
+                            <input type="text" class="form-control" formControlName="facebook_url" placeholder="Facebook">
+                        </div>
+                        <div class="mb-3" appMsgErrorForm messageError="Ingrese su red social de facebook"
+                        [valido]="errorMsg('facebook_url','required')">
+                        </div>
+                        <div class="mb-3" appMsgErrorForm messageError="Formato URL inválido"
+                        [valido]="errorMsg('facebook_url','pattern')">
+                        </div>
+                    </div>
+
+                    <!-- URL LinkedIn -->
+                    <div class="mb-2">
+                        <div class="input-group mb-3">                    
+                            <span class="input-group-text">URL</span>
+                            <input type="text" class="form-control" formControlName="linkedin_url" placeholder="LinkedIn">
+                        </div>
+                        <div class="mb-3" appMsgErrorForm messageError="Ingrese su red social de linkedin"
+                        [valido]="errorMsg('linkedin_url','required')">
+                        </div>
+                    </div>
+
+                    <!-- URL Instagram -->
+                    <div class="mb-2">
+                        <div class="input-group mb-3">                    
+                            <span class="input-group-text">URL</span>
+                            <input type="text" class="form-control" formControlName="instagram_url" placeholder="Instagram">
+                        </div>
+                        <div class="mb-3" appMsgErrorForm messageError="Ingrese su red social de instagram"
+                        [valido]="errorMsg('instagram_url','required')">
+                        </div>
+                        <div class="mb-3" appMsgErrorForm messageError="Formato URL inválido"
+                        [valido]="errorMsg('instagram_url','pattern')">
+                        </div>
+                    </div>
+
+                    <!-- URL Twitter -->
+                    <div class="mb-2">
+                        <div class="input-group mb-3">                    
+                            <span class="input-group-text">URL</span>
+                            <input type="text" class="form-control" formControlName="twitter_url" placeholder="Twitter">
+                        </div>
+                        <div class="mb-3" appMsgErrorForm messageError="Ingrese su red social de twitter"
+                        [valido]="errorMsg('twitter_url','required')">
+                        </div>
+                        <div class="mb-3" appMsgErrorForm messageError="Formato URL inválido"
+                        [valido]="errorMsg('twitter_url','pattern')">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mt-2 float-end">Editar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

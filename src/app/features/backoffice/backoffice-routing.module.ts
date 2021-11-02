@@ -6,10 +6,10 @@ import { CategoriesFormComponent } from './pages/categories/categories-form/cate
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BackofficeHomeComponent } from './pages/backoffice-home/backoffice-home.component';
 import { MemberFormComponent } from './pages/member-form/member-form.component';
-import { EditComponent } from './pages/organization/edit/edit.component';
 import { OrganizationComponent } from './pages/organization/organization.component';
 
 import { SlideComponent } from './pages/slide/slide.component';
+import { OrganizationEditComponent } from './pages/organization-edit/organization-edit.component';
 
 
 
@@ -26,14 +26,14 @@ const routes: Routes = [
       { path: 'category', component: CategoriesFormComponent },
       { path: 'category/:id', component: CategoriesFormComponent },
       { path: 'member', component: MemberFormComponent },
-      { path: 'member/edit/:idMember', component: MemberFormComponent },
+      { path: 'member/edit/:idMember', component: MemberFormComponent},
+      { path: 'home', component: BackofficeHomeComponent },
       { path: 'organization', component: OrganizationComponent },
-      { path: 'organization/edit', component: EditComponent },
-      { path: 'home', component: BackofficeHomeComponent }               
-    ]   
-  },
-  
-  ]
+      { path: 'organization/edit', component: OrganizationEditComponent }
+    ]
+    }
+]
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
