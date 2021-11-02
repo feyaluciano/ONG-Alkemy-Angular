@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { Organization } from 'src/app/features/models/organization.interface';
+import { NewsUsersService } from '../../../Users/news-users.service';
 
 @Component({
   selector: 'app-organization-edit',
@@ -33,7 +34,7 @@ export class OrganizationEditComponent implements OnInit {
     twitter_url: [null, [Validators.required, Validators.pattern(this.urlPattern)]]
   });
 
-  constructor( private fb: FormBuilder, private ckeditorService: CkeditorService ) {
+  constructor( private fb: FormBuilder, private ckeditorService: CkeditorService, private userService: NewsUsersService ) {
 
     
     
@@ -111,6 +112,8 @@ export class OrganizationEditComponent implements OnInit {
         this.img = imgBase64;
       
         };
+
+        
 
       } else {
         this.imgError = true;
