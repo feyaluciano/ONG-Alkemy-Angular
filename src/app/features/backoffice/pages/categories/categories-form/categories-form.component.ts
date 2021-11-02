@@ -53,7 +53,7 @@ export class CategoriesFormComponent implements OnInit {
       this.editCategory();
     } else {
       this.editing = false;
-      this.action = 'New Category';
+      this.action = 'Nueva Categoría';
     }
 
     this.ckeditorSvc.getHandlerTextEditor$().subscribe((text) => {
@@ -69,7 +69,7 @@ export class CategoriesFormComponent implements OnInit {
 
   editCategory() {
     this.editing = true; 
-    this.action = 'Edit Category'; 
+    this.action = 'Editar Categoría'; 
     const url: string = `${environment.apiUrl}/categories/${this.actRoute.snapshot.params['id']}`;
     this.httpSvc.get(url).subscribe((result) => {
       let resultData: any = JSON.parse(JSON.stringify(result));
