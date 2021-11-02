@@ -1,3 +1,4 @@
+import { HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { User } from "src/app/features/models/User";
 
@@ -29,6 +30,21 @@ export class UserStatusService {
     }
     return this.user;
   }
+
+
+  getHeaders(){
+    let token="";
+    let user:User=this.getUser();
+    let _headersAutorization:string="";
+    if(user!=null){
+      token!=user.token;
+      _headersAutorization="Bearer "+token;
+      
+    }    
+    return _headersAutorization;
+  }
+
+
    async setUser(user: User) {
     try {
       localStorage.setItem("userLogged", JSON.stringify(user));
