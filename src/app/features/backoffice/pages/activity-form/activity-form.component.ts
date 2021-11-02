@@ -110,7 +110,8 @@ export class ActivityFormComponent implements OnInit {
          })
         .catch(error=>{
           let resultError: any = error;
-          let errorMessage="";         
+          let errorMessage=""; 
+          alert(resultError.status)        
           switch(resultError.status) { 
             case 404: { 
               errorMessage="Error al obtener la actividad"; 

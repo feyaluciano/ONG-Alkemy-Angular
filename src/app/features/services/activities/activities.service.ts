@@ -13,7 +13,7 @@ export class ActivitiesService {
 
   async getActivityById(url: string, id: string) {
     this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
-    const obsActivity$ = this.httpService.get(url + id,true);    
+    const obsActivity$ = this.httpService.get(url + id,false);    
     const activityPromise = await obsActivity$.toPromise();    
     return  activityPromise;   
   }    
