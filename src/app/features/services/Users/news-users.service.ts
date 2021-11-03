@@ -22,6 +22,13 @@ export class NewsUsersService {
     this.httpService.get(`${this.url}/${id}`);
   }
 
+  // DELETE -> Remove the specified User from storage
+  deleteUserById(id:number){
+    return this.httpService.delete(`${this.url}/${id}`);
+  }
+
+  /** RESOLVER */
+
   // POST   -> Store a newly created User in storage
   createUser(data:any){    
     return this.httpService.post(this.url, data);
@@ -32,10 +39,7 @@ export class NewsUsersService {
     return this.httpService.put(`${this.url}/${id}`, data);
   }
 
-  // DELETE -> Remove the specified User from storage
-  deleteUserById(id:number){
-    return this.httpService.delete(`${this.url}/${id}`);
-  }
+  
 
   
 
