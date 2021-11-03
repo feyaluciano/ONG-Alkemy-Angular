@@ -12,7 +12,7 @@ export class UserStatusService {
 
    isUserLoggedIn() {      
     let isLogged= this.getUser();
-    if (isLogged==="null") {       
+    if (Boolean(isLogged)) {       
         return false;
      } else {      
         return true;
@@ -30,22 +30,32 @@ export class UserStatusService {
     }
     return this.user;
   }
+  
+  
+  getToken() {
+    return localStorage.getItem("token");    
+  }
+
+  setToken(token: string) {    
+      localStorage.setItem("token", JSON.stringify(token));    
+  }
 
 
-  getHeaders(){
-    let token="";
-    let user:User=this.getUser();
+
+
+
+  getHeaders(){    
+    let token:String=this.getToken()!;    
     let _headersAutorization:string="";
-    if(Boolean(user)){
-      token=user.token!;
-      _headersAutorization="Bearer "+token;
-      
+    if(Boolean(token)){      
+      _headersAutorization="Bearer "+this.getToken();      
     }    
     return _headersAutorization;
   }
 
 
-   async setUser(user: User) {
+  
+  setUser(user: User) {
     try {
       localStorage.setItem("userLogged", JSON.stringify(user));
     } catch (Error) {
@@ -53,7 +63,9 @@ export class UserStatusService {
     }
     return this.user;
   }
-  async deleteUser() {
+  
+  
+  deleteUser() {
     localStorage.setItem("userLogged", null!);
   }
 }

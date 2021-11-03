@@ -12,8 +12,8 @@ export class PrivateBackofficeService {
 constructor(private httpService:HttpService,private userStatusService:UserStatusService) {}
 
  getActivityById(url: string, id: string):Observable<HTTPResponse<Activity>> {
-    this.httpService.setHeaders("Authorization", this.userStatusService.getHeaders());
-    return  this.httpService.get(url + id,false);              
+    this.httpService.setHeaders("Authorization", this.userStatusService.getHeaders());    
+    return  this.httpService.get(url + id,true);              
   }    
 
 }

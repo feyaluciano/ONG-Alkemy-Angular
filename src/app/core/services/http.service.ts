@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
 })
 export class HttpService {
   private _groupId!: string;
-  private _headers!: HttpHeaders;
+  private _headers: HttpHeaders;
 
   constructor(private http: HttpClient) {
     this._headers = new HttpHeaders({ Group: this._groupId });
@@ -17,12 +17,15 @@ export class HttpService {
     return this._headers;
   }
 
+  
 
-  public setHeaders(name:string,value:string){
-    return this._headers.append(name,value);
+
+  public setHeaders(name:string,value:string){   
+    this._headers = new HttpHeaders();
+    this._headers=this._headers.append(name,value);    
   }
 
-  public get<T>(url: string, activateHeader:boolean = false ):Observable<T> {
+  public get<T>(url: string, activateHeader:boolean = false ):Observable<T> {    
     return this.http.get<T>(url, activateHeader ? { headers: this._headers }: {});
   }
 
