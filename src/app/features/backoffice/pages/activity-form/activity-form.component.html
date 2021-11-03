@@ -1,89 +1,91 @@
-<div class="col-md-12">
-  <div class="row">
-    <div class="col-md-2">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2">
       <app-navbar></app-navbar>
-    </div>
-    <div class="col-md-10">
-
-      <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Panel</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-          </div>
+		</div>
+		<div class="col-md-10">
+      
+         <div
+      class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Panel</h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+          <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
         </div>
       </div>
-      <div class="m-4">
-        <h3>{{action}}</h3>
+    </div>
+
+    <div class=" align-items-center p-3 my-3  ligth-blue  rounded shadow-sm">
+      
+      <div class="lh-1 title-backoffice">
+        <h3 class="h4 mb-0  lh-1">{{action}}</h3>          
       </div>
-
-      <div class="m-4">
-
-
-
-
-        <form [formGroup]="form" class="needs-validation" novalidate>
-          <div class="row">
-            <div class="col-md-12 offset-md-4">
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label for="firstName" class="form-label">Nombre</label>
-                  <input formControlName="name" type="text" class="form-control" id="name" name="name">
-                  <div appMsgErrorForm messageError="Este campo es requerido"
-                    [valido]="haveErrorsInputForm('name','required')"></div>
-                </div>
-              </div>
-
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label for="firstName" class="form-label">Imagen</label>
-
-                  <div class="text-center">                  
-                    <img class="img-fluid mb-2" id="imagenUrl"  [src]="anActivity.image">
-                  </div>                              
-                  <input formControlName="image" type="file" id="avatar" (change)="fileEvent($event)" #fileInput>
-                  <input type="hidden" id="errorEnImagen" value="{{imageError}}">
-                  <div class="text-error-form" *ngIf="imageError">La imagen debe ser formato jpg o png.</div>  
-                  <div appMsgErrorForm messageError="Este campo es requerido"
-                  [valido]="haveErrorsInputForm('image','required')"></div>
-                </div>               
-              </div>
-
-
-
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label for="firstName" class="form-label">Descripción</label>
-                  <app-ckeditor ></app-ckeditor>                 
-                </div>
-              </div>
-
-
-
-              <div class="row">
-                <div class="col-md-4">
-                  <button (click)="save()" [disabled]="sending" type="button"
-                    class="w-100 btn btn-primary btn-lg">Guardar</button>
-                </div>
-              </div>
-              <div *ngIf="sending" class="row text-center">
-                <div class="col-md-4">
-                  <img src="assets/images/ajax-loader.gif">
-                </div>
+    </div>       
+      <form [formGroup]="form" >
+       
+            <div class="row mb-3">
+              <div class="col-md-4 offset-md-4">
+                <label for="firstName" class="form-label">Nombre</label>
+                <input formControlName="name" type="text" class="form-control" id="name" name="name">
+                <div appMsgErrorForm messageError="Este campo es requerido"
+                  [valido]="haveErrorsInputForm('name','required')"></div>
               </div>
             </div>
-          </div>
 
-        </form>
+            <div class="row mb-3">
+              <div class="col-md-4 offset-md-4">
+                <label for="firstName" class="form-label">Imagen</label>
+
+                <div class="text-center">                  
+                  <img class="img-fluid mb-2" id="imagenUrl"  [src]="anActivity.image">
+                </div>                              
+                <input formControlName="image" type="file" id="avatar" (change)="fileEvent($event)" #fileInput>
+                <input type="hidden" id="errorEnImagen" value="{{imageError}}">
+                <div class="text-error-form" *ngIf="imageError">La imagen debe ser formato jpg o png.</div>  
+                <div appMsgErrorForm messageError="Este campo es requerido"
+                [valido]="haveErrorsInputForm('image','required')"></div>
+              </div>               
+            </div>
+
+
+
+            <div class="row mb-3">
+              <div class="col-md-4 offset-md-4">
+                <label for="firstName" class="form-label">Descripción</label>
+                <app-ckeditor ></app-ckeditor>                 
+              </div>
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-md-4 offset-md-4">
+                <button (click)="save()" [disabled]="sending" type="button"
+                  class="w-100 btn btn-primary btn-lg">Guardar</button>
+              </div>
+            </div>
+            <div *ngIf="sending" class="row text-center">
+              <div class="col-md-4">
+                <img src="assets/images/ajax-loader.gif">
+              </div>
+            </div>
+          
+
+      </form>
 
 
 
 
 
-      </div>
+    
 
-    </div>
-  </div>
-</div>
+  
+		
+	
+
+
+
+
+
+
