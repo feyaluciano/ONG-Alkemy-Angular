@@ -21,10 +21,7 @@ export class HttpService {
     return this.http.get<T>(url, activateHeader ? { headers: this._headers }: {});
   }
 
-  // public getPromise<T>(url: string, activateHeader:boolean = false ){   
-  //    return this.http.get<T>(url, activateHeader ? { headers: this._headers }: {}).toPromise();
-  //  }
-
+  
 
   public put<T>(url: string, data: any, activateHeader:boolean = false ):Observable<T> {
     return this.http.put<T>(url, data, activateHeader ? { headers: this._headers }: {});
