@@ -13,9 +13,17 @@ export class HttpService {
     this._headers = new HttpHeaders({ Group: this._groupId });
   }
 
+  public getHeaders(){
+    return this._headers;
+  }
+
   public get<T>(url: string, activateHeader:boolean = false ):Observable<T> {
     return this.http.get<T>(url, activateHeader ? { headers: this._headers }: {});
   }
+
+  // public getPromise<T>(url: string, activateHeader:boolean = false ){   
+  //    return this.http.get<T>(url, activateHeader ? { headers: this._headers }: {}).toPromise();
+  //  }
 
 
   public put<T>(url: string, data: any, activateHeader:boolean = false ):Observable<T> {
