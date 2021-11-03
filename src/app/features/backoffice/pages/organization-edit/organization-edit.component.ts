@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { Organization } from 'src/app/features/models/organization.interface';
-import { NewsUsersService } from '../../../Users/news-users.service';
+import { NewsUsersService } from '../../../services/Users/news-users.service';
 
 @Component({
   selector: 'app-organization-edit',

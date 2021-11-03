@@ -37,4 +37,6 @@ export class NewsUsersService {
     return this.httpService.delete(`${this.url}/${id}`);
   }
 
+  
+
 }

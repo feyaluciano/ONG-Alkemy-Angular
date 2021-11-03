@@ -60,7 +60,10 @@
                         <input type="file" class="form-control" id="inputGroupFile01" (change)="uploadImg($event, 'img3')" formControlName="img3">
                     </div>
                     
-                    <button type="submit" class="btn btn-primary mt-2 float-end">Editar</button>
+                    <div>
+                        <button type="submit" class="btn btn-primary mt-2 float-end">Editar</button>
+                        <button type="button" class="btn btn-primary mt-2 float-end" (click)="probandoAPI()">testAPI</button>
+                    </div>
                 </form>
             </div>
 

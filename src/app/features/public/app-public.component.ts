@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsUsersService } from '../Users/news-users.service';
+
 
 @Component({
   selector: 'app-app-public',
