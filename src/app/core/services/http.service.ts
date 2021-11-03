@@ -17,6 +17,11 @@ export class HttpService {
     return this._headers;
   }
 
+
+  public setHeaders(name:string,value:string){
+    return this._headers.append(name,value);
+  }
+
   public get<T>(url: string, activateHeader:boolean = false ):Observable<T> {
     return this.http.get<T>(url, activateHeader ? { headers: this._headers }: {});
   }
