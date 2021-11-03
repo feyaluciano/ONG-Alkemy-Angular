@@ -112,18 +112,24 @@ export class CategoriesFormComponent implements OnInit {
         this.aCategory.image = this.imageSrc;
         this.backofficeSvc.createCategory(`${environment.apiUrl}/categories`, category)
           .subscribe((resp: any) => {
-            console.log(resp);
-            
+            this.alertMessage = resp.message;
+            Swal.fire({
+              title: 'Success!',
+              icon: 'success',
+              text: this.alertMessage,
+              showConfirmButton: true
+            }).then(() => {
+              this.router.navigate(['/dashboard']);
+            });
+          }, (error: any) => {
+            this.alertMessage = 'No tiene permiso para crear una categoría';
+            Swal.fire({
+              title: 'Error',
+              text: this.alertMessage,
+              showConfirmButton: true,
+              icon: 'error'
+            });
           });
-        // this.httpSvc
-        //   .post(`${environment.apiUrl}/categories`, category)
-        //   .subscribe((result) => {
-        //     let resultData: any = JSON.parse(JSON.stringify(result));
-        //     this.alertMessage = resultData.message;
-        //     Swal.fire(this.alertMessage.toString()).then(() => {
-        //       this.router.navigate(['/dashboard']);
-        //     });
-        //   });
       }
 
     } else {
