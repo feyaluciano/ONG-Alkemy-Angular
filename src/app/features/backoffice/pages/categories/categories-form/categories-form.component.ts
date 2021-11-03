@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment.prod';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ImageFile } from '../../../../models/ImageFile';
+import { PrivateBackofficeService } from '../../../services/private-backoffice.service';
 
 @Component({
   selector: 'app-categories-form',
@@ -39,6 +40,7 @@ export class CategoriesFormComponent implements OnInit {
   constructor(
     private ckeditorSvc: CkeditorService,
     private httpSvc: HttpService,
+    private backofficeSvc: PrivateBackofficeService,
     private actRoute: ActivatedRoute,
     private router: Router
   ) {
@@ -108,15 +110,20 @@ export class CategoriesFormComponent implements OnInit {
         this.alertMessage = "La categoría fue agregada correctamente";
         this.aCategory.id = '0';
         this.aCategory.image = this.imageSrc;
-        this.httpSvc
-          .post(`${environment.apiUrl}/categories`, category)
-          .subscribe((result) => {
-            let resultData: any = JSON.parse(JSON.stringify(result));
-            this.alertMessage = resultData.message;
-            Swal.fire(this.alertMessage.toString()).then(() => {
-              this.router.navigate(['/dashboard']);
-            });
+        this.backofficeSvc.createCategory(`${environment.apiUrl}/categories`, category)
+          .subscribe((resp: any) => {
+            console.log(resp);
+            
           });
+        // this.httpSvc
+        //   .post(`${environment.apiUrl}/categories`, category)
+        //   .subscribe((result) => {
+        //     let resultData: any = JSON.parse(JSON.stringify(result));
+        //     this.alertMessage = resultData.message;
+        //     Swal.fire(this.alertMessage.toString()).then(() => {
+        //       this.router.navigate(['/dashboard']);
+        //     });
+        //   });
       }
 
     } else {
