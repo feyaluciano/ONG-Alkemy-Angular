@@ -5,10 +5,11 @@ import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { HttpService } from 'src/app/core/services/http.service';
 import { UserStatusService } from 'src/app/core/services/user-status.service';
 import { Activity } from 'src/app/features/models/Activity';
+import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
 import { ImageFile } from 'src/app/features/models/ImageFile';
-import { UrlImageValidator } from 'src/app/shared/utils/url-image.validator';
 import { environment } from 'src/environments/environment';
 import Swal from'sweetalert2';
+import { PrivateBackofficeService } from '../../services/private-backoffice.service';
 
 
 @Component({
@@ -35,7 +36,8 @@ export class ActivityFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private httpService: HttpService,
-    private ckeditorSvc: CkeditorService
+    private ckeditorSvc: CkeditorService,
+    private privateBackofficeService:PrivateBackofficeService
   ) {
     this.form = this._builder.group({
       name: ["", [Validators.required]],
@@ -95,27 +97,44 @@ export class ActivityFormComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     if (typeof this.route.snapshot.params["idActivity"] !== "undefined") {
       this.editing = true;
-      this.action = "Edit activity";
+      this.action = "Editar actividad";
       const url: string =
-        environment.apiUrl +
-        "/activities/" +
-        this.route.snapshot.params["idActivity"];
-      this.httpService.get(url).subscribe((result) => {
-        let resultData: any = JSON.parse(JSON.stringify(result));
-        this.anActivity = JSON.parse(JSON.stringify(resultData.data));
-        this.ckeditorSvc.textEditor$.next(this.anActivity.description!)
-        this.form.setValue({
-          name: this.anActivity.name,
-          image: this.anActivity.image,
-          description: this.anActivity.description,
-        });
-      });
+        environment.apiUrl +"/activities/";     
+        const req:Promise<HTTPResponse<Activity>>= this.privateBackofficeService.getActivityById(url,this.route.snapshot.params["idActivity"]);        
+        req.then(response => { 
+          let resultData: HTTPResponse<Activity> = response;         
+          this.anActivity = JSON.parse(JSON.stringify(resultData.data));         
+          this.ckeditorSvc.textEditor$.next(this.anActivity.description!)
+          this.form.setValue({
+            name: this.anActivity.name,
+            image: this.anActivity.image,
+            description: this.anActivity.description,
+          });
+         });
+        req.catch(error=>{         
+          let errorMessage="";           
+          switch(error.status) { 
+            case 404: { 
+              errorMessage="Error al obtener la actividad"; 
+               break; 
+            } 
+            case 401: {  
+              errorMessage="Usted no esta autorizado para acceder a este recurso";
+               break; 
+            } 
+            default: { 
+              errorMessage="Error desconocido";
+               break; 
+            } 
+         } 
+         Swal.fire(errorMessage.toString())      
+        });                                    
     } else {
       this.editing = false;
-      this.action = "New activity";
+      this.action = "Nueva actividad";
     }
 
     this.ckeditorSvc.getHandlerTextEditor$().subscribe((text) => {
