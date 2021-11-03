@@ -13,7 +13,7 @@ constructor(private httpService:HttpService,private userStatusService:UserStatus
 
  getActivityById(url: string, id: string):Observable<HTTPResponse<Activity>> {
     this.httpService.setHeaders("Authorization", this.userStatusService.getHeaders());    
-    return  this.httpService.get(url + id,true);              
+    return  this.httpService.get(url + id,true);  
   }    
 
 }

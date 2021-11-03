@@ -10,8 +10,7 @@ import { HTTPResponse } from '../../models/HTTPResponse';
 })
 export class ActivitiesService { 
   constructor(private privateBackofficeService: PrivateBackofficeService,private userStatusService:UserStatusService) {}
-
   getActivityById(url:string,id:string):Observable<HTTPResponse<Activity>> {  
     return this.privateBackofficeService.getActivityById(url,id);
-  }    
+  }        
 }

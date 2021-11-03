@@ -16,10 +16,7 @@ export class HttpService {
   public getHeaders(){
     return this._headers;
   }
-
-  
-
-
+    
   public setHeaders(name:string,value:string){   
     this._headers = new HttpHeaders();
     this._headers=this._headers.append(name,value);    
