@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NewsUsersService } from 'src/app/features/services/Users/news-users.service';
+
+
 
 @Component({
   selector: 'app-backoffice-home',
@@ -27,7 +28,7 @@ export class BackofficeHomeComponent implements OnInit {
 
   });
 
-  constructor( private fb: FormBuilder, private newsUsers: NewsUsersService ) { }
+  constructor( private fb: FormBuilder ) { }
 
   ngOnInit(): void {
 
@@ -107,27 +108,6 @@ export class BackofficeHomeComponent implements OnInit {
     
   }
 
-  probandoAPI(){
-    
-    this.newsUsers.createUser(
-      {
-        id: 354,
-        name: 'Test',
-        email: 'test@alkemy.com',
-        email_verified_at: "2021-11-02T11:36:06.407Z",
-        password: 'test1',
-        role_id: 1,
-        remember_token: 'asdasdasdas1256',
-        created_at: "2021-11-02T11:36:06.407Z",
-        updated_at: "2021-11-02T11:36:06.407Z",
-        deleted_at: "2021-11-02T11:36:06.407Z",
-        group_id: 0,
-        latitude: 0,
-        longitude: 0,
-        address: 'asdasdasdasdasdas',
-        profile_image: this.img1.toString()
-      }
-    ).subscribe( console.log );
-  }
+  
 
 }
