@@ -7,6 +7,7 @@ import { UserStatusService } from 'src/app/core/services/user-status.service';
 import { Activity } from 'src/app/features/models/Activity';
 import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
 import { ImageFile } from 'src/app/features/models/ImageFile';
+import { ActivitiesService } from 'src/app/features/services/activities/activities.service';
 import { environment } from 'src/environments/environment';
 import Swal from'sweetalert2';
 import { PrivateBackofficeService } from '../../services/private-backoffice.service';
@@ -37,7 +38,7 @@ export class ActivityFormComponent implements OnInit {
     private route: ActivatedRoute,
     private httpService: HttpService,
     private ckeditorSvc: CkeditorService,
-    private privateBackofficeService:PrivateBackofficeService
+    private activitiesService:ActivitiesService
   ) {
     this.form = this._builder.group({
       name: ["", [Validators.required]],
@@ -103,7 +104,7 @@ export class ActivityFormComponent implements OnInit {
       this.action = "Editar actividad";
       const url: string =
         environment.apiUrl +"/activities/";     
-        const req:Promise<HTTPResponse<Activity>>= this.privateBackofficeService.getActivityById(url,this.route.snapshot.params["idActivity"]);        
+        const req:Promise<HTTPResponse<Activity>>= this.activitiesService.getActivityById(url,this.route.snapshot.params["idActivity"]);        
         req.then(response => { 
           let resultData: HTTPResponse<Activity> = response;         
           this.anActivity = JSON.parse(JSON.stringify(resultData.data));         
