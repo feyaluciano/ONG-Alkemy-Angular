@@ -103,16 +103,16 @@ export class ActivityFormComponent implements OnInit {
       this.action = "Edit activity";
       const url: string =
         environment.apiUrl +"/activities/";     
-        const req=  this.privateBackofficeService.getActivityById(url,this.route.snapshot.params["idActivity"]);        
+        const req:Promise<Activity>=  this.privateBackofficeService.getActivityById(url,this.route.snapshot.params["idActivity"]);        
         req.then(response => { 
           let resultData: any = response;
           this.anActivity = resultData.data;
          })
         .catch(error=>{
-          let resultError: any = error;
+          
           let errorMessage=""; 
-          alert(resultError.status)        
-          switch(resultError.status) { 
+          alert(error.status)        
+          switch(error.status) { 
             case 404: { 
               errorMessage="Error al obtener la actividad"; 
                break; 

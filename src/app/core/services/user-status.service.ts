@@ -36,8 +36,8 @@ export class UserStatusService {
     let token="";
     let user:User=this.getUser();
     let _headersAutorization:string="";
-    if(user!=null){
-      token!=user.token;
+    if(Boolean(user)){
+      token=user.token!;
       _headersAutorization="Bearer "+token;
       
     }    
