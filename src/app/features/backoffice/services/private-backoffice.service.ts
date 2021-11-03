@@ -11,10 +11,10 @@ export class PrivateBackofficeService {
 
 constructor(private httpService:HttpService,private userStatusService:UserStatusService) {}
 
- getActivityById(url: string, id: string):Promise<HTTPResponse<Activity>> {
+ getActivityById(url: string, id: string):Observable<HTTPResponse<Activity>> {
     this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
     const obsActivity$:Observable<HTTPResponse<Activity>> = this.httpService.get(url + id,false);    
-    const activityPromise :Promise<HTTPResponse<Activity>> = obsActivity$.toPromise();    
+    const activityPromise :Observable<HTTPResponse<Activity>> = obsActivity$    
     return  activityPromise;   
   }    
 
