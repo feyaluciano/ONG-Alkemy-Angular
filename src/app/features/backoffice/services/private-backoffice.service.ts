@@ -18,6 +18,6 @@ constructor(private httpService:HttpService,private userStatusService:UserStatus
 
   createEntity<T>(url: string, entity: any): Observable<T> {
     this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
-    return this.httpService.post(url, entity, true);
+    return this.httpService.post<T>(url, entity, true);
   }
 }
