@@ -6,9 +6,9 @@ export interface User {
     password?:          string;
     role_id?:           number;
     remember_token?:    string;
-    created_at?:        Date;
-    updated_at?:        Date;
-    deleted_at?:        Date;
+    created_at?:        Date | string;
+    updated_at?:        Date | string;
+    deleted_at?:        Date | string;
     group_id?:          number;
     latitude?:          number;
     longitude?:         number;

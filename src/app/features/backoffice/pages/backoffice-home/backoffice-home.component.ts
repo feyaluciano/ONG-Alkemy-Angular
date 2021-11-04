@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/features/services/users/users.service';
@@ -11,7 +12,8 @@ import { UsersService } from 'src/app/features/services/users/users.service';
 })
 export class BackofficeHomeComponent implements OnInit {
 
-  day: Date = new Date();
+  date: Date = new Date;
+  day: string = (this.date).toDateString() +" " + (this.date).toLocaleTimeString();
 
   img1: string = '';
   img2: string = '';
@@ -43,7 +45,7 @@ export class BackofficeHomeComponent implements OnInit {
 
 
   uploadImg(event: any, controlImg: string){
-    //console.log(event);
+    
 
     let imgBase64: string = '';
 
@@ -57,6 +59,7 @@ export class BackofficeHomeComponent implements OnInit {
         imgBase64 = "data:image/png;base64," + reader.result?.toString().split(',')[1];
         
         this.img1 = imgBase64;
+        console.log( this.img1 );
         
        };
     } else if(controlImg == 'img2'){
@@ -111,8 +114,30 @@ export class BackofficeHomeComponent implements OnInit {
 
   testApi(){
 
+    //console.log(this.day);
+
     // this.usersService.getAllUsers().subscribe( console.log );
-    this.usersService.getUserById(355).subscribe( console.log );
+    // this.usersService.getUserById(355).subscribe( console.log );
+    this.usersService.createUser({
+      id:                999,
+      name:              "HTTP POST",
+      email:             "email@ejemplo.com",
+      email_verified_at: "",
+      password:          "123456789",
+      role_id:           1,
+      remember_token:    "",
+      created_at:        this.day,
+      updated_at:        "",
+      deleted_at:        "",
+      group_id:          0,
+      latitude:          0,
+      longitude:         0,
+      address:           "no address",
+      profile_image:     this.img1,
+      description:       "Futuro programador",
+      token:             ""
+
+    }).subscribe( console.log );
   }
 
 }

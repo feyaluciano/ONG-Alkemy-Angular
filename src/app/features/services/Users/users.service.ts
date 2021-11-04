@@ -36,9 +36,9 @@ export class UsersService {
 
   /** ESPERANDO QUE SE RESUELVAN LOS PROBLEMAS DE LA API */
   // POST   -> Store a newly created User in storage
-  createUser(user:User){   
+  createUser(user:User):Observable<HTTPResponse>{   
 
-   
+   return this.privateBackofficeService.createData(this._params, user);
   }
   
   // PUT    -> Update the specified User in storage
