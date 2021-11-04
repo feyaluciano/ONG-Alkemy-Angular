@@ -34,4 +34,14 @@ export class UsersService {
   updateUserById(id:number, user:User):Observable<HTTPResponse<User>>{
     return this.privateBackofficeService.updateData(`${ this._params }/${id}`, user);
   }
+
+  /**
+   * Remove the specified User from storage
+   * @param id 
+   * @returns Http response with the object deleted
+   */ 
+   deleteUserById(id:number):Observable<HTTPResponse<User>>{
+    return this.privateBackofficeService.deleteDataById(`${this._params}/${id}`);
+  }
+  
 }
