@@ -19,6 +19,6 @@ constructor(private httpService:HttpService,private userStatusService:UserStatus
 
   createSection<T>(url: string, section: any): Observable<T> {
     this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
-    return this.httpService.post(url, section, false);
+    return this.httpService.post(url, section, true);
   }
 }
