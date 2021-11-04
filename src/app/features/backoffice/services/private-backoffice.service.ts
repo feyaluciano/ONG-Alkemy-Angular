@@ -32,7 +32,17 @@ export class PrivateBackofficeService {
   }
 
   createData<T>( params:string, data: User):Observable<T>{
-    //this.httpService.setHeaders('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9vbmdhcGkuYWxrZW15Lm9yZ1wvYXBpXC9sb2dpbiIsImlhdCI6MTYzNjAxNzE1NiwiZXhwIjoxNjM2MDIwNzU2LCJuYmYiOjE2MzYwMTcxNTYsImp0aSI6Ik02Q3R5ODdqZHFZcXVqNVoiLCJzdWIiOjc0NSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.jYXHTMlcg6ENwI9E50CeJM0KUvpb0ZT_fZCUbtUPOi8');
+    // modificar headers
     return this.httpService.post<T>(`${ this.urlApi}${ params }` , data, true);
+  }
+
+  updateData<T>( params: string, user: User):Observable<T>{
+    // modificar headers
+    return this.httpService.put<T>(`${this.urlApi}${ params }`, user, true);
+  }
+
+  deleteDataById<T>( params: string):Observable<T>{
+    //modificar headers
+    return this.httpService.delete<T>( params, true);
   }
 }

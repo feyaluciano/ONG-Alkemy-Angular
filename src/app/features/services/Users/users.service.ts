@@ -43,6 +43,6 @@ export class UsersService {
   
   // PUT    -> Update the specified User in storage
   updateUserById(id:number, user:User){
-    
+    this.privateBackofficeService.updateData(`${ this._params }/${id}`, user);
   }
 }
