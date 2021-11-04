@@ -104,7 +104,7 @@ export class ActivityFormComponent implements OnInit {
       this.editing = true;
       this.action = "Editar actividad";
       const url: string =
-        environment.apiUrl +"/activities/";     
+        environment.apiUrl +"/activities/";   
         const req:Observable<HTTPResponse<Activity>>= this.activitiesService.getActivityById(url,this.route.snapshot.params["idActivity"]); 
         req.subscribe((response) => {
           let resultData: HTTPResponse<Activity> = response;         
