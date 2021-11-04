@@ -1,5 +1,9 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UsersService } from 'src/app/features/services/users/users.service';
+
+
 
 @Component({
   selector: 'app-backoffice-home',
@@ -14,19 +18,22 @@ export class BackofficeHomeComponent implements OnInit {
 
 
   homeForm: FormGroup = this.fb.group({
-    txtWelcome: [ null , [Validators.required, Validators.minLength(20)] ],
-    title1: [null],
-    title2: [null],
-    title3: [null],
-    img1:   [null],
-    img2:   [null],
-    img3:   [null]
+    txtWelcome: [ "" , [Validators.required, Validators.minLength(20)] ],
+    title1: [""],
+    title2: [""],
+    title3: [""],
+    img1:   [""],
+    img2:   [""],
+    img3:   [""]
 
   });
 
   constructor( private fb: FormBuilder ) { }
 
   ngOnInit(): void {
+
+    
+    
   }
 
   errorMsg(controlName: string, error: string){
@@ -35,7 +42,7 @@ export class BackofficeHomeComponent implements OnInit {
 
 
   uploadImg(event: any, controlImg: string){
-    //console.log(event);
+    
 
     let imgBase64: string = '';
 
@@ -49,6 +56,7 @@ export class BackofficeHomeComponent implements OnInit {
         imgBase64 = "data:image/png;base64," + reader.result?.toString().split(',')[1];
         
         this.img1 = imgBase64;
+        
         
        };
     } else if(controlImg == 'img2'){
@@ -98,6 +106,11 @@ export class BackofficeHomeComponent implements OnInit {
     } else {
       this.homeForm.markAllAsTouched();
     }
+    
+  }
+
+  testApi(){
+
     
   }
 

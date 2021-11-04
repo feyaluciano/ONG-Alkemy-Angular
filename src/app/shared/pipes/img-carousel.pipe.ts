@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Datum } from '../../core/interfaces/httpResponse.interface';
+import { Carousel } from '../../features/public/models/carousel.interface';
 
 @Pipe({
   name: 'imgCarousel'
 })
 export class ImgCarouselPipe implements PipeTransform {
 
-  transform( data: Datum ): string {
+  transform( data: Carousel ): string {
 
     if( data.image == null ){
       return 'assets/no-image.jpg';
