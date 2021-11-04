@@ -13,10 +13,20 @@ export class HttpService {
     this._headers = new HttpHeaders({ Group: this._groupId });
   }
 
+  public getHeaders(){
+    return this._headers;
+  }
+
+
+  public setHeaders(name:string,value:string){
+    return this._headers.append(name,value);
+  }
+
   public get<T>(url: string, activateHeader:boolean = false ):Observable<T> {
     return this.http.get<T>(url, activateHeader ? { headers: this._headers }: {});
   }
 
+  
 
   public put<T>(url: string, data: any, activateHeader:boolean = false ):Observable<T> {
     return this.http.put<T>(url, data, activateHeader ? { headers: this._headers }: {});
