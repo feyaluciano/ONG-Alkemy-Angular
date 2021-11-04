@@ -26,15 +26,6 @@ export class UsersService {
     return this.privateBackofficeService.getById(this._params, id);
   }
 
-
-
-  // DELETE -> Remove the specified User from storage
-  deleteUserById(id:number){
-    
-  }
-
-
-  /** ESPERANDO QUE SE RESUELVAN LOS PROBLEMAS DE LA API */
   // POST   -> Store a newly created User in storage
   createUser(user:User):Observable<HTTPResponse>{   
 
@@ -42,7 +33,12 @@ export class UsersService {
   }
   
   // PUT    -> Update the specified User in storage
-  updateUserById(id:number, user:User){
-    this.privateBackofficeService.updateData(`${ this._params }/${id}`, user);
+  updateUserById(id:number, user:User):Observable<HTTPResponse>{
+    return this.privateBackofficeService.updateData(`${ this._params }/${id}`, user);
+  }
+
+  // DELETE -> Remove the specified User from storage
+  deleteUserById(id:number):Observable<HTTPResponse>{
+    return this.privateBackofficeService.deleteDataById(`${this._params}/${id}`);
   }
 }
