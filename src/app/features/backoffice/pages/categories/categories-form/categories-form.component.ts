@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment.prod';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ImageFile } from '../../../../models/ImageFile';
-import { PrivateBackofficeService } from '../../../services/private-backoffice.service';
+import { CategoriesService } from '../../../../services/categories/categories.service';
 
 @Component({
   selector: 'app-categories-form',
@@ -40,7 +40,7 @@ export class CategoriesFormComponent implements OnInit {
   constructor(
     private ckeditorSvc: CkeditorService,
     private httpSvc: HttpService,
-    private backofficeSvc: PrivateBackofficeService,
+    private categoriesService: CategoriesService,
     private actRoute: ActivatedRoute,
     private router: Router
   ) {
@@ -110,7 +110,7 @@ export class CategoriesFormComponent implements OnInit {
         this.alertMessage = "La categoría fue agregada correctamente";
         this.aCategory.id = '0';
         this.aCategory.image = this.imageSrc;
-        this.backofficeSvc.createCategory(`${environment.apiUrl}/categories`, category)
+        this.categoriesService.createCategory(`${environment.apiUrl}/categories`, category)
           .subscribe((resp: any) => {
             this.alertMessage = resp.message;
             Swal.fire({
