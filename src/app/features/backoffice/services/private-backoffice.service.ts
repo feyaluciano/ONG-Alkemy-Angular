@@ -5,7 +5,7 @@ import { UserStatusService } from 'src/app/core/services/user-status.service';
 import { environment } from 'src/environments/environment';
 import { Activity } from '../../models/Activity';
 import { HTTPResponse } from '../../models/HTTPResponse';
-import { ActivitiesService } from '../../services/activities/activities.service';
+
 import { User } from '../../models/User';
 
 @Injectable({
@@ -15,13 +15,25 @@ export class PrivateBackofficeService {
 
   private urlApi: string = environment.apiUrl;
 
-  constructor(private activitiesService:ActivitiesService,private userStatusService:UserStatusService, private httpService: HttpService) {}
+  
+  constructor(private httpService:HttpService,private userStatusService:UserStatusService) {}
 
- getActivityById(url:string,id:string):Promise<HTTPResponse<Activity>> {  
-    return this.activitiesService.getActivityById(url,id);
+
+ getActivityById(url: string, id: string):Observable<HTTPResponse<Activity>> {
+    this.httpService.setHeaders("Authorization", this.userStatusService.getHeaders());
+    return  this.httpService.get(url + id,false);              
+  }    
+
+  createEntity<T>(url: string, entity: any): Observable<T> {
+    this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
+    return this.httpService.post(url, entity, true);
   }
   
 
+
+
+  
+  
   /**
    * Receive a parameter from another subService
    * ex: /users , /members ...
@@ -62,7 +74,7 @@ export class PrivateBackofficeService {
    * @param user 
    * @returns Http response with the object updated
    */
-  updateData<T>( params: string, user: User):Observable<T>{
+   updateData<T>( params: string, user: User):Observable<T>{
     // modificar headers
     return this.httpService.put<T>(`${this.urlApi}${ params }`, user, true);
   }

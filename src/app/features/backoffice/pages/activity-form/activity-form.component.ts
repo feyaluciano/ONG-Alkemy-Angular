@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { HttpService } from 'src/app/core/services/http.service';
 import { UserStatusService } from 'src/app/core/services/user-status.service';
 import { Activity } from 'src/app/features/models/Activity';
 import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
 import { ImageFile } from 'src/app/features/models/ImageFile';
+import { ActivitiesService } from 'src/app/features/services/activities/activities.service';
 import { environment } from 'src/environments/environment';
 import Swal from'sweetalert2';
 import { PrivateBackofficeService } from '../../services/private-backoffice.service';
@@ -37,7 +39,7 @@ export class ActivityFormComponent implements OnInit {
     private route: ActivatedRoute,
     private httpService: HttpService,
     private ckeditorSvc: CkeditorService,
-    private privateBackofficeService:PrivateBackofficeService
+    private activitiesService:ActivitiesService
   ) {
     this.form = this._builder.group({
       name: ["", [Validators.required]],
@@ -103,8 +105,8 @@ export class ActivityFormComponent implements OnInit {
       this.action = "Editar actividad";
       const url: string =
         environment.apiUrl +"/activities/";     
-        const req:Promise<HTTPResponse<Activity>>= this.privateBackofficeService.getActivityById(url,this.route.snapshot.params["idActivity"]);        
-        req.then(response => { 
+        const req:Observable<HTTPResponse<Activity>>= this.activitiesService.getActivityById(url,this.route.snapshot.params["idActivity"]); 
+        req.subscribe((response) => {
           let resultData: HTTPResponse<Activity> = response;         
           this.anActivity = JSON.parse(JSON.stringify(resultData.data));         
           this.ckeditorSvc.textEditor$.next(this.anActivity.description!)
@@ -113,25 +115,27 @@ export class ActivityFormComponent implements OnInit {
             image: this.anActivity.image,
             description: this.anActivity.description,
           });
-         });
-        req.catch(error=>{         
+        },
+        (error)=>{
           let errorMessage="";           
-          switch(error.status) { 
-            case 404: { 
-              errorMessage="Error al obtener la actividad"; 
-               break; 
-            } 
-            case 401: {  
-              errorMessage="Usted no esta autorizado para acceder a este recurso";
-               break; 
-            } 
-            default: { 
-              errorMessage="Error desconocido";
-               break; 
-            } 
-         } 
-         Swal.fire(errorMessage.toString())      
-        });                                    
+            switch(error.status) { 
+              case 404: { 
+                errorMessage="Error al obtener la actividad"; 
+                 break; 
+              } 
+              case 401: {  
+                errorMessage="Usted no esta autorizado para acceder a este recurso";
+                 break; 
+              } 
+              default: { 
+                errorMessage="Error desconocido";
+                 break; 
+              } 
+           }    
+           Swal.fire(errorMessage.toString())                 
+        }
+        );
+       
     } else {
       this.editing = false;
       this.action = "Nueva actividad";
