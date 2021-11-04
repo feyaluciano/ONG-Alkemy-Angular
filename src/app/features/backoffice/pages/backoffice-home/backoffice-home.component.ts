@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UsersService } from 'src/app/features/services/users/users.service';
 
 
 
@@ -18,17 +19,17 @@ export class BackofficeHomeComponent implements OnInit {
 
 
   homeForm: FormGroup = this.fb.group({
-    txtWelcome: [ null , [Validators.required, Validators.minLength(20)] ],
-    title1: [null],
-    title2: [null],
-    title3: [null],
-    img1:   [null],
-    img2:   [null],
-    img3:   [null]
+    txtWelcome: [ "" , [Validators.required, Validators.minLength(20)] ],
+    title1: [""],
+    title2: [""],
+    title3: [""],
+    img1:   [""],
+    img2:   [""],
+    img3:   [""]
 
   });
 
-  constructor( private fb: FormBuilder ) { }
+  constructor( private fb: FormBuilder, private usersService: UsersService) { }
 
   ngOnInit(): void {
 
@@ -108,6 +109,10 @@ export class BackofficeHomeComponent implements OnInit {
     
   }
 
-  
+  testApi(){
+
+    // this.usersService.getAllUsers().subscribe( console.log );
+    this.usersService.getUserById(355).subscribe( console.log );
+  }
 
 }

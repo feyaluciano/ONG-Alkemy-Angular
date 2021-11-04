@@ -1,32 +1,36 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpService } from 'src/app/core/services/http.service';
+import { Injectable } from '@angular/core';
+import { PrivateBackofficeService } from '../../backoffice/services/private-backoffice.service';
 import { User } from '../../models/User';
+import { Observable } from 'rxjs';
+import { HTTPResponse } from '../../../core/interfaces/httpResponse.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NewsUsersService {
+export class UsersService {
 
-  private url: string = 'http://ongapi.alkemy.org/api/users';
+  private _params: string = '/users';
 
-  constructor( private http: HttpClient, private httpService: HttpService ) { }
+  constructor( private privateBackofficeService: PrivateBackofficeService ) { }
 
   /** USERS */
 
   // GET    -> Get a listing of the Users
-  getAllUsers(){
-    return this.httpService.get(this.url);
+  getAllUsers():Observable<HTTPResponse>{
+    return this.privateBackofficeService.getAll(this._params);
   }
 
   // GET    -> Display the specified User
-  getUserById(id:number){    
-    this.httpService.get(`${this.url}/${id}`);
+  getUserById(id:number):Observable<HTTPResponse>{  
+    return this.privateBackofficeService.getById(this._params, id);
   }
+
+
 
   // DELETE -> Remove the specified User from storage
   deleteUserById(id:number){
-    return this.httpService.delete(`${this.url}/${id}`);
+    
   }
 
 
@@ -41,9 +45,4 @@ export class NewsUsersService {
   updateUserById(id:number, user:User){
     
   }
-
-  
-
-  
-
 }
