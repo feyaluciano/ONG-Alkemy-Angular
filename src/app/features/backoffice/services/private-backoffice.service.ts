@@ -4,7 +4,6 @@ import { HttpService } from 'src/app/core/services/http.service';
 import { UserStatusService } from 'src/app/core/services/user-status.service';
 import { Activity } from '../../models/Activity';
 import { HTTPResponse } from '../../models/HTTPResponse';
-import { Category } from '../../models/category.model';
 @Injectable({
   providedIn: 'root'
 })
