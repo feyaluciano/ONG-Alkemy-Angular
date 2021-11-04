@@ -14,25 +14,7 @@ export class UsersService {
 
   constructor( private privateBackofficeService: PrivateBackofficeService ) { }
 
-    
-  /**
-   * Get a listing of the Users
-   * @returns User[]
-   */
-  getAllUsers():Observable<HTTPResponse<User[]>>{
-    return this.privateBackofficeService.getAll(this._params);
-  }
-
-  /**
-   * Display the specified User
-   * @param id 
-   * @returns User
-   */
-  getUserById(id:number):Observable<HTTPResponse<User>>{  
-    return this.privateBackofficeService.getById(this._params, id);
-    
-  }
-
+  
   /**
    * Store a newly created User in storage
    * @param user 
@@ -51,14 +33,5 @@ export class UsersService {
    */
   updateUserById(id:number, user:User):Observable<HTTPResponse<User>>{
     return this.privateBackofficeService.updateData(`${ this._params }/${id}`, user);
-  }
-
-  /**
-   * Remove the specified User from storage
-   * @param id 
-   * @returns Http response with the object deleted
-   */ 
-  deleteUserById(id:number):Observable<HTTPResponse<User>>{
-    return this.privateBackofficeService.deleteDataById(`${this._params}/${id}`);
   }
 }

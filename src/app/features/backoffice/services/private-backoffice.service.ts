@@ -34,26 +34,7 @@ export class PrivateBackofficeService {
 
   
   
-  /**
-   * Receive a parameter from another subService
-   * ex: /users , /members ...
-   * @param params 
-   * @returns T[]
-   */
-  getAll<T>( params:string ):Observable<T>{
-    return this.httpService.get<T>(`${this.urlApi}${ params }`);
-  }
-
-  /**
-   * Receive two paramter from another subService
-   * ex: /users/355
-   * @param params 
-   * @param id 
-   * @returns T
-   */
-  getById<T>( params:string , id:number ):Observable<T>{
-    return this.httpService.get<T>(`${this.urlApi}${ params }/${ id }`);
-  }
+  
 
   /**
    * Receive -parameter and object<T>-
@@ -63,7 +44,7 @@ export class PrivateBackofficeService {
    * @returns Http response with the object created
    */
   createData<T>( params:string, data: User):Observable<T>{
-    // modificar headers
+    this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
     return this.httpService.post<T>(`${ this.urlApi}${ params }` , data, true);
   }
 
@@ -75,18 +56,8 @@ export class PrivateBackofficeService {
    * @returns Http response with the object updated
    */
    updateData<T>( params: string, user: User):Observable<T>{
-    // modificar headers
+    this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
     return this.httpService.put<T>(`${this.urlApi}${ params }`, user, true);
   }
 
-  /**
-   * Receive -parameter and object<T>-
-   * ex: /users/355
-   * @param params 
-   * @returns Http response with the especific object deleted
-   */
-  deleteDataById<T>( params: string):Observable<T>{
-    //modificar headers
-    return this.httpService.delete<T>( params, true);
-  }
 }
