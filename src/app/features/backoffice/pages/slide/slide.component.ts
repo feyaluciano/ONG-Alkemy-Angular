@@ -8,6 +8,7 @@ import { ImageFile } from 'src/app/features/models/ImageFile';
 import { Slide } from 'src/app/features/public/models/slide';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
+import { PrivateBackofficeService } from '../../services/private-backoffice.service';
 
 @Component({
   selector: 'app-slide',
@@ -37,7 +38,8 @@ export class SlideComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private httpService: HttpService,
-    private ckeditorSvc: CkeditorService
+    private ckeditorSvc: CkeditorService,
+    private backofficeServices: PrivateBackofficeService
   ) {
     this.form = this._builder.group({
       name: ["", [Validators.required]],
