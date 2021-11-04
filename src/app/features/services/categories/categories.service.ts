@@ -14,6 +14,6 @@ export class CategoriesService {
   ) { }
 
   createCategory(url: string, category: Category): Observable<HTTPResponse<Category>> {
-    return this.privateBackofficeService.createCategory(url, category);
+    return this.privateBackofficeService.createSection(url, category);
   }
 }
