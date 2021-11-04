@@ -30,12 +30,6 @@ export class PrivateBackofficeService {
   }
   
 
-
-
-  
-  
-  
-
   /**
    * Receive -parameter and object<T>-
    * ex: /users newUser: User = {...}
@@ -58,6 +52,17 @@ export class PrivateBackofficeService {
    updateData<T>( params: string, user: User):Observable<T>{
     this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
     return this.httpService.put<T>(`${this.urlApi}${ params }`, user, true);
+  }
+
+  /**
+   * Receive -parameter and object<T>-
+   * ex: url/users/355
+   * @param params 
+   * @returns Http response with the especific object deleted
+   */
+   deleteDataById<T>( params: string):Observable<T>{
+    this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
+    return this.httpService.delete<T>( params, true);
   }
 
 }
