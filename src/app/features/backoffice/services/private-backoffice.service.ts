@@ -16,8 +16,8 @@ constructor(private httpService:HttpService,private userStatusService:UserStatus
     return  this.httpService.get(url + id,false);              
   }    
 
-  createSection<T>(url: string, section: any): Observable<T> {
+  createEntity<T>(url: string, entity: any): Observable<T> {
     this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
-    return this.httpService.post(url, section, true);
+    return this.httpService.post(url, entity, true);
   }
 }
