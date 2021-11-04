@@ -16,7 +16,7 @@ export class PrivateBackofficeService {
 
 
 public putPrivate(url:string, id:string,  data:Data, authorizacion:boolean):Observable<HttpResponse<Activity>>{
- this.httpService.setHeaders("Authorization", this.userStatusService.getHeaders());         
+ this.httpService.setHeaders("Authorization", this.userStatusService.getHeaders());      
     return this.httpService.put(url+'/'+id , data, true )
   
  }
