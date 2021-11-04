@@ -59,7 +59,7 @@ export class BackofficeHomeComponent implements OnInit {
         imgBase64 = "data:image/png;base64," + reader.result?.toString().split(',')[1];
         
         this.img1 = imgBase64;
-        console.log( this.img1 );
+        
         
        };
     } else if(controlImg == 'img2'){
@@ -119,23 +119,23 @@ export class BackofficeHomeComponent implements OnInit {
     // this.usersService.getAllUsers().subscribe( console.log );
     // this.usersService.getUserById(355).subscribe( console.log );
     this.usersService.createUser({
-      id:                999,
-      name:              "HTTP POST",
-      email:             "email@ejemplo.com",
-      email_verified_at: "",
+      //id:                999,
+      name:              "HTTP POST 2",
+      email:             "email2@ejemplo2.com",
+      //email_verified_at: this.day,
       password:          "123456789",
       role_id:           1,
-      remember_token:    "",
-      created_at:        this.day,
-      updated_at:        "",
-      deleted_at:        "",
-      group_id:          0,
-      latitude:          0,
-      longitude:         0,
-      address:           "no address",
+      //remember_token:    "asdqweasd",
+      // created_at:        this.day,
+      // updated_at:        this.day,
+      // deleted_at:        this.day,
+      // group_id:          null,
+      // latitude:          0,
+      // longitude:         0,
+      // address:           "no address",
       profile_image:     this.img1,
       description:       "Futuro programador",
-      token:             ""
+      
 
     }).subscribe( console.log );
   }
