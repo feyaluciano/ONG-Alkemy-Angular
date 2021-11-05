@@ -17,7 +17,7 @@ export class ActivitiesService {
   ) {}
 
   getActivityById(url:string,id:string):Observable<HTTPResponse<Activity>> {  
-    return this.privateBackofficeService.getActivityById(url,id);
+    return this.privateBackofficeService.getEntityById(url,id);
   }    
 
   getActivities(param: string): Observable<HTTPResponse<Activity[]>> {
