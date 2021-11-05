@@ -19,7 +19,7 @@ export class PrivateBackofficeService {
   constructor(private httpService:HttpService,private userStatusService:UserStatusService) {}
 
 
- getActivityById(url: string, id: string):Observable<HTTPResponse<Activity>> {
+ getEntityById(url: string, id: string):Observable<HTTPResponse<Activity>> {
     this.httpService.setHeaders("Authorization", this.userStatusService.getHeaders());
     return  this.httpService.get(url + id,false);              
   }    
@@ -27,6 +27,15 @@ export class PrivateBackofficeService {
   createEntity<T>(url: string, entity: any): Observable<T> {
     this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
     return this.httpService.post<T>(url, entity, true);
+  }
+
+  updateEntity<T>(url: string, entity: any): Observable<T> {
+    this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
+    return this.httpService.put<T>(url, entity, false);
+  }
+
+  getEntities<T>( url:string ): Observable<T> {
+    return this.httpService.get<T>(url);
   }
   
 
