@@ -1,7 +1,8 @@
-import { DatePipe } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UsersService } from 'src/app/features/services/users/users.service';
+import { UsersService } from 'src/app/features/services/Users/users.service';
+import { CreateUser } from '../../../models/User';
 
 
 
@@ -28,7 +29,7 @@ export class BackofficeHomeComponent implements OnInit {
 
   });
 
-  constructor( private fb: FormBuilder ) { }
+  constructor( private fb: FormBuilder, private usersService: UsersService) { }
 
   ngOnInit(): void {
 
@@ -111,7 +112,19 @@ export class BackofficeHomeComponent implements OnInit {
 
   testApi(){
 
+    let newUser: CreateUser = {
+      name: 'New User',
+      email: 'emailnuevo.23@nuevo.com',
+      password: '123456',
+      role_id: 1,
+      description: 'Probando la creación de usuarios',
+      profile_image: this.img1
+    };
+
     
+
+    //this.usersService.updateUserById(360,newUser).subscribe( console.log);
+    this.usersService.updateUserById(360,newUser).subscribe( console.log );
   }
 
 }
