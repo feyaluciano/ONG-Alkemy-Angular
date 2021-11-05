@@ -1,9 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UsersService } from 'src/app/features/services/users/users.service';
-import { CreateUser } from '../../../models/User';
-import { PrivateBackofficeService } from '../../services/private-backoffice.service';
+import { Router } from '@angular/router';
+
 
 
 
@@ -30,18 +29,11 @@ export class BackofficeHomeComponent implements OnInit {
 
   });
 
-  constructor( private fb: FormBuilder, private usersService: UsersService, private bService: PrivateBackofficeService) { }
+  constructor( private fb: FormBuilder, private router: Router ) { }
 
   ngOnInit(): void {
 
-    localStorage.setItem('user', JSON.stringify({
-      token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9vbmdhcGkuYWxrZW15Lm9yZ1wvYXBpXC9sb2dpbiIsImlhdCI6MTYzNjExNjE1NiwiZXhwIjoxNjM2MTE5NzU2LCJuYmYiOjE2MzYxMTYxNTYsImp0aSI6IjFTbGFpTFJDZ2ZwbG5ycVkiLCJzdWIiOjc0NSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.JCgG27Jd8FXp0qHGns3M-gSXcobjrMPARUHCjXr-vc0'
-    }));
     
-    if( localStorage.getItem('user')){
-      let d = JSON.parse(localStorage.getItem('user')!);
-      
-    }
 
   }
 
@@ -87,9 +79,7 @@ export class BackofficeHomeComponent implements OnInit {
   }
 
   edit(){
-    //this.homeForm.controls['txtWelcome'].setValue('Bienvenidos a Somos más!');
-    //console.log(this.homeForm);
-    
+        
     if( this.homeForm.valid ){
 
       let data = [
@@ -118,27 +108,10 @@ export class BackofficeHomeComponent implements OnInit {
     
   }
 
-  testApi(){
+  back(){
 
-    let newUser: CreateUser = {
-      name: 'New User',
-      email: 'emailnuevo.233@nuevo2.com',
-      password: '123456',
-      role_id: 1,
-      description: 'Probando la creación de usuarios',
-      profile_image: this.img1
-    };   
+    this.router.navigate(['/dashboard']);
 
-    //this.usersService.updateUserById(360,newUser).subscribe( console.log);
-    
-    this.usersService.createUser({
-      name: 'Francisco Post',
-      email: 'emailnuevo.2333@nuevo3.com',
-      password: '123456',
-      role_id: 1,
-      description: 'Probando la creación de usuarios',
-      profile_image: this.img1
-    }).subscribe( console.log );
   }
 
 }
