@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Observer, of, Subscriber } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/core/services/http.service';
 import { UserStatusService } from 'src/app/core/services/user-status.service';
 import { environment } from 'src/environments/environment';
@@ -56,7 +56,7 @@ export class PrivateBackofficeService {
    */
    updateData<T>( params: string, user: User):Observable<T> {
     this.httpService.setHeaders('Authorization', this.verifyToken());
-    return  this.httpService.put<T>(`${this.urlApi}/${ params }`, user, true);
+    return  this.httpService.put<T>(`${this.urlApi}${ params }`, user, true);
     
   }
 

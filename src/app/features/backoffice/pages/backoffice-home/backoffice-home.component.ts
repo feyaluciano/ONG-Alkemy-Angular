@@ -1,7 +1,7 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 
 
 
@@ -56,8 +56,7 @@ export class BackofficeHomeComponent implements OnInit {
       reader.onload = () => { 
         imgBase64 = "data:image/png;base64," + reader.result?.toString().split(',')[1];
         
-        this.img1 = imgBase64;
-        
+        this.img1 = imgBase64;        
         
        };
     } else if(controlImg == 'img2'){
