@@ -27,7 +27,7 @@ const routes: Routes = [
       { path: 'categoria/:id', component: CategoriesFormComponent },
       { path: 'member', component: MemberFormComponent },
       { path: 'member/edit/:idMember', component: MemberFormComponent},
-      { path: 'home', component: BackofficeHomeComponent },
+      { path: 'backoffice/home', component: BackofficeHomeComponent },
       { path: 'organization', component: OrganizationComponent },
       { path: 'organization/edit', component: OrganizationEditComponent }
     ]
