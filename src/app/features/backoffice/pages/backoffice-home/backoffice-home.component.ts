@@ -33,8 +33,14 @@ export class BackofficeHomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+    localStorage.setItem('user', JSON.stringify({
+      token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9vbmdhcGkuYWxrZW15Lm9yZ1wvYXBpXC9sb2dpbiIsImlhdCI6MTYzNjA5ODA4MiwiZXhwIjoxNjM2MTAxNjgyLCJuYmYiOjE2MzYwOTgwODIsImp0aSI6ImRTS05RTkdZVmlHTklYZmMiLCJzdWIiOjc0NSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.gbafTfG06zu-QroOJQZDROTPQ4_KXvuAFYe9R57iEsQ'
+    }));
     
-    
+    if( localStorage.getItem('user')){
+      let d = JSON.parse(localStorage.getItem('user')!);
+      console.log(d.token);
+    }
   }
 
   errorMsg(controlName: string, error: string){
@@ -114,7 +120,7 @@ export class BackofficeHomeComponent implements OnInit {
 
     let newUser: CreateUser = {
       name: 'New User',
-      email: 'emailnuevo.23@nuevo.com',
+      email: 'emailnuevo.233@nuevo2.com',
       password: '123456',
       role_id: 1,
       description: 'Probando la creación de usuarios',
@@ -124,7 +130,14 @@ export class BackofficeHomeComponent implements OnInit {
     
 
     //this.usersService.updateUserById(360,newUser).subscribe( console.log);
-    this.usersService.updateUserById(360,newUser).subscribe( console.log );
+    this.usersService.createUser({
+      name: 'New User',
+      email: 'emailnuevo.233@nuevo2.com',
+      password: '123456',
+      role_id: 1,
+      description: 'Probando la creación de usuarios',
+      profile_image: this.img1
+    }).subscribe( console.log );
   }
 
 }

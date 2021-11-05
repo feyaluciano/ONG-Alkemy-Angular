@@ -18,7 +18,7 @@ export class UsersService {
 
 
     createUser(user:CreateUser):Observable<HTTPResponse<User>>{
-      return this.privateBackofficeService.createEntity(`${this.urlApi}/${this._params}`, user);
+      return this.privateBackofficeService.createEntity('http://ongapi.alkemy.org/users', user);
     }
 
   

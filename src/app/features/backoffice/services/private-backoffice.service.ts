@@ -31,9 +31,12 @@ export class PrivateBackofficeService {
     if( localStorage.getItem('user') ){
 
       let user = JSON.parse( localStorage.getItem('user')! );
-      this.httpService.getHeaders().append('Authorization',`Bearer ${user.token}`);
-
+      this.httpService.setHeaders('Authorization',`Bearer ${user.token}`);
+      
+      return;
     } 
+
+      return;
   }
 
   
@@ -45,7 +48,9 @@ export class PrivateBackofficeService {
   }    
 
   createEntity<T>(url: string, entity: any): Observable<T> {
-    this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
+    //this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
+    this.httpService.setHeaders('Authorization', "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9vbmdhcGkuYWxrZW15Lm9yZ1wvYXBpXC9sb2dpbiIsImlhdCI6MTYzNjA5ODA4MiwiZXhwIjoxNjM2MTAxNjgyLCJuYmYiOjE2MzYwOTgwODIsImp0aSI6ImRTS05RTkdZVmlHTklYZmMiLCJzdWIiOjc0NSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.gbafTfG06zu-QroOJQZDROTPQ4_KXvuAFYe9R57iEsQ");   
+    
     return this.httpService.post<T>(url, entity, true);
   }
   
