@@ -17,6 +17,10 @@ export class PrivateBackofficeService {
   
   constructor(private httpService:HttpService,private userStatusService:UserStatusService) {}
 
+  /**
+   * Search data in localStorage
+   * @returns string
+   */
   verifyToken():string{
     if( localStorage.getItem('user')){
       let user = JSON.parse(localStorage.getItem('user')!);
@@ -51,7 +55,7 @@ export class PrivateBackofficeService {
    * @returns Http response with the object updated
    */
    updateData<T>( params: string, user: User):Observable<T> {
-
+    this.httpService.setHeaders('Authorization', this.verifyToken());
     return  this.httpService.put<T>(`${this.urlApi}/${ params }`, user, true);
     
   }
@@ -63,7 +67,7 @@ export class PrivateBackofficeService {
    * @returns Http response with the especific object deleted
    */
    deleteDataById<T>( params: string):Observable<T>{
-    
+    this.httpService.setHeaders('Authorization', this.verifyToken());
     return this.httpService.delete<T>( params, true);
   }
 
