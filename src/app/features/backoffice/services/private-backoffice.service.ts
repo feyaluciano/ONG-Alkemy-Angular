@@ -28,6 +28,15 @@ export class PrivateBackofficeService {
     this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
     return this.httpService.post<T>(url, entity, true);
   }
+
+  updateEntity<T>(url: string, entity: any): Observable<T> {
+    this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
+    return this.httpService.put<T>(url, entity, false);
+  }
+
+  getEntities<T>( url:string ): Observable<T> {
+    return this.httpService.get<T>(url);
+  }
   
 
   /**

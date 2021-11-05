@@ -23,4 +23,17 @@ export class ActivitiesService {
   getActivities(param: string): Observable<HTTPResponse<Activity[]>> {
     return this.publicService.getEntities(param);
   }
+
+
+  
+  createActivity(url: string,activity:Activity): Observable<HTTPResponse<Activity>> {
+    return this.privateBackofficeService.createEntity(url, activity);
+  }
+
+  updateActivity(url: string,activity:Activity): Observable<HTTPResponse<Activity>> {
+    return this.privateBackofficeService.updateEntity(url, activity);
+  }
+
+
+
 }

@@ -65,31 +65,30 @@ export class ActivityFormComponent implements OnInit {
       if (this.editing) {
         this.alertMessage = "La actividad fue editada correctamente";
         activity.id = this.anActivity.id;
-        activity.image = this.anImage;                
-        this.httpService
-          .put(
-            environment.apiUrl + "/activities/" + this.anActivity.id,
-            activity
-          )
-          .subscribe((result) => {
-            let resultData: any = JSON.parse(JSON.stringify(result));
-            Swal.fire(this.alertMessage.toString()).then(() => {
-              this.router.navigate(["/dashboard"]);
-            });
-          });
+        activity.image = this.anImage; 
+        const url: string =
+        environment.apiUrl +"/activities/";     
+        let req:Observable<HTTPResponse<Activity>>= this.activitiesService.updateActivity(url,activity);         
+        req.subscribe((response) => {         
+          let resultData: HTTPResponse<Activity> = response;   
+              Swal.fire(this.alertMessage.toString()).then(() => {
+                this.router.navigate(["/dashboard"]);
+              });
+        });               
       } else {        
         this.alertMessage = "La actividad fue agregada correctamente";
         this.anActivity.id = "0";
         this.anActivity.image = this.anImage;
-        this.httpService
-          .post(environment.apiUrl + "/activities", activity)
-          .subscribe((result) => {
-            let resultData: any = JSON.parse(JSON.stringify(result));
-            this.alertMessage = resultData.message;
-            Swal.fire(this.alertMessage.toString()).then(() => {
-              this.router.navigate(["/dashboard"]);
-            });
-          });
+        const url: string =
+        environment.apiUrl +"/activities/";     
+        const req:Observable<HTTPResponse<Activity>>= this.activitiesService.createActivity(url,activity);
+        req.subscribe((response) => {
+          let resultData: any = JSON.parse(JSON.stringify(response));
+              this.alertMessage = resultData.message;
+              Swal.fire(this.alertMessage.toString()).then(() => {
+                this.router.navigate(["/dashboard"]);
+              });
+        });          
       }
     } else {
       this.sending = false;
