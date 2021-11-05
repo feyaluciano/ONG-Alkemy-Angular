@@ -1,8 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UsersService } from 'src/app/features/services/Users/users.service';
+import { UsersService } from 'src/app/features/services/users/users.service';
 import { CreateUser } from '../../../models/User';
+import { PrivateBackofficeService } from '../../services/private-backoffice.service';
 
 
 
@@ -29,18 +30,19 @@ export class BackofficeHomeComponent implements OnInit {
 
   });
 
-  constructor( private fb: FormBuilder, private usersService: UsersService) { }
+  constructor( private fb: FormBuilder, private usersService: UsersService, private bService: PrivateBackofficeService) { }
 
   ngOnInit(): void {
 
     localStorage.setItem('user', JSON.stringify({
-      token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9vbmdhcGkuYWxrZW15Lm9yZ1wvYXBpXC9sb2dpbiIsImlhdCI6MTYzNjA5ODA4MiwiZXhwIjoxNjM2MTAxNjgyLCJuYmYiOjE2MzYwOTgwODIsImp0aSI6ImRTS05RTkdZVmlHTklYZmMiLCJzdWIiOjc0NSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.gbafTfG06zu-QroOJQZDROTPQ4_KXvuAFYe9R57iEsQ'
+      token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9vbmdhcGkuYWxrZW15Lm9yZ1wvYXBpXC9sb2dpbiIsImlhdCI6MTYzNjExNjE1NiwiZXhwIjoxNjM2MTE5NzU2LCJuYmYiOjE2MzYxMTYxNTYsImp0aSI6IjFTbGFpTFJDZ2ZwbG5ycVkiLCJzdWIiOjc0NSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.JCgG27Jd8FXp0qHGns3M-gSXcobjrMPARUHCjXr-vc0'
     }));
     
     if( localStorage.getItem('user')){
       let d = JSON.parse(localStorage.getItem('user')!);
-      console.log(d.token);
+      
     }
+
   }
 
   errorMsg(controlName: string, error: string){
@@ -125,14 +127,13 @@ export class BackofficeHomeComponent implements OnInit {
       role_id: 1,
       description: 'Probando la creación de usuarios',
       profile_image: this.img1
-    };
-
-    
+    };   
 
     //this.usersService.updateUserById(360,newUser).subscribe( console.log);
+    
     this.usersService.createUser({
-      name: 'New User',
-      email: 'emailnuevo.233@nuevo2.com',
+      name: 'Francisco Post',
+      email: 'emailnuevo.2333@nuevo3.com',
       password: '123456',
       role_id: 1,
       description: 'Probando la creación de usuarios',
