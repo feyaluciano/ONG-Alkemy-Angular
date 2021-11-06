@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { Organization } from 'src/app/features/models/organization.interface';
 
+
+
 @Component({
   selector: 'app-organization-edit',
   templateUrl: './organization-edit.component.html',
@@ -77,9 +79,7 @@ export class OrganizationEditComponent implements OnInit {
           instagram_url     : this.organizationForm.controls['instagram_url'].value,
           twitter_url       : this.organizationForm.controls['twitter_url'].value,
 
-        };
-
-        console.log( data );        
+        };        
 
       } else {
         
@@ -111,6 +111,8 @@ export class OrganizationEditComponent implements OnInit {
         this.img = imgBase64;
       
         };
+
+        
 
       } else {
         this.imgError = true;

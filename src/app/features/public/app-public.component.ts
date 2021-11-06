@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-app-public',
   templateUrl: './app-public.component.html',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppPublicComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit() {
+
+    
   }
 
 }

@@ -17,9 +17,14 @@ export class HttpService {
     return this._headers;
   }
 
-
+  /**
+   * Creates a new instance and concatenates it with the existing headers.   * 
+   * @param name 
+   * @param value 
+   */
   public setHeaders(name:string,value:string){
-    return this._headers.append(name,value);
+    this._headers = new HttpHeaders();
+    this._headers = this._headers.append(name,value);
   }
 
   public get<T>(url: string, activateHeader:boolean = false ):Observable<T> {

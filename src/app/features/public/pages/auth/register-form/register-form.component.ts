@@ -1,13 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { UserStatusService } from "src/app/core/services/user-status.service";
-import { passwordMatchValidator } from "src/app/shared/utils/password-match-validator";
 import { User } from "../../../../models/User";
 
 @Component({
@@ -50,6 +44,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   async save() {
+    
     this.passwordsAreEqualValue = !this.passwordsAreEqual();
     if (this.form.valid && this.passwordsAreEqual()) {
       const user: User = {

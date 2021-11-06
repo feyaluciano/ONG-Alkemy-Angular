@@ -15,6 +15,7 @@ import { AppPublicComponent } from "./app-public.component";
 import { DetailComponent } from './views/activities/detail/detail.component';
 import { ActivityComponent } from './components/activity/activity.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { ActivitiesComponent } from './pages/activities/activities.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { ContactComponent } from './pages/contact/contact.component';
     AboutComponent,
     AppPublicComponent,
     HeaderPublicComponent,
-    AboutComponent, DetailComponent, ActivityComponent, ContactComponent
+    AboutComponent, DetailComponent, ActivityComponent, ContactComponent, ActivitiesComponent
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment.prod';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ImageFile } from '../../../../models/ImageFile';
+import { CategoriesService } from '../../../../services/categories/categories.service';
 
 @Component({
   selector: 'app-categories-form',
@@ -39,6 +40,7 @@ export class CategoriesFormComponent implements OnInit {
   constructor(
     private ckeditorSvc: CkeditorService,
     private httpSvc: HttpService,
+    private categoriesService: CategoriesService,
     private actRoute: ActivatedRoute,
     private router: Router
   ) {
@@ -53,7 +55,7 @@ export class CategoriesFormComponent implements OnInit {
       this.editCategory();
     } else {
       this.editing = false;
-      this.action = 'New Category';
+      this.action = 'Nueva Categoría';
     }
 
     this.ckeditorSvc.getHandlerTextEditor$().subscribe((text) => {
@@ -69,7 +71,7 @@ export class CategoriesFormComponent implements OnInit {
 
   editCategory() {
     this.editing = true; 
-    this.action = 'Edit Category'; 
+    this.action = 'Editar Categoría'; 
     const url: string = `${environment.apiUrl}/categories/${this.actRoute.snapshot.params['id']}`;
     this.httpSvc.get(url).subscribe((result) => {
       let resultData: any = JSON.parse(JSON.stringify(result));
@@ -108,13 +110,24 @@ export class CategoriesFormComponent implements OnInit {
         this.alertMessage = "La categoría fue agregada correctamente";
         this.aCategory.id = '0';
         this.aCategory.image = this.imageSrc;
-        this.httpSvc
-          .post(`${environment.apiUrl}/categories`, category)
-          .subscribe((result) => {
-            let resultData: any = JSON.parse(JSON.stringify(result));
-            this.alertMessage = resultData.message;
-            Swal.fire(this.alertMessage.toString()).then(() => {
+        this.categoriesService.createCategory(`${environment.apiUrl}/categories`, category)
+          .subscribe((resp: any) => {
+            this.alertMessage = resp.message;
+            Swal.fire({
+              title: 'Success!',
+              icon: 'success',
+              text: this.alertMessage,
+              showConfirmButton: true
+            }).then(() => {
               this.router.navigate(['/dashboard']);
+            });
+          }, (error: any) => {
+            this.alertMessage = 'No tiene permiso para crear una categoría';
+            Swal.fire({
+              title: 'Error',
+              text: this.alertMessage,
+              showConfirmButton: true,
+              icon: 'error'
             });
           });
       }

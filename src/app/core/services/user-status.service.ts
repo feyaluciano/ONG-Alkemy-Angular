@@ -1,4 +1,3 @@
-import { HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { User } from "src/app/features/models/User";
 
@@ -10,13 +9,14 @@ export class UserStatusService {
 
   constructor() {}
 
-   isUserLoggedIn() {      
-    let isLogged= this.getUser();
-    if (isLogged==="null") {       
-        return false;
-     } else {      
-        return true;
-     }
+   isUserLoggedIn() {
+         
+     let isLogged= this.getUser();
+     if (isLogged === null) {       
+         return false;
+      } else {      
+         return true;
+      }
   }
 
    getUser() {
@@ -33,6 +33,7 @@ export class UserStatusService {
 
 
   getHeaders(){
+    
     let token="";
     let user:User=this.getUser();
     let _headersAutorization:string="";
@@ -40,8 +41,8 @@ export class UserStatusService {
       token=user.token!;
       _headersAutorization="Bearer "+token;
       
-    }    
-    return _headersAutorization;
+     }    
+     return _headersAutorization;
   }
 
 
