@@ -43,7 +43,8 @@
           </ul>
           <form class="d-flex">
             <div class="">
-            <button [routerLink]="['/login']" class="btn btn-outline-primary" style="margin-right: 10px;" type="button">Login</button>           
+            <button *ngIf="!loggedIn" [routerLink]="['/login']" class="btn btn-outline-primary" style="margin-right: 10px;" type="button">Login</button>
+            <button *ngIf="loggedIn" (click)="logOut()" class="btn btn-outline-danger" style="margin-right: 10px;" type="button">Log Out</button>           
             <a [routerLink]="['register']"  class="btn btn-primary" type="submit">Registrate</a>
           </div>
           </form>

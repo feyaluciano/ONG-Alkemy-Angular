@@ -1,6 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { User } from '../../../../models/User';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { environment } from 'src/environments/environment';
+import { Data, User } from '../../../../models/User';
 
 @Component({
   selector: 'app-login-form',
@@ -10,11 +14,14 @@ import { User } from '../../../../models/User';
 export class LoginFormComponent  {
   title = 'branchJose';
   forma:FormGroup;
+  urlApi = environment.apiUrl;
+  userLogin:string ="";
+  token:string = "";
 
-  constructor(private fb:FormBuilder){
+  constructor(private fb:FormBuilder, private httpClient:HttpClient, private authServices:AuthService, private Router:Router){
       this.forma = this.fb.group({
-      email:   ['', [Validators.required, Validators.email]],
-      password: ['',  [Validators.required, Validators.minLength(6), 
+      email:   ['test@demo.com', [Validators.required, Validators.email]],
+      password: ['@Cepita67',  [Validators.required, Validators.minLength(6), 
       Validators.pattern(/^(?=.*[A-Za-z])(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,20}$/)]],
     });
   }
@@ -30,13 +37,23 @@ export class LoginFormComponent  {
   
 
    save(){
-      const userLogin:User = {
+      const user:User = {
         email: this.forma.get('email')?.value,
         password: this.forma.get('password')?.value
     }
 
-    console.log(userLogin);
+    this.authServices.auth(user).subscribe((resp:any)=>{
+      this.userLogin = resp.data.user;
+      this.token = resp.data.token;
+      localStorage.setItem("userToken", JSON.stringify(this.token));
+      this.Router.navigate(["/dashboard"])
+    })
 
-  }
+     
+     
+
+
+
+ }
 
 }
