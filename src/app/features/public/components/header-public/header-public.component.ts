@@ -18,7 +18,7 @@ export class HeaderPublicComponent implements OnInit {
   logOut(){
     localStorage.removeItem("userToken");
     this.loggedIn = false;
-    this.router.navigate([""])
+    this.router.navigate([''])
   }
 
 }
