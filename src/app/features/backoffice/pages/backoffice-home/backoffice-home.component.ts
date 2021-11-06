@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 
 
+
 @Component({
   selector: 'app-backoffice-home',
   templateUrl: './backoffice-home.component.html',
@@ -110,6 +111,7 @@ export class BackofficeHomeComponent implements OnInit {
   back(){
 
     this.router.navigate(['/dashboard']);
+    
 
   }
 
