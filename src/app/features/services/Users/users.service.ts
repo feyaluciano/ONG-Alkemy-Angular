@@ -16,14 +16,31 @@ export class UsersService {
 
   constructor( private privateBackofficeService: PrivateBackofficeService ) { }
 
-    /**
-     * Create a new user
-     * @param user 
-     * @returns user
-     */
-    createUser(user:CreateUser):Observable<HTTPResponse<User>>{
-      return this.privateBackofficeService.createEntity(`${this.urlApi}${this._params}`, user);
-    }
+  /**
+   * Get a listing of the Users
+   * @returns User[]
+   */
+  getAllUsers():Observable<HTTPResponse<User[]>>{
+    return this.privateBackofficeService.getEntities(`${this.urlApi}${this._params}`);
+  }
+  
+  /**
+   * Display the specified User
+   * @param id 
+   * @returns User
+   */
+  getUserById(id:string):Observable<HTTPResponse<User>>{  
+    return this.privateBackofficeService.getEntityById(`${this.urlApi}${this._params}`, id);
+    
+  }
+  /**
+  * Create a new user
+  * @param user 
+  * @returns user
+  */
+  createUser(user:CreateUser):Observable<HTTPResponse<User>>{
+    return this.privateBackofficeService.createEntity(`${this.urlApi}${this._params}`, user);
+  }
 
   
    /**
@@ -33,7 +50,7 @@ export class UsersService {
    * @returns updated User
    */
   updateUserById(id:number, user:CreateUser):Observable<HTTPResponse<User>>{
-    return this.privateBackofficeService.updateData(`${ this._params }/${id}`, user);
+    return this.privateBackofficeService.updateEntity(`${ this._params }/${id}`, user);
   }
 
   /**
