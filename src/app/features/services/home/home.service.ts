@@ -34,22 +34,22 @@ export class HomeService {
 
 //testimonial
   getTestimonial(){
-    return this.publicServices.getEntities('/news')
+    return this.publicServices.getEntities('/testimonials')
   }
 
-  GetTestimonialById(){
-
+  GetTestimonialById(id:number){
+    return this.publicServices.getEntities(`/testimonials/${id}`)
   }
 
-  postsTestimonial(){
-
+  postsTestimonial(data:any){
+    return this.privateServices.createEntity(`/testimonials/`, data)
   }
 
-  putTestimonal(){
-
+  putTestimonal(data:any){
+    return this.privateServices.updateEntity(`/testimonials/`,data )
   }
 
-  deleteTestimonial(){
-
+  deleteTestimonial(id:number){
+    return this.privateServices.deleteEntity(`/testimonials/${id}`)
   }
 }
