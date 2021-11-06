@@ -7,6 +7,7 @@ import { RouterModule } from "@angular/router";
 import { FooterComponent } from "./components/footer/footer.component";
 import { HttpService } from "./services/http.service";
 
+
 @NgModule({
   declarations: [FooterComponent],
   imports: [CommonModule, HttpClientModule,RouterModule],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-public',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderPublicComponent implements OnInit {
 
-  constructor() { }
+  loggedIn:boolean=true;
+  constructor(private router:Router) { }
 
   ngOnInit() {
+   localStorage.getItem("userToken");
+  }
+
+  logOut(){
+    localStorage.removeItem("userToken");
+    this.loggedIn = false;
+    this.router.navigate([''])
   }
 
 }

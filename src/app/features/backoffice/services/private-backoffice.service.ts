@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/core/services/http.service';
+import { Data } from '../../models/data';
+import { Observable } from 'rxjs';
 import { UserStatusService } from 'src/app/core/services/user-status.service';
 import { environment } from 'src/environments/environment';
 import { Activity } from '../../models/Activity';
@@ -8,30 +9,36 @@ import { HTTPResponse } from '../../models/HTTPResponse';
 
 import { User } from '../../models/User';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class PrivateBackofficeService {
-
   private urlApi: string = environment.apiUrl;
-  
+
   constructor(private httpService:HttpService,private userStatusService:UserStatusService) {}
+
+
 
   /**
    * Search data in localStorage
    * @returns string
    */
   verifyToken():string{
-    if( localStorage.getItem('user')){
-      let user = JSON.parse(localStorage.getItem('user')!);
+    if( localStorage.getItem('userToken')){
+      let userToken = JSON.parse(localStorage.getItem('userToken')!);
 
-      return `Bearer ${user.token}`;
+      return `Bearer ${userToken}`;
     }
 
     return 'Bearer $InvalidToken';
   }
 
 
+  getEntities<T>( url:string ): Observable<T> {
+    return this.httpService.get<T>(url);
+  }
+  
 
  getEntityById(url: string, id: string):Observable<HTTPResponse<Activity>> {
     this.httpService.setHeaders("Authorization", this.userStatusService.getHeaders());
@@ -49,10 +56,12 @@ export class PrivateBackofficeService {
     return this.httpService.put<T>(url, entity, false);
   }
 
-  getEntities<T>( url:string ): Observable<T> {
-    return this.httpService.get<T>(url);
-  }
-  
+   putEntity(url:string, id:string,  entity:Data, authorizacion:boolean):Observable<HTTPResponse<Activity>>{
+      this.httpService.setHeaders("Authorization", this.userStatusService.getHeaders());         
+      return this.httpService.put(url+'/'+id , entity, true )
+     
+    }
+     
 
   
 
@@ -81,3 +90,4 @@ export class PrivateBackofficeService {
   }
 
 }
+
