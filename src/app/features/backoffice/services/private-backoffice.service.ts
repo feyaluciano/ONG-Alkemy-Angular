@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/core/services/http.service';
+import { Observable } from 'rxjs';
 import { UserStatusService } from 'src/app/core/services/user-status.service';
 
 
@@ -8,7 +8,7 @@ import { UserStatusService } from 'src/app/core/services/user-status.service';
   providedIn: 'root'
 })
 export class PrivateBackofficeService {
-
+  
   private header_authorization!: string;
   
   constructor(private httpService:HttpService,private userStatusService:UserStatusService) {
@@ -22,11 +22,10 @@ export class PrivateBackofficeService {
   * @returns string
   */
   verifyToken():string{
+    if( localStorage.getItem('userToken')){
+      let userToken = JSON.parse(localStorage.getItem('userToken')!);
 
-    if( localStorage.getItem('user')){
-      let user = JSON.parse(localStorage.getItem('user')!);
-
-      return `Bearer ${user.token}`;
+      return `Bearer ${userToken}`;
     }
 
     return 'Bearer $InvalidToken';
@@ -40,9 +39,12 @@ export class PrivateBackofficeService {
   }
 
 
+  getEntities<T>( url:string ): Observable<T> {
+    return this.httpService.get<T>(url);
+  }
+  
 
  getEntityById<T>(url: string, id: string):Observable<T> {
-    this.httpService.setHeaders("Authorization", this.userStatusService.getHeaders());
     return  this.httpService.get<T>(url + id,false);              
   }    
 
@@ -53,14 +55,9 @@ export class PrivateBackofficeService {
   }
 
   updateEntity<T>(url: string, entity: any): Observable<T> {
-    this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
+    this.setHeaders();
     return this.httpService.put<T>(url, entity, false);
-  }
-
-  getEntities<T>( url:string ): Observable<T> {
-    return this.httpService.get<T>(url);
-  }
-  
+  }     
 
   /**
    * Receive -parameter and object<T>-
@@ -69,8 +66,9 @@ export class PrivateBackofficeService {
    * @returns Http response with the especific object deleted
    */
    deleteDataById<T>(params: string):Observable<T>{
-    this.httpService.setHeaders('Authorization', this.verifyToken());
+    this.setHeaders();
     return this.httpService.delete<T>( params, true);
   }
 
 }
+
