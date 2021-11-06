@@ -2,21 +2,19 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/core/services/http.service';
 import { UserStatusService } from 'src/app/core/services/user-status.service';
-import { environment } from 'src/environments/environment';
 
-
-import { User } from '../../models/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PrivateBackofficeService {
 
-  private urlApi: string = environment.apiUrl;
   private header_authorization!: string;
   
   constructor(private httpService:HttpService,private userStatusService:UserStatusService) {
+
     this.header_authorization = this.verifyToken();
+
   }
 
   /**
@@ -34,6 +32,9 @@ export class PrivateBackofficeService {
     return 'Bearer $InvalidToken';
   }
 
+  /**
+   * Set headers
+   */
   setHeaders():void{
     this.httpService.setHeaders('Authorization', this.header_authorization);
   }
@@ -47,7 +48,7 @@ export class PrivateBackofficeService {
 
   createEntity<T>(url: string, entity: any): Observable<T> {
     
-    this.httpService.setHeaders('Authorization', this.verifyToken());
+    this.setHeaders();
     return this.httpService.post<T>(url, entity, true);
   }
 
