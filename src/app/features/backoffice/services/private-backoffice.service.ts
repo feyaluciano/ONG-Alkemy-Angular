@@ -45,49 +45,29 @@ export class PrivateBackofficeService {
     return  this.httpService.get(url + id,false);              
   }    
 
-  createEntity<T>(url: string, entity: any): Observable<T> {
+
+
+  //methods private
+  createEntity<T>(params:string, entity: any): Observable<T> {
     
     this.httpService.setHeaders('Authorization', this.verifyToken());
-    return this.httpService.post<T>(url, entity, true);
+    return this.httpService.post<T>(`${this.urlApi}${ params }`, entity, true);
   }
 
-  updateEntity<T>(url: string, entity: any): Observable<T> {
-    this.httpService.getHeaders().append("Authorization", this.userStatusService.getHeaders());
-    return this.httpService.put<T>(url, entity, false);
+  updateEntity<T>( params: string, entity: any):Observable<T> {
+    this.httpService.setHeaders('Authorization', this.verifyToken());
+    return  this.httpService.put<T>(`${this.urlApi}${ params }`, entity, true);
+    
   }
 
-   putEntity(url:string, id:string,  entity:Data, authorizacion:boolean):Observable<HTTPResponse<Activity>>{
-      this.httpService.setHeaders("Authorization", this.userStatusService.getHeaders());         
-      return this.httpService.put(url+'/'+id , entity, true )
-     
-    }
+  deleteEntity<T>( params: string):Observable<T>{
+    this.httpService.setHeaders('Authorization', this.verifyToken());
+    return this.httpService.delete<T>(`${this.urlApi}${ params }`, true);
+  }
      
 
   
 
-  /**
-   * Receive -parameter and object<T>-
-   * ex: /users/355   updateUser: User = {...}
-   * @param params 
-   * @param user 
-   * @returns Http response with the object updated
-   */
-   updateData<T>( params: string, user: User):Observable<T> {
-    this.httpService.setHeaders('Authorization', this.verifyToken());
-    return  this.httpService.put<T>(`${this.urlApi}${ params }`, user, true);
-    
-  }
-
-  /**
-   * Receive -parameter and object<T>-
-   * ex: url/users/355
-   * @param params 
-   * @returns Http response with the especific object deleted
-   */
-   deleteDataById<T>( params: string):Observable<T>{
-    this.httpService.setHeaders('Authorization', this.verifyToken());
-    return this.httpService.delete<T>( params, true);
-  }
 
 }
 
