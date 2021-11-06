@@ -13,14 +13,18 @@ import { User } from '../../models/User';
 export class PrivateBackofficeService {
 
   private urlApi: string = environment.apiUrl;
+  private header_authorization!: string;
   
-  constructor(private httpService:HttpService,private userStatusService:UserStatusService) {}
+  constructor(private httpService:HttpService,private userStatusService:UserStatusService) {
+    this.header_authorization = this.verifyToken();
+  }
 
   /**
   * Search data in localStorage
   * @returns string
   */
   verifyToken():string{
+
     if( localStorage.getItem('user')){
       let user = JSON.parse(localStorage.getItem('user')!);
 
@@ -28,6 +32,10 @@ export class PrivateBackofficeService {
     }
 
     return 'Bearer $InvalidToken';
+  }
+
+  setHeaders():void{
+    this.httpService.setHeaders('Authorization', this.header_authorization);
   }
 
 
