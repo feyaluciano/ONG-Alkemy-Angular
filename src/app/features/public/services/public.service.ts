@@ -3,11 +3,12 @@ import { Observable } from 'rxjs';
 import { HttpService } from '../../../core/services/http.service';
 import { environment } from '../../../../environments/environment.prod';
 
-const urlApi: string = environment.apiUrl;
+
 @Injectable({
   providedIn: 'root'
 })
 export class PublicService {
+   urlApi: string = environment.apiUrl;
 
   constructor(
     private httpService: HttpService
@@ -18,7 +19,9 @@ export class PublicService {
   }
 
   getEntities<T>( param: string ): Observable<T> {
-    return this.httpService.get<T>(`${urlApi}${param}`, false);
+    return this.httpService.get<T>(`${this.urlApi}${param}`, false);
   }
+
+ 
 
 }

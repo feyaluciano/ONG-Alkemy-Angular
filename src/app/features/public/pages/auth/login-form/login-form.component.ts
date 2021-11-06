@@ -46,6 +46,7 @@ export class LoginFormComponent  {
       this.userLogin = resp.data.user;
       this.token = resp.data.token;
       localStorage.setItem("userToken", JSON.stringify(this.token));
+      localStorage.setItem("user", JSON.stringify(this.userLogin));
       this.Router.navigate(["/dashboard"])
     })
 
