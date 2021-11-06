@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Datum } from 'src/app/core/interfaces/httpResponse.interface';
+import { Carousel } from 'src/app/features/public/models/carousel.interface';
 
 
 
@@ -11,7 +11,7 @@ import { Datum } from 'src/app/core/interfaces/httpResponse.interface';
 })
 export class CarouselComponent implements OnInit {
 
-  @Input() carousel!: Datum[];
+  @Input() carousel!: Carousel[];
 
   constructor() { }
 

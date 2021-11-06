@@ -23,11 +23,11 @@ const routes: Routes = [
       { path: 'activity/:idActivity', component: ActivityFormComponent },
       { path: 'slide', component: SlideComponent },
       { path: 'slide/:id', component: SlideComponent },
-      { path: 'category', component: CategoriesFormComponent },
-      { path: 'category/:id', component: CategoriesFormComponent },
+      { path: 'categoria', component: CategoriesFormComponent },
+      { path: 'categoria/:id', component: CategoriesFormComponent },
       { path: 'member', component: MemberFormComponent },
       { path: 'member/edit/:idMember', component: MemberFormComponent},
-      { path: 'home', component: BackofficeHomeComponent },
+      { path: 'backoffice/home', component: BackofficeHomeComponent },
       { path: 'organization', component: OrganizationComponent },
       { path: 'organization/edit', component: OrganizationEditComponent }
     ]
