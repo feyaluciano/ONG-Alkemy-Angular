@@ -10,8 +10,6 @@ import { HTTPResponse } from '../../models/HTTPResponse';
 import { User } from '../../models/User';
 
 
-import { User } from '../../models/User';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -21,25 +19,6 @@ export class PrivateBackofficeService {
   constructor(private httpService:HttpService,private userStatusService:UserStatusService) {}
 
 
-<<<<<<< HEAD
-=======
-  private urlApi: string = environment.apiUrl;
-  
-
-  /**
-   * Search data in localStorage
-   * @returns string
-   */
-  verifyToken():string{
-    if( localStorage.getItem('user')){
-      let user = JSON.parse(localStorage.getItem('user')!);
-
-      return `Bearer ${user.token}`;
-    }
-
-    return 'Bearer $InvalidToken';
-  }
->>>>>>> main
 
   /**
    * Search data in localStorage
@@ -61,10 +40,6 @@ export class PrivateBackofficeService {
   }
   
 
-<<<<<<< HEAD
-=======
-
->>>>>>> main
  getEntityById(url: string, id: string):Observable<HTTPResponse<Activity>> {
     this.httpService.setHeaders("Authorization", this.userStatusService.getHeaders());
     return  this.httpService.get(url + id,false);              
@@ -81,25 +56,12 @@ export class PrivateBackofficeService {
     return this.httpService.put<T>(url, entity, false);
   }
 
-<<<<<<< HEAD
    putEntity(url:string, id:string,  entity:Data, authorizacion:boolean):Observable<HTTPResponse<Activity>>{
       this.httpService.setHeaders("Authorization", this.userStatusService.getHeaders());         
       return this.httpService.put(url+'/'+id , entity, true )
      
     }
      
-=======
-   putPrivate(url:string, id:string,  data:Data, authorizacion:boolean):Observable<HttpResponse<Activity>>{
-    this.httpService.setHeaders("Authorization", this.userStatusService.getHeaders());         
-       return this.httpService.put(url+'/'+id , data, true )
-     
-    }
-
-  getEntities<T>( url:string ): Observable<T> {
-    return this.httpService.get<T>(url);
-  }
-  
->>>>>>> main
 
   
 

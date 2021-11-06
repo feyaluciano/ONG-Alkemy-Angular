@@ -22,7 +22,6 @@ export interface User {
     profile_image?:     string;
     description?:       string;
     token?:             string;
-<<<<<<< HEAD
 }
 
 export interface CreateUser {
@@ -34,17 +33,4 @@ export interface CreateUser {
     description:   string;
 }
 
-=======
-}
-
-export interface CreateUser {
-    name:          string;
-    email:         string;
-    password:      string;
-    role_id:       number;
-    profile_image: string;
-    description:   string;
-}
-
->>>>>>> main
 
