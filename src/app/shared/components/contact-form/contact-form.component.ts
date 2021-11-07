@@ -11,6 +11,8 @@ export class ContactFormComponent implements OnInit {
 
   @Input() title!: string;
   form!: FormGroup;
+  isContactForm!: boolean;
+  isCreateUserForm!: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -19,9 +21,13 @@ export class ContactFormComponent implements OnInit {
     this.createForm();
     switch (this.router.url) {
       case '/contacto':
+        this.isContactForm = true;
         this.addContactFields();
         break;
-  
+      case '/backoffice/users/create':
+        this.isCreateUserForm = true;
+        this.addCreateUserFields();
+        break;
       default:
         break;
     }
@@ -62,25 +68,29 @@ export class ContactFormComponent implements OnInit {
 
     this.otherFields.push(contact);
 
-    console.log(this.form.get('otherFields')?.value[0]);
+    // console.log(this.form.get('otherFields')?.value[0]);
 
-    console.log(this.otherFields.controls[0].get('phone')?.hasError('required'));
-    console.log(this.otherFields.controls[0]);
-    
-    
+    // console.log(this.otherFields.controls[0].get('phone')?.hasError('required'));
+    // console.log(this.otherFields.controls[0]);    
+  }
+
+  addCreateUserFields() {
+    const user = this.formBuilder.group({
+      role: new FormControl('', [
+        Validators.required
+      ]),
+      profilePhoto: new FormControl('', [
+        Validators.required
+      ])
+    });
+
+    this.otherFields.push(user);
   }
 
   onSubmit() {
 
-    // TODO: Remove console.logs and add logic here
-
-    console.log('name:', this.form.value.name);
-
-    console.log('email:', this.form.value.email);
+    console.log('Form submited');
     
-    console.log('phone:', this.form.value.phone);
-    
-    console.log('message:', this.form.value.message);
     
   }
 

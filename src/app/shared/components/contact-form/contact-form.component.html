@@ -1,6 +1,6 @@
 <div class="container">
   
-  <h2 class="text-center">{{ title | uppercase }}</h2>
+  <h2 class="text-center my-5">{{ title | uppercase }}</h2>
   
   <form
     [formGroup]="form"
@@ -50,15 +50,12 @@
       </div>
     </div>
     
-    <div formArrayName="otherFields">
-      <div *ngFor="let otherField of otherFields.controls; let i = index">
+    <!-- Contact Form Additions -->
+    <div formArrayName="otherFields" *ngIf="isContactForm">
+      <div *ngFor="let otherField of otherFields.controls; let i = index" [formGroupName]="i">
         <div class="mb-3 position-relative">
           <label for="phone" class="form-label">Teléfono</label>
           <input
-            [ngClass]="{
-              'is-valid': form.get('phone')?.touched && form.get('phone')?.valid,
-              'is-invalid': form.get('phone')?.touched && form.get('phone')?.invalid
-            }"
             type="text"
             class="form-control"
             id="phone"
@@ -66,37 +63,43 @@
             formControlName="phone"
             required
           >
-          <div appMsgErrorForm messageError="Este campo es requerido"
-            [valido]="haveErrorsInputForm('phone','required')">
-          </div>
-          <div appMsgErrorForm messageError="Sólo se admiten números"
-            [valido]="haveErrorsInputForm('phone','pattern')">
-          </div>
-          <div appMsgErrorForm messageError="Ingrese un número telefónico válido (mínimo 8 dígitos)"
-            [valido]="haveErrorsInputForm('phone','minLength')">
-          </div>
         </div>
         
         <div class="mb-3 position-relative">
           <label for="message" class="form-label">Mensaje</label>
-          <textarea
-            [ngClass]="{
-              'is-valid': form.get('message')?.touched && form.get('message')?.valid,
-              'is-invalid': form.get('message')?.touched && form.get('message')?.invalid
-            }"
+          <app-ckeditor></app-ckeditor>
+          <!-- <textarea
             class="form-control"
             id="message"
             rows="3"
             formControlName="message"
             required
-          ></textarea>
-          <div appMsgErrorForm messageError="Este campo es requerido"
-            [valido]="haveErrorsInputForm('message','required')">
-          </div>
+          ></textarea> -->
         </div>
       </div>
     </div>
+    <!-- End Contact Form Aditions -->
     
+    <!-- User Form Additions -->
+    <div formArrayName="otherFields" *ngIf="isCreateUserForm">
+      <div *ngFor="let otherField of otherFields.controls; let i = index" [formGroupName]="i">
+        <div class="mb-3 position-relative">
+          <label for="role" class="form-label">Rol</label>
+          <select formControlName="role">
+            <option value="">Seleccionar...</option>
+            <option value="admin">Administrador</option>
+            <option value="regular">Regular</option>
+          </select>
+        </div>
+        
+        <div class="mb-3 position-relative">
+          <label for="profilePhoto" class="form-label">Foto perfil</label>
+          <input type="file" formControlName="profilePhoto" />
+        </div>
+      </div>
+    </div>
+    <!-- End User Form Aditions -->
+
     <button
       type="submit"
       class="btn btn-primary"

@@ -18,6 +18,7 @@ import { HeaderBackofficeComponent } from './components/header-backoffice/header
 import { SlideComponent } from './pages/slide/slide.component';
 
 import { OrganizationEditComponent } from './pages/organization-edit/organization-edit.component';
+import { UserFormComponent } from './pages/users/user-form/user-form.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { OrganizationEditComponent } from './pages/organization-edit/organizatio
     SlideComponent,
     MemberFormComponent,
     OrganizationEditComponent,
-    OrganizationComponent
+    OrganizationComponent,
+    UserFormComponent
   ],
   imports: [
     CommonModule,

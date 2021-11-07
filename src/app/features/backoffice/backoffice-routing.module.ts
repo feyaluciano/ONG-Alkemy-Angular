@@ -10,6 +10,7 @@ import { OrganizationComponent } from './pages/organization/organization.compone
 
 import { SlideComponent } from './pages/slide/slide.component';
 import { OrganizationEditComponent } from './pages/organization-edit/organization-edit.component';
+import { UserFormComponent } from './pages/users/user-form/user-form.component';
 
 
 
@@ -29,7 +30,8 @@ const routes: Routes = [
       { path: 'member/edit/:idMember', component: MemberFormComponent},
       { path: 'backoffice/home', component: BackofficeHomeComponent },
       { path: 'organization', component: OrganizationComponent },
-      { path: 'organization/edit', component: OrganizationEditComponent }
+      { path: 'organization/edit', component: OrganizationEditComponent },
+      { path: 'users/create', component: UserFormComponent }
     ]
     }
 ]

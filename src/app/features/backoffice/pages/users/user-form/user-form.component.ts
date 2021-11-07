@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFormComponent implements OnInit {
 
+  title: string = 'Nuevo Usuario';
+
   constructor() { }
 
   ngOnInit(): void {
