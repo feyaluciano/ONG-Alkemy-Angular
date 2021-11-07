@@ -3,7 +3,7 @@
   <h2 class="text-center">{{ title | uppercase }}</h2>
   
   <form
-    [formGroup]="contactForm"
+    [formGroup]="form"
     class="needs-validation"
     novalidate
     (ngSubmit)="onSubmit()"
@@ -13,8 +13,8 @@
       <label for="name" class="form-label">Nombre</label>
       <input
         [ngClass]="{
-          'is-valid': contactForm.get('name')?.touched && contactForm.get('name')?.valid,
-          'is-invalid': contactForm.get('name')?.touched && contactForm.get('name')?.invalid
+          'is-valid': form.get('name')?.touched && form.get('name')?.valid,
+          'is-invalid': form.get('name')?.touched && form.get('name')?.invalid
         }"
         type="text"
         class="form-control"
@@ -32,8 +32,8 @@
       <label for="email" class="form-label">Email</label>
       <input
         [ngClass]="{
-          'is-valid': contactForm.get('email')?.touched && contactForm.get('email')?.valid,
-          'is-invalid': contactForm.get('email')?.touched && contactForm.get('email')?.invalid
+          'is-valid': form.get('email')?.touched && form.get('email')?.valid,
+          'is-invalid': form.get('email')?.touched && form.get('email')?.invalid
         }"
         type="email"
         class="form-control"
@@ -50,53 +50,56 @@
       </div>
     </div>
     
-    <div class="mb-3 position-relative">
-      <label for="phone" class="form-label">Teléfono</label>
-      <input
-        [ngClass]="{
-          'is-valid': contactForm.get('phone')?.touched && contactForm.get('phone')?.valid,
-          'is-invalid': contactForm.get('phone')?.touched && contactForm.get('phone')?.invalid
-        }"
-        type="text"
-        class="form-control"
-        id="phone"
-        placeholder="Ingrese aquí su número telefónico"
-        formControlName="phone"
-        required
-      >
-      <div appMsgErrorForm messageError="Este campo es requerido"
-        [valido]="haveErrorsInputForm('phone','required')">
-      </div>
-      <div appMsgErrorForm messageError="Sólo se admiten números"
-        [valido]="haveErrorsInputForm('phone','pattern')">
-      </div>
-      <div appMsgErrorForm messageError="Ingrese un número telefónico válido (mínimo 8 dígitos)"
-        [valido]="haveErrorsInputForm('phone','minLength')">
-      </div>
-    </div>
-    
-    <div class="mb-3 position-relative">
-      <label for="message" class="form-label">Mensaje</label>
-      <textarea
-        [ngClass]="{
-          'is-valid': contactForm.get('mensaje')?.touched && contactForm.get('message')?.valid,
-          'is-invalid': contactForm.get('message')?.touched && contactForm.get('message')?.invalid
-        }"
-        class="form-control"
-        id="message"
-        rows="3"
-        formControlName="message"
-        required
-      ></textarea>
-      <div appMsgErrorForm messageError="Este campo es requerido"
-        [valido]="haveErrorsInputForm('message','required')">
+    <div formArrayName="otherFields">
+      <div *ngFor="let otherField of otherFields.controls; let i = index">
+        <div class="mb-3 position-relative">
+          <label for="phone" class="form-label">Teléfono</label>
+          <input
+            [ngClass]="{
+              'is-valid': form.get('phone')?.touched && form.get('phone')?.valid,
+              'is-invalid': form.get('phone')?.touched && form.get('phone')?.invalid
+            }"
+            type="text"
+            class="form-control"
+            id="phone"
+            placeholder="Ingrese aquí su número telefónico"
+            formControlName="phone"
+            required
+          >
+          <div appMsgErrorForm messageError="Este campo es requerido"
+            [valido]="haveErrorsInputForm('phone','required')">
+          </div>
+          <div appMsgErrorForm messageError="Sólo se admiten números"
+            [valido]="haveErrorsInputForm('phone','pattern')">
+          </div>
+          <div appMsgErrorForm messageError="Ingrese un número telefónico válido (mínimo 8 dígitos)"
+            [valido]="haveErrorsInputForm('phone','minLength')">
+          </div>
+        </div>
+        
+        <div class="mb-3 position-relative">
+          <label for="message" class="form-label">Mensaje</label>
+          <textarea
+            [ngClass]="{
+              'is-valid': form.get('message')?.touched && form.get('message')?.valid,
+              'is-invalid': form.get('message')?.touched && form.get('message')?.invalid
+            }"
+            class="form-control"
+            id="message"
+            rows="3"
+            formControlName="message"
+            required
+          ></textarea>
+          <div appMsgErrorForm messageError="Este campo es requerido"
+            [valido]="haveErrorsInputForm('message','required')">
+          </div>
+        </div>
       </div>
     </div>
     
     <button
       type="submit"
       class="btn btn-primary"
-      [disabled]="contactForm.invalid"
     >Enviar</button>
 
   </form>
