@@ -26,7 +26,11 @@ import { ActivitiesComponent } from './pages/activities/activities.component';
     AboutComponent,
     AppPublicComponent,
     HeaderPublicComponent,
-    AboutComponent, DetailComponent, ActivityComponent, ContactComponent, ActivitiesComponent
+    AboutComponent, 
+    DetailComponent, 
+    ActivityComponent, 
+    ContactComponent, 
+    ActivitiesComponent
   ],
   imports: [
     CommonModule,
@@ -39,6 +43,7 @@ import { ActivitiesComponent } from './pages/activities/activities.component';
     HomeComponent,
     RegisterFormComponent, 
     TitlesComponentComponent,
-    AboutComponent],
+    AboutComponent
+  ],
 })
 export class PublicModule {}

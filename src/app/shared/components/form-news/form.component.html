@@ -1,0 +1,38 @@
+<h1> {{titlePage}}</h1>
+<hr>
+<div class="card border-dark mb-3 animate__animated animate__zoomIn">
+
+    <form 
+    [formGroup]="form"
+    autocomplete="off">
+    
+    <!-- title -->
+    <div class="input-group mb-3">                    
+        <span class="input-group-text">Título</span>
+        <input type="text" class="form-control" formControlName="title">
+        <!-- manejo de errores-->
+    </div>
+    <!-- description -->
+    <div class="mb-3">
+        <label for="shortDescription" class="form-label">Descripción</label>
+        <app-ckeditor></app-ckeditor>
+        <!-- <div class="mb-3" appMsgErrorForm messageError="Ingrese una descripción corta" *ngIf="ckEditorError"> </div>-->    
+    </div>
+    <!--img-->
+    <div class="mb-3">
+        <input type="file" class="form-control" id="inputGroupFile01" (change)="uploadImg($event)" formControlName="image">
+        <!-- manejo de errores-->
+    </div>
+    <div class="input-group mb-3">                    
+        <span class="input-group-text">Categoría</span>
+        <input type="text" class="form-control" formControlName="category_id">
+        <!-- manejo de errores-->
+    </div>
+    <div class="float-end">
+        <button type="submit" class="btn btn-primary mt-2 float-end">Crear</button>
+        <button type="button" class="btn btn-primary mt-2 float-end">Volver</button>
+    </div>
+    
+</form>
+        
+</div>

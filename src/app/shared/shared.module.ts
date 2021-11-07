@@ -9,6 +9,7 @@ import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
 import { MsgErrorFormDirective } from './directives/msg-error-form.directive';
 import { CkeditorComponent } from './components/ckeditor/ckeditor.component';
 import { HtmlPipe } from './pipes/html/html.pipe';
+import { FormComponent } from './components/form-news/form.component';
 
 
 
@@ -20,7 +21,8 @@ import { HtmlPipe } from './pipes/html/html.pipe';
     ImgCarouselPipe,
     MsgErrorFormDirective,
     CkeditorComponent,
-    HtmlPipe
+    HtmlPipe,
+    FormComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { HtmlPipe } from './pipes/html/html.pipe';
     ContactFormComponent,
     MsgErrorFormDirective,
     CkeditorComponent,
-    HtmlPipe
+    HtmlPipe,
+    FormComponent
   ]
 })
 export class SharedModule { }

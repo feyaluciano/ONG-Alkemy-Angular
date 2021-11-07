@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BackofficeRoutingModule } from './backoffice-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from "src/app/shared/shared.module";
 
 import { ActivityFormComponent } from './pages/activity-form/activity-form.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -18,6 +18,7 @@ import { HeaderBackofficeComponent } from './components/header-backoffice/header
 import { SlideComponent } from './pages/slide/slide.component';
 
 import { OrganizationEditComponent } from './pages/organization-edit/organization-edit.component';
+import { NewsFormComponent } from './pages/news/news-form/news-form.component';
 
 
 @NgModule({
@@ -34,7 +35,10 @@ import { OrganizationEditComponent } from './pages/organization-edit/organizatio
     SlideComponent,
     MemberFormComponent,
     OrganizationEditComponent,
-    OrganizationComponent
+    OrganizationComponent,
+    NewsFormComponent
+    
+    
   ],
   imports: [
     CommonModule,
