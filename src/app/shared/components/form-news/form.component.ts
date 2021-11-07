@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { News } from '../../../features/models/news.interface';
-import { CategoriesService } from '../../../features/services/categories/categories.service';
+import Swal from 'sweetalert2';
 import { PrivateBackofficeService } from '../../../features/backoffice/services/private-backoffice.service';
 import { Category } from 'src/app/features/models/category.model';
 
@@ -91,7 +91,7 @@ export class FormComponent implements OnInit {
     return Boolean( this.form.get(controlName)?.hasError(error) && this.form.get(controlName)?.touched );
   }
 
-
+  
   createNews(){
 
     let date: string = (new Date()).toLocaleDateString() + " " + (new Date()).toLocaleTimeString();
@@ -100,7 +100,11 @@ export class FormComponent implements OnInit {
       // nada
     } else {
       // sweetAlert
-      console.log('Campo obligatorio');
+      Swal.fire({
+        title: 'Error',
+        text: 'Ingrese una descripción.',
+        icon: 'error'
+      });
     }
 
     
