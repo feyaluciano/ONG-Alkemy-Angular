@@ -4,7 +4,8 @@
 
     <form 
     [formGroup]="form"
-    autocomplete="off">
+    autocomplete="off"
+    (ngSubmit)="createNews()">
     
     <!-- title -->
     <div class="input-group mb-3">                    
@@ -12,6 +13,12 @@
         <input type="text" class="form-control" formControlName="name">
         <!-- manejo de errores-->
     </div>
+    <div class="mb-3" appMsgErrorForm messageError="Este campo es requerido"
+    [valido]="errorMsg('name','required')">
+    </div>
+    <div class="mb-3" appMsgErrorForm messageError="Mínimo 4 caracteres"
+        [valido]="errorMsg('name','minlength')">
+    </div>    
     <!-- description -->
     <div class="mb-3">
         <label for="shortDescription" class="form-label">Descripción</label>
@@ -20,17 +27,22 @@
     </div>
     <!--img-->
     <div class="mb-3">
-        <input type="file" class="form-control" id="inputGroupFile01" (change)="uploadImg($event)" formControlName="image">
+        <input type="file" class="form-control" (change)="uploadImg($event)" formControlName="image">
         <!-- manejo de errores-->
+    </div>
+    <div class="mb-3" appMsgErrorForm messageError="Este campo es requerido"
+    [valido]="errorMsg('image','required')">
     </div>
     <div class="input-group mb-3">                    
         <span class="input-group-text">Categoría</span>
         <input type="text" class="form-control" formControlName="category_id">
-        <!-- manejo de errores-->
+    </div>
+    <div class="mb-3" appMsgErrorForm messageError="Este campo es requerido"
+    [valido]="errorMsg('category_id','required')">
     </div>
     <div class="float-end">
         <button type="button" class="btn btn-primary mt-2 float-end">Volver</button>
-        <button type="submit" class="btn btn-primary mt-2 float-end">Crear</button>
+        <button type="submit" class="btn btn-primary mt-2 float-end"> {{ actionBtn }} </button>
     </div>
     
 </form>

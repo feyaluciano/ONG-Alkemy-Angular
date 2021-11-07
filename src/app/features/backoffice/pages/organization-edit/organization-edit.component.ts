@@ -43,12 +43,6 @@ export class OrganizationEditComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // ckEditor Placeholder
-    // this.editor.create( document.querySelector('#editor'), { 
-    //   toolbar: { shouldNotGroupWhenFull: true}, 
-    //   placeholder: 'Descripción corta...',
-    // });
-
     this.ckeditorService.getHandlerTextEditor$().subscribe( (r) => { 
       this.textCKEditor = r; 
       
