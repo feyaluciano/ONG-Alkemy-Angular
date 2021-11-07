@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { News } from '../../../features/models/news.interface';
+import { CategoriesService } from '../../../features/services/categories/categories.service';
+import { PrivateBackofficeService } from '../../../features/backoffice/services/private-backoffice.service';
+import { Category } from 'src/app/features/models/category.model';
 
 @Component({
   selector: 'app-form',
@@ -10,11 +13,15 @@ import { News } from '../../../features/models/news.interface';
 })
 export class FormComponent implements OnInit {
 
-  @Input() titlePage: string = 'Formulario Creación Edición Novedades';
+  titlePage: string = 'Formulario Creación de Novedades';
 
   contentCKeditor!: string;
   imageB64!: string;
+
+  categories!: Category[];
+
   actionBtn: string = 'Crear';
+  
   edit: boolean = false;
 
   form: FormGroup = this.fb.group({
@@ -25,7 +32,10 @@ export class FormComponent implements OnInit {
 
   
 
-  constructor( private fb: FormBuilder, private ckeditorService: CkeditorService ) { }
+  constructor( 
+    private fb: FormBuilder, 
+    private ckeditorService: CkeditorService, 
+    private categoriesServices: PrivateBackofficeService ) { }
 
   ngOnInit(): void {
     this.ckeditorService.getHandlerTextEditor$().subscribe( (r) => { 
@@ -33,7 +43,17 @@ export class FormComponent implements OnInit {
       this.contentCKeditor = r; 
       
     });
+
+    this.categoriesServices.getEntities('http://ongapi.alkemy.org/api/categories').subscribe( categories => {
+      let c:any = categories;
+      this.categories = c.data;
+      console.log(this.categories);
+    });
+
+    
   }
+
+  
 
   uploadImg(event:any){    
 
@@ -43,6 +63,8 @@ export class FormComponent implements OnInit {
     const reader = new FileReader();
 
     if(event.target.value){
+
+      
 
       // .png o .jpg save img
       if(file.type == 'image/png' || file.type == 'image/jpg' || file.type == 'image/jpeg'){
@@ -60,9 +82,7 @@ export class FormComponent implements OnInit {
 
         
 
-      } else {
-        //this.imgError = true;
-      }
+      } 
     }
 
   }
@@ -75,6 +95,13 @@ export class FormComponent implements OnInit {
   createNews(){
 
     let date: string = (new Date()).toLocaleDateString() + " " + (new Date()).toLocaleTimeString();
+
+    if(this.contentCKeditor){
+      // nada
+    } else {
+      // sweetAlert
+      console.log('Campo obligatorio');
+    }
 
     
 
@@ -96,6 +123,10 @@ export class FormComponent implements OnInit {
       console.log(news);
     }
     
+  }
+
+  back(){
+    console.log(this.form);
   }
 
 
