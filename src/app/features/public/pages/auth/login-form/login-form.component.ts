@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { environment } from 'src/environments/environment';
-import { Data, User } from '../../../../models/User';
+import { User } from '../../../../models/User';
 
 @Component({
   selector: 'app-login-form',
@@ -46,6 +46,7 @@ export class LoginFormComponent  {
       this.userLogin = resp.data.user;
       this.token = resp.data.token;
       localStorage.setItem("userToken", JSON.stringify(this.token));
+      localStorage.setItem("user", JSON.stringify(this.userLogin));
       this.Router.navigate(["/dashboard"])
     })
 

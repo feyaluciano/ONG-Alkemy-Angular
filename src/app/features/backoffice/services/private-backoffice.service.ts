@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/core/services/http.service';
 import { Observable } from 'rxjs';
 import { UserStatusService } from 'src/app/core/services/user-status.service';
+import { environment } from 'src/environments/environment.prod';
 
 
 @Injectable({
@@ -48,27 +49,28 @@ export class PrivateBackofficeService {
     return  this.httpService.get<T>(url + id,false);              
   }    
 
-  createEntity<T>(url: string, entity: any): Observable<T> {
+
+
+  //methods private
+  createEntity<T>(params:string, entity: any): Observable<T> {
     
     this.setHeaders();
-    return this.httpService.post<T>(url, entity, true);
+    return this.httpService.post<T>(`${environment.apiUrl}${params}`, entity, true);
   }
 
-  updateEntity<T>(url: string, entity: any): Observable<T> {
+  updateEntity<T>(params: string, entity: any): Observable<T> {
     this.setHeaders();
-    return this.httpService.put<T>(url, entity, false);
+    return this.httpService.put<T>(`${environment.apiUrl}${params}`, entity, false);
   }     
 
-  /**
-   * Receive -parameter and object<T>-
-   * ex: url/users/355
-   * @param params 
-   * @returns Http response with the especific object deleted
-   */
-   deleteDataById<T>(params: string):Observable<T>{
+   deleteEntity<T>(params: string):Observable<T>{
     this.setHeaders();
-    return this.httpService.delete<T>( params, true);
+    return this.httpService.delete<T>(`${environment.apiUrl}${params}`, true);
   }
+     
+
+  
+
 
 }
 
