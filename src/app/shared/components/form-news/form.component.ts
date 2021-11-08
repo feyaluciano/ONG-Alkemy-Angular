@@ -123,10 +123,18 @@ export class FormComponent implements OnInit {
           slug: null,
           user_id: null
         }
-  
+        
+        // For edits a news it's necessary add a new imgBase64
         if(this.edit){
-          console.log('Actualizar novedad');
-          console.log(news);
+
+          let id: string = this.news.id?.toString()!;
+
+          this.newsServices.updateNews(id, news).subscribe( r => {
+            console.log(r.message);
+            this.form.reset();
+            this.ckeditorService.textEditor$.next("");
+            // agregar sweet alert
+          });
         } else {
           this.newsServices.createNews(news).subscribe( r => {
             console.log(r.message);
