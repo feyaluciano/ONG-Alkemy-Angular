@@ -45,7 +45,7 @@ export class PrivateBackofficeService {
   
 
  getEntityById<T>(url: string, id: string):Observable<T> {
-    return  this.httpService.get<T>(url + id,false);              
+    return  this.httpService.get<T>(url + id);              
   }    
 
   createEntity<T>(url: string, entity: any): Observable<T> {

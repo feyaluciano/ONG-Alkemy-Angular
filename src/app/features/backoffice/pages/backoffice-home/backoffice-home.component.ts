@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UsersService } from '../../../services/users/users.service';
 
 
 
@@ -30,11 +31,11 @@ export class BackofficeHomeComponent implements OnInit {
 
   });
 
-  constructor( private fb: FormBuilder, private router: Router ) { }
+  constructor( private fb: FormBuilder, private router: Router, private usersService: UsersService ) { }
 
   ngOnInit(): void {
 
-    
+      this.usersService.getUserById('357').subscribe(console.log);
 
   }
 
