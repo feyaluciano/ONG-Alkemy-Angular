@@ -11,12 +11,17 @@ import { News } from '../../models/news.interface';
 export class NewsService {
 
   apiUrl: string = environment.apiUrl;
-  news: string = '/news/'
+  news: string = '/news'
 
   constructor( private privateBackofficeService: PrivateBackofficeService ) { }
 
+  /**
+   * Returns a specific news
+   * @param id 
+   * @returns HttpResponse<News>
+   */
   getNewsById(id:string):Observable<HTTPResponse<News>>{
     
-    return this.privateBackofficeService.getEntityById(`${this.apiUrl}${this.news}`,id);
+    return this.privateBackofficeService.getEntityById(`${this.apiUrl}${this.news}/`,id);
   }
 }

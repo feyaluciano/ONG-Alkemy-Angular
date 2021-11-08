@@ -7,6 +7,7 @@ import { Category } from 'src/app/features/models/category.model';
 
 import Swal from 'sweetalert2';
 import { HTTPResponse } from '../../../features/models/HTTPResponse';
+import { CategoriesService } from '../../../features/services/categories/categories.service';
 
 
 @Component({
@@ -37,7 +38,7 @@ export class FormComponent implements OnInit {
   constructor( 
     private fb: FormBuilder, 
     private ckeditorService: CkeditorService, 
-    private privateService: PrivateBackofficeService ) {
+    private categoriesServices: CategoriesService ) {
 
       
 
@@ -53,11 +54,9 @@ export class FormComponent implements OnInit {
       
     });
 
-    // Cambiar por get categoriesServices
-    this.privateService.getEntities<HTTPResponse<Category[]>>('http://ongapi.alkemy.org/api/categories').subscribe( categories => {
-
-      this.categories = categories.data;
     
+    this.categoriesServices.getAllCategories().subscribe( c => {
+      this.categories = c.data;
     });
 
     if(this.news){
