@@ -56,7 +56,7 @@ export class PrivateBackofficeService {
 
   updateEntity<T>(url: string, entity: any): Observable<T> {
     this.setHeaders();
-    return this.httpService.put<T>(url, entity, false);
+    return this.httpService.put<T>(url, entity, true);
   }     
 
   /**

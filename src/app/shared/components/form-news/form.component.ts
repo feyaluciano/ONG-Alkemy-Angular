@@ -6,6 +6,7 @@ import { Category } from 'src/app/features/models/category.model';
 
 import Swal from 'sweetalert2';
 import { CategoriesService } from '../../../features/services/categories/categories.service';
+import { NewsService } from '../../../features/services/news/news.service';
 
 
 @Component({
@@ -36,7 +37,8 @@ export class FormComponent implements OnInit {
   constructor( 
     private fb: FormBuilder, 
     private ckeditorService: CkeditorService, 
-    private categoriesServices: CategoriesService ) {
+    private categoriesServices: CategoriesService,
+    private newsServices: NewsService ) {
 
       
 
@@ -126,8 +128,12 @@ export class FormComponent implements OnInit {
           console.log('Actualizar novedad');
           console.log(news);
         } else {
-          console.log('Crear novedad');
-          console.log(news);
+          this.newsServices.createNews(news).subscribe( r => {
+            console.log(r.message);
+            this.form.reset();
+            this.ckeditorService.textEditor$.next("");
+            // agregar sweet alert
+          });
         }
         
 

@@ -24,4 +24,17 @@ export class NewsService {
     
     return this.privateBackofficeService.getEntityById(`${this.apiUrl}${this.news}/`,id);
   }
+
+  /**
+   * Create a news
+   * @param news 
+   * @returns HttpResponse<News>
+   */
+  createNews(news:News):Observable<HTTPResponse<News>>{
+    return this.privateBackofficeService.createEntity(`${this.apiUrl}${this.news}`,news);
+  }
+
+  updateNews(id:String, news: News):Observable<HTTPResponse<News>>{
+    return this.privateBackofficeService.updateEntity(`${this.apiUrl}${this.news}/${id}`,news);
+  }
 }
