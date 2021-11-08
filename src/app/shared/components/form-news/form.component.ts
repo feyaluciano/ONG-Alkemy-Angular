@@ -7,6 +7,7 @@ import { Category } from 'src/app/features/models/category.model';
 import Swal from 'sweetalert2';
 import { CategoriesService } from '../../../features/services/categories/categories.service';
 import { NewsService } from '../../../features/services/news/news.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -38,7 +39,9 @@ export class FormComponent implements OnInit {
     private fb: FormBuilder, 
     private ckeditorService: CkeditorService, 
     private categoriesServices: CategoriesService,
-    private newsServices: NewsService ) {
+    private newsServices: NewsService,
+    private ActivatedRoute: ActivatedRoute,
+    private router: Router ) {
 
       
 
@@ -165,7 +168,9 @@ export class FormComponent implements OnInit {
   }
 
   back(){
-    console.log(this.form);
+    this.ckeditorService.textEditor$.next("");
+    this.form.reset();
+    this.router.navigate(['/backoffice/news']);
   }
 
 

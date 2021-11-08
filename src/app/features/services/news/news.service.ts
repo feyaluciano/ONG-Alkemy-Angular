@@ -35,6 +35,6 @@ export class NewsService {
   }
 
   updateNews(id:string, news: News):Observable<HTTPResponse<News>>{
-    return this.privateBackofficeService.updateEntity(`${this.apiUrl}${this.news}/${id}`,news);
+    return this.privateBackofficeService.updateEntity(`${this.news}/${id}`,news);
   }
 }
