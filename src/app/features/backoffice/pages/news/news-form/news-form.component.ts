@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
 import { News } from 'src/app/features/models/news.interface';
-import { PrivateBackofficeService } from '../../../services/private-backoffice.service';
+import { NewsService } from 'src/app/features/services/news/news.service';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class NewsFormComponent implements OnInit {
   form: boolean = false;
 
 
-  constructor( private activatedRoute: ActivatedRoute, private privateService: PrivateBackofficeService ) { }
+  constructor( private activatedRoute: ActivatedRoute, private newsServices: NewsService ) { }
 
   ngOnInit(): void {
 
@@ -28,8 +28,8 @@ export class NewsFormComponent implements OnInit {
 
       this.activatedRoute.params.subscribe( ({id}) => {
 
-        // cambiar por novedadesServices
-        this.privateService.getEntityById<HTTPResponse<News>>('http://ongapi.alkemy.org/api/news/', id).subscribe( r => {
+        
+        this.newsServices.getNewsById(id).subscribe( r => {
           
         
           this.news = r.data;          
