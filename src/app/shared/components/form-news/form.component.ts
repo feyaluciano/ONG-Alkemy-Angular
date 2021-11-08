@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { News } from '../../../features/models/news.interface';
-import Swal from 'sweetalert2';
 import { PrivateBackofficeService } from '../../../features/backoffice/services/private-backoffice.service';
 import { Category } from 'src/app/features/models/category.model';
-import { ActivatedRoute } from '@angular/router';
+
+import Swal from 'sweetalert2';
+import { HTTPResponse } from '../../../features/models/HTTPResponse';
+
 
 @Component({
   selector: 'app-form',
@@ -14,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FormComponent implements OnInit {
 
-  titlePage: string = 'Formulario Creación de Novedades';
+  @Input() news!: News;
 
   contentCKeditor!: string;
   imageB64!: string;
@@ -22,8 +24,9 @@ export class FormComponent implements OnInit {
   categories!: Category[];
 
   actionBtn: string = 'Crear';
-  
+
   edit: boolean = false;
+  
 
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(4)] ],
@@ -34,12 +37,15 @@ export class FormComponent implements OnInit {
   constructor( 
     private fb: FormBuilder, 
     private ckeditorService: CkeditorService, 
-    private categoriesServices: PrivateBackofficeService,
-    private activatedRoute: ActivatedRoute ) { }
+    private privateService: PrivateBackofficeService ) {
 
-  /**             despejar dudas con respecto a la parte de editar una novedad                        */
+      
 
-  ngOnInit(): void {    
+    }
+
+  
+
+  ngOnInit(): void {
 
     this.ckeditorService.getHandlerTextEditor$().subscribe( (r) => { 
 
@@ -47,11 +53,22 @@ export class FormComponent implements OnInit {
       
     });
 
-    this.categoriesServices.getEntities('http://ongapi.alkemy.org/api/categories').subscribe( categories => {
-      let c:any = categories;
-      this.categories = c.data;
-      //console.log(this.categories);
+    // Cambiar por get categoriesServices
+    this.privateService.getEntities<HTTPResponse<Category[]>>('http://ongapi.alkemy.org/api/categories').subscribe( categories => {
+
+      this.categories = categories.data;
+    
     });
+
+    if(this.news){
+      this.actionBtn = 'Editar'
+      this.edit = true;
+      this.form.get('name')?.setValue(this.news.name);
+      this.form.get('image')?.setValue(this.news.image);
+      this.imageB64 = this.news.image;
+      this.form.get('category_id')?.setValue(this.news.category_id);
+      this.ckeditorService.textEditor$.next(this.news.content);
+    }    
 
     
   }  
@@ -61,7 +78,9 @@ export class FormComponent implements OnInit {
     const file = event.target.files[0];
     const reader = new FileReader();
 
-    if(event.target.value){  
+    if(event.target.value){
+
+      this.form.get('image')?.setValue(file.name);
 
       // .png o .jpg save img
       if(file.type == 'image/png' || file.type == 'image/jpg' || file.type == 'image/jpeg'){
@@ -106,8 +125,16 @@ export class FormComponent implements OnInit {
           user_id: null
         }
   
-        // petición POST
-        console.log(news);
+        if(this.edit){
+          console.log('Actualizar novedad');
+          console.log(news);
+        } else {
+          console.log('Crear novedad');
+          console.log(news);
+        }
+        
+
+
       } else {
         Swal.fire({
           title: 'Error',

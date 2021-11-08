@@ -1,7 +1,11 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-12 mt-5">
-            <app-form></app-form>            
+            <h1> {{titlePage}}</h1>
+            <hr>
+            <!-- agregar spinner -->
+            <app-form [news]="news" *ngIf="form"></app-form>                      
         </div>
     </div>
 </div>
+

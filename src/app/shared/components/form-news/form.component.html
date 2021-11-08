@@ -1,5 +1,4 @@
-<h1> {{titlePage}}</h1>
-<hr>
+
 <div class="card border-dark mb-3 animate__animated animate__zoomIn">
 
     <form 
@@ -28,7 +27,7 @@
 
     <!-- image -->
     <div class="mb-3">
-        <input type="file" class="form-control" (change)="uploadImg($event)" formControlName="image">
+        <input type="file" class="form-control" (change)="uploadImg($event)">
     </div>
     <div class="mb-3" appMsgErrorForm messageError="Este campo es requerido" [valido]="errorMsg('image','required')">
     </div>
