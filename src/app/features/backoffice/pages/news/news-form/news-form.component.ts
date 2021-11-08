@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
 import { News } from 'src/app/features/models/news.interface';
 import { NewsService } from 'src/app/features/services/news/news.service';
 

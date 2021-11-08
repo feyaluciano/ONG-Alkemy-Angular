@@ -26,7 +26,7 @@ export class CategoriesService {
    * @returns HttpResponse<Category>
    */
   getAllCategories():Observable<HTTPResponse<Category[]>>{
-    console.log(`${this.apiUrl}${this.categories}`);
+    
     return this.privateBackofficeService.getEntities(`${this.apiUrl}${this.categories}`);
   }
 }

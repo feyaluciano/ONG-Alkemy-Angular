@@ -2,11 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { News } from '../../../features/models/news.interface';
-import { PrivateBackofficeService } from '../../../features/backoffice/services/private-backoffice.service';
 import { Category } from 'src/app/features/models/category.model';
 
 import Swal from 'sweetalert2';
-import { HTTPResponse } from '../../../features/models/HTTPResponse';
 import { CategoriesService } from '../../../features/services/categories/categories.service';
 
 
