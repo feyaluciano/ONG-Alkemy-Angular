@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 
 
+
 @Component({
   selector: 'app-backoffice-home',
   templateUrl: './backoffice-home.component.html',
@@ -33,8 +34,7 @@ export class BackofficeHomeComponent implements OnInit {
   constructor( private fb: FormBuilder, private router: Router ) { }
 
   ngOnInit(): void {
-
-    
+      
 
   }
 

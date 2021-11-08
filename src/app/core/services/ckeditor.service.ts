@@ -16,5 +16,5 @@ export class CkeditorService {
 
   constructor() {
     this.textEditor$ = new BehaviorSubject("");
-   }
+  }
 }

@@ -30,7 +30,7 @@ export class UsersService {
    * @returns User
    */
   getUserById(id:string):Observable<HTTPResponse<User>>{  
-    return this.privateBackofficeService.getEntityById(`${this.urlApi}${this._params}`, id);
+    return this.privateBackofficeService.getEntityById(`${this.urlApi}${this._params}/`, id);
     
   }
   /**

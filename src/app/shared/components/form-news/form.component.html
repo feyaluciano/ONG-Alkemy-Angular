@@ -1,0 +1,52 @@
+
+<div class="card border-dark mb-3 animate__animated animate__zoomIn">
+
+    <form 
+    [formGroup]="form"
+    autocomplete="off"
+    (ngSubmit)="createNews()">
+    
+    <!-- title -->
+    <div class="input-group mb-3">                    
+        <span class="input-group-text">Título</span>
+        <input type="text" class="form-control" formControlName="name">
+    </div>
+    <div class="mb-3" appMsgErrorForm messageError="Este campo es requerido"
+    [valido]="errorMsg('name','required')">
+    </div>
+    <div class="mb-3" appMsgErrorForm messageError="Mínimo 4 caracteres"
+        [valido]="errorMsg('name','minlength')">
+    </div>
+
+    <!-- description -->
+    <div class="mb-3">
+        <label for="shortDescription" class="form-label">Descripción</label>
+        <app-ckeditor></app-ckeditor>    
+    </div>
+
+    <!-- image -->
+    <div class="mb-3">
+        <input type="file" class="form-control" (change)="uploadImg($event)">
+    </div>
+    <div class="mb-3" appMsgErrorForm messageError="Este campo es requerido" [valido]="errorMsg('image','required')">
+    </div>
+
+    <!-- categories -->
+    <div class="input-group mb-3">                    
+        <label class="input-group-text" for="categories">Categorías</label>
+        <select class="form-select" id="categories" formControlName="category_id">
+            <option [value]="category.id" *ngFor="let category of categories; let i = index"> {{category.name}} </option>
+        </select>
+    </div>
+    <div class="mb-3" appMsgErrorForm messageError="Este campo es requerido"
+    [valido]="errorMsg('category_id','required')">
+    </div>
+    
+    <div class="float-end">
+        <button type="button" class="btn btn-primary mt-2 float-end" (click)="back()">Volver</button>
+        <button type="submit" class="btn btn-primary mt-2 float-end"> {{ actionBtn }} </button>
+    </div>
+    
+</form>
+        
+</div>
