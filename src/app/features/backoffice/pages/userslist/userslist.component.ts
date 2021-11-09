@@ -13,6 +13,8 @@ interface List {
 })
 export class UserslistComponent implements OnInit {
 
+
+  // change for :User[]
   usersList: List[] = [
     {
       name: 'Franco',
@@ -71,12 +73,18 @@ export class UserslistComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Change :List for :User
   deleteUser(user:List, index: number){
+
+    // HTTP DELETE
     console.log('Eliminar: ', user);
     console.log('index del usuario: ', index);
   }
 
   editUser(user: List){
+
+    // Router
+    console.log(`http://ongapi.alkemy.org/api/users/${user.id}`);
     console.log('Editar a: ', user);
   }
 
