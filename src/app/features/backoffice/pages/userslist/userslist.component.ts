@@ -77,15 +77,17 @@ export class UserslistComponent implements OnInit {
   deleteUser(user:List, index: number){
 
     // HTTP DELETE
-    console.log('Eliminar: ', user);
-    console.log('index del usuario: ', index);
+    
+    
   }
 
+  // Change :List for :User
   editUser(user: List){
 
-    // Router
-    console.log(`http://ongapi.alkemy.org/api/users/${user.id}`);
-    console.log('Editar a: ', user);
+    // Inject Router 
+    // navigate(... user.id)
+    
+    
   }
 
 }
