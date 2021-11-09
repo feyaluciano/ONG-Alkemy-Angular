@@ -8,7 +8,10 @@
 
         <div class="col-12 col-md-12 mt-3">
             <div class="table-responsive">
-                <table class="table table-striped table-hover ">
+                <table class="table table-striped table-hover caption-top">
+                    <caption>
+                        <a routerLink="/backoffice/users/create">Crear Usuario</a>
+                    </caption>
                     <thead>
                         <tr>
                             <th scope="col">n°</th>
@@ -22,7 +25,12 @@
                             <th scope="row"> {{i+1}} </th>
                             <td> {{user.name}} </td>
                             <td> {{user.email}} </td>
-                            <td>Eliminar Editar</td>   
+                            <td>
+                                <div class="i-container">
+                                    <i class="fas fa-user-edit fa-lg text-primary m-1" (click)="editUser(user)"></i>
+                                    <i class="far fa-trash-alt fa-lg text-danger m-1" (click)="deleteUser(user,i)"></i>
+                                </div>
+                            </td>   
                         </tr>
                     </tbody>
                 </table>
