@@ -11,6 +11,7 @@ import { OrganizationComponent } from './pages/organization/organization.compone
 import { SlideComponent } from './pages/slide/slide.component';
 import { OrganizationEditComponent } from './pages/organization-edit/organization-edit.component';
 import { NewsFormComponent } from './pages/news/news-form/news-form.component';
+import { UserslistComponent } from './pages/userslist/userslist.component';
 
 
 
@@ -32,7 +33,8 @@ const routes: Routes = [
       { path: 'organization', component: OrganizationComponent },
       { path: 'organization/edit', component: OrganizationEditComponent },
       { path: 'news', component: NewsFormComponent },
-      { path: 'news/:id', component: NewsFormComponent}
+      { path: 'news/:id', component: NewsFormComponent},
+      { path: 'users', component: UserslistComponent }
     ]
     }
 ]
