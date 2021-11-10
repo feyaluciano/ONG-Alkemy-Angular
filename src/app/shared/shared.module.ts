@@ -10,6 +10,8 @@ import { MsgErrorFormDirective } from './directives/msg-error-form.directive';
 import { CkeditorComponent } from './components/ckeditor/ckeditor.component';
 import { HtmlPipe } from './pipes/html/html.pipe';
 import { FormComponent } from './components/form-news/form.component';
+import { StandarDialogComponent } from './components/standar-dialog/standar-dialog.component';
+import { MaterialModule } from '../features/material/material.module';
 
 
 
@@ -22,13 +24,16 @@ import { FormComponent } from './components/form-news/form.component';
     MsgErrorFormDirective,
     CkeditorComponent,
     HtmlPipe,
-    FormComponent
+    FormComponent,
+    StandarDialogComponent,
+    
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     CKEditorModule,
-    FormsModule   
+    FormsModule,  
+    MaterialModule     
   ],
   exports: [
     CarouselComponent,
@@ -37,7 +42,9 @@ import { FormComponent } from './components/form-news/form.component';
     MsgErrorFormDirective,
     CkeditorComponent,
     HtmlPipe,
-    FormComponent
+    FormComponent,     
+    StandarDialogComponent,
+    MaterialModule       
   ]
 })
 export class SharedModule { }

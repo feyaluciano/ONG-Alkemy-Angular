@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CkeditorService } from 'src/app/core/services/ckeditor.service';
@@ -9,6 +10,7 @@ import { Activity } from 'src/app/features/models/Activity';
 import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
 import { ImageFile } from 'src/app/features/models/ImageFile';
 import { ActivitiesService } from 'src/app/features/services/activities/activities.service';
+import { StandarDialogComponent } from 'src/app/shared/components/standar-dialog/standar-dialog.component';
 import { environment } from 'src/environments/environment';
 import Swal from'sweetalert2';
 import { PrivateBackofficeService } from '../../services/private-backoffice.service';
@@ -32,6 +34,9 @@ export class ActivityFormComponent implements OnInit {
   public imageError=false;
   public anImage!:string;
 
+
+  
+
   constructor(
     private userStatusService: UserStatusService,
     private _builder: FormBuilder,
@@ -39,7 +44,8 @@ export class ActivityFormComponent implements OnInit {
     private route: ActivatedRoute,
     private httpService: HttpService,
     private ckeditorSvc: CkeditorService,
-    private activitiesService:ActivitiesService
+    private activitiesService:ActivitiesService,
+    public dialog: MatDialog
   ) {
     this.form = this._builder.group({
       name: ["", [Validators.required]],
@@ -97,8 +103,21 @@ export class ActivityFormComponent implements OnInit {
       Swal.fire(this.alertMessage.toString()).then(() => {});
     }
   }
-
+  
   async ngOnInit(): Promise<void> {
+
+    let dialogRef = this.dialog.open(StandarDialogComponent, {
+      height: '300px',
+      width: '400px',
+      data: {type: "help", titleToShow:"",messageToShow: "Estas seguro de eliminar esta actividad?",showButtonsOkCancel:true},
+    });
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      alert(`Si es ok ejecutar accion por ok, por ejemplo eliminar: ${result}`); 
+    });
+
+
     if (typeof this.route.snapshot.params["idActivity"] !== "undefined") {
       this.editing = true;
       this.action = "Editar actividad";

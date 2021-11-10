@@ -19,7 +19,7 @@ import { SlideComponent } from './pages/slide/slide.component';
 
 import { OrganizationEditComponent } from './pages/organization-edit/organization-edit.component';
 import { NewsFormComponent } from './pages/news/news-form/news-form.component';
-import { UserslistComponent } from './pages/userslist/userslist.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -38,8 +38,6 @@ import { UserslistComponent } from './pages/userslist/userslist.component';
     OrganizationEditComponent,
     OrganizationComponent,
     NewsFormComponent,
-    UserslistComponent
-    
     
   ],
   imports: [
@@ -47,9 +45,12 @@ import { UserslistComponent } from './pages/userslist/userslist.component';
     BackofficeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    MaterialModule, 
+    SharedModule,
+    
+   
   ],
-  exports: [HeaderBackofficeComponent],
+  exports: [HeaderBackofficeComponent ],
 
  })
 export class BackofficeModule { }
