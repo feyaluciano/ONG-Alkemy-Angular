@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SlidesComponent implements OnInit {
 
+  action: string = 'Lista de Slides';
+
   constructor() { }
 
   ngOnInit(): void {
