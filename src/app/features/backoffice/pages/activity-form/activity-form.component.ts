@@ -104,20 +104,9 @@ export class ActivityFormComponent implements OnInit {
     }
   }
   
-  async ngOnInit(): Promise<void> {
+  ngOnInit() {
 
-    let dialogRef = this.dialog.open(StandarDialogComponent, {
-      height: '300px',
-      width: '400px',
-      data: {type: "help", titleToShow:"",messageToShow: "Estas seguro de eliminar esta actividad?",showButtonsOkCancel:true},
-    });
-
-
-    dialogRef.afterClosed().subscribe(result => {
-      alert(`Si es ok ejecutar accion por ok, por ejemplo eliminar: ${result}`); 
-    });
-
-
+        
     if (typeof this.route.snapshot.params["idActivity"] !== "undefined") {
       this.editing = true;
       this.action = "Editar actividad";
@@ -150,7 +139,14 @@ export class ActivityFormComponent implements OnInit {
                  break; 
               } 
            }    
-           Swal.fire(errorMessage.toString())                 
+           
+           let dialogRef = this.dialog.open(StandarDialogComponent, {
+            height: '300px',
+            width: '400px',
+            data: {type: "error", titleToShow:"",messageToShow: errorMessage,showButtonsOkCancel:false},
+          });
+
+
         }
         );
        
