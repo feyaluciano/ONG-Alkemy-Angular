@@ -104,7 +104,7 @@ export class ActivityFormComponent implements OnInit {
     }
   }
   
-  async ngOnInit(): Promise<void> {
+   ngOnInit() {
     
     if (typeof this.route.snapshot.params["idActivity"] !== "undefined") {
       this.editing = true;
