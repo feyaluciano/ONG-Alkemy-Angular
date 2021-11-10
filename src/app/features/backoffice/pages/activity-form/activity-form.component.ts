@@ -9,7 +9,7 @@ import { Activity } from 'src/app/features/models/Activity';
 import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
 import { ImageFile } from 'src/app/features/models/ImageFile';
 import { ActivitiesService } from 'src/app/features/services/activities/activities.service';
-import { environment } from 'src/environments/environment';
+import { environment} from 'src/environments/environment';
 import Swal from'sweetalert2';
 import { PrivateBackofficeService } from '../../services/private-backoffice.service';
 
