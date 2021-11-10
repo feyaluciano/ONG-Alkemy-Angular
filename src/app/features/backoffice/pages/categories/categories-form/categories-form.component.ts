@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CkeditorService } from '../../../../../core/services/ckeditor.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/core/services/http.service';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
-import { Router, ActivatedRoute } from '@angular/router';
+import { CkeditorService } from '../../../../../core/services/ckeditor.service';
 import { ImageFile } from '../../../../models/ImageFile';
 import { CategoriesService } from '../../../../services/categories/categories.service';
 
