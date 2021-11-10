@@ -34,15 +34,10 @@
               "src/assets"
             ],
             "styles": [
-<<<<<<< HEAD
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss",             
-              "src/assets/css/bootstrap.min.css",
-              "src/assets/css/blog.css",
-=======
+              "src/styles.scss",                                                                   
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss",              
->>>>>>> main
               "node_modules/animate.css/animate.min.css"
             ],
             "scripts": [
