@@ -12,9 +12,5 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  tituloprueba:string = "titulo prueba";
 
-  descripcionprueba:string = "descripcion prueba"
-
-  image ="../../../../../assets/images/header1.png"
 }
