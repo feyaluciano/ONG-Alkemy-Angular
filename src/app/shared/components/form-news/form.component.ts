@@ -40,7 +40,6 @@ export class FormComponent implements OnInit {
     private ckeditorService: CkeditorService, 
     private categoriesServices: CategoriesService,
     private newsServices: NewsService,
-    private ActivatedRoute: ActivatedRoute,
     private router: Router ) {
 
       
@@ -170,7 +169,7 @@ export class FormComponent implements OnInit {
   back(){
     this.ckeditorService.textEditor$.next("");
     this.form.reset();
-    this.router.navigate(['/backoffice/news']);
+    this.router.navigate(['/backoffice/dashboard']);
   }
 
 
