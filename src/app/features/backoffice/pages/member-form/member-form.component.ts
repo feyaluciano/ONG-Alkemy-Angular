@@ -5,7 +5,7 @@ import { CkeditorService } from 'src/app/core/services/ckeditor.service';
 import { HttpService } from 'src/app/core/services/http.service';
 import { ImageFile } from 'src/app/features/models/ImageFile';
 import { Member } from 'src/app/features/models/Member';
-import { environment } from 'src/environments/environment.local';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -65,8 +65,7 @@ export class MemberFormComponent implements OnInit {
     member.id = this.aMember.id;
     member.image = this.anImage;
     this.httpService
-      // .put(environment.apiUrl + "/members/" + this.aMember.id, member)
-      .put(`${environment.membersUrlApi}/${this.aMember.id}`, member)
+      .put(`${environment.membersApiUrl}/${this.aMember.id}`, member)
       .subscribe((result) => {
         Swal.fire(this.alertMessage.toString()).then(() => {
           this.router.navigate(["/dashboard"]);
@@ -79,8 +78,7 @@ export class MemberFormComponent implements OnInit {
     this.aMember.id = "0";
     this.aMember.image = this.anImage;
     this.httpService
-      // .post(environment.apiUrl + "/members", member)
-      .post(environment.membersUrlApi, member)
+      .post(environment.membersApiUrl, member)
       .subscribe((result) => {
         let resultData: any = JSON.parse(JSON.stringify(result));
         this.alertMessage = resultData.message;
@@ -116,8 +114,7 @@ export class MemberFormComponent implements OnInit {
   loadEntity() {
     this.editing = true;
     this.action = "Edit Member";
-    // const url: string = environment.apiUrl + "/members/" + this.route.snapshot.params["idMember"];
-    const url: string = `${environment.membersUrlApi}/${this.route.snapshot.params["idMember"]}`;
+    const url: string = `${environment.membersApiUrl}/${this.route.snapshot.params["idMember"]}`;
     this.httpService.get(url).subscribe((result) => {
       let resultData: any = JSON.parse(JSON.stringify(result));
       this.aMember = JSON.parse(JSON.stringify(resultData.data));
