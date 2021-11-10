@@ -16,4 +16,8 @@ export class SlidesService {
   getSlides(url: string): Observable<HTTPResponse<Slide>> {
     return this.backOfficeSvc.getEntities(url);
   }
+
+  deleteSlide(params: string): Observable<HTTPResponse<Slide>> {
+    return this.backOfficeSvc.deleteEntity(params);
+  }
 }
