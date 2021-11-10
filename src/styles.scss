@@ -1,10 +1,13 @@
 /* stylelint-disable selector-list-comma-newline-after */
 
-@import '/src/assets/fonts/fonts.scss';
+/* Testing font family */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+// font-family: 'Roboto Condensed', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto+Condensed:wght@300&display=swap');
+// font-family: 'Playfair Display', serif;
 
 /* Animate CSS*/
 @import 'animate.css/animate.min';
-
 
 .text-error-form{
   color:#FF084E

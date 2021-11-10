@@ -104,8 +104,13 @@ export class ActivityFormComponent implements OnInit {
     }
   }
   
-  ngOnInit() {
+  async ngOnInit() {
 
+    let dialogRef = this.dialog.open(StandarDialogComponent, {
+      height: '300px',
+      width: '400px',
+      data: {type: "help", titleToShow:"",messageToShow: "Estas seguro de eliminar esta actividad?",showButtonsOkCancel:true},
+    });
         
     if (typeof this.route.snapshot.params["idActivity"] !== "undefined") {
       this.editing = true;

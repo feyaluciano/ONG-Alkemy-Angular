@@ -50,7 +50,7 @@ import { MaterialModule } from '../material/material.module';
     
    
   ],
-  exports: [HeaderBackofficeComponent ],
+  exports: [HeaderBackofficeComponent, ],
 
  })
 export class BackofficeModule { }
