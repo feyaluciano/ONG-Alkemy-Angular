@@ -23,12 +23,12 @@
   </div>
 
   <div mat-dialog-content>
-    <h1 mat-dialog-title style="padding-top: 30px;text-align: center">{{data.messageToShow}}</h1>
+    <h1 mat-dialog-title class="messagge-to-show">{{data.messageToShow}}</h1>
   </div>
 
 
-  <div class="example-button-row" *ngIf="data.showButtonsOkCancel">
-    <button (click)="closeDialog('ok')" mat-stroked-button style="margin-right: 5px;margin-top: 5px;">Aceptar</button>
+  <div class="button-ok-cancel" *ngIf="data.showButtonsOkCancel">
+    <button (click)="closeDialog('ok')" mat-stroked-button class="button-accept-dialog">Aceptar</button>
     <button (click)="closeDialog('')" mat-stroked-button>Cancelar</button>
   </div>
 
