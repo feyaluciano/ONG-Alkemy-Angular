@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   apiUrl: '',
   membersApiUrl: '',
-  activityApiUrl: ''
+  activityApiUrl: '',
+  slidesApiUrl:''
 };
 
 /*
