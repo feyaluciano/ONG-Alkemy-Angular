@@ -3,9 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiUrl: '',
-  membersApiUrl: ''
+  production: false,    
+  apiUrl: "http://ongapi.alkemy.org/api",
+  activitiesApiUrl: ""
 };
 
 /*

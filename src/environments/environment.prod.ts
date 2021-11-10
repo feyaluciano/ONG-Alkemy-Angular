@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
-  apiUrl: '',
-  membersApiUrl: ''
+  production: false,    
+  apiUrl: "",
+  activitiesApiUrl: ""
 };
