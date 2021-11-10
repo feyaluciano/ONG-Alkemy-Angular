@@ -105,7 +105,11 @@ export class ActivityFormComponent implements OnInit {
   }
   
   ngOnInit() {
-
+    let dialogRef = this.dialog.open(StandarDialogComponent, {
+      height: '300px',
+      width: '400px',
+      data: {type: "error", titleToShow:"",messageToShow: "aa",showButtonsOkCancel:false},
+    });
         
     if (typeof this.route.snapshot.params["idActivity"] !== "undefined") {
       this.editing = true;
