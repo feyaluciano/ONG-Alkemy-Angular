@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl:"http://ongapi.alkemy.org/api",
-  activity: "http://ongapi.alkemy.org/api/activities/",
+  apiUrl: '',
+  membersApiUrl: '',
+  activityApiUrl: ''
 };
 
 /*
