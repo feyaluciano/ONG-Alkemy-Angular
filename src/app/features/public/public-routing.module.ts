@@ -8,6 +8,7 @@ import { RegisterFormComponent } from './pages/auth/register-form/register-form.
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NewsFormComponent } from './pages/news/news-form/news-form.component';
+import { TestimonialFormComponent } from './pages/testimonials/testimonial-form/testimonial-form.component';
 import { DetailComponent } from './views/activities/detail/detail.component';
 
 
@@ -28,7 +29,8 @@ const routes: Routes = [
           { path: 'actividades/:id', component: DetailComponent },
           { path: 'contacto', component: ContactComponent },
           { path: 'actividades', component: ActivitiesComponent },
-          { path: 'novedades', component: NewsFormComponent }       
+          { path: 'novedades', component: NewsFormComponent },
+          { path: 'testimonios', component: TestimonialFormComponent }
     ]
     }
 ]
