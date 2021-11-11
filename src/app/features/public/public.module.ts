@@ -16,6 +16,7 @@ import { DetailComponent } from './views/activities/detail/detail.component';
 import { ActivityComponent } from './components/activity/activity.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ActivitiesComponent } from './pages/activities/activities.component';
+import { CoreModule } from "src/app/core/core.module";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ActivitiesComponent } from './pages/activities/activities.component';
     PublicRoutingModule,
     ReactiveFormsModule,
     BackofficeRoutingModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   exports: [
     HomeComponent,

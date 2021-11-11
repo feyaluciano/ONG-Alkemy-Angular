@@ -43,6 +43,7 @@ import { SlidesComponent } from './pages/slides/slides.component';
     UserslistComponent,
     SlidesComponent
     
+    
   ],
   imports: [
     CommonModule,
