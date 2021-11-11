@@ -3,6 +3,8 @@ import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 
+import { StoreModule} from "@ngrx/store"
+import { activityReducer } from "./state/activities/activities.reducer";
  
 @NgModule({
   declarations: [],
@@ -14,7 +16,7 @@ import { AppRoutingModule } from "./app-routing.module";
     AppRoutingModule,
     RouterModule,
     
-    
+    StoreModule.forFeature("activities", activityReducer)
     
   ],
 })

@@ -6,7 +6,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './features/material/material.module';
+
+
+import { StoreModule} from "@ngrx/store"
+
 
 @NgModule({
   declarations: [
@@ -18,6 +21,8 @@ import { MaterialModule } from './features/material/material.module';
     FeaturesModule,
     SharedModule,
     BrowserAnimationsModule,
+
+    StoreModule.forRoot({})
     
   ],
   exports: [],
