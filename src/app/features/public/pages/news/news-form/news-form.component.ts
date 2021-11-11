@@ -21,7 +21,8 @@ export class NewsFormComponent implements OnInit {
     this.newsSvc.getNews()
       .subscribe((resp: any) => {
         setTimeout(() => {
-          this.news = resp.data;
+          const news = resp.data;
+          this.news = news.slice(0, 4);
         }, 500);
       },
       (error: any) => {

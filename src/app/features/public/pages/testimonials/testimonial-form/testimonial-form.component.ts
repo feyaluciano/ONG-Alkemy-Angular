@@ -21,7 +21,8 @@ export class TestimonialFormComponent implements OnInit {
     this.testimonialsSvc.getTestimonials(environment.testimonialsApiUrl)
       .subscribe((resp: any) => {
         setTimeout(() => {
-          this.testimonials = resp.data;       
+          const testimonials = resp.data;
+          this.testimonials = testimonials.slice(0, 4);       
         }, 500);
       },
       (error) => {
