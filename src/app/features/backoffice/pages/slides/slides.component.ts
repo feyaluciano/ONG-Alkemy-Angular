@@ -14,6 +14,7 @@ export class SlidesComponent implements OnInit {
 
   action: string = 'Slides';
   slides!: Slide[];
+  slidesCompleted: boolean = false;
 
   constructor(
     private slidesSvc: SlidesService,
@@ -22,7 +23,18 @@ export class SlidesComponent implements OnInit {
     this.slidesSvc.getSlides(environment.slidesApiUrl)
       .subscribe((resp: any) => {
         this.slides = resp.data;
-      })
+      }, (error: any) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Algo salió mal',
+          showConfirmButton: true
+        });
+      }, () => {
+        setTimeout(() => {
+          this.slidesCompleted = true;
+        }, 1000); // Wait a second after completing the subscribe
+      });
   }
 
   ngOnInit(): void {
