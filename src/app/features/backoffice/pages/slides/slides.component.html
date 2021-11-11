@@ -18,8 +18,14 @@
       <div class="m-4">
         <h3 class="text-center">{{action}}</h3>
       </div>
-      <div class="m-4">
-        <!--  -->
+      <div class="d-flex justify-content-center">
+        <app-spinner
+          color="primary"
+          mode="indeterminate"
+          *ngIf="!slidesCompleted"
+        ></app-spinner>
+      </div>
+      <div class="m-4" *ngIf="slidesCompleted">
         <div class="table-responsive">
           <table class="table caption-top table-hover">
             <caption>
@@ -65,7 +71,6 @@
             </tbody>
           </table>
         </div>
-        <!--  -->
       </div>
     </div>
   </div>
