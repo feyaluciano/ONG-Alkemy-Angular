@@ -1,8 +1,10 @@
 
 import { NgModule } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatDialogModule} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 @NgModule({ 
   imports:[MatFormFieldModule    
@@ -10,7 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
   exports: [         
     MatFormFieldModule, 
     MatDialogModule,
-    MatButtonModule,    
+    MatButtonModule,
+    MatProgressSpinnerModule,
   ]
 })
 export class MaterialModule { }

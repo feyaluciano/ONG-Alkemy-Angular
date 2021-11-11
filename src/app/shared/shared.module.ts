@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { MaterialModule } from '../features/material/material.module';
 import { CarouselComponent } from './carousel/carousel.component';
@@ -36,7 +35,6 @@ import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
     CKEditorModule,
     FormsModule,  
     MaterialModule,
-    MatProgressSpinnerModule     
   ],
   exports: [
     CarouselComponent,
@@ -48,7 +46,6 @@ import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
     FormComponent,     
     StandarDialogComponent,
     MaterialModule,
-    MatProgressSpinnerModule,
     SpinnerComponent       
   ]
 })
