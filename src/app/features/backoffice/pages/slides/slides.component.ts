@@ -33,7 +33,7 @@ export class SlidesComponent implements OnInit {
       }, () => {
         setTimeout(() => {
           this.slidesCompleted = true;
-        }, 1000); // Wait a second after completing the subscribe
+        }, 500); // Wait 0.5 second after completing the subscribe
       });
   }
 
