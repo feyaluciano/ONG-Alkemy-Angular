@@ -4,6 +4,7 @@ export interface Slide {
     slug?: string,
     description?: string,
     image?: string,
+    order?: number;
     user_id?: string,
     category_id?: string,
     created_at?: string | null;
