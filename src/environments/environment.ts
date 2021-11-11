@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: '',
-  membersApiUrl: '',
-  slidesApiUrl:''
+  apiUrl: "",
+  activitiesApiUrl: "",
+  membersApiUrl: ""
 };
 
 /*
