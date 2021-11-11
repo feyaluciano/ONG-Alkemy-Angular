@@ -73,7 +73,7 @@ export class ActivityFormComponent implements OnInit {
         activity.id = this.anActivity.id;
         activity.image = this.anImage; 
         const url: string =
-        environment.apiUrl +"/activities/";     
+        environment.activitiesApiUrl   
         let req:Observable<HTTPResponse<Activity>>= this.activitiesService.updateActivity(url,activity);         
         req.subscribe((response) => {         
           let resultData: HTTPResponse<Activity> = response;   
@@ -86,7 +86,7 @@ export class ActivityFormComponent implements OnInit {
         this.anActivity.id = "0";
         this.anActivity.image = this.anImage;
         const url: string =
-        environment.apiUrl +"/activities/";     
+        environment.activitiesApiUrl     
         const req:Observable<HTTPResponse<Activity>>= this.activitiesService.createActivity(url,activity);
         req.subscribe((response) => {
           let resultData: any = JSON.parse(JSON.stringify(response));
@@ -110,7 +110,7 @@ export class ActivityFormComponent implements OnInit {
       this.editing = true;
       this.action = "Editar actividad";
       const url: string =
-        environment.apiUrl +"/activities/";     
+        environment.activitiesApiUrl;     
         const req:Observable<HTTPResponse<Activity>>= this.activitiesService.getActivityById(url,this.route.snapshot.params["idActivity"]); 
         req.subscribe((response) => {
           let resultData: HTTPResponse<Activity> = response;         
