@@ -19,6 +19,7 @@ import { SlideComponent } from './pages/slide/slide.component';
 
 import { OrganizationEditComponent } from './pages/organization-edit/organization-edit.component';
 import { NewsFormComponent } from './pages/news/news-form/news-form.component';
+import { MaterialModule } from '../material/material.module';
 import { UserslistComponent } from './pages/userslist/userslist.component';
 import { SlidesComponent } from './pages/slides/slides.component';
 
@@ -42,16 +43,18 @@ import { SlidesComponent } from './pages/slides/slides.component';
     UserslistComponent,
     SlidesComponent
     
-    
   ],
   imports: [
     CommonModule,
     BackofficeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    MaterialModule, 
+    SharedModule,
+    
+   
   ],
-  exports: [HeaderBackofficeComponent],
+  exports: [HeaderBackofficeComponent ],
 
  })
 export class BackofficeModule { }

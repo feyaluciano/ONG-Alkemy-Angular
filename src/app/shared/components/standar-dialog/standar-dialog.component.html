@@ -1,0 +1,60 @@
+<ng-container *ngTemplateOutlet="template">
+</ng-container>
+
+
+<ng-template #dialogInfo>
+<div class="content-standar-dialog">
+  <div>   
+    <span  class="material-icons animate__animated animate__rubberBand icon-standar-dialog-info">      
+      info
+    </span>
+  </div>
+  <div style="text-align: center;">
+    {{data.titleToShow}}
+  </div>
+  <div mat-dialog-content>
+    <h1 mat-dialog-title class="messagge-to-show">{{data.messageToShow}}</h1>
+  </div>  
+</div>
+</ng-template>
+
+<ng-template #dialogError>
+  <div class="content-standar-dialog">
+    <div>   
+      <span  class="material-icons animate__animated animate__rubberBand icon-standar-dialog-error">      
+        error_outline
+      </span>
+    </div>
+    <div style="text-align: center;">
+      {{data.titleToShow}}
+    </div>
+    <div mat-dialog-content>
+      <h1 mat-dialog-title class="messagge-to-show">{{data.messageToShow}}</h1>
+    </div>  
+  </div>
+  </ng-template>
+
+
+  <ng-template #dialogConfirm>
+    <div class="content-standar-dialog">
+      <div>   
+        <span  class="material-icons animate__animated animate__rubberBand icon-standar-dialog-help">      
+          help
+        </span>
+      </div>
+      <div style="text-align: center;">
+        {{data.titleToShow}}
+      </div>
+      <div mat-dialog-content>
+        <h1 mat-dialog-title class="messagge-to-show">{{data.messageToShow}}</h1>
+      </div>  
+      <div  *ngIf="data.showButtonsOkCancel">
+        <button (click)="closeDialog('ok')" mat-stroked-button class="button-accept-dialog">Aceptar</button>
+        <button (click)="closeDialog('')" mat-stroked-button>Cancelar</button>
+      </div>
+    </div>
+    </ng-template>
+
+
+
+
