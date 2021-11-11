@@ -15,6 +15,7 @@ import { RegisterFormComponent } from "./pages/auth/register-form/register-form.
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from "./pages/home/home.component";
 import { NewsFormComponent } from "./pages/news/news-form/news-form.component";
+import { TestimonialFormComponent } from "./pages/testimonials/testimonial-form/testimonial-form.component";
 import { PublicRoutingModule } from "./public-routing.module";
 import { DetailComponent } from './views/activities/detail/detail.component';
 
@@ -33,7 +34,8 @@ import { DetailComponent } from './views/activities/detail/detail.component';
     ActivityComponent, 
     ContactComponent, 
     ActivitiesComponent,
-    NewsFormComponent
+    NewsFormComponent,
+    TestimonialFormComponent
   ],
   imports: [
     CommonModule,
