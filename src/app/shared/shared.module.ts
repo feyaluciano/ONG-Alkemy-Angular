@@ -11,6 +11,8 @@ import { CkeditorComponent } from './components/ckeditor/ckeditor.component';
 import { HtmlPipe } from './pipes/html/html.pipe';
 import { FormComponent } from './components/form-news/form.component';
 import { CardComponent } from './card/card.component';
+import { ProgressComponent } from './progress/progress.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -24,13 +26,16 @@ import { CardComponent } from './card/card.component';
     CkeditorComponent,
     HtmlPipe,
     FormComponent,
-    CardComponent
+    CardComponent,
+    ProgressComponent,
+  
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     CKEditorModule,
     FormsModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     CarouselComponent,
@@ -39,7 +44,8 @@ import { CardComponent } from './card/card.component';
     MsgErrorFormDirective,
     CkeditorComponent,
     HtmlPipe,
-    FormComponent,CardComponent
+    FormComponent,CardComponent,
+    ProgressComponent
   ]
 })
 export class SharedModule { }
