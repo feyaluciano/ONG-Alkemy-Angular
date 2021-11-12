@@ -20,6 +20,8 @@ import { SlideComponent } from './pages/slide/slide.component';
 import { OrganizationEditComponent } from './pages/organization-edit/organization-edit.component';
 import { NewsFormComponent } from './pages/news/news-form/news-form.component';
 import { UserslistComponent } from './pages/userslist/userslist.component';
+import { ActivitiesComponent } from './pages/activities/activities.component';
+
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { UserslistComponent } from './pages/userslist/userslist.component';
     OrganizationEditComponent,
     OrganizationComponent,
     NewsFormComponent,
-    UserslistComponent
+    UserslistComponent,
+    ActivitiesComponent
     
     
   ],
