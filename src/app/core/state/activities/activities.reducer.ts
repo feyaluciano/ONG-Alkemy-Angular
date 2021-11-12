@@ -1,8 +1,41 @@
+import { createReducer, on } from "@ngrx/store"
+import { Activity } from "src/app/features/models/Activity";
+import { User } from "src/app/features/models/User";
+import { addActivity,removeActivity } from   './activities.actions';
+
+export let initialState: Activity[] = [];
+const tarea1: Activity = {
+  id: '1',
+  name: 'la actividad 1',
+  description: 'la descrtppp'
+}
+initialState.push(tarea1);
+
+
+export const activityReducer = createReducer(
+    initialState,
+    //El Reducer recibe el estado actual, y la actividad a agregar.
+    //Como el estado es inmutable, clono (...) el estado actual, elimino, o borro o hago la accion necesaria y lo retorno.
+    //al retornarlo este será el array que se tendrá en el store.
+    on(addActivity, (state, { activity }) => {  
+      let activities:Activity[]= [...state];
+      activities.push(activity);    
+      return activities;      
+    }),
+    on(removeActivity, (state,  activity ) => {        
+      let activities:Activity[]= [...state];      
+      let position=activities.findIndex(x => x.id === activity.id)
+      activities.splice(position,1);
+      return activities;      
+    })
+
+);
+
 
 // 1 - Importaciones
 
 //import { ActivitiesActions } from "./activities.actions";
-
+/*
 import { createReducer } from '@ngrx/store';
 import { on } from 'cluster';
 import { Activity } from 'src/app/features/models/Activity';

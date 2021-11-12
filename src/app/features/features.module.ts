@@ -5,8 +5,8 @@ import { AppRoutingModule } from "./app-routing.module";
 
 import { StoreModule} from "@ngrx/store"
 import { EffectsModule } from "@ngrx/effects";
-import { activityReducer } from "../core/state/activities/activities.reducer";
 import { ActivityEffect } from "../core/state/activities/activities.effects";
+import { activityReducer } from "../core/state/activities/activities.reducer";
  
 @NgModule({
   declarations: [],

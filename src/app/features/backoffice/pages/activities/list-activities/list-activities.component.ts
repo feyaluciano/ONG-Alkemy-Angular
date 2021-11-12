@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 
 
 import { Store, select } from '@ngrx/store';
-import  *  as ActionsActivities from 'src/app/core/state/activities/activities.actions';
+import  {addActivity,removeActivity }   from 'src/app/core/state/activities/activities.actions';
 import { listActivities } from 'src/app/core/state/activities/activities.selector';
 //import { invokeActivityAPI } from 'src/app/features/state/activities/activities.actions';
 
@@ -41,11 +41,11 @@ export class ListActivitiesComponent implements OnInit {
 
   //preguntar ????????????? COMO hacer esto sin selector, ya que se trae todas las activiadaes del store, se debe traer y clonar el array? o como?
   
-  // allActivities$ = this.store.pipe(
-  //   select(listActivities())
-  // ).subscribe(result=>{    
-  //     this.listActivities=result;
-  //  });
+  allActivities$ = this.store.pipe(
+    select(listActivities())
+  ).subscribe(result=>{    
+      this.listActivities=result;
+   });
 
 // allActivities$ = this.store.pipe(
 //   select(listActivities())
@@ -61,18 +61,22 @@ export class ListActivitiesComponent implements OnInit {
     
 
     addActivity() {
-      this.store.dispatch(new ActionsActivities.AddActivity(this.tarea2) )
+      this.store.dispatch(addActivity({activity: this.tarea2})); 
     }
 
+    removeActivity(id:string) {      
+      const activityToDelete:Activity={id}
+      this.store.dispatch(removeActivity( activityToDelete)); 
+    }
 
   ngOnInit() {
 
 
-    this.store.select('activities').subscribe(result=>{    
-           this.listActivities=result;
-    });
+    // this.store.select('activities').subscribe(result=>{    
+    //        this.listActivities=result;
+    // });
 
-    this.store.dispatch(new ActionsActivities.GetActivities() )
+   // this.store.dispatch(new ActionsActivities.GetActivities() )
 
     //this.store.dispatch(ActivitiesActions.)
 

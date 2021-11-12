@@ -11,7 +11,7 @@ import { AppState } from './app.state';
 export const activitySelector =(state: AppState) => state.activities;
 
 //Recibe un listado de activities del store,Retorna una lista de actividades en el cual el name no se repite
-// retona un nuevo array, ya que el estado actual del store no se repite, los ... generan un clonado del array.
+// retona un nuevo array, ya que el estado actual del store no se modifica, los ... generan un clonado del array.
 export const uniqueActivityName = createSelector(
     activitySelector,
     (activities: Activity[]) => {
@@ -34,10 +34,11 @@ export const uniqueActivityName = createSelector(
   );
 
  
+  //Retorna todas las activiadades
   export const listActivities = () => createSelector(
     activitySelector,
     (activities:Activity[]) => {                
-        return activities.map((act) => act);        
+        return activities;        
     }
   );
 
