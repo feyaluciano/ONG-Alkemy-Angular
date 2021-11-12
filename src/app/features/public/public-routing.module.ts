@@ -5,7 +5,6 @@ import { RegisterFormComponent } from './pages/auth/register-form/register-form.
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { AppPublicComponent } from './app-public.component';
-import { DetailComponent } from './views/activities/detail/detail.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ActivitiesComponent } from './pages/activities/activities.component';
 
@@ -24,7 +23,6 @@ const routes: Routes = [
           { path : 'login' , component:LoginFormComponent},
           { path: 'nosotros', component: AboutComponent } ,
           { path: 'nosotros', component: AboutComponent } ,
-          { path: 'actividades/:id', component: DetailComponent },
           { path: 'contacto', component: ContactComponent },
           { path: 'actividades', component: ActivitiesComponent }        
     ]

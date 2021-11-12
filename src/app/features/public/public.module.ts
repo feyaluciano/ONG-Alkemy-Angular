@@ -12,8 +12,7 @@ import { SharedModule } from "src/app/shared/shared.module";
 import { HomeComponent } from "./pages/home/home.component";
 import { HeaderPublicComponent } from "./components/header-public/header-public.component";
 import { AppPublicComponent } from "./app-public.component";
-import { DetailComponent } from './views/activities/detail/detail.component';
-import { ActivityComponent } from './components/activity/activity.component';
+
 import { ContactComponent } from './pages/contact/contact.component';
 import { ActivitiesComponent } from './pages/activities/activities.component';
 
@@ -27,9 +26,7 @@ import { ActivitiesComponent } from './pages/activities/activities.component';
     AppPublicComponent,
     HeaderPublicComponent,
     AboutComponent, 
-    DetailComponent, 
-    ActivityComponent, 
-    ContactComponent, 
+     ContactComponent, 
     ActivitiesComponent
   ],
   imports: [

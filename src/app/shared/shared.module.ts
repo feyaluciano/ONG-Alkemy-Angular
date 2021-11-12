@@ -10,8 +10,6 @@ import { MsgErrorFormDirective } from './directives/msg-error-form.directive';
 import { CkeditorComponent } from './components/ckeditor/ckeditor.component';
 import { HtmlPipe } from './pipes/html/html.pipe';
 import { FormComponent } from './components/form-news/form.component';
-import { CardComponent } from './card/card.component';
-
 
 
 
@@ -23,8 +21,7 @@ import { CardComponent } from './card/card.component';
     MsgErrorFormDirective,
     CkeditorComponent,
     HtmlPipe,
-    FormComponent,
-    CardComponent
+    FormComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +36,7 @@ import { CardComponent } from './card/card.component';
     MsgErrorFormDirective,
     CkeditorComponent,
     HtmlPipe,
-    FormComponent,CardComponent
+    FormComponent
   ]
 })
 export class SharedModule { }
