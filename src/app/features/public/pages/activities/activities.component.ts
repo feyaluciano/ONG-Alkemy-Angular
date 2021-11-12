@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { StandarDialogComponent } from '../../../../shared/components/standar-dialog/standar-dialog.component';
+import { StandarDialogComponent } from 'src/app/shared/components/standar-dialog/standar-dialog.component';
 import { Activity } from '../../../models/Activity';
 import { ActivitiesService } from '../../../services/activities/activities.service';
 
@@ -12,17 +12,17 @@ import { ActivitiesService } from '../../../services/activities/activities.servi
 export class ActivitiesComponent implements OnInit {
   public title: string = 'Actividades';
   public activities: Activity[] = [];
-  dialog!: MatDialog;
   activitiesCompleted: boolean = false;
+  activitiesError: boolean = false;
 
   constructor(
-    private activitiesService: ActivitiesService
+    private activitiesService: ActivitiesService,
+    public dialog: MatDialog
   ) {
     this.activitiesService.getActivities()
       .subscribe((data: any) => {
         this.activities = data.data;
-      },
-      (error) => {
+      }, (error) => {
         let errorMessage = '';           
         switch(error.status) { 
           case 404: { 
@@ -51,10 +51,9 @@ export class ActivitiesComponent implements OnInit {
         });            
         
         dialogRef.afterClosed().subscribe(result => {
-          console.log(`Dialog result: ${result}`); 
+          this.activitiesError = true; 
         });
-      },
-      () => {
+      }, () => {
         setTimeout(() => {
           this.activitiesCompleted = true;
         }, 500);
