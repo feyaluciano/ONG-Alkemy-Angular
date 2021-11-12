@@ -8,7 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './features/material/material.module';
 import { StoreModule } from '@ngrx/store';
-import { authReducer } from './core/redux/authReducer.reducer';
+import { authReducer } from './core/redux/reducers/authReducer.reducer';
 
 @NgModule({
   declarations: [

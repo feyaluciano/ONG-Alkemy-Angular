@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
-import { login } from 'src/app/core/redux/authReducer.actions';
+import { login } from 'src/app/core/redux/actions/auth.actions';
 
 import { AuthService } from 'src/app/core/services/auth.service';
 import { environment } from 'src/environments/environment';
@@ -31,6 +31,16 @@ export class LoginFormComponent implements OnInit  {
   }
   ngOnInit(): void {
     this.store.subscribe(  console.log );
+
+    let a = {
+      a: 'valor a'
+    }
+
+    let b = {
+      b: 'valor b'
+    }
+
+    console.log( {...a, ...b} );
   }
 
   
@@ -55,7 +65,8 @@ export class LoginFormComponent implements OnInit  {
       this.userLogin = resp.data.user;
       this.token = resp.data.token;
 
-      this.store.dispatch(login({user: resp.data.user, token: resp.data.token}));
+      const { user, token } = resp.data;
+      this.store.dispatch(login({ user , token }));
 
       localStorage.setItem("userToken", JSON.stringify(this.token));
       localStorage.setItem("user", JSON.stringify(this.userLogin));
