@@ -12,6 +12,7 @@ import { StandarDialogComponent } from './components/standar-dialog/standar-dial
 import { MsgErrorFormDirective } from './directives/msg-error-form.directive';
 import { HtmlPipe } from './pipes/html/html.pipe';
 import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
+import { CardComponent } from './card/card.component';
 
 
 
@@ -27,6 +28,7 @@ import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
     FormComponent,
     StandarDialogComponent,
     SpinnerComponent,
+    CardComponent,
     
   ],
   imports: [
@@ -46,7 +48,8 @@ import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
     FormComponent,     
     StandarDialogComponent,
     MaterialModule,
-    SpinnerComponent       
+    SpinnerComponent,
+    CardComponent     
   ]
 })
 export class SharedModule { }
