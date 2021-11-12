@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-
-import { ContactFormComponent } from './components/contact-form/contact-form.component';
-import { CarouselComponent } from './carousel/carousel.component';
-import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
-import { MsgErrorFormDirective } from './directives/msg-error-form.directive';
-import { CkeditorComponent } from './components/ckeditor/ckeditor.component';
-import { HtmlPipe } from './pipes/html/html.pipe';
-import { FormComponent } from './components/form-news/form.component';
-import { StandarDialogComponent } from './components/standar-dialog/standar-dialog.component';
 import { MaterialModule } from '../features/material/material.module';
+import { CarouselComponent } from './carousel/carousel.component';
+import { CkeditorComponent } from './components/ckeditor/ckeditor.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { FormComponent } from './components/form-news/form.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { StandarDialogComponent } from './components/standar-dialog/standar-dialog.component';
+import { MsgErrorFormDirective } from './directives/msg-error-form.directive';
+import { HtmlPipe } from './pipes/html/html.pipe';
+import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
 
 
 
@@ -26,6 +26,7 @@ import { MaterialModule } from '../features/material/material.module';
     HtmlPipe,
     FormComponent,
     StandarDialogComponent,
+    SpinnerComponent,
     
   ],
   imports: [
@@ -33,7 +34,7 @@ import { MaterialModule } from '../features/material/material.module';
     ReactiveFormsModule,
     CKEditorModule,
     FormsModule,  
-    MaterialModule     
+    MaterialModule,
   ],
   exports: [
     CarouselComponent,
@@ -44,7 +45,8 @@ import { MaterialModule } from '../features/material/material.module';
     HtmlPipe,
     FormComponent,     
     StandarDialogComponent,
-    MaterialModule       
+    MaterialModule,
+    SpinnerComponent       
   ]
 })
 export class SharedModule { }

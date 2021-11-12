@@ -4,4 +4,6 @@ export const environment = {
   activitiesApiUrl: "",
   membersApiUrl: "",
   slidesApiUrl:"",  
+  newsApiUrl: "",
+  testimonialsApiUrl: ""
 };
