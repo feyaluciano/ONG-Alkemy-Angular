@@ -5,8 +5,7 @@ import { ActivitiesService } from 'src/app/features/services/activities/activiti
 import { environment } from 'src/environments/environment';
 
 
-//Los Effects son metodos que obtienen por ejemplo datos de la api
-//PREGUNTAR QUE MAS HACE EL EFFECTS
+//Los Effects son metodos que obtienen por ejemplo datos de la api, 
 //https://ngrx.io/guide/effects
 
 @Injectable()
@@ -25,15 +24,17 @@ export class ActivityEffect {
   //Esto sucede cuando recibo las actividades cuando me subscribo 
   
  
-  loadActivities$ = createEffect(() =>
-  
+  //Cuando invoco al action invokeActivityAPI() en el ngOnInit() del componente activities.component.ts
+  //se eejcuta la accion ubicada en el archivo de efectos (PREGUNTAR COMO ES QUE ASOCIAN EL ACTION invokeActivityAPI CON ESTE loadActivities$)
+  //Luego de obtener los datos de la API, ejecuta el action retrievedActivityList ya que su tipo es:[Activity API] Activity API Success 
+  //al ejecutarse este almacena en el store las actividades traidas de la api.
+  loadActivities$ = createEffect(() =>  
     this.actions$.pipe(
       ofType('[Activity API] Invoke API'),
       mergeMap(() =>
         this.activitiesService
           .getActivities(environment.activitiesApiUrl)
-          .pipe(map((data) => ({ type: '[Activity API] Activity API Success', allActivities: data.data })))
-      
+          .pipe(map((data) => ({ type: '[Activity API] Activity API Success', allActivities: data.data })))      
           )
     )
   );
