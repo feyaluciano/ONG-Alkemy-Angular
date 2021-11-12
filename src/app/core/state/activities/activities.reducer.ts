@@ -1,7 +1,7 @@
 import { createReducer, on } from "@ngrx/store"
 import { Activity } from "src/app/features/models/Activity";
 import { User } from "src/app/features/models/User";
-import { addActivity,removeActivity,invokeActivityAPI } from   './activities.actions';
+import { addActivity,removeActivity,invokeActivityAPI, retrievedActivityList } from   './activities.actions';
 
 //export let initialState: Activity[] = [];
 
@@ -31,10 +31,13 @@ export const activityReducer = createReducer(
       let position=activities.findIndex(x => x.id === activity.id)
       activities.splice(position,1);
       return activities;      
+    }),
+    on(retrievedActivityList, (state,  activity ) => {
+      let fromApi:any= JSON.parse(JSON.stringify(activity));              
+      return fromApi.allActivities;      
     })
 
 );
-
 //invokeActivityAPI
 // 1 - Importaciones
 

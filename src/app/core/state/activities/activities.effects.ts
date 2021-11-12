@@ -26,16 +26,15 @@ export class ActivityEffect {
   
  
   loadActivities$ = createEffect(() =>
-  this.activitiesService
-           .getActivities(environment.activitiesApiUrl).pipe(map((data) => ({ type: 'X[Activity API] Activity API Success', allActivities: data.data })))
-    // this.actions$.pipe(
-    //   ofType('[Activity API] Invoke API'),
-    //   mergeMap(() =>
-    //     this.activitiesService
-    //       .getActivities(environment.activitiesApiUrl)
-    //       .pipe(map((data) => ({ type: '[Activity API] Activity API Success', allActivities: data.data })))
+  
+    this.actions$.pipe(
+      ofType('[Activity API] Invoke API'),
+      mergeMap(() =>
+        this.activitiesService
+          .getActivities(environment.activitiesApiUrl)
+          .pipe(map((data) => ({ type: '[Activity API] Activity API Success', allActivities: data.data })))
       
-    //       )
-    // )
+          )
+    )
   );
 }

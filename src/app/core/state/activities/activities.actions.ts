@@ -7,6 +7,6 @@ export const invokeActivityAPI = createAction('[Activity API] Invoke API');
 
 export const retrievedActivityList = createAction(
   '[Activity API] Activity API Success',
-  props<{ allActivity: Activity[] }>()
+  props<{ activities: Activity[] }>()
 );
 

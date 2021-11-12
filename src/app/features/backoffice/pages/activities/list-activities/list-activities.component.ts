@@ -43,7 +43,7 @@ export class ListActivitiesComponent implements OnInit {
   
   allActivities$ = this.store.pipe(
     select(listActivities())
-  ).subscribe(result=>{    
+  ).subscribe(result=>{   
       this.listActivities=result;
    });
 
@@ -68,6 +68,7 @@ export class ListActivitiesComponent implements OnInit {
       const activityToDelete:Activity={id}
       this.store.dispatch(removeActivity( activityToDelete)); 
     }
+    
 
   ngOnInit() {
    // this.store.dispatch(addActivity({activity: this.tarea2}));
