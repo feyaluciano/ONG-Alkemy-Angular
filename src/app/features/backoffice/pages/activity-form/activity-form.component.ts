@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CkeditorService } from 'src/app/core/services/ckeditor.service';
@@ -9,7 +10,8 @@ import { Activity } from 'src/app/features/models/Activity';
 import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
 import { ImageFile } from 'src/app/features/models/ImageFile';
 import { ActivitiesService } from 'src/app/features/services/activities/activities.service';
-import { environment} from 'src/environments/environment';
+import { StandarDialogComponent } from 'src/app/shared/components/standar-dialog/standar-dialog.component';
+import { environment } from 'src/environments/environment';
 import Swal from'sweetalert2';
 import { PrivateBackofficeService } from '../../services/private-backoffice.service';
 
@@ -32,6 +34,9 @@ export class ActivityFormComponent implements OnInit {
   public imageError=false;
   public anImage!:string;
 
+
+  
+
   constructor(
     private userStatusService: UserStatusService,
     private _builder: FormBuilder,
@@ -39,7 +44,8 @@ export class ActivityFormComponent implements OnInit {
     private route: ActivatedRoute,
     private httpService: HttpService,
     private ckeditorSvc: CkeditorService,
-    private activitiesService:ActivitiesService
+    private activitiesService:ActivitiesService,
+    public dialog: MatDialog
   ) {
     this.form = this._builder.group({
       name: ["", [Validators.required]],
@@ -67,7 +73,7 @@ export class ActivityFormComponent implements OnInit {
         activity.id = this.anActivity.id;
         activity.image = this.anImage; 
         const url: string =
-        environment.activityApiUrl;     
+        environment.activitiesApiUrl   
         let req:Observable<HTTPResponse<Activity>>= this.activitiesService.updateActivity(url,activity);         
         req.subscribe((response) => {         
           let resultData: HTTPResponse<Activity> = response;   
@@ -80,7 +86,7 @@ export class ActivityFormComponent implements OnInit {
         this.anActivity.id = "0";
         this.anActivity.image = this.anImage;
         const url: string =
-        environment.activityApiUrl;     
+        environment.activitiesApiUrl     
         const req:Observable<HTTPResponse<Activity>>= this.activitiesService.createActivity(url,activity);
         req.subscribe((response) => {
           let resultData: any = JSON.parse(JSON.stringify(response));
@@ -97,13 +103,14 @@ export class ActivityFormComponent implements OnInit {
       Swal.fire(this.alertMessage.toString()).then(() => {});
     }
   }
-
-  async ngOnInit(): Promise<void> {
+  
+   ngOnInit() {
+    
     if (typeof this.route.snapshot.params["idActivity"] !== "undefined") {
       this.editing = true;
       this.action = "Editar actividad";
       const url: string =
-      environment.activityApiUrl;     
+        environment.activitiesApiUrl;     
         const req:Observable<HTTPResponse<Activity>>= this.activitiesService.getActivityById(url,this.route.snapshot.params["idActivity"]); 
         req.subscribe((response) => {
           let resultData: HTTPResponse<Activity> = response;         
@@ -131,7 +138,20 @@ export class ActivityFormComponent implements OnInit {
                  break; 
               } 
            }    
-           Swal.fire(errorMessage.toString())                 
+          
+           let dialogRef = this.dialog.open(StandarDialogComponent, {
+            height: '300px',
+            width: '400px',
+            data: {type: "error", titleToShow:"",messageToShow: errorMessage,showButtonsOkCancel:false},
+          });            
+          dialogRef.afterClosed().subscribe(result => {
+            console.log(`if it is ok, the user press accept: ${result}`); 
+          });
+      
+      
+
+
+
         }
         );
        
