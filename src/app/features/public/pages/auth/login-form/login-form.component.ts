@@ -32,15 +32,12 @@ export class LoginFormComponent implements OnInit  {
   ngOnInit(): void {
     this.store.subscribe(  console.log );
 
-    let a = {
-      a: 'valor a'
+    let user = {
+      email:'test@demo.com',
+      password:'@Cepita67'
     }
 
-    let b = {
-      b: 'valor b'
-    }
-
-    console.log( {...a, ...b} );
+    this.store.dispatch(login(user));
   }
 
   

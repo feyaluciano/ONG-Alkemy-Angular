@@ -16,7 +16,7 @@ export class AuthService {
    
   }
 
-  auth(user:User){
+  auth(user:any){
     return this.httpClient.post(`${this.urlApi}/login`, user)
   }
 
