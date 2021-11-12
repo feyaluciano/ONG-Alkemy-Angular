@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store"
 import { User } from "src/app/features/models/User";
-import { setAuthState } from '../actions/auth.actions';
+import { logout, setAuthState } from '../actions/auth.actions';
 
 export interface AuthState {
     auth: boolean;
@@ -16,11 +16,11 @@ export const initialState: AuthState = {
 
 export const authReducer = createReducer(
     initialState,
-    // ver documentación efectos
    on(setAuthState, (state , setAuthState ) => ({
        ...state,
        auth: setAuthState.success,
        user: setAuthState.data,
        token: setAuthState.token
-   }))
+   })),
+   on(logout, state => ({...state, auth: false, user: null, token: null }))
 );

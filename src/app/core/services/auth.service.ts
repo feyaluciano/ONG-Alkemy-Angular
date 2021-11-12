@@ -20,4 +20,8 @@ export class AuthService {
     return this.httpClient.post(`${this.urlApi}/login`, user)
   }
 
+  register(newUser:any){
+    return this.httpClient.post(`${this.urlApi}/register`, newUser);
+  }
+
 }

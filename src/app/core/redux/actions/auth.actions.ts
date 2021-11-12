@@ -3,7 +3,8 @@ import { User } from '../../../features/models/User';
 
 
 
-interface IAuthProps {
+export interface IAuthProps {
+    name?: string;
     email: string, 
     password: string
 }

@@ -4,11 +4,12 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
-import { login } from 'src/app/core/redux/actions/auth.actions';
+import { IAuthProps, login } from 'src/app/core/redux/actions/auth.actions';
 
 import { AuthService } from 'src/app/core/services/auth.service';
 import { environment } from 'src/environments/environment';
 import { User } from '../../../../models/User';
+import { logout } from '../../../../../core/redux/actions/auth.actions';
 
 @Component({
   selector: 'app-login-form',
@@ -30,14 +31,8 @@ export class LoginFormComponent implements OnInit  {
     });
   }
   ngOnInit(): void {
-    this.store.subscribe(  console.log );
 
-    let user = {
-      email:'test@demo.com',
-      password:'@Cepita67'
-    }
-
-    this.store.dispatch(login(user));
+    
   }
 
   
@@ -56,15 +51,14 @@ export class LoginFormComponent implements OnInit  {
         password: this.forma.get('password')?.value
     }
 
-    
+
+    // DISPATCH ACTION LOGIN
+    let loginAction: IAuthProps = { email: user.email!, password: user.password!};
+    this.store.dispatch(login(loginAction));
 
     this.authServices.auth(user).subscribe((resp:any)=>{
       this.userLogin = resp.data.user;
-      this.token = resp.data.token;
-
-      // LAS ACCIONES SE DISPARAN ACÁ
-      // const { user, token } = resp.data;
-      // this.store.dispatch(login({ user , token }));
+      this.token = resp.data.token;       
 
       localStorage.setItem("userToken", JSON.stringify(this.token));
       localStorage.setItem("user", JSON.stringify(this.userLogin));
