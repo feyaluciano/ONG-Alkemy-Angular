@@ -16,9 +16,10 @@ export class NewsFormComponent implements OnInit {
 
   constructor(
     private newsSvc: NewsService,
-    public dialog: MatDialog
-  ) {
-    this.newsSvc.getNews()
+    public dialog: MatDialog)
+    
+    
+    {  this.newsSvc.getNews()
       .subscribe((resp: any) => {
         setTimeout(() => {
           const news = resp.data;
