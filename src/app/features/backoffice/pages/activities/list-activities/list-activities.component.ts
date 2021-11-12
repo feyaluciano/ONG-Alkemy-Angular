@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 
 
 import { Store, select } from '@ngrx/store';
-import  {addActivity,removeActivity }   from 'src/app/core/state/activities/activities.actions';
+import  {addActivity,invokeActivityAPI,removeActivity }   from 'src/app/core/state/activities/activities.actions';
 import { listActivities } from 'src/app/core/state/activities/activities.selector';
 //import { invokeActivityAPI } from 'src/app/features/state/activities/activities.actions';
 
@@ -70,6 +70,9 @@ export class ListActivitiesComponent implements OnInit {
     }
 
   ngOnInit() {
+   // this.store.dispatch(addActivity({activity: this.tarea2}));
+    
+   this.store.dispatch(invokeActivityAPI());
 
 
     // this.store.select('activities').subscribe(result=>{    

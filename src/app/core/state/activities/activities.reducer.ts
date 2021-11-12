@@ -1,15 +1,19 @@
 import { createReducer, on } from "@ngrx/store"
 import { Activity } from "src/app/features/models/Activity";
 import { User } from "src/app/features/models/User";
-import { addActivity,removeActivity } from   './activities.actions';
+import { addActivity,removeActivity,invokeActivityAPI } from   './activities.actions';
 
-export let initialState: Activity[] = [];
-const tarea1: Activity = {
-  id: '1',
-  name: 'la actividad 1',
-  description: 'la descrtppp'
-}
-initialState.push(tarea1);
+//export let initialState: Activity[] = [];
+
+export const initialState: ReadonlyArray<Activity> = [];
+
+
+// const tarea1: Activity = {
+//   id: '1',
+//   name: 'la actividad 1',
+//   description: 'la descrtppp'
+// }
+// initialState.push(tarea1);
 
 
 export const activityReducer = createReducer(
@@ -31,7 +35,7 @@ export const activityReducer = createReducer(
 
 );
 
-
+//invokeActivityAPI
 // 1 - Importaciones
 
 //import { ActivitiesActions } from "./activities.actions";
