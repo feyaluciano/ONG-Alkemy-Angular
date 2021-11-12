@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
-import { Activity } from '../../models/Activity';
-import { HTTPResponse } from '../../models/HTTPResponse';
+import { Activity } from 'src/app/features/models/Activity';
+
 import { AppState } from './app.state';
 
 //Un selector es una funcion obtiene del state, algun dato que necesitemos.
@@ -36,9 +36,7 @@ export const uniqueActivityName = createSelector(
  
   export const listActivities = () => createSelector(
     activitySelector,
-    (activities:Activity[]) => {
-        //return activities; 
-        
+    (activities:Activity[]) => {                
         return activities.map((act) => act);        
     }
   );

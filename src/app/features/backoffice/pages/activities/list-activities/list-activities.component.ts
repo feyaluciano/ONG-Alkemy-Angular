@@ -7,10 +7,18 @@ import { ActivitiesService } from 'src/app/features/services/activities/activiti
 import { StandarDialogComponent } from 'src/app/shared/components/standar-dialog/standar-dialog.component';
 import { environment } from 'src/environments/environment';
 
+//import * as ActionsActivities from 'src/app/features/state/activities.actions.ts';
+
+
+
+
+
 
 import { Store, select } from '@ngrx/store';
-import { invokeActivityAPI } from 'src/app/features/state/activities/activities.actions';
-import { listActivities } from 'src/app/features/state/activities/activities.selector';
+import  *  as ActionsActivities from 'src/app/core/state/activities/activities.actions';
+import { listActivities } from 'src/app/core/state/activities/activities.selector';
+//import { invokeActivityAPI } from 'src/app/features/state/activities/activities.actions';
+
 
 
 @Component({
@@ -24,24 +32,57 @@ export class ListActivitiesComponent implements OnInit {
   displayedColumns: string[] = ['Id', 'Titulo', 'Descripcion'];
 
 
+  public tarea2: Activity = {
+    id: '2',
+    name: '22222la actividad 1',
+    description: '2222la descrtppp'
+  }
+
+
   //preguntar ????????????? COMO hacer esto sin selector, ya que se trae todas las activiadaes del store, se debe traer y clonar el array? o como?
   
-  allActivities$ = this.store.pipe(
-    select(listActivities())
-  ).subscribe(result=>{    
-      this.listActivities=result;
-   });
+  // allActivities$ = this.store.pipe(
+  //   select(listActivities())
+  // ).subscribe(result=>{    
+  //     this.listActivities=result;
+  //  });
 
 // allActivities$ = this.store.pipe(
 //   select(listActivities())
 // );
 
 
+//Onjecto el store y me
   constructor(private activitiesService:ActivitiesService,public dialog: MatDialog, 
-    private store: Store<{ activities: Activity[] }>,) { }
+    private store: Store<{ activities: Activity[] }>,) {
+      
+     }
+
+    
+
+    addActivity() {
+      this.store.dispatch(new ActionsActivities.AddActivity(this.tarea2) )
+    }
+
 
   ngOnInit() {
-    this.store.dispatch(invokeActivityAPI());    
+
+
+    this.store.select('activities').subscribe(result=>{    
+           this.listActivities=result;
+    });
+
+    this.store.dispatch(new ActionsActivities.GetActivities() )
+
+    //this.store.dispatch(ActivitiesActions.)
+
+    //this.store.dispatch({});
+
+
+    //Aqui se trae todas las actividades de la api y las guarda en el store, al ejecutar la accion invokeActivityAPI(),
+    // y en la linea allActivities$ = this.store.pipe(.... al estar subsripto a este observable, se actualiza el array de actividades
+    // 
+    //this.store.dispatch(invokeActivityAPI());    
     
     
     

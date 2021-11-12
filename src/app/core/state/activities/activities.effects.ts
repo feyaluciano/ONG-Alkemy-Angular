@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, mergeMap } from 'rxjs/operators';
-import { ActivitiesService } from '../../services/activities/activities.service';
+import { ActivitiesService } from 'src/app/features/services/activities/activities.service';
 import { environment } from 'src/environments/environment';
 
 
@@ -23,6 +23,7 @@ export class ActivityEffect {
   //Primero busco en las actions la actions que necesito, la busco con ofType
   //Luego busco las actividades y retono un objeto (la action) con el nombre de la action y el listado de las actividades obtenidas de la api
   //Esto sucede cuando recibo las actividades cuando me subscribo 
+  
  
   loadActivities$ = createEffect(() =>
     this.actions$.pipe(
