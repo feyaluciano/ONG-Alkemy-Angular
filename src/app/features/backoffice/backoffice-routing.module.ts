@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppBackofficeComponent } from './app-backoffice.component';
+import { ListActivitiesComponent } from './pages/activities/list-activities/list-activities.component';
 import { ActivityFormComponent } from './pages/activity-form/activity-form.component';
 import { BackofficeHomeComponent } from './pages/backoffice-home/backoffice-home.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
@@ -36,7 +37,8 @@ const routes: Routes = [
       { path: 'organization/edit', component: OrganizationEditComponent },
       { path: 'news', component: NewsFormComponent },
       { path: 'news/:id', component: NewsFormComponent},
-      { path: 'users', component: UserslistComponent }
+      { path: 'users', component: UserslistComponent },
+      { path: 'list-activities', component: ListActivitiesComponent }
     ]
     }
 ]
