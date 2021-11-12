@@ -1,9 +1,9 @@
 import { createAction, props } from '@ngrx/store';
-import { User } from 'src/app/features/models/User';
+
 
 interface IAuthProps {
-    user: User , 
-    token: string
+    email: string , 
+    password: string
 }
 
 export const login      = createAction('[Authentication] Login', props<IAuthProps>() );

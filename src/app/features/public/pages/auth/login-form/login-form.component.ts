@@ -65,8 +65,9 @@ export class LoginFormComponent implements OnInit  {
       this.userLogin = resp.data.user;
       this.token = resp.data.token;
 
-      const { user, token } = resp.data;
-      this.store.dispatch(login({ user , token }));
+      // LAS ACCIONES SE DISPARAN ACÁ
+      // const { user, token } = resp.data;
+      // this.store.dispatch(login({ user , token }));
 
       localStorage.setItem("userToken", JSON.stringify(this.token));
       localStorage.setItem("user", JSON.stringify(this.userLogin));
