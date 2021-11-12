@@ -1,4 +1,11 @@
-<div class="container">
+<div class="d-flex justify-content-center">
+  <app-spinner
+  color="primary"
+  mode="indeterminate"
+  *ngIf="!activitiesCompleted"
+  ></app-spinner>
+</div>
+<div class="container" *ngIf="activitiesCompleted">
   <app-titles-component [title]="title"></app-titles-component>
   <div class="mt-3">
     <div class="accordion" id="accordionFlushExample">
