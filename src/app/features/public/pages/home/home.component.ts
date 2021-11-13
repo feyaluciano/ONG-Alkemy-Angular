@@ -6,7 +6,7 @@ import { Component, ElementRef, Input, OnInit, TemplateRef, ViewChild } from '@a
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+ title= 'Bienvenidos';
  
   constructor() { }
 

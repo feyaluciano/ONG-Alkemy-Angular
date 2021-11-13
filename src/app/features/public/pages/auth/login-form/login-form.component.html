@@ -3,7 +3,7 @@
     <div class="row">
       <div class="d-flex justify-content-center">
 
-        <form class="m-5 p-3 cardStyle text-center" [formGroup]=forma (ngSubmit)="save()">
+        <form class="m-5 p-3 cardStyles text-center" [formGroup]=forma (ngSubmit)="save()">
           <img src="../../../../../../assets/images/LOGO-SOMOS.png" alt="">
               <h2>LOGIN</h2>
              
@@ -18,7 +18,8 @@
                   <input [class.is-invalid]="passwordInvalid" formControlName="password" type="password" class="form-control" id="password">
                   <small *ngIf="passwordInvalid">Ingrese un Password que contenga al menos una letra, un numero y un caracter especial</small>
                 </div>
-                <button  type="submit" class="btn btn-primary">Enviar</button>
+                <hr class="my-4"> 
+                <button  type="submit" class="w-100 btn btn-primary btn-lg">Enviar</button>
              
         </form>
       </div>
