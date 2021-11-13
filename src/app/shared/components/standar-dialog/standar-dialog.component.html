@@ -15,6 +15,12 @@
   <div mat-dialog-content>
     <h1 mat-dialog-title class="messagge-to-show">{{data.messageToShow}}</h1>
   </div>  
+  <button 
+    type="button" 
+    mat-raised-button 
+    color="primary"
+    (click)="closeDialog('Ok')"
+  >Aceptar</button> 
 </div>
 </ng-template>
 
@@ -30,7 +36,13 @@
     </div>
     <div mat-dialog-content>
       <h1 mat-dialog-title class="messagge-to-show">{{data.messageToShow}}</h1>
-    </div>  
+    </div> 
+    <button 
+      type="button" 
+      mat-raised-button 
+      color="primary"
+      (click)="closeDialog('Ok')"
+    >Aceptar</button>  
   </div>
   </ng-template>
 
