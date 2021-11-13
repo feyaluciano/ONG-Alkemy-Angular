@@ -15,8 +15,8 @@ export class ActivitiesService {
     private publicService: PublicService
   ) {}
 
-  getActivityById(url:string,id:string):Observable<HTTPResponse<Activity>> {  
-    return this.privateBackofficeService.getEntityById(url,id);
+  getActivityById(id:string):Observable<HTTPResponse<Activity>> {  
+    return this.privateBackofficeService.getEntityById(environment.activitiesApiUrl, id);
   }    
 
   getActivities(): Observable<HTTPResponse<Activity[]>> {

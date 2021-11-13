@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { StandarDialogComponent } from 'src/app/shared/components/standar-dialog/standar-dialog.component';
 import { Activity } from '../../../models/Activity';
 import { ActivitiesService } from '../../../services/activities/activities.service';
@@ -17,7 +18,8 @@ export class ActivitiesComponent implements OnInit {
 
   constructor(
     private activitiesService: ActivitiesService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {
     this.activitiesService.getActivities()
       .subscribe((data: any) => {
@@ -61,6 +63,10 @@ export class ActivitiesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  activityDetail(id: string | undefined) {
+    this.router.navigate(['/actividad', id]);
   }
 
   viewDescription(id: number) {

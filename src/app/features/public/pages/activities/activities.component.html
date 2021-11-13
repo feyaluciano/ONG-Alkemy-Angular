@@ -32,6 +32,13 @@
           <div class="accordion-body">
             <div [innerHTML]="activity.description | html"></div>
             <img [src]="activity.image" [alt]="i" class="activity_image">
+            <button 
+              mat-raised-button 
+              (click)="activityDetail(activity.id)"
+              class="mx-3"
+            >
+              Detalles
+            </button>
           </div>
         </div>
       </div>
