@@ -13,6 +13,8 @@ import { MsgErrorFormDirective } from './directives/msg-error-form.directive';
 import { HtmlPipe } from './pipes/html/html.pipe';
 import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
 import { CardComponent } from './card/card.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ProgressComponent } from './components/progress/progress.component';
 
 
 
@@ -29,6 +31,7 @@ import { CardComponent } from './card/card.component';
     StandarDialogComponent,
     SpinnerComponent,
     CardComponent,
+    ProgressComponent
     
   ],
   imports: [
@@ -37,6 +40,7 @@ import { CardComponent } from './card/card.component';
     CKEditorModule,
     FormsModule,  
     MaterialModule,
+    MatProgressBarModule
   ],
   exports: [
     CarouselComponent,
@@ -49,7 +53,8 @@ import { CardComponent } from './card/card.component';
     StandarDialogComponent,
     MaterialModule,
     SpinnerComponent,
-    CardComponent     
+    ProgressComponent,
+    CardComponent   
   ]
 })
 export class SharedModule { }
