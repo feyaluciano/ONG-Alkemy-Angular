@@ -7,6 +7,8 @@
 /* Animate CSS*/
 @import 'animate.css/animate.min';
 
+@import '././app/styles/components/components.scss';
+
 
 .text-error-form{
   color:#FF084E
@@ -193,4 +195,3 @@ p {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif}
 
-@import url('./app/styles/components/myComponents.scss');
