@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, mergeMap } from 'rxjs/operators';
 import { ActivitiesService } from 'src/app/features/services/activities/activities.service';
 import { environment } from 'src/environments/environment';
+import * as activitiesActions from   './activities.actions';
 
 
 //Los Effects son metodos que obtienen por ejemplo datos de la api, 
@@ -38,4 +39,19 @@ export class ActivityEffect {
           )
     )
   );
+
+  addActivities$ = createEffect(() =>{
+    re
+     //let activities:Activity[]= [...state];
+    //   activities.push(activity);    
+  // this.actions$.pipe(
+  //   ofType(activitiesActions.addActivity),
+  //   mergeMap(() =>
+  //     this.activitiesService
+  //       .getActivities(environment.activitiesApiUrl)
+  //       .pipe(map((data) => ({ type: '[Activity API] Activity API Success', allActivities: data.data })))      
+  //       )
+  )
+);
+
 }

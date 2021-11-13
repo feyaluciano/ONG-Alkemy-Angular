@@ -18,7 +18,7 @@ import { activityReducer } from "../core/state/activities/activities.reducer";
     AppRoutingModule,
     RouterModule,
     EffectsModule.forRoot([ActivityEffect]),
-    StoreModule.forFeature("activities", activityReducer)
+    StoreModule.forRoot([activityReducer])
     
   ],
 })
