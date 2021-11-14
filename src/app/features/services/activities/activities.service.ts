@@ -20,11 +20,13 @@ export class ActivitiesService {
     return this.privateBackofficeService.getEntityById(url,id);
   }    
 
-  getActivities(param: string): Observable<HTTPResponse<Activity[]>> {
+  getActivitiesA(param: string): Observable<HTTPResponse<Activity[]>> {
     return this.publicService.getEntities(param);
   }
 
-
+  getActivities(param: string): Observable<Activity[]> {
+    return this.publicService.getEntities(param);
+  }
   
   createActivity(url: string,activity:Activity): Observable<HTTPResponse<Activity>> {
     return this.privateBackofficeService.createEntity(url, activity);

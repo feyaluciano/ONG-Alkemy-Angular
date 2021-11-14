@@ -29,7 +29,7 @@ export class ActivityEffect {
       switchMap(() =>
         this.activitiesService.getActivities(environment.activitiesApiUrl)
       ),      
-      map(actividades=>  JSON.parse(JSON.stringify(actividades.data))) ,
+      map(actividades=>  JSON.parse(JSON.stringify(actividades))) ,
       map(
         (activitiesR) =>
           activitiesActions.findAllActivitiesSuccess(

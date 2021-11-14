@@ -60,6 +60,6 @@ export class ListActivitiesComponent implements OnInit {
         this.listActivities = JSON.parse(JSON.stringify(actividades.Activities.actividades));         
       });
     // Ejecuto el action para que cargue las actividades
-   // this.store.dispatch(activitiesActions.findAllActivities());
+    this.store.dispatch(activitiesActions.findAllActivities());
   }
 }

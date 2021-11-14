@@ -10,11 +10,11 @@ export const adapter = createEntityAdapter<Activity>({
 
 export interface ActivityState extends EntityState<Activity> {
   actividades:Activity[] ;
-  selectedId: string | null;
-  action: string | null;
-  loading: boolean;
-  loaded: boolean;
-  error: any;
+  selectedId?: string | null;
+  action?: string | null;
+  loading?: boolean;
+  loaded?: boolean;
+  error?: any;
 }
 
 export const initialstate: ActivityState = adapter.getInitialState({

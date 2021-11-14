@@ -4,6 +4,7 @@ import * as activityState from './activity.state';
 
 
 import * as activityActions from   './activities.actions';
+import { HTTPResponse } from "src/app/features/models/HTTPResponse";
 const tarea1: Activity = {
   id: '1',
   name: 'la actividad 1',
@@ -22,15 +23,36 @@ const activityReducer = createReducer(
     loading: true,
     error: null,
   })),
+  // on(activityActions.findAllActivitiesSuccess, (state, { payloadActivity }) => {
+  //   return bookState.adapter.setOne(book, {
+  //     ...state,
+  //     loading: false,
+  //   });
+  // }),
 
-  //Este reducer se ejecutara si el pedido a la api es correcto, sera ejecutado por el efect, con un mergeMap, que toma el obs y
-  // genera uno nuevo, ahora con el resultado de ejecutar el action findAllActivitiesSuccess, este reducer si carga en el state las actividades  
-  on(activityActions.findAllActivitiesSuccess, (state, { activitiesAR }) => {    
-    return activityState.adapter.addMany(activitiesAR, {
-      ...state,     
+  on(activityActions.findAllActivitiesSuccess, (state, { payloadActivity }) => {
+    alert(JSON.stringify(payloadActivity))
+    return activityState.adapter.addMany(payloadActivity, {
+      ...state,
       loading: false,
     });
   }),
+
+
+  //Este reducer se ejecutara si el pedido a la api es correcto, sera ejecutado por el efect, con un mergeMap, que toma el obs y
+  // genera uno nuevo, ahora con el resultado de ejecutar el action findAllActivitiesSuccess, este reducer si carga en el state las actividades  
+  //on(activityActions.findAllActivitiesSuccess, (state, { payloadActivity }) => {    
+    
+    ///let activityState:activityState.ActivityState={actividades:activitiesAR}
+//return activityState;
+    //let act:HTTPResponse<Activity[]>=activitiesAR;
+
+    // return activityState.adapter.addMany(activitiesAR, {
+    //   ...state,
+    //   actividades: [...state.actividades, state.actividades.push(activitiesAR)],     
+    //   loading: false,
+    // });
+  //}),
   //Este reducer se ejecutara si el pedido a la api es correcto, sera ejecutado por el efect, con un mergeMap, que toma el obs y
   // genera uno nuevo, ahora con el resultado de ejecutar el action findAllActivitiesSuccess
   on(activityActions.findAllActivitiesError, (state, { error }) => ({
