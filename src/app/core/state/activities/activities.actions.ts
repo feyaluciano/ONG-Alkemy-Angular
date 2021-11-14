@@ -20,6 +20,8 @@ export enum type {
 }
 
 export const findAllActivities        = createAction(type.FIND_ALL_ACTIVITIES);
+//La action se forma con el nombre que la identifica que esta tipado
+// y con el payload que se agregara al state, una actividad, un array de actividades, etc
 export const findAllActivitiesSuccess = createAction(type.FIND_ALL_ACTIVITIES_SUCCESS, props<{ activitiesAR: Array<Activity> }>());
 export const findAllActivitiesError = createAction(type.FIND_ALL_ACTIVITIES_ERROR,props<{ error: any }>());
 
