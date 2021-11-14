@@ -1,5 +1,6 @@
 import { Action, createAction, props } from '@ngrx/store'
 import { Activity } from 'src/app/features/models/Activity';
+import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
 
 
 
@@ -17,22 +18,24 @@ export enum type {
   
   DELETE_ACTIVITY            = '[ Activity ] Delete Activity',
   DELETE_ACTIVITY_SUCCESS    = '[ Activity ] Delete Activity Success',
+  DELETE_ACTIVITY_ERROR      = '[ Activity ] Delete Activity Error',
 }
 
-export const findAllActivities        = createAction(type.FIND_ALL_ACTIVITIES);
 //La action se forma con el nombre que la identifica que esta tipado
 // y con el payload que se agregara al state, una actividad, un array de actividades, etc
-export const findAllActivitiesSuccess = createAction(type.FIND_ALL_ACTIVITIES_SUCCESS, props<{ payloadActivity:Activity[] }>());
+export const findAllActivities        = createAction(type.FIND_ALL_ACTIVITIES);
+export const findAllActivitiesSuccess = createAction(type.FIND_ALL_ACTIVITIES_SUCCESS, props<{ payloadActivity: Array<Activity> }>());
 export const findAllActivitiesError = createAction(type.FIND_ALL_ACTIVITIES_ERROR,props<{ error: any }>());
 
 export const createActivity          = createAction(type.CREATE_ACTIVITY, props<{ payloadActivity: Activity }>());
-export const createActivitySuccess   = createAction(type.CREATE_ACTIVITY_SUCCESS, props<{ payloadActivity: Activity }>());
-export const createActivityError   = createAction(type.CREATE_ACTIVITY_ERROR, props<{ error: any }>());
+export const createActivitySuccess   = createAction(type.CREATE_ACTIVITY_SUCCESS,props<{ payloadActivity: Activity }>());
+export const createActivityError     = createAction(type.CREATE_ACTIVITY_ERROR, props<{ error: any }>());
 
 
 
 export const deleteActivity          = createAction(type.DELETE_ACTIVITY, props<{ id: string }>());
 export const deleteActivitySuccess   = createAction(type.DELETE_ACTIVITY_SUCCESS, props<{ id: string }>());
+export const deleteActivityError     = createAction(type.DELETE_ACTIVITY_ERROR, props<{ id: string }>());
 
 
 

@@ -1,63 +1,39 @@
-import { Action, createReducer, on } from "@ngrx/store"
-import { Activity } from "src/app/features/models/Activity";
-import * as activityState from './activity.state';
-
-
-import * as activityActions from   './activities.actions';
-import { HTTPResponse } from "src/app/features/models/HTTPResponse";
-const tarea1: Activity = {
-  id: '1',
-  name: 'la actividad 1',
-  description: 'la descrtppp'
-}
-
+import { Action, createReducer, on } from "@ngrx/store";
+import * as activityState from "./activity.state";
+//IMPORTO TODAS LAS ACCIONES QUE VOY A USAR
+import * as activityActions from "./activities.actions";
 
 const activityReducer = createReducer(
   activityState.initialstate,
-  
-  //Esto se ejecutara cuando se llame a la action findAllActivities
-  //al invocarse se llamara a su effect y le pasara los datos siguientes
+
+  //La action findAllActivities ya tiene asociada un efect (ver archivo effects)
+  //Se ejecuta entonces el efects asociado y cambia el estado diciendo que
+  // loading true: ya que se esta realizando la peticion a la apiUrl
+  //error null
+  //action activityActions.type.FIND_ALL_ACTIVITIES: ya que mi state guarda la action que se ejecutó por ultima vez
   on(activityActions.findAllActivities, (state) => ({
-    ...state,       
-    action: activityActions.type.FIND_ALL_ACTIVITIES,    
+    ...state,
+    action: activityActions.type.FIND_ALL_ACTIVITIES,
     loading: true,
     error: null,
   })),
-  // on(activityActions.findAllActivitiesSuccess, (state, { payloadActivity }) => {
-  //   return bookState.adapter.setOne(book, {
-  //     ...state,
-  //     loading: false,
-  //   });
-  // }),
-
+  //Ver Efect findAllActivities$
+  //Cuando se ejecuta la peticion a la api se hace un switchMap que genera otro observable a partir del observable que le ingresa
+  //En este caso le ingresa el observable que se genera  efect findAllActivities$, que como dato de entrada tiene las actividades traidas de la api
+  //Entonces si los datos llegan succes se ejecuta este reducer que con los datos de la api los guarda en el state clonado, entonces
+  //ahroa tenemos un estado nuevo
+  //¿INVESTIGAR COMO FUNCIONA Y PARA QUE SON LOS METODOS DEL ADAPTER addMany y como se podria hacer
+  //una copia del estado y agregar los nuevos datos sin usar este adapter
   on(activityActions.findAllActivitiesSuccess, (state, { payloadActivity }) => {
-    alert(JSON.stringify(payloadActivity))
     return activityState.adapter.addMany(payloadActivity, {
       ...state,
       loading: false,
+      actividades: payloadActivity,
     });
   }),
-
-
-  //Este reducer se ejecutara si el pedido a la api es correcto, sera ejecutado por el efect, con un mergeMap, que toma el obs y
-  // genera uno nuevo, ahora con el resultado de ejecutar el action findAllActivitiesSuccess, este reducer si carga en el state las actividades  
-  //on(activityActions.findAllActivitiesSuccess, (state, { payloadActivity }) => {    
-    
-    ///let activityState:activityState.ActivityState={actividades:activitiesAR}
-//return activityState;
-    //let act:HTTPResponse<Activity[]>=activitiesAR;
-
-    // return activityState.adapter.addMany(activitiesAR, {
-    //   ...state,
-    //   actividades: [...state.actividades, state.actividades.push(activitiesAR)],     
-    //   loading: false,
-    // });
-  //}),
-  //Este reducer se ejecutara si el pedido a la api es correcto, sera ejecutado por el efect, con un mergeMap, que toma el obs y
-  // genera uno nuevo, ahora con el resultado de ejecutar el action findAllActivitiesSuccess
   on(activityActions.findAllActivitiesError, (state, { error }) => ({
     ...state,
-    error: {...error},
+    error: { ...error },
     loading: false,
   })),
 
@@ -68,11 +44,10 @@ const activityReducer = createReducer(
     loading: true,
     error: null,
   })),
-  
+
   on(activityActions.createActivitySuccess, (state, { payloadActivity }) => {
     return activityState.adapter.addOne(payloadActivity, {
       ...state,
-      actividades: [...state.actividades, payloadActivity],
       loading: false,
     });
   }),
@@ -80,11 +55,9 @@ const activityReducer = createReducer(
     ...state,
     error: { ...error },
     loading: false,
-  })),
+  }))
+);
 
-  
-  );
-
-  export function reducer(state: activityState.ActivityState, action: Action) {
-    return activityReducer(state, action);
-  }
+export function reducer(state: activityState.ActivityState, action: Action) {
+  return activityReducer(state, action);
+}

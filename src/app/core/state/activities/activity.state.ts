@@ -1,4 +1,5 @@
-//ESTE ES MI STATE,esta es su interface, voy a tener un array de actividades, el id de la actividad seleccionada, si estoy cargando etc
+//ESTE ES MI STATE,esta es su interface, voy a tener un array de actividades, 
+//el id de la actividad seleccionada, si estoy cargando etc
 
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
 import { Activity } from 'src/app/features/models/Activity';
@@ -16,15 +17,8 @@ export interface ActivityState extends EntityState<Activity> {
   loaded?: boolean;
   error?: any;
 }
-
 export const initialstate: ActivityState = adapter.getInitialState({
-  actividades:[
-    {
-    id: "2",
-    name: "22222la actividad 1",
-    description: "2222la descrtppp",
-  }
-],
+  actividades:[{id: "2",name: "22222la actividad 1",description: "2222la descrtppp"}],
   selectedId: null,
   action: null,
   loading: false,
@@ -32,4 +26,7 @@ export const initialstate: ActivityState = adapter.getInitialState({
   error: null
 });
 
-export const featureKey = 'Activities';
+
+//Este state se "llama" activities, este nombre lo usare para cargar el reducer en el modulo 
+// y tambien para que los selectores sepan donde buscar, en que satate buscar
+export const featureKey = 'activities';

@@ -2,19 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { Observable, Subscription } from "rxjs";
 import { Activity } from "src/app/features/models/Activity";
-import { HTTPResponse } from "src/app/features/models/HTTPResponse";
 import { ActivitiesService } from "src/app/features/services/activities/activities.service";
-import { StandarDialogComponent } from "src/app/shared/components/standar-dialog/standar-dialog.component";
-import { environment } from "src/environments/environment";
-
-import { Store, select } from "@ngrx/store";
-//import  {addActivity,invokeActivityAPI,removeActivity }   from 'src/app/core/state/activities/activities.actions';
-//import { listActivities } from 'src/app/core/state/activities/activities.selector';
-
+import { Store } from "@ngrx/store";
 import * as activitiesActions from "src/app/core/state/activities/activities.actions";
-import { ActivityState } from "src/app/core/state/activities/activity.state";
-
 import * as activitySelector from "src/app/core/state/activities/activities.selector";
+import { tap } from "rxjs/operators";
 
 @Component({
   selector: "app-list-activities",
@@ -46,19 +38,17 @@ export class ListActivitiesComponent implements OnInit {
   }
 
   removeActivity(id: string) {
-    //const activityToDelete: Activity = { id };
-    //this.store.dispatch(removeActivity(activityToDelete));
+    this.store.dispatch(activitiesActions.deleteActivity({ id }));
   }
 
   ngOnInit() {
     this.activitiesStore$ = this.store
-      //.select(activitySelector.selectAllActivities)
-      .subscribe((activities) => {   
-        //alert(JSON.stringify(activities))    
-        let stateActual:ActivityState=JSON.parse(JSON.stringify(activities));
-        let actividades=JSON.parse(JSON.stringify(stateActual))        
-        this.listActivities = JSON.parse(JSON.stringify(actividades.Activities.actividades));         
+      .select(activitySelector.selectAllActivities)
+      .pipe(tap((res) => console.log(res)))
+      .subscribe((activities) => {
+        this.listActivities = activities;
       });
+
     // Ejecuto el action para que cargue las actividades
     this.store.dispatch(activitiesActions.findAllActivities());
   }

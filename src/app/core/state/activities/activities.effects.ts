@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { props } from '@ngrx/store';
-import { Activity } from 'src/app/features/models/Activity';
 import { ActivitiesService } from 'src/app/features/services/activities/activities.service';
 import { environment } from 'src/environments/environment';
 import * as activitiesActions from   './activities.actions';
@@ -25,37 +23,35 @@ export class ActivityEffect {
   //Este efect se ejecuta al ejecutarse el action findAllActivities
   findAllActivities$ = createEffect(() =>
     this.actions$.pipe(
+      //Aca asocio cpn ofType, la action findAllActivities con el codigo que continua
+      //Va a buscar a la api las actividades y luego con map ejecuta el action findAllActivitiesSuccess
+      //el cual cambia el state
       ofType(activitiesActions.findAllActivities),
       switchMap(() =>
-        this.activitiesService.getActivities(environment.activitiesApiUrl)
-      ),      
-      map(actividades=>  JSON.parse(JSON.stringify(actividades))) ,
+        this.activitiesService.getActivitiesSinResponse(environment.activitiesApiUrl)
+      ),           
       map(
         (activitiesR) =>
-          activitiesActions.findAllActivitiesSuccess(
-            JSON.parse(JSON.stringify(activitiesR))
-          ),
+          activitiesActions.findAllActivitiesSuccess({payloadActivity:activitiesR}
+          ),         
         catchError((error) =>
           of(activitiesActions.findAllActivitiesError({ error }))
         )
       )
     )
   );
-
+        
   
   createActivity$ = createEffect(() =>
     this.actions$.pipe(
       ofType(activitiesActions.createActivity),
-      switchMap((action) =>
+      switchMap((payloadActivity) =>
         this.activitiesService
-          .createActivity(environment.activitiesApiUrl, action.payloadActivity)
-          .pipe(
-            //agregue el siguiente map porque el servicio me trae de la api un objeto HTTPResponse, el cual tiene las actividades
-            //en un campo data
-            map((activida) => JSON.parse(JSON.stringify(activida.data))),
-            map((activity) =>
+          .createActivitySinResponse(environment.activitiesApiUrl, payloadActivity.payloadActivity)
+          .pipe(            
+            map((response) =>
               activitiesActions.createActivitySuccess({
-                payloadActivity: activity,
+                payloadActivity:response,
               })
             ),
             catchError((error) =>
