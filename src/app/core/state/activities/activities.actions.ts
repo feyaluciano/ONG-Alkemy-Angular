@@ -1,6 +1,5 @@
 import { Action, createAction, props } from '@ngrx/store'
 import { Activity } from 'src/app/features/models/Activity';
-import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
 
 
 
@@ -21,11 +20,11 @@ export enum type {
 }
 
 export const findAllActivities        = createAction(type.FIND_ALL_ACTIVITIES);
-export const findAllActivitiesSuccess = createAction(type.FIND_ALL_ACTIVITIES_SUCCESS, props<{ activitiesR: HTTPResponse<Activity[]>}>());
+export const findAllActivitiesSuccess = createAction(type.FIND_ALL_ACTIVITIES_SUCCESS, props<{ activitiesAR: Array<Activity> }>());
 export const findAllActivitiesError = createAction(type.FIND_ALL_ACTIVITIES_ERROR,props<{ error: any }>());
 
-export const createActivity          = createAction(type.CREATE_ACTIVITY, props<{ activity: Activity }>());
-export const createActivitySuccess   = createAction(type.CREATE_ACTIVITY_SUCCESS, props<{ activity: Activity }>());
+export const createActivity          = createAction(type.CREATE_ACTIVITY, props<{ payloadActivity: Activity }>());
+export const createActivitySuccess   = createAction(type.CREATE_ACTIVITY_SUCCESS, props<{ payloadActivity: Activity }>());
 export const createActivityError   = createAction(type.CREATE_ACTIVITY_ERROR, props<{ error: any }>());
 
 

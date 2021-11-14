@@ -2,15 +2,14 @@
 
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
 import { Activity } from 'src/app/features/models/Activity';
-import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
 
-export const adapter = createEntityAdapter<HTTPResponse<Activity>>({
-  selectId: (sensor: HTTPResponse<Activity>) => sensor.data.id!,
+export const adapter = createEntityAdapter<Activity>({
+  selectId: (sensor: Activity) => sensor.id!,
   sortComparer: false
 });
 
 export interface ActivityState extends EntityState<Activity> {
-  actividades?:HTTPResponse<Activity[]> | null;
+  actividades:Activity[] ;
   selectedId: string | null;
   action: string | null;
   loading: boolean;
@@ -19,11 +18,13 @@ export interface ActivityState extends EntityState<Activity> {
 }
 
 export const initialstate: ActivityState = adapter.getInitialState({
-  succes:true,
-  message:'aaa',
-  actividades:,
-  
-  
+  actividades:[
+    {
+    id: "2",
+    name: "22222la actividad 1",
+    description: "2222la descrtppp",
+  }
+],
   selectedId: null,
   action: null,
   loading: false,
@@ -32,16 +33,3 @@ export const initialstate: ActivityState = adapter.getInitialState({
 });
 
 export const featureKey = 'Activities';
-
-/* //   {
-  //   id: "2",
-  //   name: "22222la actividad 1",
-  //   description: "2222la descrtppp",
-  // } */
-
-  /**
-   * 
-   * success: boolean;
-    data:    T;
-    message: string;
-   * //

@@ -7,6 +7,7 @@ import * as activityState from './activity.state';
 
 
 import * as activityActions from   './activities.actions';
+import { tap } from "rxjs/operators";
 
 
 //export let initialState: Activity[] = [];
@@ -27,18 +28,22 @@ const tarea1: Activity = {
 
 const activityReducer = createReducer(
   activityState.initialstate,
+  
   on(activityActions.findAllActivities, (state) => ({
     ...state,
+    actividades:[{
+      id: '1',
+      name: 'la actividad 1',
+      description: 'la descrtppp'
+    }],    
     action: activityActions.type.FIND_ALL_ACTIVITIES,    
     loading: true,
     error: null,
   })),
 
-  on(activityActions.findAllActivitiesSuccess, (state, { activitiesR }) => {
-    //alert(JSON.stringify(state))
-    return activityState.adapter.addMany(activitiesR, {
-      ...state,
-      activities: activitiesR,
+  on(activityActions.findAllActivitiesSuccess, (state, { activitiesAR }) => {    
+    return activityState.adapter.addMany(activitiesAR, {
+      ...state,     
       loading: false,
     });
   }),
@@ -48,6 +53,27 @@ const activityReducer = createReducer(
     loading: false,
   })),
 
+  //CREATE
+  on(activityActions.createActivity, (state) => ({
+    ...state,
+    action: activityActions.type.CREATE_ACTIVITY,
+    loading: true,
+    error: null,
+  })),
+  
+  on(activityActions.createActivitySuccess, (state, { payloadActivity }) => {
+    alert(JSON.stringify("pppp"+payloadActivity))
+    return activityState.adapter.addOne(payloadActivity, {
+      ...state,
+      actividades: [...state.actividades, payloadActivity],
+      loading: false,
+    });
+  }),
+  on(activityActions.createActivityError, (state, { error }) => ({
+    ...state,
+    error: { ...error },
+    loading: false,
+  })),
 
   
   );

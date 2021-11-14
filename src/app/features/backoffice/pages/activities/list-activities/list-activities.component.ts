@@ -24,7 +24,6 @@ import * as activitySelector from 'src/app/core/state/activities/activities.sele
 })
 export class ListActivitiesComponent implements OnInit {
   public listActivities: Activity[] = [];
-  public listActivitiesR: HTTPResponse<Activity>[] = [];
   displayedColumns: string[] = ["Id", "Titulo", "Descripcion"];
 
   private activitiesStore$!: Subscription;
@@ -42,8 +41,16 @@ export class ListActivitiesComponent implements OnInit {
 
   }
 
-  addActivity() {    
-  // this.store.dispatch(activitiesActions.createActivity({ activity: this.tarea2 }));
+
+  public tarea2: Activity = {
+  id: "2",
+  name: "22222la actividad 1",
+  description: "2222la descrtppp",
+};
+
+  addActivity() { 
+    //alert();   
+   this.store.dispatch(activitiesActions.createActivity({ payloadActivity: this.tarea2 }));
   }
 
   removeActivity(id: string) {
@@ -53,13 +60,15 @@ export class ListActivitiesComponent implements OnInit {
 
   ngOnInit() { 
 
+    
+
     this.activitiesStore$ = this.store.select(activitySelector.selectAllActivities)
       .subscribe((activities) => {
-        alert("acaRRRRRRRRRR"+JSON.stringify(activities))
-        this.listActivitiesR = JSON.parse(JSON.stringify(activities));
+        alert("aca"+JSON.stringify(activities))
+        //this.listActivities = JSON.parse(JSON.stringify(activities));
       });
 
-      this.store.dispatch(activitiesActions.findAllActivities());
+this.store.dispatch(activitiesActions.findAllActivities());
 
 
 //Lo uso para agregar una actividad harcodeada ya que no tengo en esta pagina un formulario, para probar el agregar en el store

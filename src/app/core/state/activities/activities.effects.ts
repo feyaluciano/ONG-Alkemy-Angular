@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 import * as activitiesActions from   './activities.actions';
 import { of } from 'rxjs';
 
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
 
 
@@ -25,25 +25,61 @@ export class ActivityEffect {
   
   }
 
-  // const tarea1: Activity = {
-  //   id: '1',
-  //   name: 'la actividad 1',
-  //   description: 'la descrtppp'
-  // }
+  public tarea1: Activity = {
+    id: '1',
+    name: 'la actividad 1',
+    description: 'la descrtppp'
+  }
 
   findAllActivities$ = createEffect(() =>
   this.actions$.pipe(
     ofType(activitiesActions.findAllActivities),    
-    switchMap(() => this.activitiesService.getActivities(environment.activitiesApiUrl)),  
-    
+    switchMap(() => this.activitiesService.getActivities(environment.activitiesApiUrl)    ),  
+    tap((result)=>result.data),
     //map(actividades=>  JSON.parse(JSON.stringify(actividades.data)) ,       
     map((activitiesR) => activitiesActions.findAllActivitiesSuccess(JSON.parse(JSON.stringify(activitiesR ))),
           catchError((error) => of(activitiesActions.findAllActivitiesError({ error })))        
     )
-   
+    
 
     
 ));
+
+
+createActivity$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(activitiesActions.createActivity),
+      switchMap((action) =>
+        this.activitiesService.createActivity(environment.activitiesApiUrl,action.payloadActivity).pipe(
+          map(activida=>  JSON.parse(JSON.stringify(activida.data))) ,          
+          map((activity) => activitiesActions.createActivitySuccess({ payloadActivity:activity })),
+          catchError((error) => of(activitiesActions.createActivityError({ error })))
+        )
+      )
+    )
+  );
+
+// //((result)=>JSON.parse(JSON.stringify(result.data)),
+// createBook$ = createEffect(() =>
+//     this.actions$.pipe(
+//       ofType(activitiesActions.createActivity),
+//       switchMap((action) => {
+//       map((action) => activitiesActions.createActivitySuccess(action.activity)))),
+//       catchError((error) => of(activitiesActions.createActivityError({ error })))
+//       })
+//       // switchMap((action) =>
+//       //   this.bookService.create(action.book).pipe(
+//          // map((book) => activitiesActions.createActivitySuccess({ book })),
+//          // catchError((error) => of(bookActions.createBookFail({ error })))
+//       //   )
+//       // )
+   
+   
+//       )
+//   );
+
+
+        }
 
 //map((activities) => activitiesActions.findAllActivities(),
 //// map(actividades => ({ type: activitiesActions.findAllActivities, actividades })),
@@ -91,7 +127,7 @@ export class ActivityEffect {
 //     )
 //   )
 // );
-      }
+     // }
 
 //   findAllActivities$ = createEffect(() =>
 //   this.actions$.pipe(
