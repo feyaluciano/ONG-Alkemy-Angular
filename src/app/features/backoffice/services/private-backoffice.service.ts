@@ -55,7 +55,7 @@ export class PrivateBackofficeService {
   createEntity<T>(params:string, entity: any): Observable<T> {
     
     this.setHeaders();
-    return this.httpService.post<T>(`${environment.apiUrl}${params}`, entity, false);
+    return this.httpService.post<T>(`${params}`, entity, false);
   }
 
   updateEntity<T>(params: string, entity: any): Observable<T> {

@@ -54,12 +54,12 @@ export class ListActivitiesComponent implements OnInit {
     this.activitiesStore$ = this.store
       //.select(activitySelector.selectAllActivities)
       .subscribe((activities) => {   
-        alert(JSON.stringify(activities))    
+        //alert(JSON.stringify(activities))    
         let stateActual:ActivityState=JSON.parse(JSON.stringify(activities));
         let actividades=JSON.parse(JSON.stringify(stateActual))        
         this.listActivities = JSON.parse(JSON.stringify(actividades.Activities.actividades));         
       });
     // Ejecuto el action para que cargue las actividades
-    //this.store.dispatch(activitiesActions.findAllActivities());
+   // this.store.dispatch(activitiesActions.findAllActivities());
   }
 }
