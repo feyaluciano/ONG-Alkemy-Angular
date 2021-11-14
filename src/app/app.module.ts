@@ -9,6 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { StoreModule} from "@ngrx/store"
+import { EffectsModule } from '@ngrx/effects';
+import { featureKey } from './core/state/activities/activity.state';
+import { reducer } from './core/state/activities/activities.reducer';
+import { ActivityEffect } from './core/state/activities/activities.effects';
 
 
 @NgModule({
@@ -21,8 +25,10 @@ import { StoreModule} from "@ngrx/store"
     FeaturesModule,
     SharedModule,
     BrowserAnimationsModule,
-
-    StoreModule.forRoot({})
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+// StoreModule.forFeature(featureKey,reducer),
+//     EffectsModule.forFeature([ActivityEffect]),
     
   ],
   exports: [],

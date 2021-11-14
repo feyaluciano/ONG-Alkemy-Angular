@@ -1,10 +1,144 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, mergeMap } from 'rxjs/operators';
+import { props } from '@ngrx/store';
+import { Activity } from 'src/app/features/models/Activity';
 import { ActivitiesService } from 'src/app/features/services/activities/activities.service';
 import { environment } from 'src/environments/environment';
 import * as activitiesActions from   './activities.actions';
+import { of } from 'rxjs';
 
+import { catchError, map, switchMap } from 'rxjs/operators';
+
+
+
+@Injectable()
+export class ActivityEffect {
+  //Injecto las actions que existen, en este caso voy a usar la action que es buscar en la api las activiadades
+  //Injecto el servicio de las activities  
+  constructor(
+    private actions$: Actions,
+    private activitiesService: ActivitiesService
+  ) { 
+    
+    
+
+  
+  }
+
+  // const tarea1: Activity = {
+  //   id: '1',
+  //   name: 'la actividad 1',
+  //   description: 'la descrtppp'
+  // }
+
+  findAllActivities$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(activitiesActions.findAllActivities),    
+    switchMap(() => this.activitiesService.getActivities(environment.activitiesApiUrl)),  
+    
+    //map(actividades=>  JSON.parse(JSON.stringify(actividades.data)) ,       
+    map((activitiesR) => activitiesActions.findAllActivitiesSuccess(JSON.parse(JSON.stringify(activitiesR ))),
+          catchError((error) => of(activitiesActions.findAllActivitiesError({ error })))        
+    )
+   
+
+    
+));
+
+//map((activities) => activitiesActions.findAllActivities(),
+//// map(actividades => ({ type: activitiesActions.findAllActivities, actividades })),
+
+// switchMap(() =>
+// this.activitiesService.getActivities("laurl").pipe(
+//   map((activit) => activitiesActions.findAllActivitiesSuccess({ activit })),
+//   catchError((error) => of(activitiesActions.findAllActivitiesError({ error })))
+// )
+// )
+
+
+
+/*
+  findAllActivities$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(activitiesActions.findAllActivities),
+    
+
+
+    switchMap(() =>
+      this.activitiesService.getActivities("url").pipe(
+        map(activities=>JSON.parse(JSON.stringify(activities.data)),
+        map((activities) => activitiesActions.findAllActivitiesSuccess({ activities })),
+        catchError((error) => of(bookActions.findAllActivitiesError({ error })))
+      )
+    )
+
+
+
+
+  )
+);
+*/
+
+//   createBook$ = createEffect(() =>
+//   this.actions$.pipe(
+//     ofType(activitiesActions.createActivity),
+//     switchMap((action) =>
+//       this.activitiesService.createActivity("laurl",action.activity)
+//       .pipe(
+//         map((activity) => activitiesActions.createActivitySuccess({ activity })),
+//         catchError((error) => of(activitiesActions.createActivityError({ error })))
+//       )
+//     )
+//   )
+// );
+      }
+
+//   findAllActivities$ = createEffect(() =>
+//   this.actions$.pipe(
+//     ofType(activitiesActions.findAllActivities),          
+//   )
+// );
+
+// createActivity$ = createEffect(() =>
+// this.actions$.pipe(
+//   ofType(activitiesActions.createActivity),
+//   map((activity) => activitiesActions.createActivitySuccess({ action.payload })) }),
+  
+// )
+// );
+
+
+
+
+//}
+
+
+
+
+// switchMap(() =>
+//     .getActivities(environment.activitiesApiUrl)
+//       .pipe(
+//         map((activities) => activitiesActions.findAllActivitiesSuccess({ activities })),
+//         catchError((error) => of(bookActions.findAllActivitiesFail({ error })))
+//       )
+//     )
+
+
+
+// findAllActivities$ = createEffect(() =>
+//     this.actions$.pipe(
+//       ofType(activitiesActions.findAllActivities),
+//       switchMap(() =>
+//         this.activitiesService.getActivities().pipe(
+//           map((activities) => activitiesActions.findAllActivitiesSuccess({ activities })),
+//           catchError((error) => of(bookActions.findAllBooksFail({ error })))
+//         )
+//       )
+//     )
+//   );
+
+
+/*
 
 //Los Effects son metodos que obtienen por ejemplo datos de la api, 
 //https://ngrx.io/guide/effects
@@ -19,6 +153,8 @@ export class ActivityEffect {
   ) {
     
   }
+
+  
 
   //Primero busco en las actions la actions que necesito, la busco con ofType
   //Luego busco las actividades y retono un objeto (la action) con el nombre de la action y el listado de las actividades obtenidas de la api
@@ -40,18 +176,35 @@ export class ActivityEffect {
     )
   );
 
-  addActivities$ = createEffect(() =>{
-    re
-     //let activities:Activity[]= [...state];
-    //   activities.push(activity);    
-  // this.actions$.pipe(
-  //   ofType(activitiesActions.addActivity),
-  //   mergeMap(() =>
-  //     this.activitiesService
-  //       .getActivities(environment.activitiesApiUrl)
-  //       .pipe(map((data) => ({ type: '[Activity API] Activity API Success', allActivities: data.data })))      
-  //       )
+
+  addActivities$ = createEffect(() => {  
+  return this.actions$.pipe(
+    //ofType("[Activity API] Activity API Success"),
+    ofType(activitiesActions.addActivity),
+    switchMap( () => {
+       // console.log(activity)
+       let act:Activity={id:"1"};
+       return {act};
+    })
   )
+  }
+    
 );
 
+
+//   addActivities$ = createEffect(() =>{
+//     this.actions$.pipe()
+//      //let activities:Activity[]= [...state];
+//     //   activities.push(activity);    
+//   // this.actions$.pipe(
+//   //   ofType(activitiesActions.addActivity),
+//   //   mergeMap(() =>
+//   //     this.activitiesService
+//   //       .getActivities(environment.activitiesApiUrl)
+//   //       .pipe(map((data) => ({ type: '[Activity API] Activity API Success', allActivities: data.data })))      
+//   //       )
+//   )
+// );
+
 }
+*/

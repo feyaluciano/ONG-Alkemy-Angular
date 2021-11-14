@@ -6,7 +6,9 @@ import { AppRoutingModule } from "./app-routing.module";
 import { StoreModule} from "@ngrx/store"
 import { EffectsModule } from "@ngrx/effects";
 import { ActivityEffect } from "../core/state/activities/activities.effects";
-import { activityReducer } from "../core/state/activities/activities.reducer";
+import { reducer } from "../core/state/activities/activities.reducer";
+import { featureKey } from "../core/state/activities/activity.state";
+//import { activityReducer } from "../core/state/activities/activities.reducer";
  
 @NgModule({
   declarations: [],
@@ -17,8 +19,10 @@ import { activityReducer } from "../core/state/activities/activities.reducer";
     CommonModule,
     AppRoutingModule,
     RouterModule,
-    EffectsModule.forRoot([ActivityEffect]),
-    StoreModule.forRoot([activityReducer])
+    StoreModule.forFeature(featureKey,reducer),
+    EffectsModule.forFeature([ActivityEffect]),
+    
+    
     
   ],
 })
