@@ -22,6 +22,8 @@ import { NewsFormComponent } from './pages/news/news-form/news-form.component';
 import { MaterialModule } from '../material/material.module';
 import { UserslistComponent } from './pages/userslist/userslist.component';
 import { SlidesComponent } from './pages/slides/slides.component';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from 'src/app/core/redux/effects/user.effect';
 
 
 @NgModule({
@@ -52,7 +54,7 @@ import { SlidesComponent } from './pages/slides/slides.component';
     ReactiveFormsModule,
     MaterialModule, 
     SharedModule,
-    
+    EffectsModule.forFeature([UserEffects])
    
   ],
   exports: [HeaderBackofficeComponent ],

@@ -11,6 +11,9 @@ import { StoreModule } from '@ngrx/store';
 import { authReducer } from './core/redux/reducers/authReducer.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './core/redux/effects/auth.effects';
+import { UserEffects } from './core/redux/effects/user.effect';
+
+
 
 @NgModule({
   declarations: [
@@ -19,11 +22,13 @@ import { AuthEffects } from './core/redux/effects/auth.effects';
   imports: [
     BrowserModule,
     CoreModule,
+    MaterialModule,
     FeaturesModule,
     SharedModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({ authReducer: authReducer }),
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([UserEffects])
     
   ],
   exports: [],

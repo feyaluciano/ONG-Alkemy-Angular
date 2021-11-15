@@ -58,7 +58,7 @@ export class LoginFormComponent implements OnInit  {
 
     this.authServices.auth(user).subscribe((resp:any)=>{
       this.userLogin = resp.data.user;
-      this.token = resp.data.token;       
+      this.token = resp.data.token;        
 
       localStorage.setItem("userToken", JSON.stringify(this.token));
       localStorage.setItem("user", JSON.stringify(this.userLogin));

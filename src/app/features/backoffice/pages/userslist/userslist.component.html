@@ -6,6 +6,8 @@
             
         </div>
 
+        
+
         <div class="col-12 col-md-12 mt-3">
             <div class="card  animate__animated animate__zoomIn">
                 <div class="table-responsive p-4">
@@ -22,10 +24,10 @@
                         </thead>
         
                         <tbody>
-                            <tr *ngFor="let user of usersList; let i = index;">
+                            <tr *ngFor="let user of users | async; let i = index;">
                                 <th scope="row"> {{i+1}} </th>
                                 <td> {{user.name}} </td>
-                                <td> {{user.email}} </td>
+                                <td> {{user}} </td>
                                 <td>
                                     <div class="i-container">
                                         <i class="fas fa-user-edit fa-lg text-primary m-1" (click)="editUser(user)"></i>
