@@ -65,12 +65,9 @@ export class PrivateBackofficeService {
 
    deleteEntity<T>(params: string):Observable<T>{
     this.setHeaders();
-    return this.httpService.delete<T>(`${environment.apiUrl}${params}`, true);
+    return this.httpService.delete<T>(`${environment.activitiesApiUrl}/${params}`, true);
   }
      
-
   
-
-
 }
 

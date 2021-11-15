@@ -35,7 +35,7 @@ export const createActivityError     = createAction(type.CREATE_ACTIVITY_ERROR, 
 
 export const deleteActivity          = createAction(type.DELETE_ACTIVITY, props<{ id: string }>());
 export const deleteActivitySuccess   = createAction(type.DELETE_ACTIVITY_SUCCESS, props<{ id: string }>());
-export const deleteActivityError     = createAction(type.DELETE_ACTIVITY_ERROR, props<{ id: string }>());
+export const deleteActivityError     = createAction(type.DELETE_ACTIVITY_ERROR,  props<{ error: any }>());
 
 
 

@@ -38,6 +38,7 @@ export class ListActivitiesComponent implements OnInit {
   }
 
   removeActivity(id: string) {
+    alert(id)
     this.store.dispatch(activitiesActions.deleteActivity({ id }));
   }
 

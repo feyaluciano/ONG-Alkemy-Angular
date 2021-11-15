@@ -52,4 +52,10 @@ export class ActivitiesService {
   updateActivity(url: string,activity:Activity): Observable<HTTPResponse<Activity>> {
     return this.privateBackofficeService.updateEntity(url, activity);
   }
+
+
+  deleteActivity(url: string): Observable<HTTPResponse<Activity>> {
+    return this.privateBackofficeService.deleteEntity(url );
+  }
+
 }

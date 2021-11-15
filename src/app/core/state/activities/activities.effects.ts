@@ -61,6 +61,23 @@ export class ActivityEffect {
       )
     )
   );
+
+
+  //El delete si hizo un poco mas complejo ya que al enviar el id a la api, este no devuelve el id borrado, sino
+  //sino que devuelve success true/false. Entonces con el operator map, luego del delete, en vez de enviar el success que
+  // es lo que enviaria si no lo intercepto con el map, envio el id a la accion deleteActivitySuccess
+  deleteActivity$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(activitiesActions.deleteActivity),
+      switchMap((payload) =>
+        this.activitiesService.deleteActivity(payload.id).pipe(
+          map( ()=> payload.id),
+          map((response) => activitiesActions.deleteActivitySuccess({ id: response })),
+          catchError((error) => of(activitiesActions.deleteActivityError({ error })))
+        )
+      )
+    )
+  );
 }
 
 

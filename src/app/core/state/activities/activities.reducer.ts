@@ -55,7 +55,29 @@ const activityReducer = createReducer(
     ...state,
     error: { ...error },
     loading: false,
-  }))
+  })),
+
+
+// DELETE
+on(activityActions.deleteActivity, (state) => ({
+  ...state,
+  action: activityActions.type.DELETE_ACTIVITY,
+  loading: true,
+  error: null,
+})),
+on(activityActions.deleteActivitySuccess, (state, { id }) => {
+  return activityState.adapter.removeOne(id, {
+    ...state,
+    loading: false,
+  });
+}),
+on(activityActions.deleteActivityError, (state, { error }) => ({
+  ...state,
+  error: { ...error },
+  loading: false,
+})),
+
+
 );
 
 export function reducer(state: activityState.ActivityState, action: Action) {
