@@ -1,37 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { StandarDialogComponent } from '../../../../../shared/components/standar-dialog/standar-dialog.component';
-import { News } from '../../../../models/news.interface';
-import { NewsService } from '../../../../services/news/news.service';
+import { ActivatedRoute } from '@angular/router';
+import { StandarDialogComponent } from 'src/app/shared/components/standar-dialog/standar-dialog.component';
+import { Activity } from '../../../../models/Activity';
+import { ActivitiesService } from '../../../../services/activities/activities.service';
 
 @Component({
-  selector: 'app-news-form',
-  templateUrl: './news-form.component.html',
-  styleUrls: ['./news-form.component.scss']
+  selector: 'app-activity',
+  templateUrl: './activity.component.html',
+  styleUrls: ['./activity.component.scss']
 })
-export class NewsFormComponent implements OnInit {
-
-  news!: News[];
-  newsCompleted: boolean = false;
+export class ActivityComponent implements OnInit {
+  activity!: Activity;
+  activityError: boolean = false;
+  activityCompleted: boolean = false;
 
   constructor(
-    private newsSvc: NewsService,
-    public dialog: MatDialog)
-    
-    
-    {  this.newsSvc.getNews()
+    private actRoute: ActivatedRoute,
+    private activitiesSvc: ActivitiesService,
+    public dialog: MatDialog
+  ) {
+    const id = this.actRoute.snapshot.params['id'];
+    this.activitiesSvc.getActivityById(id)
       .subscribe((resp: any) => {
-        setTimeout(() => {
-          const news = resp.data;
-          this.news = news.slice(0, 4);
-        }, 500);
+        this.activity = resp.data;
       },
       (error: any) => {
-
         let errorMessage = '';           
         switch(error.status) { 
           case 404: { 
-            errorMessage = 'Error al obtener las novedades'; 
+            errorMessage = 'Error al obtener la actividad'; 
               break; 
           } 
           case 401: {  
@@ -44,7 +42,6 @@ export class NewsFormComponent implements OnInit {
           } 
         }
 
-        //
         const dialogRef = this.dialog.open(StandarDialogComponent, {
           height: '300px',
           width: '400px',
@@ -57,12 +54,12 @@ export class NewsFormComponent implements OnInit {
         });            
         
         dialogRef.afterClosed().subscribe(result => {
-          console.log(`Dialog result: ${result}`); 
+          this.activityError = true; 
         });
       },
       () => {
         setTimeout(() => {
-          this.newsCompleted = true;
+          this.activityCompleted = true;
         }, 500);
       });
   }

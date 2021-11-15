@@ -12,8 +12,7 @@ import { ImageFile } from 'src/app/features/models/ImageFile';
 import { ActivitiesService } from 'src/app/features/services/activities/activities.service';
 import { StandarDialogComponent } from 'src/app/shared/components/standar-dialog/standar-dialog.component';
 import { environment } from 'src/environments/environment';
-import Swal from'sweetalert2';
-import { PrivateBackofficeService } from '../../services/private-backoffice.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -108,10 +107,8 @@ export class ActivityFormComponent implements OnInit {
     
     if (typeof this.route.snapshot.params["idActivity"] !== "undefined") {
       this.editing = true;
-      this.action = "Editar actividad";
-      const url: string =
-        environment.activitiesApiUrl;     
-        const req:Observable<HTTPResponse<Activity>>= this.activitiesService.getActivityById(url,this.route.snapshot.params["idActivity"]); 
+      this.action = "Editar actividad";     
+        const req:Observable<HTTPResponse<Activity>> = this.activitiesService.getActivityById(this.route.snapshot.params["idActivity"]); 
         req.subscribe((response) => {
           let resultData: HTTPResponse<Activity> = response;         
           this.anActivity = JSON.parse(JSON.stringify(resultData.data));         

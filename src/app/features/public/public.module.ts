@@ -5,7 +5,6 @@ import { CoreModule } from "src/app/core/core.module";
 import { SharedModule } from "src/app/shared/shared.module";
 import { BackofficeRoutingModule } from "../backoffice/backoffice-routing.module";
 import { AppPublicComponent } from "./app-public.component";
-import { ActivityComponent } from './components/activity/activity.component';
 import { HeaderPublicComponent } from "./components/header-public/header-public.component";
 import { TitlesComponentComponent } from './components/titles-component/titles-component.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -17,7 +16,8 @@ import { HomeComponent } from "./pages/home/home.component";
 import { NewsFormComponent } from "./pages/news/news-form/news-form.component";
 import { TestimonialFormComponent } from "./pages/testimonials/testimonial-form/testimonial-form.component";
 import { PublicRoutingModule } from "./public-routing.module";
-import { DetailComponent } from './views/activities/detail/detail.component';
+import { ActivityComponent } from './pages/activities/activity/activity.component';
+
 
 
 @NgModule({
@@ -30,12 +30,11 @@ import { DetailComponent } from './views/activities/detail/detail.component';
     AppPublicComponent,
     HeaderPublicComponent,
     AboutComponent, 
-    DetailComponent, 
-    ActivityComponent, 
     ContactComponent, 
     ActivitiesComponent,
     NewsFormComponent,
-    TestimonialFormComponent
+    TestimonialFormComponent,
+    ActivityComponent
   ],
   imports: [
     CommonModule,
