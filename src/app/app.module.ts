@@ -13,6 +13,7 @@ import { authReducer } from './core/redux/reducers/authReducer.reducer';
 import { AuthEffects } from './core/redux/effects/auth.effects';
 
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -25,6 +26,7 @@ import { AuthEffects } from './core/redux/effects/auth.effects';
     BrowserAnimationsModule,
     StoreModule.forRoot({ authReducer: authReducer }),
     EffectsModule.forRoot([AuthEffects])
+    
     
   ],
   exports: [],
