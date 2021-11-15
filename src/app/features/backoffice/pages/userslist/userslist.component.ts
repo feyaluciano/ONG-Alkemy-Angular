@@ -15,11 +15,11 @@ interface List {
 })
 export class UserslistComponent implements OnInit {
   users:any;
-  userState$ = this.store.select(state => state.userState.payload) ;
+  userState$: Observable<any[]> = this.store.select(state => state.userState) ;
 
  
 
-  constructor(private store:Store<{userState:any}>) { 
+  constructor(private store:Store<{userState:any[]}>) { 
   }
 
   ngOnInit(){

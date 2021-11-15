@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { UserService } from '../../services/user.service';
+import { findAlluserSuccess, userState } from '../actions/user.actions';
 
 
 @Injectable()
@@ -10,14 +11,14 @@ export class UserEffects {
   users:any;
 
   loadUser$ = createEffect(() => this.actions$.pipe(
-    ofType('[User Page] Load User'),
+    ofType(userState),
     mergeMap(() => this.userServices.getUsers()
       .pipe(
-        map((users:any)=> ({ type: '[User API] User Loaded Success', users: users.data })),
+        map((users:any)=> findAlluserSuccess({payload:users}),
         catchError(() => EMPTY)
       ))
     )
-  );
+  ));
 
   constructor(
     private actions$: Actions,

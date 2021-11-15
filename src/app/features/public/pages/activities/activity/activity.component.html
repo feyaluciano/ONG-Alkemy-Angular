@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-center">
+  <app-spinner
+  color="primary"
+  mode="indeterminate"
+  *ngIf="!activityCompleted"
+  ></app-spinner>
+</div>
+<div class="container" *ngIf="activityCompleted && !activityError">
+  <app-titles-component [title]="activity.name" [image]="activity.image"></app-titles-component>
+  <div class="mt-3" [innerHTML]="activity.description"></div>
+</div>

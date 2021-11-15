@@ -46,7 +46,7 @@ export class PrivateBackofficeService {
   
 
  getEntityById<T>(url: string, id: string):Observable<T> {
-    return  this.httpService.get<T>(url + id);              
+    return  this.httpService.get<T>(`${url}/${id}`);              
   }    
 
 

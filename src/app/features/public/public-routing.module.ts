@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppPublicComponent } from './app-public.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ActivitiesComponent } from './pages/activities/activities.component';
+import { ActivityComponent } from './pages/activities/activity/activity.component';
 import { LoginFormComponent } from './pages/auth/login-form/login-form.component';
 import { RegisterFormComponent } from './pages/auth/register-form/register-form.component';
 import { ContactComponent } from './pages/contact/contact.component';
@@ -24,9 +25,9 @@ const routes: Routes = [
           { path: 'register', component: RegisterFormComponent },
           { path : 'login' , component:LoginFormComponent},
           { path: 'nosotros', component: AboutComponent } ,
-          { path: 'nosotros', component: AboutComponent } ,
           { path: 'contacto', component: ContactComponent },
           { path: 'actividades', component: ActivitiesComponent },
+          { path: 'actividad/:id', component: ActivityComponent },
           { path: 'novedades', component: NewsFormComponent },
           { path: 'testimonios', component: TestimonialFormComponent }
     ]

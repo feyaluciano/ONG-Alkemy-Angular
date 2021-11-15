@@ -6,12 +6,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './features/material/material.module';
+// ngrx
 import { StoreModule } from '@ngrx/store';
-import { authReducer } from './core/redux/reducers/authReducer.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { authReducer } from './core/redux/reducers/authReducer.reducer';
 import { AuthEffects } from './core/redux/effects/auth.effects';
 import { UserEffects } from './core/redux/effects/user.effect';
+import { MaterialModule } from './features/material/material.module';
+
 
 
 
