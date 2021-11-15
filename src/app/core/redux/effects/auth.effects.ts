@@ -20,7 +20,6 @@ export class AuthEffects {
         ofType(login),
         exhaustMap( loginAction =>
             this.authService.auth({email:loginAction.email, password: loginAction.password}).pipe(
-                tap(() => console.log('Api request in queue...')),
                 map( (resp:any) => setAuthState({success: resp.success, token: resp.data.token, data: resp.data.user}))
             ))            
     ));
@@ -29,7 +28,6 @@ export class AuthEffects {
         ofType(register),
         exhaustMap( registerAction =>
             this.authService.auth({name: registerAction.name,email:registerAction.email, password: registerAction.password}).pipe(
-                tap(() => console.log('Api request in queue...')),
                 map( (resp:any) => setAuthState({success: resp.success, token: resp.data.token, data: resp.data.user}))
             ))            
     ));
