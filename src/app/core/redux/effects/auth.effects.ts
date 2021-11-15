@@ -4,8 +4,11 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AuthService } from "../../services/auth.service";
 import { login, register, setAuthState } from '../actions/auth.actions';
 
-import { catchError, exhaustMap, map } from 'rxjs/operators';
+import { catchError, exhaust, exhaustMap, map, mergeMap, tap } from 'rxjs/operators';
 import { EMPTY, of } from 'rxjs';
+import { HTTPResponse } from '../../../features/models/HTTPResponse';
+import { User } from '../../../features/models/User';
+import { Router } from '@angular/router';
 
 
 
@@ -13,42 +16,25 @@ import { EMPTY, of } from 'rxjs';
 @Injectable()
 export class AuthEffects {
 
-    login$ = createEffect(() =>
-    this.actions$.pipe(
+    login$ = createEffect(() => this.actions$.pipe(
         ofType(login),
-        exhaustMap( action =>
-            this.authService.auth({
-                email: action.email,
-                password: action.password
-            }).pipe(
-                map( (user:any) => setAuthState({
-                    success: user.success,
-                    data: user.data.user,
-                    token: user.data.token
-                })),
-                catchError( ()=> EMPTY )
-            ))
+        exhaustMap( loginAction =>
+            this.authService.auth({email:loginAction.email, password: loginAction.password}).pipe(
+                map( (resp:any) => setAuthState({success: resp.success, token: resp.data.token, data: resp.data.user}))
+            ))            
     ));
 
-    register$ = createEffect(() =>
-    this.actions$.pipe(
+    register$ = createEffect(() => this.actions$.pipe(
         ofType(register),
-        exhaustMap( action =>
-            this.authService.register({
-                name: action.name,
-                email: action.email,
-                password: action.password
-            }).pipe(
-                map( (user:any) => setAuthState({
-                    success: user.success,
-                    data: user.data.user,
-                    token: user.data.token
-                })),
-                catchError( ()=> EMPTY )
-            ))
+        exhaustMap( registerAction =>
+            this.authService.auth({name: registerAction.name,email:registerAction.email, password: registerAction.password}).pipe(
+                map( (resp:any) => setAuthState({success: resp.success, token: resp.data.token, data: resp.data.user}))
+            ))            
     ));
 
-    constructor(private actions$: Actions, private authService: AuthService ){
+    
+
+    constructor(private actions$: Actions, private authService: AuthService, private router: Router ){
 
     }
 }
