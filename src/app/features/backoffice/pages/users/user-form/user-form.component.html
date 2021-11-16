@@ -25,14 +25,28 @@
        
         <div class="mb-3 position-relative">
                 <label for="name" class="form-label">Nombre</label>
-                <input formControlName="name" type="text" class="form-control" id="name" name="name">
+                <input
+                  formControlName="name"
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  [value]="user.name"
+                >
                 <div appMsgErrorForm messageError="Este campo es requerido"
                   [valido]="haveErrorsInputForm('name','required')"></div>
               </div>
 
             <div class="mb-3 position-relative">
                 <label for="email" class="form-label">Email</label>
-                <input formControlName="email" type="text" class="form-control" id="email" name="email">
+                <input 
+                  formControlName="email" 
+                  type="text" 
+                  class="form-control" 
+                  id="email" 
+                  name="email"
+                  [value]="user.email"
+                >
                 <div appMsgErrorForm messageError="Este campo es requerido"
                   [valido]="haveErrorsInputForm('email','required')"></div>
               </div>
@@ -54,7 +68,11 @@
 
             <div class="mb-3 position-relative">
                 <label for="role_id" class="form-label">Rol</label>
-                <select class="form-select" formControlName="role_id">
+                <select 
+                  class="form-select"
+                  formControlName="role_id"
+                  [value]="user.role_id"
+                >
                   <option selected>Seleccione...</option>
                   <option value="1">Administrador</option>
                   <option value="2">Regular</option>
@@ -80,7 +98,7 @@
 
             <div class="mb-3 position-relative">
                 <label for="description" class="form-label">Descripción</label>
-                <app-ckeditor ></app-ckeditor>                 
+                <app-ckeditor></app-ckeditor>                 
               </div>
 
             <div class="row">

@@ -45,7 +45,10 @@ export class UserFormComponent implements OnInit {
       confirmPassword: ['', [Validators.required]],
       role_id: ['', [Validators.required]],
       profile_image: ['', [Validators.required]],
-      description: ['']
+    });
+
+    this.ckEditorSvc.ckeditorTrigger.subscribe((resp: any) => {
+      this.textEditor = resp.data;
     });
   }
 
@@ -64,8 +67,7 @@ export class UserFormComponent implements OnInit {
             password: this.user.password,
             confirmPassword: this.user.password,
             role_id: this.user.role_id,
-            profile_image: this.user.profile_image,
-            description: this.user.description,
+            profile_image: this.user.profile_image
           });
         },
         (error)=>{

@@ -6,6 +6,7 @@ import { getUserList } from 'src/app/core/redux/actions/user.actions';
 import { UserListState } from 'src/app/core/redux/reducers/userReducer.reducer';
 import { getUser } from 'src/app/core/redux/selectors/user.selector';
 import { User } from 'src/app/features/models/User';
+import Swal from 'sweetalert2';
 import { UsersService } from '../../../services/Users/users.service';
 
 interface List {
@@ -47,17 +48,21 @@ export class UserslistComponent implements OnInit {
   deleteUser(id: number | undefined) {
     this.usersSvc.deleteUserById(id)
       .subscribe((resp: any) => {
-        console.log(resp);
+        
+        Swal.fire({
+          icon: 'success',
+          title: '¡Éxito!',
+          text: resp.message,
+          showConfirmButton: true
+        });
+
+        // TODO: Update userList$
         
       },
       (error: any) => {
-        console.log(error);
-        
+        // TODO: Handle errors
       },
-      () => {
-        console.log('completed');
-        
-      });
+      () => { });
   }
     
 } 
