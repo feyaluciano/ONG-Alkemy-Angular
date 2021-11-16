@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { getUserList } from 'src/app/core/redux/actions/user.actions';
+import { UserListState } from 'src/app/core/redux/reducers/userReducer.reducer';
+import { getUser } from 'src/app/core/redux/selectors/user.selector';
+import { User } from 'src/app/features/models/User';
 
 interface List {
   name: string;                                       
@@ -15,22 +19,25 @@ interface List {
 })
 export class UserslistComponent implements OnInit {
   users:any;
-  userState$: Observable<any[]> = this.store.select(state => state.userState) ;
-
- 
-
-  constructor(private store:Store<{userState:any[]}>) { 
+  userList$: Observable<User[] | null> ;
+  
+  
+  constructor(private store:Store<UserListState>) { 
+    this.userList$ = this.store.pipe(select(getUser));
   }
 
   ngOnInit(){
-    console.log(this.userState$, 'este es el estado')
-    this.store.dispatch({ type: '[User Page] Load User' });
+    this.store.dispatch(getUserList())
+
+    this.userList$.subscribe(resp=>{
+      console.log(resp, 'esta es la respuesta')
+    })
   } 
  
   
 
   // Change :List for :User
-  deleteUser(user:List, index: number){
+  deleteUser(){
 
     // HTTP DELETE
     
@@ -38,7 +45,7 @@ export class UserslistComponent implements OnInit {
   }
 
   // Change :List for :User
-  editUser(user: List){
+  editUser(){
 
     // Inject Router 
     // navigate(... user.id)

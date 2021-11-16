@@ -38,7 +38,7 @@ export class LoginFormComponent implements OnInit  {
     this.authentication$ = this.store.pipe(select(getAuth));
       
 
-  }
+  } 
 
   ngOnInit(): void {
     

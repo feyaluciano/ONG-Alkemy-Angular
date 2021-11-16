@@ -1,15 +1,25 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { findAlluserSuccess, userState } from '../actions/user.actions';
+import { User } from 'src/app/features/models/User';
+import {  setUserListState } from '../actions/user.actions';
 
-export const initialState = '';
+
+  export interface UserListState{
+    userList:User[] | null;
+  }
+
+  export const initialState:UserListState = {
+    userList:null
+  };
+
 
 export const _userReducer = createReducer(
   initialState,
-  on(userState, (state:any) => ({
-    ...state,
+  on(setUserListState, (state, setUserListState) => ({
+     ...state,
+      userList:  setUserListState.usersList
   })),
-  on(findAlluserSuccess, (state, {payload }) => {
-    return [...state, ...payload];    
-  }),
 );
 
+export function userReducer(state= initialState, action: Action){
+  return _userReducer(state,action);
+}

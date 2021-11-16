@@ -24,14 +24,14 @@
                         </thead>
         
                         <tbody>
-                            <tr *ngFor="let user of users | async; let i = index;">
+                            <tr *ngFor="let user of userList$ | async; let i = index;">
                                 <th scope="row"> {{i+1}} </th>
                                 <td> {{user.name}} </td>
-                                <td> {{user}} </td>
+                                <td> {{user.email}} </td>
                                 <td>
                                     <div class="i-container">
-                                        <i class="fas fa-user-edit fa-lg text-primary m-1" (click)="editUser(user)"></i>
-                                        <i class="far fa-trash-alt fa-lg text-danger m-1" (click)="deleteUser(user,i)"></i>
+                                        <i class="fas fa-user-edit fa-lg text-primary m-1" (click)="editUser()"></i>
+                                        <i class="far fa-trash-alt fa-lg text-danger m-1" (click)="deleteUser()"></i>
                                     </div>
                                 </td>   
                             </tr>
