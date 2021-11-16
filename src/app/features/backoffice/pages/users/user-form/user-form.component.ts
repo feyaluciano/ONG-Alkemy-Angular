@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
 import { StandarDialogComponent } from 'src/app/shared/components/standar-dialog/standar-dialog.component';
-import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 import { CkeditorService } from '../../../../../core/services/ckeditor.service';
 import { ImageFile } from '../../../../models/ImageFile';
@@ -77,10 +76,12 @@ export class UserFormComponent implements OnInit {
                 errorMessage="Error al obtener el usuario"; 
                  break; 
               } 
+
               case 401: {  
                 errorMessage="Usted no esta autorizado para acceder a este recurso";
                  break; 
               } 
+
               default: { 
                 errorMessage="Error desconocido";
                  break; 
@@ -93,11 +94,6 @@ export class UserFormComponent implements OnInit {
             data: {type: "error", titleToShow:"",messageToShow: errorMessage,showButtonsOkCancel:false},
           });            
           dialogRef.afterClosed().subscribe(result => { });
-      
-      
-
-
-
         }
         );
        
@@ -136,9 +132,7 @@ export class UserFormComponent implements OnInit {
       } else {        
         this.alertMessage = "El usuario fue agregado correctamente";
         this.user.id = 0;
-        this.user.profile_image = this.anImage;
-        const url: string =
-        environment.usersApiUrl;     
+        this.user.profile_image = this.anImage;     
         const req: Observable<HTTPResponse<User>> = this.usersSvc.createUser(user);
         req.subscribe((response) => {
           let resultData: any = JSON.parse(JSON.stringify(response));
@@ -146,6 +140,15 @@ export class UserFormComponent implements OnInit {
               Swal.fire(this.alertMessage.toString()).then(() => {
                 this.router.navigate(["/dashboard"]);
               });
+        },
+        (error: any) => {
+          let errorMessage = error.error.message;           
+          let dialogRef = this.dialog.open(StandarDialogComponent, {
+            height: '300px',
+            width: '400px',
+            data: {type: "error", titleToShow:"",messageToShow: errorMessage,showButtonsOkCancel:false},
+          });            
+          dialogRef.afterClosed().subscribe(result => { });
         });          
       }
     } else {
