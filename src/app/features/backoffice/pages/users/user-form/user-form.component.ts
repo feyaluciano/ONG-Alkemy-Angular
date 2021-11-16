@@ -42,7 +42,7 @@ export class UserFormComponent implements OnInit {
       name: ['', [Validators.required]],
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      cofirmPassword: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]],
       role_id: ['', [Validators.required]],
       profile_image: ['', [Validators.required]],
       description: ['']
@@ -102,7 +102,7 @@ export class UserFormComponent implements OnInit {
        
     } else {
       this.editing = false;
-      this.action = "Nueva actividad";
+      this.action = "Nuevo Usuario";
     }
 
     this.ckEditorSvc.getHandlerTextEditor$().subscribe((text) => {

@@ -39,7 +39,7 @@ export class UsersService {
   * @returns user
   */
   createUser(user: User): Observable<HTTPResponse<User>> {
-    return this.privateBackofficeService.createEntity(`${this.urlApi}${this._params}`, user);
+    return this.privateBackofficeService.createEntity(environment.usersApiUrl, user);
   }
 
   
