@@ -27,7 +27,6 @@ export class UserFormComponent implements OnInit {
   user: User = {};
   textEditor: string | undefined;
   editing: boolean = false;
-  dialog!: MatDialog;
   alertMessage!: string;
   sending: boolean = false;
 
@@ -36,7 +35,8 @@ export class UserFormComponent implements OnInit {
     private ckEditorSvc: CkeditorService,
     private route: ActivatedRoute,
     private usersSvc: UsersService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -62,6 +62,7 @@ export class UserFormComponent implements OnInit {
             name: this.user.name,
             email: this.user.email,
             password: this.user.password,
+            confirmPassword: this.user.password,
             role_id: this.user.role_id,
             profile_image: this.user.profile_image,
             description: this.user.description,
@@ -89,9 +90,7 @@ export class UserFormComponent implements OnInit {
             width: '400px',
             data: {type: "error", titleToShow:"",messageToShow: errorMessage,showButtonsOkCancel:false},
           });            
-          dialogRef.afterClosed().subscribe(result => {
-            console.log(`if it is ok, the user press accept: ${result}`); 
-          });
+          dialogRef.afterClosed().subscribe(result => { });
       
       
 
@@ -115,6 +114,9 @@ export class UserFormComponent implements OnInit {
     if (this.form.valid && !this.imageError) {
       let user: User = {
         name: this.form.get("name")?.value,
+        email: this.form.get("email")?.value,
+        password: this.form.get("password")?.value,
+        role_id: this.form.get("role_id")?.value,
         profile_image: this.anImage,
         description: this.textEditor,
       };

@@ -30,7 +30,7 @@ export class UsersService {
    * @returns User
    */
   getUserById(id:string):Observable<HTTPResponse<User>>{  
-    return this.privateBackofficeService.getEntityById(`${this.urlApi}${this._params}/`, id);
+    return this.privateBackofficeService.getEntityById(environment.usersApiUrl, id);
     
   }
   /**
@@ -58,7 +58,7 @@ export class UsersService {
    * @param id 
    * @returns Http response with the object deleted
    */ 
-   deleteUserById(id:number):Observable<HTTPResponse<User>>{
+   deleteUserById(id: number | undefined):Observable<HTTPResponse<User>>{
     return this.privateBackofficeService.deleteEntity(`${this.urlApi}${this._params}/${id}`);
   }
   

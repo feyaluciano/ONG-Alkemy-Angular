@@ -67,9 +67,12 @@
                 <label for="profile_image" class="form-label">Imagen</label>
                 <div class="text-center">                  
                   <img class="img-fluid mb-2" id="imagenUrl" width="250px" [src]="user.profile_image">
-                </div>                              
-                <input formControlName="profile_image" type="file" id="avatar" (change)="fileEvent($event)" #fileInput>
-                <input type="hidden" id="errorEnImagen" value="{{imageError}}">
+                </div>
+                
+                <div class="input-group">
+                  <input class="form-control" formControlName="profile_image" type="file" id="avatar" (change)="fileEvent($event)" #fileInput>
+                  <input type="hidden" id="errorEnImagen" value="{{imageError}}">
+                </div>
                 <div class="text-error-form" *ngIf="imageError">La imagen debe ser formato jpg o png.</div>  
                 <div appMsgErrorForm messageError="Este campo es requerido"
                 [valido]="haveErrorsInputForm('profile_image','required')"></div>

@@ -38,7 +38,8 @@ const routes: Routes = [
       { path: 'news', component: NewsFormComponent },
       { path: 'news/:id', component: NewsFormComponent},
       { path: 'users', component: UserslistComponent },
-      { path: 'users/create', component: UserFormComponent }
+      { path: 'users/create', component: UserFormComponent },
+      { path: 'users/:id', component: UserFormComponent }
     ]
     }
 ]

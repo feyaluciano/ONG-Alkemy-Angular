@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { getUserList } from 'src/app/core/redux/actions/user.actions';
 import { UserListState } from 'src/app/core/redux/reducers/userReducer.reducer';
 import { getUser } from 'src/app/core/redux/selectors/user.selector';
 import { User } from 'src/app/features/models/User';
+import { UsersService } from '../../../services/Users/users.service';
 
 interface List {
   name: string;                                       
@@ -23,7 +25,11 @@ export class UserslistComponent implements OnInit {
   userList$: Observable<User[] | null> ;
   
   
-  constructor(private store:Store<UserListState>) { 
+  constructor(
+    private store:Store<UserListState>,
+    private router: Router,
+    private usersSvc: UsersService
+  ) { 
     this.userList$ = this.store.pipe(select(getUser));
   }
 
@@ -32,12 +38,29 @@ export class UserslistComponent implements OnInit {
     setTimeout(()=>{
       this.loader = false;
     },2000);
-    }
+  }
 
+  editUser(id: number | undefined) {
+    this.router.navigate(['/users', id]);
+  }
 
-
+  deleteUser(id: number | undefined) {
+    this.usersSvc.deleteUserById(id)
+      .subscribe((resp: any) => {
+        console.log(resp);
+        
+      },
+      (error: any) => {
+        console.log(error);
+        
+      },
+      () => {
+        console.log('completed');
+        
+      });
+  }
     
-  } 
+} 
  
 
 
