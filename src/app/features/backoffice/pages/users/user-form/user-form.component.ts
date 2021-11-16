@@ -35,15 +35,27 @@ export class UserFormComponent implements OnInit {
     private route: ActivatedRoute,
     private usersSvc: UsersService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      name: ['', [
+        Validators.required,
+        Validators.minLength(4)
+      ]],
+      email: ['', [
+        Validators.required,
+        Validators.pattern(
+          /^[a-zA-Z0-9\.]+@[a-zA-Z0-9]+(\-)?[a-zA-Z0-9]+(\.)?[a-zA-Z0-9]{3,6}$/
+        )
+      ]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]],
-      role_id: ['', [Validators.required]],
-      profile_image: ['', [Validators.required]],
+      role_id: ['', [
+        Validators.required
+      ]],
+      profile_image: ['', [
+        Validators.required,
+      ]],
     });
 
     this.ckEditorSvc.ckeditorTrigger.subscribe((resp: any) => {
