@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <app-spinner color="primary" mode="indeterminate" *ngIf="!membersCompleted"></app-spinner>
+  </div>
+
+  <div class="row mb-2" *ngIf="membersCompleted">
+
+    <app-titles-component title="Nosotros" image="" class="mb-5"></app-titles-component>
+
+    <div class="col-md-4"  *ngFor="let member of members">
+      <app-card  [image]="member.image!" [title]="member.name!" [description]="member.description!"></app-card>
+      <div  class="card cardStyles text-center">       
+        <div class="card-body">
+          <h5 class="card-title">{{member.facebookUrl!}}</h5>
+          <h5 class="card-title">{{member.linkedinUrl!}}</h5>
+          
+        </div>
+    </div>
+
+    </div>
+  </div>
+</div>
