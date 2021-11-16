@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { PrivateBackofficeService } from '../../backoffice/services/private-backoffice.service';
-import { User, CreateUser } from '../../models/User';
 import { Observable } from 'rxjs';
-import { HTTPResponse } from '../../models/HTTPResponse';
 import { environment } from 'src/environments/environment';
+import { PrivateBackofficeService } from '../../backoffice/services/private-backoffice.service';
+import { HTTPResponse } from '../../models/HTTPResponse';
+import { User } from '../../models/User';
 
 
 @Injectable({
@@ -38,7 +38,7 @@ export class UsersService {
   * @param user 
   * @returns user
   */
-  createUser(user:CreateUser):Observable<HTTPResponse<User>>{
+  createUser(user: User): Observable<HTTPResponse<User>> {
     return this.privateBackofficeService.createEntity(`${this.urlApi}${this._params}`, user);
   }
 
@@ -49,7 +49,7 @@ export class UsersService {
    * @param user 
    * @returns updated User
    */
-  updateUserById(id:number, user:CreateUser):Observable<HTTPResponse<User>>{
+  updateUserById(id: number, user: User): Observable<HTTPResponse<User>> {
     return this.privateBackofficeService.updateEntity(`${ this._params }/${id}`, user);
   }
 
@@ -59,7 +59,7 @@ export class UsersService {
    * @returns Http response with the object deleted
    */ 
    deleteUserById(id:number):Observable<HTTPResponse<User>>{
-    return this.privateBackofficeService.deleteDataById(`${this.urlApi}${this._params}/${id}`);
+    return this.privateBackofficeService.deleteEntity(`${this.urlApi}${this._params}/${id}`);
   }
   
 }

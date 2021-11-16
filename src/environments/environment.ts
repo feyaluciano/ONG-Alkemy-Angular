@@ -9,7 +9,8 @@ export const environment = {
   membersApiUrl: "",
   slidesApiUrl:"",
   newsApiUrl: "",
-  testimonialsApiUrl: ""
+  testimonialsApiUrl: "",
+  usersApiUrl: ""
 };
 /*
  * For easier debugging in development mode, you can import the following file
