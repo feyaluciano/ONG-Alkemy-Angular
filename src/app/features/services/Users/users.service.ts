@@ -59,7 +59,7 @@ export class UsersService {
    * @returns Http response with the object deleted
    */ 
    deleteUserById(id:number):Observable<HTTPResponse<User>>{
-    return this.privateBackofficeService.deleteDataById(`${this.urlApi}${this._params}/${id}`);
+    return this.privateBackofficeService.deleteEntity(`${this.urlApi}${this._params}/${id}`);
   }
   
 }
