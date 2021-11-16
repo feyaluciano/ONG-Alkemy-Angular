@@ -18,6 +18,7 @@ import { userReducer } from './core/redux/reducers/userReducer.reducer';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -33,6 +34,7 @@ import { userReducer } from './core/redux/reducers/userReducer.reducer';
     StoreModule.forRoot({ userReducer: userReducer }),
     EffectsModule.forRoot([AuthEffects]),
     EffectsModule.forRoot([UserEffects])
+    
     
   ],
   exports: [],

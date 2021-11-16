@@ -18,7 +18,8 @@ interface List {
   styleUrls: ['./userslist.component.scss']
 })
 export class UserslistComponent implements OnInit {
-  users:any;
+  loader:boolean=true;
+  totalCount:number = 10;
   userList$: Observable<User[] | null> ;
   
   
@@ -28,29 +29,16 @@ export class UserslistComponent implements OnInit {
 
   ngOnInit(){
     this.store.dispatch(getUserList())
+    setTimeout(()=>{
+      this.loader = false;
+    },2000);
+    }
 
-    this.userList$.subscribe(resp=>{
-      console.log(resp, 'esta es la respuesta')
-    })
+
+
+    
   } 
  
-  
 
-  // Change :List for :User
-  deleteUser(){
 
-    // HTTP DELETE
-    
-    
-  }
 
-  // Change :List for :User
-  editUser(){
-
-    // Inject Router 
-    // navigate(... user.id)
-    
-    
-  }
-
-}

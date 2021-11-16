@@ -15,6 +15,10 @@ import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
 import { CardComponent } from './card/card.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ProgressComponent } from './components/progress/progress.component';
+import { SkeletonComponent } from './skeleton/skeleton.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+
+
 
 
 
@@ -31,7 +35,8 @@ import { ProgressComponent } from './components/progress/progress.component';
     StandarDialogComponent,
     SpinnerComponent,
     CardComponent,
-    ProgressComponent
+    ProgressComponent,
+    SkeletonComponent
     
   ],
   imports: [
@@ -40,7 +45,9 @@ import { ProgressComponent } from './components/progress/progress.component';
     CKEditorModule,
     FormsModule,  
     MaterialModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    NgxSkeletonLoaderModule
+    
   ],
   exports: [
     CarouselComponent,
@@ -54,7 +61,8 @@ import { ProgressComponent } from './components/progress/progress.component';
     MaterialModule,
     SpinnerComponent,
     ProgressComponent,
-    CardComponent   
+    CardComponent,
+    SkeletonComponent   
   ]
 })
 export class SharedModule { }
