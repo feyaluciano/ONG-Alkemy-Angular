@@ -59,7 +59,8 @@ export class UserFormComponent implements OnInit {
         req.subscribe((response) => {
           let resultData: HTTPResponse<User> = response;         
           this.user = JSON.parse(JSON.stringify(resultData.data));         
-          this.ckEditorSvc.textEditor$.next(this.user.description!)
+          // this.ckEditorSvc.textEditor$.next(this.user.description!)
+          this.user.description = response.data.description;
           this.form.setValue({
             name: this.user.name,
             email: this.user.email,

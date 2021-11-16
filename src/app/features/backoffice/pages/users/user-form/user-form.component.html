@@ -98,7 +98,7 @@
 
             <div class="mb-3 position-relative">
                 <label for="description" class="form-label">Descripción</label>
-                <app-ckeditor></app-ckeditor>                 
+                <app-ckeditor [description]="user.description ? user.description : ''"></app-ckeditor>                 
               </div>
 
             <div class="row">
