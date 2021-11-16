@@ -46,7 +46,7 @@ export class PrivateBackofficeService {
   
 
  getEntityById<T>(url: string, id: string):Observable<T> {
-    return  this.httpService.get<T>(url + id);              
+    return  this.httpService.get<T>(`${url}/${id}`);              
   }    
 
 
@@ -69,7 +69,10 @@ export class PrivateBackofficeService {
   }
      
 
-  
+  updatePartialEntity<T>(params: string, entity: any): Observable<T> {
+    this.setHeaders();
+    return this.httpService.patch<T>(`${environment.apiUrl}${params}`, entity, false);
+  }     
 
 
 }

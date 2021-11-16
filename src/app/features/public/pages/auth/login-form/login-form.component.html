@@ -1,27 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="d-flex justify-content-center">
 
-  <div class="container">
-    <div class="row">
-      <div class="d-flex justify-content-center">
+      <form class="m-5 p-3 cardStyles text-center" [formGroup]=forma (ngSubmit)="login()">
+        <img src="../../../../../../assets/images/LOGO-SOMOS.png" alt="">
+            <h2>LOGIN</h2>
+           
+              <div class="m-2">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input [class.is-invalid]="emailInvalid" formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <small *ngIf="emailInvalid">Ingrese un email valido</small>
+              </div>
 
-        <form class="m-5 p-3 cardStyle text-center" [formGroup]=forma (ngSubmit)="save()">
-          <img src="../../../../../../assets/images/LOGO-SOMOS.png" alt="">
-              <h2>LOGIN</h2>
-             
-                <div class="m-2">
-                  <label for="exampleInputEmail1" class="form-label">Email</label>
-                  <input [class.is-invalid]="emailInvalid" formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
-                  <small *ngIf="emailInvalid">Ingrese un email valido</small>
-                </div>
-
-                <div class="m-2">
-                  <label for="exampleInputPassword1" class="form-label">Password</label>
-                  <input [class.is-invalid]="passwordInvalid" formControlName="password" type="password" class="form-control" id="password">
-                  <small *ngIf="passwordInvalid">Ingrese un Password que contenga al menos una letra, un numero y un caracter especial</small>
-                </div>
-                <button  type="submit" class="btn btn-primary">Enviar</button>
-             
-        </form>
-      </div>
+              <div class="m-2">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input [class.is-invalid]="passwordInvalid" formControlName="password" type="password" class="form-control" id="password">
+                <small *ngIf="passwordInvalid">Ingrese un Password que contenga al menos una letra, un numero y un caracter especial</small>
+              </div>
+              <hr class="my-4"> 
+              <button  type="submit" class="w-100 btn btn-primary btn-lg">Conectar</button>
+           
+      </form>
     </div>
   </div>
+</div>
   

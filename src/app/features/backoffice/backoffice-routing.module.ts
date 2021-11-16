@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppBackofficeComponent } from './app-backoffice.component';
+import { ActivitiesComponent } from './pages/activities/activities.component';
 import { ActivityFormComponent } from './pages/activity-form/activity-form.component';
+import { BackofficeHomeComponent } from './pages/backoffice-home/backoffice-home.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { BackofficeHomeComponent } from './pages/backoffice-home/backoffice-home.component';
 import { MemberFormComponent } from './pages/member-form/member-form.component';
-import { OrganizationComponent } from './pages/organization/organization.component';
-
-import { SlideComponent } from './pages/slide/slide.component';
-import { OrganizationEditComponent } from './pages/organization-edit/organization-edit.component';
 import { NewsFormComponent } from './pages/news/news-form/news-form.component';
+import { OrganizationEditComponent } from './pages/organization-edit/organization-edit.component';
+import { OrganizationComponent } from './pages/organization/organization.component';
+import { SlideComponent } from './pages/slide/slide.component';
+import { SlidesComponent } from './pages/slides/slides.component';
 import { UserslistComponent } from './pages/userslist/userslist.component';
+
 
 
 
@@ -22,7 +24,9 @@ const routes: Routes = [
     children: [         
       { path: 'dashboard', component: DashboardComponent   },
       { path: 'activity', component: ActivityFormComponent },
+      { path: 'activities', component: ActivitiesComponent },
       { path: 'activity/:idActivity', component: ActivityFormComponent },
+      { path: 'slides', component: SlidesComponent },
       { path: 'slide', component: SlideComponent },
       { path: 'slide/:id', component: SlideComponent },
       { path: 'categoria', component: CategoriesFormComponent },

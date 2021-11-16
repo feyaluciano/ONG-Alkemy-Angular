@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { PrivateBackofficeService } from '../../backoffice/services/private-backoffice.service';
-import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
+import { PrivateBackofficeService } from '../../backoffice/services/private-backoffice.service';
 import { HTTPResponse } from '../../models/HTTPResponse';
 import { News } from '../../models/news.interface';
 
@@ -14,6 +14,10 @@ export class NewsService {
   news: string = '/news'
 
   constructor( private privateBackofficeService: PrivateBackofficeService ) { }
+
+  getNews(): Observable<HTTPResponse<News>> {
+    return this.privateBackofficeService.getEntities(environment.newsApiUrl);
+  }
 
   /**
    * Returns a specific news

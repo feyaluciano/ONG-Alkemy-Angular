@@ -7,8 +7,8 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class TitlesComponentComponent implements OnInit {
 
-  @Input() title!: string;
-  @Input() image!: string;
+  @Input() title!: string | undefined;
+  @Input() image!: string | undefined;
 
   public defaultImage: string = "assets/slides3.jpg";
 

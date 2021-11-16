@@ -1,18 +1,24 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-
-import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { MaterialModule } from '../features/material/material.module';
 import { CarouselComponent } from './carousel/carousel.component';
-import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
-import { MsgErrorFormDirective } from './directives/msg-error-form.directive';
 import { CkeditorComponent } from './components/ckeditor/ckeditor.component';
-import { HtmlPipe } from './pipes/html/html.pipe';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { FormComponent } from './components/form-news/form.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { StandarDialogComponent } from './components/standar-dialog/standar-dialog.component';
+import { MsgErrorFormDirective } from './directives/msg-error-form.directive';
+import { HtmlPipe } from './pipes/html/html.pipe';
+import { ImgCarouselPipe } from './pipes/img-carousel.pipe';
 import { CardComponent } from './card/card.component';
-import { ProgressComponent } from './progress/progress.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ProgressComponent } from './components/progress/progress.component';
+import { SkeletonComponent } from './skeleton/skeleton.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+
+
 
 
 
@@ -26,16 +32,22 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     CkeditorComponent,
     HtmlPipe,
     FormComponent,
+    StandarDialogComponent,
+    SpinnerComponent,
     CardComponent,
     ProgressComponent,
-  
+    SkeletonComponent
+    
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     CKEditorModule,
-    FormsModule,
-    MatProgressSpinnerModule
+    FormsModule,  
+    MaterialModule,
+    MatProgressBarModule,
+    NgxSkeletonLoaderModule
+    
   ],
   exports: [
     CarouselComponent,
@@ -44,8 +56,13 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MsgErrorFormDirective,
     CkeditorComponent,
     HtmlPipe,
-    FormComponent,CardComponent,
-    ProgressComponent
+    FormComponent,     
+    StandarDialogComponent,
+    MaterialModule,
+    SpinnerComponent,
+    ProgressComponent,
+    CardComponent,
+    SkeletonComponent   
   ]
 })
 export class SharedModule { }

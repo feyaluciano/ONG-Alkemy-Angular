@@ -16,8 +16,12 @@ export class AuthService {
    
   }
 
-  auth(user:User){
+  auth(user:any){
     return this.httpClient.post(`${this.urlApi}/login`, user)
+  }
+
+  register(newUser:any){
+    return this.httpClient.post(`${this.urlApi}/register`, newUser);
   }
 
 }

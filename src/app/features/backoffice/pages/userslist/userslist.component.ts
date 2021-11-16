@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { getUserList } from 'src/app/core/redux/actions/user.actions';
+import { UserListState } from 'src/app/core/redux/reducers/userReducer.reducer';
+import { getUser } from 'src/app/core/redux/selectors/user.selector';
+import { User } from 'src/app/features/models/User';
 
 interface List {
-  name: string;
+  name: string;                                       
   email: string;
-  id: number;
+  id: number; 
 }
 
 @Component({
@@ -12,82 +18,27 @@ interface List {
   styleUrls: ['./userslist.component.scss']
 })
 export class UserslistComponent implements OnInit {
+  loader:boolean=true;
+  totalCount:number = 10;
+  userList$: Observable<User[] | null> ;
+  
+  
+  constructor(private store:Store<UserListState>) { 
+    this.userList$ = this.store.pipe(select(getUser));
+  }
 
-
-  // change for :User[]
-  usersList: List[] = [
-    {
-      name: 'Franco',
-      email: 'email@ejemplo.com',
-      id: 12
-    },
-    {
-      name: 'Pedro',
-      email: 'pedro_21@hotmail.com',
-      id: 1298
-    },
-    {
-      name: 'Francisco',
-      email: 'francis_23@ejemplo.com',
-      id: 12222
-    },
-    {
-      name: 'Andrea',
-      email: 'andrea21@gmail.com',
-      id: 1211
-    },
-    {
-      name: 'Damian',
-      email: 'dam_23@gmail.com',
-      id: 1232
-    },
-    {
-      name: 'Analia',
-      email: 'ana_50@gmail.com',
-      id: 1276
-    },
-    {
-      name: 'Marcelo',
-      email: 'marcelo@gmail.com',
-      id: 1222
-    },
-    {
-      name: 'Federico',
-      email: 'federodriguez@gmail.com',
-      id: 124
-    },
-    {
-      name: 'Gonzalo',
-      email: 'gonzalo_97@gmail.com',
-      id: 123
-    },
-    {
-      name: 'Sabrina',
-      email: 'sabrina_deco@gmail.com',
-      id: 122
+  ngOnInit(){
+    this.store.dispatch(getUserList())
+    setTimeout(()=>{
+      this.loader = false;
+    },2000);
     }
-  ];
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
 
-  // Change :List for :User
-  deleteUser(user:List, index: number){
-
-    // HTTP DELETE
     
-    
-  }
+  } 
+ 
 
-  // Change :List for :User
-  editUser(user: List){
 
-    // Inject Router 
-    // navigate(... user.id)
-    
-    
-  }
 
-}

@@ -1,12 +1,11 @@
-<div class="card cardStyle">
+<div class="card cardStyles text-center">
     <img *ngIf="image; else noimage" class="card-img-top" [src]="image" alt="">
     <div class="card-body">
-      <h5 class="card-title ">{{title}}</h5>
-      <p class="card-text text-small text-muted">{{description}}</p>
+        <h5 class="card-title">{{title}}</h5>
+        <p class="card-text text-small text-muted">{{description}}</p>
     </div>
-</div> 
+</div>
 
 <ng-template #noimage>
-  <img  class="card-img-top" src="../../../assets/no-image.jpg" alt="">
+    <img class="card-img-top" src="../../../assets/no-image.jpg" alt="">
 </ng-template>
-
