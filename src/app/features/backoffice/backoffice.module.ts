@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from 'src/app/core/redux/effects/user.effect';
 import { SharedModule } from "src/app/shared/shared.module";
 import { MaterialModule } from '../material/material.module';
 import { AppBackofficeComponent } from './app-backoffice.component';
@@ -19,10 +21,6 @@ import { SlideComponent } from './pages/slide/slide.component';
 import { SlidesComponent } from './pages/slides/slides.component';
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { UserslistComponent } from './pages/userslist/userslist.component';
-
-
-
-
 
 
 @NgModule({
@@ -54,7 +52,7 @@ import { UserslistComponent } from './pages/userslist/userslist.component';
     ReactiveFormsModule,
     MaterialModule, 
     SharedModule,
-    
+    EffectsModule.forFeature([UserEffects])
    
   ],
   exports: [HeaderBackofficeComponent ],
