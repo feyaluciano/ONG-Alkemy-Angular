@@ -133,9 +133,8 @@ export class UserFormComponent implements OnInit {
       };
       if (this.editing) {
         this.alertMessage = "El usuario fue editado correctamente";
-        user.id = +this.form.value.id;
         user.profile_image = this.anImage;   
-        let req: Observable<HTTPResponse<User>> = this.usersSvc.updateUserById(user.id, user);         
+        let req: Observable<HTTPResponse<User>> = this.usersSvc.updateUserById(this.route.snapshot.params["id"], user);         
         req.subscribe((response) => {         
           let resultData: HTTPResponse<User> = response;   
               Swal.fire(this.alertMessage.toString()).then(() => {
