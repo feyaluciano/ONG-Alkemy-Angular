@@ -19,8 +19,22 @@ import { PublicRoutingModule } from "./public-routing.module";
 import { ActivityComponent } from './pages/activities/activity/activity.component';
 import { DonationComponent } from "./pages/donations/components/donation/donation.component";
 import { ThanksComponent } from "./pages/donations/components/thanks/thanks.component";
+import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 
-
+export const customCurrencyMaskConfig = {
+  align: "right",
+  allowNegative: true,
+  allowZero: true,
+  decimal: ",",
+  precision: 2,
+  prefix: "$",
+  suffix: "",
+  thousands: ".",
+  nullable: true,
+  min: 0,
+  max: 5000,
+  inputMode: CurrencyMaskInputMode.FINANCIAL
+};
 
 @NgModule({
   declarations: [
@@ -38,7 +52,8 @@ import { ThanksComponent } from "./pages/donations/components/thanks/thanks.comp
     TestimonialFormComponent,
     ActivityComponent,
     DonationComponent,
-    ThanksComponent
+    ThanksComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -46,7 +61,9 @@ import { ThanksComponent } from "./pages/donations/components/thanks/thanks.comp
     ReactiveFormsModule,
     BackofficeRoutingModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
+    
   ],
   exports: [
     HomeComponent,

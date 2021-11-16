@@ -34,7 +34,7 @@ const routes: Routes = [
           { path: 'testimonios', component: TestimonialFormComponent },
 
           { path: 'donaciones', component: DonationComponent },
-          { path: 'thanks', component: ThanksComponent }
+          { path: 'thanks', component: DonationComponent }
     ]
     }
 ]

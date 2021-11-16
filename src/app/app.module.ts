@@ -25,8 +25,8 @@ import { AuthEffects } from './core/redux/effects/auth.effects';
     SharedModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({ authReducer: authReducer }),
-    EffectsModule.forRoot([AuthEffects])
-    
+    EffectsModule.forRoot([AuthEffects]),
+   
     
   ],
   exports: [],
