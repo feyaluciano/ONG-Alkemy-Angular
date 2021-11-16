@@ -141,12 +141,16 @@ export class UserFormComponent implements OnInit {
                 this.router.navigate(["/dashboard"]);
               });
         },
-        (error: any) => {
-          let errorMessage = error.error.message;           
+        (error: any) => {         
           let dialogRef = this.dialog.open(StandarDialogComponent, {
             height: '300px',
             width: '400px',
-            data: {type: "error", titleToShow:"",messageToShow: errorMessage,showButtonsOkCancel:false},
+            data: {
+              type: "error",
+              titleToShow:"",
+              messageToShow: 'Error al registrar al usuario',
+              showButtonsOkCancel:false
+            },
           });            
           dialogRef.afterClosed().subscribe(result => { });
         });          
