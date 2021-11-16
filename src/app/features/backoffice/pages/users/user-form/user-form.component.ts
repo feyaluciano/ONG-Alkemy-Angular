@@ -48,14 +48,20 @@ export class UserFormComponent implements OnInit {
           /^[a-zA-Z0-9\.]+@[a-zA-Z0-9]+(\-)?[a-zA-Z0-9]+(\.)?[a-zA-Z0-9]{3,6}$/
         )
       ]],
-      password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(4)
+      ]],
+      confirmPassword: ['', [
+        Validators.required,
+        Validators.minLength(4)
+      ]],
       role_id: ['', [
         Validators.required
       ]],
       profile_image: ['', [
-        Validators.required,
-      ]],
+        Validators.required
+      ]]
     });
 
     this.ckEditorSvc.ckeditorTrigger.subscribe((resp: any) => {

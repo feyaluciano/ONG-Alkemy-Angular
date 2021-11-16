@@ -35,7 +35,9 @@
                 >
                 <div appMsgErrorForm messageError="Este campo es requerido"
                   [valido]="haveErrorsInputForm('name','required')"></div>
-              </div>
+                <div appMsgErrorForm messageError="Mínimo cuatro caracteres"
+                  [valido]="haveErrorsInputForm('name','minLength')"></div>
+        </div>
 
             <div class="mb-3 position-relative">
                 <label for="email" class="form-label">Email</label>
@@ -49,7 +51,9 @@
                 >
                 <div appMsgErrorForm messageError="Este campo es requerido"
                   [valido]="haveErrorsInputForm('email','required')"></div>
-              </div>
+                <div appMsgErrorForm messageError="Ingrese un email válido"
+                  [valido]="haveErrorsInputForm('email','pattern')"></div>
+            </div>
                     
 
             <div class="mb-3 position-relative">
@@ -57,14 +61,18 @@
                 <input formControlName="password" type="password" class="form-control" id="password" name="password">
                 <div appMsgErrorForm messageError="Este campo es requerido"
                   [valido]="haveErrorsInputForm('password','required')"></div>
-              </div>
+                <div appMsgErrorForm messageError="Mínimo cuatro caracteres"
+                  [valido]="haveErrorsInputForm('password','minLength')"></div>
+            </div>
 
             <div class="mb-3 position-relative">
                 <label for="confirmPassword" class="form-label">Repetir contraseña</label>
                 <input formControlName="confirmPassword" type="password" class="form-control" id="confirmPassword" name="confirmPassword">
                 <div appMsgErrorForm messageError="Este campo es requerido"
                   [valido]="haveErrorsInputForm('confirmPassword','required')"></div>
-              </div>
+                <div appMsgErrorForm messageError="Mínimo cuatro caracteres"
+                  [valido]="haveErrorsInputForm('confirmPassword','minLength')"></div>
+            </div>
 
             <div class="mb-3 position-relative">
                 <label for="role_id" class="form-label">Rol</label>
