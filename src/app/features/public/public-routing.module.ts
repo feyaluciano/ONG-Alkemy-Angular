@@ -7,6 +7,8 @@ import { ActivityComponent } from './pages/activities/activity/activity.componen
 import { LoginFormComponent } from './pages/auth/login-form/login-form.component';
 import { RegisterFormComponent } from './pages/auth/register-form/register-form.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { DonationComponent } from './pages/donations/components/donation/donation.component';
+import { ThanksComponent } from './pages/donations/components/thanks/thanks.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MembersComponent } from './pages/members/members.component';
 import { NewsFormComponent } from './pages/news/news-form/news-form.component';
@@ -30,7 +32,9 @@ const routes: Routes = [
           { path: 'actividades', component: ActivitiesComponent },
           { path: 'actividad/:id', component: ActivityComponent },
           { path: 'novedades', component: NewsFormComponent },
-          { path: 'testimonios', component: TestimonialFormComponent }
+          { path: 'testimonios', component: TestimonialFormComponent },
+          { path: 'donar', component: DonationComponent },
+          { path: 'gracias', component: ThanksComponent }
     ]
     }
 ]

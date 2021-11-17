@@ -30,12 +30,8 @@ import { userReducer } from './core/redux/reducers/userReducer.reducer';
     FeaturesModule,
     SharedModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({ authReducer: authReducer }),
-    StoreModule.forRoot({ userReducer: userReducer }),
-    EffectsModule.forRoot([AuthEffects]),
-    EffectsModule.forRoot([UserEffects])
-    
-    
+    StoreModule.forRoot({ authReducer: authReducer, userReducer: userReducer }),
+    EffectsModule.forRoot([AuthEffects,UserEffects])
   ],
   exports: [],
   providers: [],
