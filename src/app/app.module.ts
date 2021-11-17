@@ -34,14 +34,10 @@ import { SharedModule } from './shared/shared.module';
       authReducer: authReducer,
       userReducer: userReducer
     }),
-    // StoreModule.forRoot({ userReducer: userReducer }),
     EffectsModule.forRoot([
       AuthEffects,
       UserEffects
     ]),
-    // EffectsModule.forRoot([UserEffects])
-    
-    
   ],
   exports: [],
   providers: [],
