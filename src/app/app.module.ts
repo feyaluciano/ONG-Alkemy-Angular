@@ -13,7 +13,8 @@ import { userReducer } from './core/redux/reducers/userReducer.reducer';
 import { FeaturesModule } from './features/features.module';
 import { MaterialModule } from './features/material/material.module';
 import { SharedModule } from './shared/shared.module';
-
+import { slideReducer } from './core/redux/reducers/slides.reducer';
+import { SlideEffects } from './core/redux/effects/slide.effects';
 
 
 
@@ -30,8 +31,11 @@ import { SharedModule } from './shared/shared.module';
     FeaturesModule,
     SharedModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({ authReducer: authReducer, userReducer: userReducer }),
-    EffectsModule.forRoot([AuthEffects,UserEffects])
+    StoreModule.forRoot({ authReducer: authReducer,userReducer: userReducer,slideReducer: slideReducer }),    
+    EffectsModule.forRoot([AuthEffects,UserEffects,SlideEffects]),
+    
+    
+    
   ],
   exports: [],
   providers: [],

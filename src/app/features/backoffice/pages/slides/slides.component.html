@@ -44,10 +44,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let slide of slides; let i = index">
+              <tr *ngFor="let slide of slideList$ | async; let i = index">
+
+                
+
                 <th scope="row">{{ slide?.order }}</th>
                 <td>{{ slide?.name }}</td>
-                <td><img
+                <td>
+                  
+                  {{i}}
+
+                  <img
                       [src]="slide?.image"
                       [alt]="slide?.name"
                       class="slide_image"
