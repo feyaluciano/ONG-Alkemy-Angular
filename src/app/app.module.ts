@@ -30,14 +30,8 @@ import { SharedModule } from './shared/shared.module';
     FeaturesModule,
     SharedModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({
-      authReducer: authReducer,
-      userReducer: userReducer
-    }),
-    EffectsModule.forRoot([
-      AuthEffects,
-      UserEffects
-    ]),
+    StoreModule.forRoot({ authReducer: authReducer, userReducer: userReducer }),
+    EffectsModule.forRoot([AuthEffects,UserEffects])
   ],
   exports: [],
   providers: [],

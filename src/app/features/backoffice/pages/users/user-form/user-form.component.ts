@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
 import { StandarDialogComponent } from 'src/app/shared/components/standar-dialog/standar-dialog.component';
 import Swal from 'sweetalert2';
-import { CkeditorService } from '../../../../../core/services/ckeditor.service';
 import { ImageFile } from '../../../../models/ImageFile';
 import { User } from '../../../../models/User';
 import { UsersService } from '../../../../services/Users/users.service';
@@ -24,14 +23,12 @@ export class UserFormComponent implements OnInit {
   imageError: boolean = false;
   anImage!: string;
   user: User = {};
-  textEditor: string | undefined;
   editing: boolean = false;
   alertMessage!: string;
   sending: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private ckEditorSvc: CkeditorService,
     private route: ActivatedRoute,
     private usersSvc: UsersService,
     private router: Router,
@@ -61,11 +58,11 @@ export class UserFormComponent implements OnInit {
       ]],
       profile_image: ['', [
         Validators.required
+      ]],
+      description: ['', [
+        Validators.required,
+        Validators.minLength(10)
       ]]
-    });
-
-    this.ckEditorSvc.ckeditorTrigger.subscribe((resp: any) => {
-      this.textEditor = resp.data;
     });
   }
 
@@ -119,10 +116,6 @@ export class UserFormComponent implements OnInit {
       this.editing = false;
       this.action = "Nuevo Usuario";
     }
-
-    this.ckEditorSvc.getHandlerTextEditor$().subscribe((text) => {
-      this.textEditor=text;
-    });
   }
 
   save() {
@@ -134,7 +127,7 @@ export class UserFormComponent implements OnInit {
         password: this.form.get("password")?.value,
         role_id: this.form.get("role_id")?.value,
         profile_image: this.anImage,
-        description: this.textEditor,
+        description: this.form.get("description")?.value,
       };
       if (this.editing) {
         this.alertMessage = "El usuario fue editado correctamente";

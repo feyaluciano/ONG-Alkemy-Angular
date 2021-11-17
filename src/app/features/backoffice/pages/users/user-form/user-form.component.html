@@ -106,7 +106,18 @@
 
             <div class="mb-3 position-relative">
                 <label for="description" class="form-label">Descripción</label>
-                <app-ckeditor></app-ckeditor>                 
+                <textarea
+                  class="form-control"
+                  name="description"
+                  id="description"
+                  cols="30"
+                  rows="10"
+                  formControlName="description"
+                ></textarea> 
+                <div appMsgErrorForm messageError="Este campo es requerido"
+                [valido]="haveErrorsInputForm('description','required')"></div>                
+                <div appMsgErrorForm messageError="Mínimo diez caracteres"
+                [valido]="haveErrorsInputForm('description','minLength')"></div>                
               </div>
 
             <div class="row">

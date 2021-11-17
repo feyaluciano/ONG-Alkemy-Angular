@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-12 mt-5">
+            <h1>Lista de Actividades</h1>
+            <hr>
+            
+        </div>
+
+        
+
+        <div class="col-12 col-md-12 mt-3">
+            <div class="card  animate__animated animate__zoomIn">
+                <div class="table-responsive p-4">
+                    <table class="table table-striped table-hover caption-top table-bordered">
+                        <caption>
+                            <a href="/backoffice/activity">Crear Actividades</a>
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">n°</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Fecha de Creacion</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+        
+                        <tbody> 
+                            <tr *ngFor="let activity of activities ; let i = index;  ">
+                                <td >{{i+1}} </td>
+                                <td> {{activity.name}} </td>
+                                <td> <img width="50px" src="{{activity.image}} " alt=""></td>
+                                <td> {{activity.created_at | date}} </td>
+                                <td><button class="btn btn-primary m-1">Editar</button>
+                                    <button class="btn btn-danger">Eliminar</button>  </td>  
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- skeleton loader -->
+                    <app-skeleton [count]="totalCount" [loader]="loader"></app-skeleton>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

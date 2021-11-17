@@ -21,11 +21,13 @@ import { SlideComponent } from './pages/slide/slide.component';
 import { SlidesComponent } from './pages/slides/slides.component';
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { UserslistComponent } from './pages/userslist/userslist.component';
+import { ActivitiesComponent } from './pages/activities/activities.component';
 
 
 @NgModule({
   declarations: [
     ActivityFormComponent, 
+    ActivitiesComponent,
     NavbarComponent,
     NavbarComponent,
     DashboardComponent,
