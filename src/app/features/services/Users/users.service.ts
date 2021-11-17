@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { PrivateBackofficeService } from '../../backoffice/services/private-backoffice.service';
-import { User, CreateUser } from '../../models/User';
 import { Observable } from 'rxjs';
-import { HTTPResponse } from '../../models/HTTPResponse';
 import { environment } from 'src/environments/environment';
+import { PrivateBackofficeService } from '../../backoffice/services/private-backoffice.service';
+import { HTTPResponse } from '../../models/HTTPResponse';
+import { User } from '../../models/User';
 
 
 @Injectable({
@@ -30,7 +30,7 @@ export class UsersService {
    * @returns User
    */
   getUserById(id:string):Observable<HTTPResponse<User>>{  
-    return this.privateBackofficeService.getEntityById(`${this.urlApi}${this._params}/`, id);
+    return this.privateBackofficeService.getEntityById(environment.usersApiUrl, id);
     
   }
   /**
@@ -38,8 +38,8 @@ export class UsersService {
   * @param user 
   * @returns user
   */
-  createUser(user:CreateUser):Observable<HTTPResponse<User>>{
-    return this.privateBackofficeService.createEntity(`${this.urlApi}${this._params}`, user);
+  createUser(user: User): Observable<HTTPResponse<User>> {
+    return this.privateBackofficeService.createEntity(environment.usersApiUrl, user);
   }
 
   
@@ -49,7 +49,7 @@ export class UsersService {
    * @param user 
    * @returns updated User
    */
-  updateUserById(id:number, user:CreateUser):Observable<HTTPResponse<User>>{
+  updateUserById(id: number, user: User): Observable<HTTPResponse<User>> {
     return this.privateBackofficeService.updateEntity(`${ this._params }/${id}`, user);
   }
 
@@ -58,8 +58,8 @@ export class UsersService {
    * @param id 
    * @returns Http response with the object deleted
    */ 
-   deleteUserById(id:number):Observable<HTTPResponse<User>>{
-    return this.privateBackofficeService.deleteDataById(`${this.urlApi}${this._params}/${id}`);
+   deleteUserById(id: number | undefined):Observable<HTTPResponse<User>>{
+    return this.privateBackofficeService.deleteEntity(`${environment.usersApiUrl}/${id}`);
   }
   
 }

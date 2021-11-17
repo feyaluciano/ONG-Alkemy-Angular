@@ -28,12 +28,12 @@
                                 <th scope="row"> {{i+1}} </th>
                                 <td> {{user.name}} </td>
                                 <td> {{user.email}} </td>
-                               <!-- <td>
+                               <td>
                                       <div class="i-container">
-                                        <i class="fas fa-user-edit fa-lg text-primary m-1" (click)="editUser()"></i>
-                                        <i class="far fa-trash-alt fa-lg text-danger m-1" (click)="deleteUser()"></i>
+                                        <i class="fas fa-user-edit fa-lg text-primary m-1" (click)="editUser(user.id)"></i>
+                                        <i class="far fa-trash-alt fa-lg text-danger m-1" (click)="deleteUser(user.id)"></i>
                                     </div>
-                                </td>   -->     
+                                </td>       
                             </tr>
                         </tbody>
                     </table>

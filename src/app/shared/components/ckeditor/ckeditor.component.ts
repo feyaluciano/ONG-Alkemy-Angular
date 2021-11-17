@@ -11,7 +11,7 @@ export class CkeditorComponent implements OnInit {
 
   public Editor = ClassicEditor;
   @Input() textEditor : string="";
-  
+  @Input() description: string = '';
 
   public model = {
     editorData: ''
