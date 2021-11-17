@@ -14,6 +14,8 @@ import { AuthEffects } from './core/redux/effects/auth.effects';
 import { UserEffects } from './core/redux/effects/user.effect';
 import { MaterialModule } from './features/material/material.module';
 import { userReducer } from './core/redux/reducers/userReducer.reducer';
+import { slideReducer } from './core/redux/reducers/slides.reducer';
+import { SlideEffects } from './core/redux/effects/slide.effects';
 
 
 
@@ -32,8 +34,11 @@ import { userReducer } from './core/redux/reducers/userReducer.reducer';
     BrowserAnimationsModule,
     StoreModule.forRoot({ authReducer: authReducer }),
     StoreModule.forRoot({ userReducer: userReducer }),
+    StoreModule.forRoot({ slideReducer: slideReducer }),
     EffectsModule.forRoot([AuthEffects]),
-    EffectsModule.forRoot([UserEffects])
+    EffectsModule.forRoot([UserEffects]),
+    EffectsModule.forRoot([SlideEffects])
+
     
     
   ],

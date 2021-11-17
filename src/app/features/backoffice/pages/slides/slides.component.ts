@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { getSlideList } from 'src/app/core/redux/actions/slides.actions';
+import { SlideListState } from 'src/app/core/redux/reducers/slides.reducer';
+import { getSlide } from 'src/app/core/redux/selectors/slide.selector';
 import Swal from 'sweetalert2';
-import { environment } from '../../../../../environments/environment';
 import { Slide } from '../../../public/models/slide';
 import { SlidesService } from '../../../services/slides/slides.service';
 
@@ -15,29 +19,24 @@ export class SlidesComponent implements OnInit {
   action: string = 'Slides';
   slides!: Slide[];
   slidesCompleted: boolean = false;
+  slideList$: Observable<Slide[] | null> ;
+
 
   constructor(
-    private slidesSvc: SlidesService,
-    private router: Router
+    private store:Store<SlideListState>,
+    private router: Router,
+    private slidesSvc: SlidesService
   ) {
-    this.slidesSvc.getSlides(environment.slidesApiUrl)
-      .subscribe((resp: any) => {
-        this.slides = resp.data;
-      }, (error: any) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Algo salió mal',
-          showConfirmButton: true
-        });
-      }, () => {
-        setTimeout(() => {
-          this.slidesCompleted = true;
-        }, 500); // Wait 0.5 second after completing the subscribe
-      });
+
+    this.slideList$ = this.store.pipe(select(getSlide));   
   }
 
   ngOnInit(): void {
+    this.store.dispatch(getSlideList())
+    setTimeout(()=>{
+      this.slidesCompleted = false;
+    },2000);
+    
   }
 
   redirectToCreate(): void {
