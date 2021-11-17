@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row mb-2">
+
+    <app-titles-component title="Donaciones" image="" class="mb-5"></app-titles-component>
+
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <h2>
+          ¡Donaciones!
+        </h2>
+        <p>
+          {{ message }}
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <form [formGroup]="form">
+        <div class="jumbotron">
+          <p>
+            <input class="form-control form-control-lg" currencyMask formControlName="value" />
+            <span
+              appMsgErrorForm
+              messageError="Por favor, ingrese un valor"
+              *ngIf="emptyValue"
+            ></span>
+          </p>
+          <p>
+            <button class="btn btn-primary btn-large" (click)="donate()">Donar</button>
+          </p>
+        </div>
+      </form>
+    </div>
+
+
+  </div>
+
+</div>
