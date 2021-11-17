@@ -32,13 +32,9 @@ import { SlideEffects } from './core/redux/effects/slide.effects';
     FeaturesModule,
     SharedModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({ authReducer: authReducer }),
-    StoreModule.forRoot({ userReducer: userReducer }),
-    StoreModule.forRoot({ slideReducer: slideReducer }),
-    EffectsModule.forRoot([AuthEffects]),
-    EffectsModule.forRoot([UserEffects]),
-    EffectsModule.forRoot([SlideEffects])
-
+    StoreModule.forRoot({ authReducer: authReducer,userReducer: userReducer,slideReducer: slideReducer }),    
+    EffectsModule.forRoot([AuthEffects,UserEffects,SlideEffects]),
+    
     
     
   ],

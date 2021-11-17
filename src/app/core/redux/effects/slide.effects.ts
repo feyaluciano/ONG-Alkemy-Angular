@@ -13,7 +13,7 @@ export class SlideEffects {
 
     loadSlide$ = createEffect(() => this.actions$.pipe(
         ofType(getSlideList),
-        mergeMap(() => this.slideServices.getSlides("aaa")
+        mergeMap(() => this.slideServices.getSlides()
           .pipe(
             map((slides:any)=> setSlideListState({slidesList:slides.data}),
             catchError(() => EMPTY)

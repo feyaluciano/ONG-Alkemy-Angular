@@ -21,22 +21,24 @@ export class SlidesComponent implements OnInit {
   slidesCompleted: boolean = false;
   slideList$: Observable<Slide[] | null> ;
 
+  listSlides:Slide[]=[];
 
   constructor(
     private store:Store<SlideListState>,
     private router: Router,
     private slidesSvc: SlidesService
   ) {
+    
 
-    this.slideList$ = this.store.pipe(select(getSlide));   
+    this.slideList$ = this.store.pipe(select(getSlide));
+
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
     this.store.dispatch(getSlideList())
     setTimeout(()=>{
-      this.slidesCompleted = false;
-    },2000);
-    
+      this.slidesCompleted = true;
+    },2000);        
   }
 
   redirectToCreate(): void {
