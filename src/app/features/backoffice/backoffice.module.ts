@@ -24,11 +24,13 @@ import { UserslistComponent } from './pages/userslist/userslist.component';
 import { SlidesComponent } from './pages/slides/slides.component';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from 'src/app/core/redux/effects/user.effect';
+import { ActivitiesComponent } from './pages/activities/activities.component';
 
 
 @NgModule({
   declarations: [
     ActivityFormComponent, 
+    ActivitiesComponent,
     NavbarComponent,
     NavbarComponent,
     DashboardComponent,
@@ -43,7 +45,7 @@ import { UserEffects } from 'src/app/core/redux/effects/user.effect';
     OrganizationComponent,
     NewsFormComponent,
     UserslistComponent,
-    SlidesComponent
+    SlidesComponent,
     
     
   ],
