@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Member } from 'src/app/features/models/Member';
 import { MembersService } from 'src/app/features/services/members/members.service';
@@ -13,6 +13,8 @@ export class MembersComponent implements OnInit {
 
   members!: Member[];
   membersCompleted: boolean = false;
+
+  
 
   constructor(
     private membersSvc: MembersService,
@@ -67,7 +69,17 @@ export class MembersComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {
+  private elementCard: any;
+
+  showInfo(i:number){
+    this.elementCard = document.getElementById('card-'+i);    
+    this.elementCard!.classList.add('animate__pulse');
+    this.elementCard!.addEventListener('animationend', () => {
+      this.elementCard!.classList.remove('animate__pulse');
+    });    
+  }
+  
+  ngOnInit(): void {   
   }
 
 }
