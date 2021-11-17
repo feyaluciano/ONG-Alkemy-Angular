@@ -5,5 +5,7 @@ export const environment = {
   membersApiUrl: "",
   slidesApiUrl:"",  
   newsApiUrl: "",
-  testimonialsApiUrl: ""
+  testimonialsApiUrl: "",
+  memebersApiUrl:""
+
 };

@@ -10,6 +10,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { DonationComponent } from './pages/donations/components/donation/donation.component';
 import { ThanksComponent } from './pages/donations/components/thanks/thanks.component';
 import { HomeComponent } from './pages/home/home.component';
+import { MembersComponent } from './pages/members/members.component';
 import { NewsFormComponent } from './pages/news/news-form/news-form.component';
 import { TestimonialFormComponent } from './pages/testimonials/testimonial-form/testimonial-form.component';
 
@@ -26,7 +27,7 @@ const routes: Routes = [
       },
           { path: 'register', component: RegisterFormComponent },
           { path : 'login' , component:LoginFormComponent},
-          { path: 'nosotros', component: AboutComponent } ,
+          { path: 'nosotros', component: MembersComponent } ,
           { path: 'contacto', component: ContactComponent },
           { path: 'actividades', component: ActivitiesComponent },
           { path: 'actividad/:id', component: ActivityComponent },

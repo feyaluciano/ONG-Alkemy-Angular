@@ -20,6 +20,8 @@ import { ActivityComponent } from './pages/activities/activity/activity.componen
 import { DonationComponent } from "./pages/donations/components/donation/donation.component";
 import { ThanksComponent } from "./pages/donations/components/thanks/thanks.component";
 import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
+import { MembersComponent } from "./pages/members/members.component";
+
 
 export const customCurrencyMaskConfig = {
   align: "right",
@@ -53,7 +55,7 @@ export const customCurrencyMaskConfig = {
     ActivityComponent,
     DonationComponent,
     ThanksComponent,
-    
+    MembersComponent
   ],
   imports: [
     CommonModule,
