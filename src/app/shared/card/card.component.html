@@ -1,8 +1,9 @@
-<div class="card cardStyles text-center">
-    <img *ngIf="image; else noimage" class="card-img-top" [src]="image" alt="">
+
+<div class="card cardStyles text-center ">
+    <img *ngIf="image; else noimage" class="" [src]="image" alt="">
     <div class="card-body">
         <h5 class="card-title">{{title}}</h5>
-        <p class="card-text text-small text-muted">{{description}}</p>
+        <p class="card-text text-small text-muted" [innerHTML]="description"></p>
     </div>
 </div>
 

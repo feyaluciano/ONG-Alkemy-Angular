@@ -17,6 +17,7 @@ import { NewsFormComponent } from "./pages/news/news-form/news-form.component";
 import { TestimonialFormComponent } from "./pages/testimonials/testimonial-form/testimonial-form.component";
 import { PublicRoutingModule } from "./public-routing.module";
 import { ActivityComponent } from './pages/activities/activity/activity.component';
+import { MembersComponent } from "./pages/members/members.component";
 
 
 
@@ -34,7 +35,8 @@ import { ActivityComponent } from './pages/activities/activity/activity.componen
     ActivitiesComponent,
     NewsFormComponent,
     TestimonialFormComponent,
-    ActivityComponent
+    ActivityComponent,
+    MembersComponent
   ],
   imports: [
     CommonModule,
