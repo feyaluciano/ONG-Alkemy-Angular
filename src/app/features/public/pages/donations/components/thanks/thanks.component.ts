@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-thanks',
@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./thanks.component.scss']
 })
 export class ThanksComponent implements OnInit {
-  @Input() text!: string | undefined;
+  text: string = 'Gracias por su donación';
   constructor() { }
 
   ngOnInit() {

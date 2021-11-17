@@ -32,9 +32,8 @@ const routes: Routes = [
           { path: 'actividad/:id', component: ActivityComponent },
           { path: 'novedades', component: NewsFormComponent },
           { path: 'testimonios', component: TestimonialFormComponent },
-
-          { path: 'donaciones', component: DonationComponent },
-          { path: 'thanks', component: DonationComponent }
+          { path: 'donar', component: DonationComponent },
+          { path: 'gracias', component: ThanksComponent }
     ]
     }
 ]

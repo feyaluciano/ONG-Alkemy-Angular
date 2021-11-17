@@ -6,10 +6,10 @@
     <div class="col-md-12">
       <div class="jumbotron">
         <h2>
-          Donaciones!
+          ¡Donaciones!
         </h2>
         <p>
-          Su donación es muy importante para nosotros.
+          {{ message }}
         </p>
       </div>
     </div>
@@ -18,19 +18,21 @@
       <form [formGroup]="form">
         <div class="jumbotron">
           <p>
-            <input class="form-control" currencyMask formControlName="value" />
+            <input class="form-control form-control-lg" currencyMask formControlName="value" />
+            <span
+              appMsgErrorForm
+              messageError="Por favor, ingrese un valor"
+              *ngIf="emptyValue"
+            ></span>
           </p>
           <p>
-            <a class="btn btn-primary btn-large" href="#">Donar</a>
+            <button class="btn btn-primary btn-large" (click)="donate()">Donar</button>
           </p>
         </div>
       </form>
     </div>
 
 
-  </div>
-  <div *ngIf="showThanks" class="row mb-2">
-    <app-thanks [text]="'Gracias por su donación'"></app-thanks>
   </div>
 
 </div>

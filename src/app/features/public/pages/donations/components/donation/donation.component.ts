@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CurrencyMaskDirective, CurrencyMaskInputMode } from 'ngx-currency';
 
 @Component({
   selector: 'app-donation',
@@ -10,19 +9,29 @@ import { CurrencyMaskDirective, CurrencyMaskInputMode } from 'ngx-currency';
 })
 export class DonationComponent implements OnInit {
 
-  public showThanks:boolean=false;
+  public showThanks:boolean = false;
   public form: FormGroup;
-
+  public message: string = 'Su donación es muy importante para nosotros.';
+  public emptyValue: boolean = false;
   
-  constructor(private router: Router,private _builder: FormBuilder,) {
+  constructor(
+    private _builder: FormBuilder,
+    private router: Router
+  ) {
     this.form = this._builder.group({
       value: [""],      
     });
    }
 
-  ngOnInit() {
-    if (this.router.url==="/thanks"){
-      this.showThanks=true;
+  ngOnInit() { }
+
+  donate(): boolean {
+    if (!this.form.value.value) {
+      this.emptyValue = true;
+      return false;
+    } else {
+      this.router.navigate(['/gracias']);
+      return true;
     }
   }
 
