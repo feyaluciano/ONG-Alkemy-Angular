@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import  * as L from 'leaflet';
 import 'mapbox-gl-leaflet';
 
 @Component({
