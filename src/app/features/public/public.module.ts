@@ -23,7 +23,6 @@ import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 import { MembersComponent } from "./pages/members/members.component";
 import { LeafletMapComponent } from "./components/leaflet-map/leaflet-map.component";
 
-
 export const customCurrencyMaskConfig = {
   align: "right",
   allowNegative: true,
@@ -66,8 +65,7 @@ export const customCurrencyMaskConfig = {
     BackofficeRoutingModule,
     SharedModule,
     CoreModule,
-    NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
-    
+    NgxCurrencyModule.forRoot(customCurrencyMaskConfig)   
   ],
   exports: [
     HomeComponent,

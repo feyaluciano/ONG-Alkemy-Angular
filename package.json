@@ -34,6 +34,7 @@
     "leaflet": "^1.7.1",
     "mapbox-gl": "^2.6.0",
     "mapbox-gl-leaflet": "^0.0.15",
+    "ng2-pdf-viewer": "^7.0.2",
     "ngx-currency": "^2.5.3",
     "ngx-skeleton-loader": "^4.0.0",
     "rxjs": "~6.6.0",

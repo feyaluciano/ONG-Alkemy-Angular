@@ -18,6 +18,7 @@ import { ProgressComponent } from './components/progress/progress.component';
 import { SkeletonComponent } from './skeleton/skeleton.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { LeafletMapComponent } from '../features/public/components/leaflet-map/leaflet-map.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 
@@ -48,7 +49,8 @@ import { LeafletMapComponent } from '../features/public/components/leaflet-map/l
     FormsModule,  
     MaterialModule,
     MatProgressBarModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    PdfViewerModule 
     
   ],
   exports: [
