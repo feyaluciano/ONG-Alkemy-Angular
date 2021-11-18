@@ -102,7 +102,7 @@ export class SlideComponent implements OnInit {
   ngOnInit(): void {
     if (typeof this.route.snapshot.params["id"] !== "undefined") {
       this.editing = true;
-      this.action = "Edit Slide";
+      this.action = "Editar Slide";
       const url: string =
         environment.apiUrl +
         "/slides/" +
@@ -119,7 +119,7 @@ export class SlideComponent implements OnInit {
       });
     } else {
       this.editing = false;
-      this.action = "New Slide";
+      this.action = "Nuevo Slide";
     }
 
     this.ckeditorSvc.getHandlerTextEditor$().subscribe((text) => {
