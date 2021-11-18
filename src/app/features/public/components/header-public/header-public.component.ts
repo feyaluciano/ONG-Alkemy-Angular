@@ -25,6 +25,7 @@ export class HeaderPublicComponent implements OnInit {
     this.authentication$ = this.store.pipe(select(getAuth));
     
     this.authentication$.subscribe( auth => {
+
       if(auth){
   
         this.loggedIn = true;
@@ -48,17 +49,17 @@ export class HeaderPublicComponent implements OnInit {
       {
         route: '/actividades',
         text: 'Actividades',
-        renderize: this.loggedIn
+        renderize: true
       },
       {
         route: '/novedades',
         text: 'Novedades',
-        renderize: this.loggedIn
+        renderize: true
       },
       {
         route: '/testimonios',
         text: 'Testimonios',
-        renderize: this.loggedIn
+        renderize: true
       },
       {
         route: '/contacto',

@@ -21,7 +21,8 @@
             <li class="nav-item"
               *ngFor="let link of links"
               [routerLinkActive]="['active']">
-              <a class="nav-link" *ngIf="link.renderize"
+              <a  class="nav-link"
+                *ngIf="link.renderize"
                 [routerLink]="[link.route]">{{ link.text }}</a>
             </li>
           </ul>
