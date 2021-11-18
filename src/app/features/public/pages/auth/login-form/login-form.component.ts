@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { login } from 'src/app/core/redux/actions/auth.actions';
+import { login, loginGoogle } from 'src/app/core/redux/actions/auth.actions';
 import { environment } from 'src/environments/environment';
 import { AuthState } from '../../../../../core/redux/reducers/authReducer.reducer';
 import { Observable } from 'rxjs';
@@ -76,8 +76,19 @@ export class LoginFormComponent implements OnInit  {
 
  loginGoogle(){
    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((user)=>{
-     console.log('Usuario conectado con cuenta de google');
-     console.log(user);
+     // console.log('Usuario conectado con cuenta de google');
+     // console.log(user);
+
+     // DISPATCH LOGIN GOOGLE
+     this.store.dispatch(loginGoogle());
+     this.authentication$.subscribe( auth => {
+      if(auth){
+  
+        this.Router.navigate(["home"]);
+        
+      }
+    });
+
    }).catch((error)=>{
     // Handle errors here
     const errorCode = error.code;
