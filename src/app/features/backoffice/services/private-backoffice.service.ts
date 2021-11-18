@@ -52,10 +52,10 @@ export class PrivateBackofficeService {
 
 
   //methods private
-  createEntity<T>(params:string, entity: any): Observable<T> {
+  createEntity<T>(url: string, entity: any): Observable<T> {
     
     this.setHeaders();
-    return this.httpService.post<T>(`${environment.apiUrl}${params}`, entity, true);
+    return this.httpService.post<T>(url, entity, true);
   }
 
   updateEntity<T>(params: string, entity: any): Observable<T> {
@@ -63,9 +63,9 @@ export class PrivateBackofficeService {
     return this.httpService.put<T>(`${environment.apiUrl}${params}`, entity, false);
   }     
 
-   deleteEntity<T>(params: string):Observable<T>{
+   deleteEntity<T>(url: string):Observable<T>{
     this.setHeaders();
-    return this.httpService.delete<T>(`${environment.apiUrl}${params}`, true);
+    return this.httpService.delete<T>(url, true);
   }
      
 
