@@ -76,4 +76,8 @@ export class LoginFormComponent implements OnInit  {
 
  }
 
+ loginGoogle(){
+   console.log('Conectar usando google firebase');
+ }
+
 }
