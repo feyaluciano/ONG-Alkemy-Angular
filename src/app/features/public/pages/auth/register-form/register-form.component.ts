@@ -82,7 +82,7 @@ export class RegisterFormComponent implements OnInit {
 
   readTerms() {
     let dialogRef = this.dialog.open(StandarDialogComponent, {
-      height: '80vh',
+      height: '90vh',
       width: '60%',
       data: {type: "terms", titleToShow:"",messageToShow: "",showButtonsOkCancel:false},
     });            
