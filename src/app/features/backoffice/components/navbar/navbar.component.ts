@@ -10,6 +10,12 @@ export class NavbarComponent implements OnInit {
 
   constructor(private router:Router) { }
 
+  sideBarToggle(){
+    document.getElementById('sidebarMenu')!.classList.remove('d-md-block')
+
+   //document.getElementById('sidebarMenu')!.style.display = 'none';
+  }
+
   ngOnInit(): void {
   }
 
