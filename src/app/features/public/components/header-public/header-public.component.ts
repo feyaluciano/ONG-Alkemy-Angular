@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { logout } from 'src/app/core/redux/actions/auth.actions';
+import { AuthState } from 'src/app/core/redux/reducers/authReducer.reducer';
+import { getAuth } from 'src/app/core/redux/selectors/auth.selectors';
+import { Link } from '../../../models/link.model';
 
 @Component({
   selector: 'app-header-public',
@@ -9,19 +15,82 @@ import { Router } from '@angular/router';
 export class HeaderPublicComponent implements OnInit {
 
   loggedIn:boolean=false;
-  constructor(private router:Router) { }
+  links: Link[];
+  authentication$: Observable<boolean>;
+
+  constructor(
+    private router: Router,
+    private store: Store<AuthState>
+  ) {
+    this.authentication$ = this.store.pipe(select(getAuth));
+    
+    this.authentication$.subscribe( auth => {
+      if(auth){
+  
+        this.loggedIn = true;
+        
+      } else {
+        this.loggedIn = false;
+      }
+    });
+
+    this.links = [
+      {
+        route: '/home',
+        text: 'Inicio',
+        renderize: true
+      },
+      {
+        route: '/nosotros',
+        text: 'Nosotros',
+        renderize: true
+      },
+      {
+        route: '/actividades',
+        text: 'Actividades',
+        renderize: this.loggedIn
+      },
+      {
+        route: '/novedades',
+        text: 'Novedades',
+        renderize: this.loggedIn
+      },
+      {
+        route: '/testimonios',
+        text: 'Testimonios',
+        renderize: this.loggedIn
+      },
+      {
+        route: '/contacto',
+        text: 'Contacto',
+        renderize: true
+      },
+      {
+        route: '/campanias',
+        text: 'Campañas',
+        renderize: true
+      },
+      {
+        route: '/donar',
+        text: 'Contribuye',
+        renderize: this.loggedIn
+      }
+    ];
+  }
 
   ngOnInit() {
-   if(localStorage.getItem("userToken")){
-     this.loggedIn = true;
-   }
+  //  if(localStorage.getItem("userToken")){
+  //    this.loggedIn = true;
+  //  }
   }
 
   logOut(){
-    localStorage.removeItem("userToken");
-    localStorage.removeItem("user");
-    this.loggedIn =false;
-    this.router.navigate([''])
+    // localStorage.removeItem("userToken");
+    // localStorage.removeItem("user");
+    // this.loggedIn =false;
+    // this.router.navigate([''])
+
+    this.store.dispatch(logout());
   }
 
 }

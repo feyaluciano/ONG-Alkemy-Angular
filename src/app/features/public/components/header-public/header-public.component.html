@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
       
   <div class="row">
       <div class="col-md-12">                        
@@ -7,45 +7,30 @@
         <a class="navbar-brand" href="#">
           <img src="../assets/images/logo-somos-mas.png">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        ><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" [routerLink]="['/home']" >Inicio</a>
+            <li class="nav-item"
+              *ngFor="let link of links"
+              [routerLinkActive]="['active']">
+              <a class="nav-link" *ngIf="link.renderize"
+                [routerLink]="[link.route]">{{ link.text }}</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/nosotros']">Nosotros</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" [routerLink]="['/actividades']">Actividades</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" [routerLink]="['/novedades']">Novedades</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" [routerLink]="['/testimonios']">Testimonios</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/contacto']" tabindex="-1" aria-disabled="true">Contacto</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/donar']" tabindex="-1" aria-disabled="true">Contribuye</a>
-            </li>
-
           </ul>
           <form class="d-flex">
             <div class="">
-            <button *ngIf="!loggedIn" [routerLink]="['/login']" class="btn btn-outline-primary" style="margin-right: 10px;" type="button">Login</button>
-            <button *ngIf="loggedIn" (click)="logOut()" class="btn btn-outline-danger" style="margin-right: 10px;" type="button">Log Out</button>           
-            <a [routerLink]="['register']"  class="btn btn-primary" type="submit">Registrate</a>
-          </div>
+              <button *ngIf="!loggedIn" [routerLink]="['/login']" class="btn btn-outline-primary" style="margin-right: 10px;" type="button">Login</button>
+              <button *ngIf="loggedIn" (click)="logOut()" class="btn btn-outline-danger" style="margin-right: 10px;" type="button">Log Out</button>           
+              <a [routerLink]="['register']"  class="btn btn-primary" type="submit">Registrate</a>
+            </div>
           </form>
         </div>
       </div>
