@@ -1,17 +1,15 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { select, Store } from '@ngrx/store';
 import { login } from 'src/app/core/redux/actions/auth.actions';
-
-import { AuthService } from 'src/app/core/services/auth.service';
 import { environment } from 'src/environments/environment';
-
 import { AuthState } from '../../../../../core/redux/reducers/authReducer.reducer';
 import { Observable } from 'rxjs';
 import { getAuth } from 'src/app/core/redux/selectors/auth.selectors';
+// firebase
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-login-form',
@@ -27,7 +25,7 @@ export class LoginFormComponent implements OnInit  {
 
   authentication$: Observable<boolean>;
 
-  constructor(private fb:FormBuilder, private Router:Router, private store: Store<AuthState>){
+  constructor(private fb:FormBuilder, private Router:Router, private store: Store<AuthState>, private auth: AngularFireAuth){
       this.forma = this.fb.group({
       email:   ['test@demo.com', [Validators.required, Validators.email]],
       password: ['@Cepita67',  [Validators.required, Validators.minLength(6), 
@@ -77,7 +75,19 @@ export class LoginFormComponent implements OnInit  {
  }
 
  loginGoogle(){
-   console.log('Conectar usando google firebase');
+   this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((user)=>{
+     console.log('Usuario conectado con cuenta de google');
+     console.log(user);
+   }).catch((error)=>{
+    // Handle errors here
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used
+    const email = error.email;
+    // The AuthCredential type was used
+    //const credential = GoogleAuthProvider.credentialFromError(error);
+
+   });
  }
 
 }
