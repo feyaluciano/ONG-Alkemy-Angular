@@ -69,13 +69,4 @@ export class ActivitiesComponent implements OnInit {
     this.router.navigate(['/actividad', id]);
   }
 
-  viewDescription(id: number) {
-    let element = document.getElementById('album' + id);
-    if (element?.classList.contains('collapse')) {
-      element.classList.remove('collapse');
-    } else {
-      element?.classList.add('collapse');
-    }
-  }
-
 }

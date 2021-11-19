@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { StandarDialogComponent } from '../../../../../shared/components/standar-dialog/standar-dialog.component';
 import { News } from '../../../../models/news.interface';
 import { NewsService } from '../../../../services/news/news.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-news-form',
@@ -16,14 +17,20 @@ export class NewsFormComponent implements OnInit {
 
   constructor(
     private newsSvc: NewsService,
-    public dialog: MatDialog)
+    public dialog: MatDialog,
+    private router: Router
+  )
     
     
     {  this.newsSvc.getNews()
       .subscribe((resp: any) => {
         setTimeout(() => {
-          const news = resp.data;
-          this.news = news.slice(0, 4);
+          if (this.router.url === '/home') {
+            const news = resp.data;
+            this.news = news.slice(0, 4);
+          } else {
+            this.news = resp.data;
+          }
         }, 500);
       },
       (error: any) => {

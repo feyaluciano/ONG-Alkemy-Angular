@@ -4,6 +4,7 @@ import { environment } from '../../../../../../environments/environment';
 import { StandarDialogComponent } from '../../../../../shared/components/standar-dialog/standar-dialog.component';
 import { Testimonial } from '../../../../models/testimonial.model';
 import { TestimonialsService } from '../../../../services/testimonials.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-testimonial-form',
@@ -16,13 +17,18 @@ export class TestimonialFormComponent implements OnInit {
   testimonialsCompleted: boolean = false;
 
   constructor(
-    private testimonialsSvc: TestimonialsService 
+    private testimonialsSvc: TestimonialsService,
+    private router: Router
   ) {
     this.testimonialsSvc.getTestimonials(environment.testimonialsApiUrl)
       .subscribe((resp: any) => {
         setTimeout(() => {
-          const testimonials = resp.data;
-          this.testimonials = testimonials.slice(0, 4);       
+          if (this.router.url === '/home') {
+            const testimonials = resp.data;
+            this.testimonials = testimonials.slice(0, 4);       
+          } else {
+            this.testimonials = resp.data;
+          }
         }, 500);
       },
       (error) => {

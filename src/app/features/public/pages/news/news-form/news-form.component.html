@@ -7,9 +7,11 @@
     ></app-spinner>
   </div>
     
-    <div class="row mb-2" *ngIf="newsCompleted">
+    <div class="row my-5" *ngIf="newsCompleted">
   
-      <app-titles-component title="Últimas Novedades" image="" class="mb-5"></app-titles-component>
+      <div class="display-4 fst-italic text-center mb-5">
+        Últimas novedades
+      </div>
            
       <div class="col-md-3" *ngFor="let new of news">
 

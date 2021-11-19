@@ -28,6 +28,12 @@ export class HeaderPublicComponent implements OnInit {
 
       this.loggedIn = auth;
 
+      if (this.loggedIn) {
+        for (let link of this.links) {
+          link.renderize = true;
+        }
+      }
+
     });
 
     this.links = [
@@ -69,24 +75,22 @@ export class HeaderPublicComponent implements OnInit {
       {
         route: '/donar',
         text: 'Contribuye',
-        renderize: this.loggedIn
+        renderize: false
       }
     ];
   }
 
-  ngOnInit() {
-  //  if(localStorage.getItem("userToken")){
-  //    this.loggedIn = true;
-  //  }
-  }
+  ngOnInit() {}
 
   logOut(){
-    // localStorage.removeItem("userToken");
-    // localStorage.removeItem("user");
-    // this.loggedIn =false;
-    // this.router.navigate([''])
 
     this.store.dispatch(logout());
+
+    for (let link of this.links) {
+      if (link.route === '/donar') {
+        link.renderize = false;
+      }
+    }
   }
 
 }
