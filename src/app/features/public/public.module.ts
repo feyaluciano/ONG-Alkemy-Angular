@@ -28,7 +28,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { environment } from "src/environments/environment";
-
+import { SchoolCampaignComponent } from "./pages/school-campaign/school-campaign.component";
+import { HeaderSchoolCampaignComponent } from "./components/header-school-campaign/header-school-campaign.component";
 
 export const customCurrencyMaskConfig = {
   align: "right",
@@ -63,7 +64,8 @@ export const customCurrencyMaskConfig = {
     DonationComponent,
     ThanksComponent,
     MembersComponent,
-    
+    SchoolCampaignComponent,
+    HeaderSchoolCampaignComponent,    
   ],
   imports: [
     CommonModule,
