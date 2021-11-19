@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { logout } from 'src/app/core/redux/actions/auth.actions';
+import { AuthState } from 'src/app/core/redux/reducers/authReducer.reducer';
+import { getAuth } from 'src/app/core/redux/selectors/auth.selectors';
+import { Link } from '../../../models/link.model';
 
 @Component({
   selector: 'app-header-public',
@@ -9,19 +15,77 @@ import { Router } from '@angular/router';
 export class HeaderPublicComponent implements OnInit {
 
   loggedIn:boolean=false;
-  constructor(private router:Router) { }
+  links: Link[];
+  authentication$: Observable<boolean>;
 
-  ngOnInit() {
-   if(localStorage.getItem("userToken")){
-     this.loggedIn = true;
-   }
+  constructor(
+    private router: Router,
+    private store: Store<AuthState>
+  ) {
+    this.authentication$ = this.store.pipe(select(getAuth));
+    
+    this.authentication$.subscribe( auth => {
+
+      this.loggedIn = auth;
+
+      if (this.loggedIn) {
+        for (let link of this.links) {
+          link.renderize = true;
+        }
+      }
+
+    });
+
+    this.links = [
+      {
+        route: '/home',
+        text: 'Inicio',
+        renderize: true
+      },
+      {
+        route: '/nosotros',
+        text: 'Nosotros',
+        renderize: true
+      },
+      {
+        route: '/actividades',
+        text: 'Actividades',
+        renderize: true
+      },
+      {
+        route: '/novedades',
+        text: 'Novedades',
+        renderize: true
+      },
+      {
+        route: '/testimonios',
+        text: 'Testimonios',
+        renderize: true
+      },
+      {
+        route: '/contacto',
+        text: 'Contacto',
+        renderize: true
+      },
+      {
+        route: '/donar',
+        text: 'Contribuye',
+        renderize: false
+      }
+    ];
   }
 
+  ngOnInit() {}
+
   logOut(){
-    localStorage.removeItem("userToken");
-    localStorage.removeItem("user");
-    this.loggedIn =false;
-    this.router.navigate([''])
+
+    this.store.dispatch(logout());
+
+    for (let link of this.links) {
+      if (link.route === '/donar') {
+        link.renderize = false;
+      }
+    }
   }
 
 }
