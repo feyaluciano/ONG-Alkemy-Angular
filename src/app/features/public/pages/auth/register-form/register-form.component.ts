@@ -26,8 +26,8 @@ export class RegisterFormComponent implements OnInit {
   direction = '';
   directionArray:any =[];
   errorDirection:boolean = false;
+
   termsOk: boolean = false;
-  
   
   constructor(
     private userStatusService: UserStatusService,
