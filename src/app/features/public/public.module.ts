@@ -21,6 +21,7 @@ import { DonationComponent } from "./pages/donations/components/donation/donatio
 import { ThanksComponent } from "./pages/donations/components/thanks/thanks.component";
 import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 import { MembersComponent } from "./pages/members/members.component";
+import { LeafletMapComponent } from "./components/leaflet-map/leaflet-map.component";
 
 // firebase
 import { AngularFireModule } from '@angular/fire/compat';
@@ -61,7 +62,8 @@ export const customCurrencyMaskConfig = {
     ActivityComponent,
     DonationComponent,
     ThanksComponent,
-    MembersComponent
+    MembersComponent,
+    
   ],
   imports: [
     CommonModule,

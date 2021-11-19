@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import 'mapbox-gl-leaflet';
 
 @Component({
   selector: 'app-contact-form',
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.scss']
 })
+
 export class ContactFormComponent implements OnInit {
 
+  @ViewChild('map')
+  private mapContainer!: ElementRef<HTMLElement>;
+  
   contactForm = new FormGroup({
     name: new FormControl('', [
       Validators.required
@@ -50,5 +55,10 @@ export class ContactFormComponent implements OnInit {
       this.contactForm.get(input)?.hasError(type) && this.contactForm.get(input)?.touched
     );
   }
+
+
+ 
+
+
 
 }

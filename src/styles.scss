@@ -9,6 +9,58 @@
 
 @import '././app/styles/components/component.scss';
 
+/* bootstrap */
+.btn {
+  border-radius:0px !important;
+}
+.btn .btn-default {
+  background-color: #FF084E !important;
+}
+
+.btn-primary {
+  color: black ;
+  background-color: #8D99AF !important;
+  border-color: #8D99AF !important;  
+  padding-top: 12px !important;  
+  padding-bottom: 12px !important;
+  padding-right: 24px !important;  
+  padding-left: 24px !important;  
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: black !important;
+  color: white !important;
+}
+
+
+
+.btn-outline-primary {
+  color: black !important;
+  background-color: #f9f9f9 !important;
+  border-color: #8D99AF !important;
+  padding-top: 12px !important;  
+  padding-bottom: 12px !important;
+  padding-right: 24px !important;  
+  padding-left: 24px !important;  
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:visited,
+.btn-outline-primary:focus {
+  background-color: black !important;
+  color: white !important;
+}
+
+
+.form-control{
+  border-radius: 0px !important;
+  padding-top:12px !important;
+  padding-bottom:12px !important;
+}
+
+/* end bootstrap */
+
 
 .text-error-form{
   color:#FF084E
