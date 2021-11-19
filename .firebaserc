@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ong-somos-mas-55c48": {
+      "hosting": {
+        "base-ong-angular-client": [
+          "ong-somos-mas-55c48"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ong-somos-mas-55c48"
+  }
+}

@@ -10,7 +10,15 @@ export const environment = {
   slidesApiUrl:"",
   newsApiUrl: "",
   testimonialsApiUrl: "",
-  usersApiUrl: ""
+  usersApiUrl: "",
+  firebase: {
+    projectId: 'ong-somos-mas-55c48',
+    appId: '1:1040840435806:web:61b4afe988414e22b66ccf',
+    storageBucket: 'ong-somos-mas-55c48.appspot.com',
+    apiKey: 'AIzaSyBmnIFFXgln573T0kZKEGMskIUI6do8kyo',
+    authDomain: 'ong-somos-mas-55c48.firebaseapp.com',
+    messagingSenderId: '1040840435806',
+  }
 };
 /*
  * For easier debugging in development mode, you can import the following file
