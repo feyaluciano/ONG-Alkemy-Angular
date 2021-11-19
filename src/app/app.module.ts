@@ -20,6 +20,7 @@ import { SlideEffects } from './core/redux/effects/slide.effects';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -40,7 +41,7 @@ import { SlideEffects } from './core/redux/effects/slide.effects';
       AuthEffects,
       UserEffects,
       SlideEffects
-    ]),
+    ])
     
     
     

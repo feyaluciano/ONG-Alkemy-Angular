@@ -21,6 +21,14 @@ import { DonationComponent } from "./pages/donations/components/donation/donatio
 import { ThanksComponent } from "./pages/donations/components/thanks/thanks.component";
 import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 import { MembersComponent } from "./pages/members/members.component";
+import { LeafletMapComponent } from "./components/leaflet-map/leaflet-map.component";
+
+// firebase
+import { AngularFireModule } from '@angular/fire/compat';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { environment } from "src/environments/environment";
+
 
 export const customCurrencyMaskConfig = {
   align: "right",
@@ -54,7 +62,8 @@ export const customCurrencyMaskConfig = {
     ActivityComponent,
     DonationComponent,
     ThanksComponent,
-    MembersComponent
+    MembersComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -63,7 +72,10 @@ export const customCurrencyMaskConfig = {
     BackofficeRoutingModule,
     SharedModule,
     CoreModule,
-    NgxCurrencyModule.forRoot(customCurrencyMaskConfig)   
+    NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth())
+    
   ],
   exports: [
     HomeComponent,
