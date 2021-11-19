@@ -21,6 +21,7 @@ import { DonationComponent } from "./pages/donations/components/donation/donatio
 import { ThanksComponent } from "./pages/donations/components/thanks/thanks.component";
 import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 import { MembersComponent } from "./pages/members/members.component";
+import { AgmCoreModule } from "@agm/core";
 
 
 export const customCurrencyMaskConfig = {
@@ -64,7 +65,11 @@ export const customCurrencyMaskConfig = {
     BackofficeRoutingModule,
     SharedModule,
     CoreModule,
-    NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
+    NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyDP3Eae8DP6iN3p9jL8ipGnY4iCxm9Dga8"
+    })
+
     
   ],
   exports: [
