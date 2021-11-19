@@ -26,13 +26,8 @@ export class HeaderPublicComponent implements OnInit {
     
     this.authentication$.subscribe( auth => {
 
-      if(auth){
-  
-        this.loggedIn = true;
-        
-      } else {
-        this.loggedIn = false;
-      }
+      this.loggedIn = auth;
+
     });
 
     this.links = [
