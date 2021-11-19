@@ -68,11 +68,6 @@ export class HeaderPublicComponent implements OnInit {
         renderize: true
       },
       {
-        route: '/campanias',
-        text: 'Campañas',
-        renderize: true
-      },
-      {
         route: '/donar',
         text: 'Contribuye',
         renderize: false
