@@ -24,11 +24,7 @@ export class HeaderPublicComponent implements OnInit {
   ) {
     this.authentication$ = this.store.pipe(select(getAuth));
     
-    this.authentication$.subscribe( auth => {
-
-      this.loggedIn = auth;
-
-    });
+    
 
     this.links = [
       {
@@ -75,6 +71,21 @@ export class HeaderPublicComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.authentication$.subscribe( auth => {
+      this.loggedIn = auth; 
+      
+      if (this.loggedIn==true) {
+
+        //aca poner todos en true con algun for each
+        //this.links[2].renderize = true;
+
+      }
+      
+      
+    });
+
+
   //  if(localStorage.getItem("userToken")){
   //    this.loggedIn = true;
   //  }
