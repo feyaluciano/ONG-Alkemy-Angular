@@ -14,6 +14,7 @@ export class NewsFormComponent implements OnInit {
 
   news!: News[];
   newsCompleted: boolean = false;
+  isHome!: boolean;
 
   constructor(
     private newsSvc: NewsService,
@@ -28,8 +29,10 @@ export class NewsFormComponent implements OnInit {
           if (this.router.url === '/home') {
             const news = resp.data;
             this.news = news.slice(0, 4);
+            this.isHome = true;
           } else {
             this.news = resp.data;
+            this.isHome = false;
           }
         }, 500);
       },

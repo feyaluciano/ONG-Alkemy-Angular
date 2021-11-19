@@ -15,6 +15,7 @@ export class TestimonialFormComponent implements OnInit {
   testimonials!: Testimonial[];
   dialog!: MatDialog;
   testimonialsCompleted: boolean = false;
+  isHome!: boolean;
 
   constructor(
     private testimonialsSvc: TestimonialsService,
@@ -25,9 +26,11 @@ export class TestimonialFormComponent implements OnInit {
         setTimeout(() => {
           if (this.router.url === '/home') {
             const testimonials = resp.data;
-            this.testimonials = testimonials.slice(0, 4);       
+            this.testimonials = testimonials.slice(0, 4); 
+            this.isHome = true;      
           } else {
             this.testimonials = resp.data;
+            this.isHome = false;
           }
         }, 500);
       },

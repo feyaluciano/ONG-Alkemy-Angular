@@ -7,13 +7,16 @@
     ></app-spinner>
   </div>
     
-    <div class="row my-5" *ngIf="newsCompleted">
+    <div class="row mb-2" *ngIf="newsCompleted">
   
-      <div class="display-4 fst-italic text-center mb-5">
+      <div class="display-4 fst-italic text-center mb-5" *ngIf="isHome">
         Últimas novedades
       </div>
+
+      <app-titles-component title="Novedades" image="" *ngIf="!isHome"></app-titles-component>
+
            
-      <div class="col-md-3" *ngFor="let new of news">
+      <div class="col-md-3" [ngClass]="{'mt-5': !isHome}" *ngFor="let new of news">
 
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
           <div class="col p-4 d-flex flex-column position-static">
