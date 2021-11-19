@@ -20,6 +20,7 @@ import { SlideEffects } from './core/redux/effects/slide.effects';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -31,8 +32,16 @@ import { SlideEffects } from './core/redux/effects/slide.effects';
     FeaturesModule,
     SharedModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({ authReducer: authReducer,userReducer: userReducer,slideReducer: slideReducer }),    
-    EffectsModule.forRoot([AuthEffects,UserEffects,SlideEffects]),
+    StoreModule.forRoot({ 
+      authReducer: authReducer,
+      userReducer: userReducer,
+      slideReducer: slideReducer
+    }),    
+    EffectsModule.forRoot([
+      AuthEffects,
+      UserEffects,
+      SlideEffects
+    ])
     
     
     

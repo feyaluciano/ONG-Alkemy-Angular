@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from "@ngrx/store"
 import { User } from "src/app/features/models/User";
-import { logout, setAuthState } from '../actions/auth.actions';
+import { loginGoogle, logout, setAuthState } from '../actions/auth.actions';
 
 
 export interface AuthState {
@@ -23,7 +23,8 @@ const _authReducer = createReducer(
        user: setAuthState.data,
        token: setAuthState.token
    })),
-   on(logout, state => ({...state, auth: false, user: null, token: null }))
+   on(logout, state => ({...state, auth: false, user: null, token: null })),
+   on(loginGoogle, state => ({...state, auth: true, user: null, token: null }))
 );
 
 export function authReducer(state: AuthState = initialState, action: Action){

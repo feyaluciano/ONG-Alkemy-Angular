@@ -17,6 +17,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ProgressComponent } from './components/progress/progress.component';
 import { SkeletonComponent } from './skeleton/skeleton.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 
@@ -46,7 +47,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     FormsModule,  
     MaterialModule,
     MatProgressBarModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    PdfViewerModule 
     
   ],
   exports: [

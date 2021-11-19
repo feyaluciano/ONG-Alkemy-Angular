@@ -23,6 +23,12 @@ import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 import { MembersComponent } from "./pages/members/members.component";
 import { AgmCoreModule } from "@agm/core";
 
+// firebase
+import { AngularFireModule } from '@angular/fire/compat';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { environment } from "src/environments/environment";
+
 
 export const customCurrencyMaskConfig = {
   align: "right",
@@ -68,8 +74,10 @@ export const customCurrencyMaskConfig = {
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyDP3Eae8DP6iN3p9jL8ipGnY4iCxm9Dga8"
-    })
+    }),
 
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth())
     
   ],
   exports: [
