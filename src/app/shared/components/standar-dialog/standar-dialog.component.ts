@@ -14,6 +14,12 @@ export class StandarDialogComponent implements OnInit {
   @ViewChild("dialogError", { static: true }) dialogError!: TemplateRef<any>;
   @ViewChild("dialogConfirm", { static: true }) dialogConfirm!: TemplateRef<any>;
   @ViewChild(TemplateRef, { static: true }) template!: TemplateRef<any>;
+  @ViewChild("dialogTerms", { static: true }) dialogTerms!: TemplateRef<any>;
+  @ViewChild("noTerms", { static: true }) noTerms!: TemplateRef<any>;
+
+  page: number = 1;
+  totalPages!: number;
+  isLoaded: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<StandarDialogComponent>,
@@ -36,12 +42,33 @@ export class StandarDialogComponent implements OnInit {
         this.template=this.dialogInfo;
          break; 
       } 
+      case "terms": {
+        this.template = this.dialogTerms;
+        break;
+      }
+      case "noTerms": {
+        this.template = this.noTerms;
+        break;
+      }
       default: { 
         this.template=this.dialogConfirm;
          break; 
       } 
    } 
 
+  }
+
+  afterLoadComplete(pdfData: any) {
+    this.totalPages = pdfData.numPages;
+    this.isLoaded = true;
+  }
+
+  nextPage() {
+    this.page++;
+  }
+
+  prevPage() {
+    this.page--;
   }
 
 }

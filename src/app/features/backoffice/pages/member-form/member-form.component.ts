@@ -127,10 +127,11 @@ export class MemberFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (typeof this.route.snapshot.params["idMember"] !== "undefined") {
+      this.action = "Editar miembro";
       this.loadEntity();
     } else {
       this.editing = false;
-      this.action = "New Member";
+      this.action = "Nuevo miembro";
     }
 
     this.ckeditorSvc.getHandlerTextEditor$().subscribe((text) => {

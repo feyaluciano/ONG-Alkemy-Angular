@@ -1,74 +1,19 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-    <div class="position-sticky pt-3">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/backoffice/dashboard']">
-                    <span data-feather="file"></span>
-                    Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" [routerLink]="['/backoffice/activity']">
-                    <span data-feather="home"></span>
-                    Actividades
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" [routerLink]="['/backoffice/member']">
-                    <span data-feather="home"></span>
-                    Miembros
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" [routerLink]="['/backoffice/slides']">
-                    <span data-feather="home"></span>
-                    Slides
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" [routerLink]="['/backoffice/slide']">
-                    <span data-feather="home"></span>
-                    Slide
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" [routerLink]="['/backoffice/organization']">
-                    <span data-feather="home"></span>
-                    Organizacion
-                </a>
-            </li>
-
-            
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" [routerLink]="['/backoffice/categoria']">
-                    <span data-feather="home"></span>
-                    Categorías
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" [routerLink]="['/backoffice/home']">
-                    <span data-feather="home"></span>
-                    Home
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" [routerLink]="['/backoffice/news']">
-                    <span data-feather="home"></span>
-                    Novedades
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" [routerLink]="['/backoffice/users']">
-                    <span data-feather="home"></span>
-                    Usuarios
-                </a>
-            </li>
-        </ul>
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h2 class="offcanvas-title fs-2" id="offcanvasExampleLabel"> Menú </h2>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-</nav>
+    <div class="offcanvas-body">
+      <div class="list-group">
+        <a [routerLink]="['/backoffice/dashboard']" class="list-group-item list-group-item-action list-group-item-dark fs-5">Dashboard</a>
+        <a [routerLink]="['/backoffice/home']" class="list-group-item list-group-item-action list-group-item-dark fs-5">Home</a>
+        <a [routerLink]="['/backoffice/slides']" class="list-group-item list-group-item-action list-group-item-dark fs-5">Slides</a>
+        <a [routerLink]="['/backoffice/users']" class="list-group-item list-group-item-action list-group-item-dark fs-5">Usuarios</a>
+        <a [routerLink]="['/backoffice/categoria']" class="list-group-item list-group-item-action list-group-item-dark fs-5">Categorías</a>
+        <a [routerLink]="['/backoffice/member']" class="list-group-item list-group-item-action list-group-item-dark fs-5">Miembros</a>
+        <a [routerLink]="['/backoffice/activity']" class="list-group-item list-group-item-action list-group-item-dark fs-5">Actividades</a>
+        <a [routerLink]="['/backoffice/news']" class="list-group-item list-group-item-action list-group-item-dark fs-5">Novedades</a>
+        <a [routerLink]="['/backoffice/organization']" class="list-group-item list-group-item-action list-group-item-dark fs-5">Organización</a>
+      </div>
+    </div>
+</div>

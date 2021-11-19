@@ -48,3 +48,8 @@ testem.log
 Thumbs.db
 
 *.local.ts
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json

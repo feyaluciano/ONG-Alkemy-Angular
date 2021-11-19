@@ -67,6 +67,84 @@
     </div>
     </ng-template>
 
+  <ng-template #dialogTerms>
+    <div *ngIf="isLoaded" class="text-center my-3">
+      <button
+        class="btn btn-secondary"
+        (click)="prevPage()"
+        [disabled]="page === 1"
+      >Prev</button>
+      <span class="mx-3">{{ page }} / {{ totalPages }}</span>
+      <button
+        class="btn btn-secondary"
+        (click)="nextPage()"
+        [disabled]="page === totalPages"
+      >Next</button>
+    </div>
+    
+    <pdf-viewer src="assets/terms-and-conditions-justified.pdf"
+                [original-size]="true"
+                [fit-to-page]="true"
+                [show-borders]="true"
+                style="height: 100vh; width: 100%;"
+                [show-all]="false"
+                [page]="page"
+                (after-load-complete)="afterLoadComplete($event)"
+    ></pdf-viewer>
 
+    <div *ngIf="isLoaded" class="text-center my-3">
+      <button
+        class="btn btn-secondary"
+        (click)="prevPage()"
+        [disabled]="page === 1"
+      >Prev</button>
+      <span class="mx-3">{{ page }} / {{ totalPages }}</span>
+      <button
+        class="btn btn-secondary"
+        (click)="nextPage()"
+        [disabled]="page === totalPages"
+      >Next</button>
+    </div>
+
+    <hr class="my-3">
+
+    <div class="text-center">
+      <button 
+        type="button" 
+        class="btn btn-danger mx-1"
+        [disabled]="page !== totalPages"
+        (click)="closeDialog('cancelTerms')"
+      >Cancelar</button>
+      <button
+        type="button"
+        class="btn btn-primary mx-1"
+        [disabled]="page !== totalPages"
+        (click)="closeDialog('acceptTerms')"
+      >Aceptar</button>
+    </div>
+  </ng-template>
+
+  <ng-template #noTerms>
+    <div class="content-standar-dialog">
+      <div>   
+        <span  class="material-icons animate__animated animate__rubberBand icon-standar-dialog-info">      
+          Atención
+        </span>
+      </div>
+      <div style="text-align: center;">
+        {{ data.titleToShow }}
+      </div>
+      <div mat-dialog-content>
+        <h1 mat-dialog-title class="messagge-to-show">{{ data.messageToShow }}</h1>
+      </div>  
+      <button 
+        type="button" 
+        mat-raised-button 
+        color="primary"
+        (click)="closeDialog('cancelTerms')"
+      >Aceptar</button> 
+    </div>
+  </ng-template>
+  
 
 

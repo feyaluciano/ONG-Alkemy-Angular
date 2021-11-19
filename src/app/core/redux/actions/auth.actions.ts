@@ -11,6 +11,7 @@ interface IAuthPropsResponse {
 }
 
 export const login        = createAction('[Authentication] Login', props<{email: string, password: string}>() );
+export const loginGoogle  = createAction('[Authentication] Login with Google');
 export const logout       = createAction('[Authentication] Logout');
 
 export const register     = createAction('[Authentication] Register', props<{name: string, email: string, password: string}>() );
@@ -18,9 +19,7 @@ export const register     = createAction('[Authentication] Register', props<{nam
 export const setAuthState = createAction('[Authentication] Auth State Modified', props<IAuthPropsResponse>() );
 
 
-export const findAllActivities        = createAction('[ Activity ] Find All Activities');
-export const findAllActivitiesSuccess = createAction('[ Activity ] Find All Activities Success', props<{ payloadActivity: Array<Activity> }>());
-export const findAllActivitiesError = createAction('[ Activity ] Find All Activities Error',props<{ error: any }>());
+
 
 
 //export const loginError = createAction('[Authentication] Auth State Error', props<any>());
