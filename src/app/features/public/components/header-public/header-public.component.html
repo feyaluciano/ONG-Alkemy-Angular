@@ -43,8 +43,16 @@
               class="btn btn-outline-primary" 
               style="margin-right: 10px;" 
               type="button">Entrar</button>
-              <button *ngIf="loggedIn" (click)="logOut()" class="btn btn-outline-danger" style="margin-right: 10px;" type="button">Log Out</button>           
-              <a [routerLink]="['register']"  class="btn btn-primary" type="submit">Registrarse</a>
+              <button
+                *ngIf="loggedIn"
+                (click)="logOut()"
+                class="btn btn-outline-primary"
+                style="margin-right: 10px;"
+                type="button">Salir</button>           
+              <a *ngIf="!loggedIn" 
+                [routerLink]="['register']"
+                class="btn btn-primary"
+                type="submit">Registrarse</a>
             </div>
           </form>
         </div>
