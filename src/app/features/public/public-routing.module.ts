@@ -12,6 +12,7 @@ import { ThanksComponent } from './pages/donations/components/thanks/thanks.comp
 import { HomeComponent } from './pages/home/home.component';
 import { MembersComponent } from './pages/members/members.component';
 import { NewsFormComponent } from './pages/news/news-form/news-form.component';
+import { SchoolCampaignComponent } from './pages/school-campaign/school-campaign.component';
 import { TestimonialFormComponent } from './pages/testimonials/testimonial-form/testimonial-form.component';
 
 
@@ -34,7 +35,10 @@ const routes: Routes = [
           { path: 'novedades', component: NewsFormComponent },
           { path: 'testimonios', component: TestimonialFormComponent },
           { path: 'donar', component: DonationComponent },
-          { path: 'gracias', component: ThanksComponent }
+          { path: 'gracias', component: ThanksComponent },
+
+          { path: 'escolar', component: SchoolCampaignComponent }
+
     ]
     }
 ]
