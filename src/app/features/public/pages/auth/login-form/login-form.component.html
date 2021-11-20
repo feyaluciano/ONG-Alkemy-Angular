@@ -1,11 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="d-flex justify-content-center">
-
+    <div class=" d-flex justify-content-center">
+<div class="col-md-6">
       <form class="m-5 p-3 cardStyles text-center" [formGroup]=forma (ngSubmit)="login()">
         <img src="../../../../../../assets/images/LOGO-SOMOS.png" alt="">
-            <h2>LOGIN</h2>
-           
+            <h2>LOGIN</h2>           
               <div class="m-2">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
                 <input [class.is-invalid]="emailInvalid" formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
@@ -24,6 +23,7 @@
               <hr>
               <button  type="button" class="w-100 btn btn-primary btn-lg" (click)="loginGoogle()">Continuar con Google</button>        
       </form>
+    </div>
     </div>
   </div>
 </div>

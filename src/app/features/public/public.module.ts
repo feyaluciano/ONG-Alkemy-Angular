@@ -22,13 +22,15 @@ import { ThanksComponent } from "./pages/donations/components/thanks/thanks.comp
 import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 import { MembersComponent } from "./pages/members/members.component";
 import { AgmCoreModule } from "@agm/core";
+import { LeafletMapComponent } from "./components/leaflet-map/leaflet-map.component";
 
 // firebase
 import { AngularFireModule } from '@angular/fire/compat';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { environment } from "src/environments/environment";
-
+import { SchoolCampaignComponent } from "./pages/school-campaign/school-campaign.component";
+import { HeaderSchoolCampaignComponent } from "./components/header-school-campaign/header-school-campaign.component";
 
 export const customCurrencyMaskConfig = {
   align: "right",
@@ -62,7 +64,9 @@ export const customCurrencyMaskConfig = {
     ActivityComponent,
     DonationComponent,
     ThanksComponent,
-    MembersComponent
+    MembersComponent,
+    SchoolCampaignComponent,
+    HeaderSchoolCampaignComponent,    
   ],
   imports: [
     CommonModule,

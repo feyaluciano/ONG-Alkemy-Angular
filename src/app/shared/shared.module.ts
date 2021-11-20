@@ -17,6 +17,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ProgressComponent } from './components/progress/progress.component';
 import { SkeletonComponent } from './skeleton/skeleton.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { LeafletMapComponent } from '../features/public/components/leaflet-map/leaflet-map.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
@@ -37,7 +38,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     SpinnerComponent,
     CardComponent,
     ProgressComponent,
-    SkeletonComponent
+    SkeletonComponent,
+    LeafletMapComponent,
     
   ],
   imports: [
@@ -64,7 +66,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     SpinnerComponent,
     ProgressComponent,
     CardComponent,
-    SkeletonComponent   
+    SkeletonComponent,
+    LeafletMapComponent,  
   ]
 })
 export class SharedModule { }
