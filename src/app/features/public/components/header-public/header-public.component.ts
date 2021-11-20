@@ -50,17 +50,17 @@ export class HeaderPublicComponent implements OnInit {
       {
         route: '/actividades',
         text: 'Actividades',
-        renderize: true
+        renderize: false
       },
       {
         route: '/novedades',
         text: 'Novedades',
-        renderize: true
+        renderize: false
       },
       {
         route: '/testimonios',
         text: 'Testimonios',
-        renderize: true
+        renderize: false
       },
       {
         route: '/contacto',
@@ -82,7 +82,12 @@ export class HeaderPublicComponent implements OnInit {
     this.store.dispatch(logout());
 
     for (let link of this.links) {
-      if (link.route === '/donar') {
+      if (
+        link.route === '/actividades' ||
+        link.route === '/novedades' ||
+        link.route === '/testimonios' ||
+        link.route === '/donar'
+      ) {
         link.renderize = false;
       }
     }
