@@ -37,9 +37,9 @@ export class RegisterFormComponent implements OnInit {
     private countriesServices:RestCountriesService
   ) {
     this.form = this._builder.group({
-      email: ["ejemplo@gmail.com", [Validators.required, Validators.email]],
+      email: ["", [Validators.required, Validators.email]],
       password: [
-        "aaaaaa5%",
+        "",
         [
           Validators.required,
           Validators.pattern(
@@ -47,7 +47,7 @@ export class RegisterFormComponent implements OnInit {
           ),
         ],
       ],
-      confirmPassword: ["aaaaaa5%", [Validators.required]],
+      confirmPassword: ["", [Validators.required]],
       direction:[""]
     });
   }
