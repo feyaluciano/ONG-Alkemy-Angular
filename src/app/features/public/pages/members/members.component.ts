@@ -26,8 +26,7 @@ export class MembersComponent implements OnInit {
         setTimeout(() => {
           const members = resp.data;
           this.members = members.slice(0, 4);
-        }, 500);
-      },
+        }, 500); },
       (error: any) => {
 
         let errorMessage = '';           
