@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./thanks.component.scss']
 })
 export class ThanksComponent implements OnInit {
-  text: string = 'Gracias por su donación';
+  text: string = '¡Muchas gracias por su donación!';
   constructor() { }
 
   ngOnInit() {

@@ -1,7 +1,22 @@
-<div class="row mb-2 mt-5">
+<!-- <div class="row mb-2 mt-5">
     <div class="col-md-12 text-center">
     <h1 class="mt-0">
       {{text}}
     </h1>
+  </div>
+</div> -->
+<div class="container mt-5">
+  <div class="card text-center animate__animated animate__zoomIn shadow-lg">
+    <div class="card-header">
+      <i class="fas fa-heart"></i>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ text }}</h5>
+      <p class="card-text fst-italic">Usted nos está ayudando a ofrecer lo mejor para las familias que más lo necesitan</p>
+      <a [routerLink]="['/donar']" class="btn btn-primary mt-3">Seguir donando</a>
+    </div>
+    <div class="card-footer text-muted">
+      <i class="fas fa-heart"></i>
+    </div>
   </div>
 </div>
