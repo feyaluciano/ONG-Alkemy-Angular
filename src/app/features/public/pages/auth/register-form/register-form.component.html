@@ -9,14 +9,26 @@
       <div class="row g-3">
         <div class="col-sm-12">
           <label for="firstName" class="form-label">Email</label>
-          <input formControlName="email" type="text" class="form-control" id="email"  id="email" >
-          <div appMsgErrorForm  messageError="Ingrese un email válido"  [valido]="haveErrorsInputForm('email','email')" ></div>
-          <div appMsgErrorForm  messageError="Este campo es requerido"  [valido]="haveErrorsInputForm('email','required')" ></div>
+          <label class="sr-only" for="inlineFormInputGroup"></label>
+
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><span class="material-icons-outlined">mail</span></div>
+            </div>
+            <input formControlName="email" type="text" class="form-control"   id="email"type="text" class="form-control" id="inlineFormInputGroup" placeholder="ejemplo@ejemplo.com">
+          </div> 
+          <div  appMsgErrorForm  messageError="Ingrese un email válido"  [valido]="haveErrorsInputForm('email','email')" ></div>
+          <div  appMsgErrorForm  messageError="Este campo es requerido"  [valido]="haveErrorsInputForm('email','required')" ></div> 
         </div>
       
         <div class="col-sm-12">
           <label for="firstName" class="form-label">Contraseña</label>
-          <input formControlName="password" type="password" class="form-control" id="password"  id="password"  >
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><span class="material-icons-outlined">lock </span></div>
+            </div>
+          <input formControlName="password" type="password" class="form-control"  id="password" placeholder="******">
+        </div>
           <div appMsgErrorForm  messageError="La contraseña debe contener al menos un número, una letra y un símbolo (por ejemplo: @#$%)"  [valido]="haveErrorsInputForm('password','pattern')" ></div>
           <div appMsgErrorForm  messageError="Este campo es requerido"  [valido]="haveErrorsInputForm('password','required')" ></div>        
         </div>
@@ -24,9 +36,23 @@
 
         <div class="col-sm-12">
           <label for="firstName" class="form-label">Repetir Contraseña</label>
-          <input formControlName="confirmPassword" type="password" class="form-control" id="title"  id="name"  >
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><span class="material-icons-outlined">lock </span></div>
+            </div>
+          <input formControlName="confirmPassword" type="password" class="form-control"  id="password" placeholder="******">
+        </div>
           <div appMsgErrorForm  messageError="Este campo es requerido"  [valido]="haveErrorsInputForm('confirmPassword','required')" ></div>        
           <div class="text-error-form" *ngIf="passwordsAreEqualValue">La contraseñas no coiniciden</div>
+        </div>
+
+        <div class="col-sm-12">
+          
+        
+          <button  style="margin: 12px; " (click)="position()" class="btn btn-success">Añadir Direccion en Tiempo Real</button> 
+         <agm-map *ngIf="map" [latitude]="lat" [longitude]="lng" [zoom]="18" > 
+          <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
+         </agm-map>
         </div>
         
         <div class="col-sm-12">

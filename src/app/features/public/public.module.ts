@@ -21,6 +21,7 @@ import { DonationComponent } from "./pages/donations/components/donation/donatio
 import { ThanksComponent } from "./pages/donations/components/thanks/thanks.component";
 import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 import { MembersComponent } from "./pages/members/members.component";
+import { AgmCoreModule } from "@agm/core";
 import { LeafletMapComponent } from "./components/leaflet-map/leaflet-map.component";
 
 // firebase
@@ -75,6 +76,10 @@ export const customCurrencyMaskConfig = {
     SharedModule,
     CoreModule,
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyDP3Eae8DP6iN3p9jL8ipGnY4iCxm9Dga8"
+    }),
+
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth())
     
