@@ -1,0 +1,38 @@
+ul{
+    li{
+        padding: 5px;
+    }
+
+    a{
+         text-decoration: none;
+         color: white;
+         font-size: 1rem;
+    }
+    a:hover{
+        color: #ef233c;
+    }
+
+    li{
+        list-style: none;
+    }
+
+}
+
+.footer{
+    
+    padding-top: 0px;
+    background-color: #8d99ae;
+    padding: 20px;
+    p{  font-size: 1.3rem;
+        color: black
+    }
+    img{
+        padding-top: 40px;
+    }
+
+    margin-top:50px;
+}
+
+span{
+    display: block
+}
