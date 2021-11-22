@@ -20,6 +20,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { LeafletMapComponent } from '../features/public/components/leaflet-map/leaflet-map.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { FooterPublicComponent } from './footerPublic/footerPublic.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -52,7 +53,8 @@ import { FooterPublicComponent } from './footerPublic/footerPublic.component';
     MaterialModule,
     MatProgressBarModule,
     NgxSkeletonLoaderModule,
-    PdfViewerModule 
+    PdfViewerModule ,
+    RouterModule
     
   ],
   exports: [

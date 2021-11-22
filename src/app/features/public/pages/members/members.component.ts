@@ -23,10 +23,11 @@ export class MembersComponent implements OnInit {
     
     {  this.membersSvc.getMember()
       .subscribe((resp: any) => {
-        setTimeout(() => {
+      
           const members = resp.data;
           this.members = members.slice(0, 4);
-        }, 500); },
+          this.membersCompleted = true;
+  },
       (error: any) => {
 
         let errorMessage = '';           
@@ -60,11 +61,6 @@ export class MembersComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
           console.log(`Dialog result: ${result}`); 
         });
-      },
-      () => {
-        setTimeout(() => {
-          this.membersCompleted = true;
-        }, 500);
       });
   }
 

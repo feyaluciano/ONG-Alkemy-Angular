@@ -33,6 +33,7 @@ import { SchoolCampaignComponent } from "./pages/school-campaign/school-campaign
 import { HeaderSchoolCampaignComponent } from "./components/header-school-campaign/header-school-campaign.component";
 
 
+
 export const customCurrencyMaskConfig = {
   align: "right",
   allowNegative: true,
