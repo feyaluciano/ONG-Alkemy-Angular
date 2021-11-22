@@ -42,18 +42,21 @@
           <form class="d-flex">
             <div class="">
               <button 
-              *ngIf="!loggedIn" 
-              [routerLink]="['/login']" 
-              class="btn btn-outline-primary" 
-              style="margin-right: 10px;" 
-              type="button">Entrar</button>
+                matRipple
+                *ngIf="!loggedIn" 
+                [routerLink]="['/login']" 
+                class="btn btn-outline-primary" 
+                style="margin-right: 10px;" 
+                type="button">Entrar</button>
               <button
+                matRipple
                 *ngIf="loggedIn"
                 (click)="logOut()"
                 class="btn btn-outline-primary"
                 style="margin-right: 10px;"
                 type="button">Salir</button>           
               <a *ngIf="!loggedIn" 
+                matRipple
                 [routerLink]="['register']"
                 class="btn btn-primary"
                 type="submit">Registrarse</a>
