@@ -121,7 +121,6 @@ export class RegisterFormComponent implements OnInit {
           this.map = true;
           this.errorDirection = false;
         }else{
-          console.log("Debe colocar una direccion")
           this.errorDirection = true;
         }
       }
