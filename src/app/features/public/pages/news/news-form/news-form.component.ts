@@ -25,16 +25,17 @@ export class NewsFormComponent implements OnInit {
     
     {  this.newsSvc.getNews()
       .subscribe((resp: any) => {
-        setTimeout(() => {
-          if (this.router.url === '/home') {
+                 if (this.router.url === '/home') {
             const news = resp.data;
             this.news = news.slice(0, 4);
             this.isHome = true;
+            this.newsCompleted  = true;
           } else {
             this.news = resp.data;
             this.isHome = false;
+            this.newsCompleted  = true
           }
-        }, 500);
+    
       },
       (error: any) => {
 
@@ -70,11 +71,7 @@ export class NewsFormComponent implements OnInit {
           console.log(`Dialog result: ${result}`); 
         });
       },
-      () => {
-        setTimeout(() => {
-          this.newsCompleted = true;
-        }, 500);
-      });
+     );
   }
 
   ngOnInit(): void {
