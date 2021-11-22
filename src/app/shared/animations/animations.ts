@@ -1,6 +1,6 @@
 import { animate, animateChild, group, query, style, transition, trigger } from "@angular/animations";
 
-const duration: string = '500ms';
+const duration: string | number = '500ms';
 
 export const fadeInAnimation =
   trigger('routeAnimations', [
