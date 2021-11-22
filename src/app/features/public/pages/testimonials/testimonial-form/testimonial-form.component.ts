@@ -24,16 +24,17 @@ export class TestimonialFormComponent implements OnInit {
   ) {
     this.testimonialsSvc.getTestimonials(environment.testimonialsApiUrl)
       .subscribe((resp: any) => {
-        setTimeout(() => {
+        
           if (this.router.url === '/home') {
             const testimonials = resp.data;
             this.testimonials = testimonials.slice(0, 4); 
-            this.isHome = true;      
+            this.isHome = true;
+            this.testimonialsCompleted = true;      
           } else {
             this.testimonials = resp.data;
             this.isHome = false;
           }
-        }, 500);
+        
       },
       (error) => {
         let errorMessage = '';           
@@ -68,11 +69,7 @@ export class TestimonialFormComponent implements OnInit {
           console.log(`Dialog result: ${result}`); 
         });
       },
-      () => {
-        setTimeout(() => {
-          this.testimonialsCompleted = true;
-        }, 500);
-      });
+    );
   }
 
   ngOnInit(): void {
