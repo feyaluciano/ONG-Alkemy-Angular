@@ -17,11 +17,11 @@ export const fadeInAnimation =
       query(':enter', [
         style({ opacity: 0 })
       ]),
-      query(':leave', animateChild()),
+      query(':leave', animateChild(), { optional: true }),
       group([
         query(':leave', [
           animate(duration, style({ opacity: 0 }))
-        ]),
+        ], { optional: true }),
         query(':enter', [
           animate(duration, style({ opacity: 1 }))
         ])
