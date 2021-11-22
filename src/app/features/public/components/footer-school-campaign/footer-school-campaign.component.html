@@ -2,72 +2,63 @@
   <footer class="py-5">
     <div class="row">
       <div class="col-4">
-        <img src="assets/images/logo-somos-mas.svg" alt="">
+        <h5 class=" mx-5">ONG Somos Más</h5>
+        <a [routerLink]="['/home']">
+          <img src="assets/images/logo-somos-mas.svg" alt="Logo ONG Somos Más" />
+        </a>
       </div>
 
-      <!-- <div class="col-2">
-        <h5>Section</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-        </ul>
-      </div> -->
-
-      <div class="col-2">
-        <h5>Section</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+      <div class="col-3 text-center">
+        <h5 class="">Sección</h5>
+        <ul class="nav flex-column fs-6">
+          <li class="nav-item mb-2">
+            <a [routerLink]="['/actividades']" class="nav-link p-0">Actividades</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a [routerLink]="['/novedades']" class="nav-link p-0">Novedades</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a [routerLink]="['/testimonios']" class="nav-link p-0">Testimonios</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a [routerLink]="['/nosotros']" class="nav-link p-0">Nosotros</a>
+          </li>
         </ul>
       </div>
 
       <div class="col-4 offset-1">
-        <form>
-          <h5>Subscribe to our newsletter</h5>
-          <p>Monthly digest of whats new and exciting from us.</p>
-          <div class="d-flex w-100 gap-2">
-            <label for="newsletter1" class="visually-hidden">Email address</label>
-            <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-            <button class="btn btn-primary" type="button">Subscribe</button>
-          </div>
-        </form>
+        <h5 class="">Contacto</h5>
+        <ul class="nav flex-column">
+          <li class="ms-3">
+            <a class="social-link" href="mailto:somosfundacionmas@gmail.com">
+              <i class="far fa-envelope fa-2x"></i>
+              <span class="fs-6 mx-2">somosfundacionmas@gmail.com</span>
+            </a>
+          </li>
+          <li class="ms-3">
+            <a class="social-link" href="https://www.instagram.com/SomosMas/" target="_blank">
+              <i class="fab fa-instagram fa-2x"></i>
+              <span class="fs-6 mx-2">SomosMas</span>
+            </a>
+          </li>
+          <li class="ms-3">
+            <a class="social-link" href="https://www.facebook.com/Somos_Mas/" target="_blank">
+              <i class="fab fa-facebook-square fa-2x"></i>
+              <span class="fs-6 mx-2">Somos_Mas</span>
+            </a>
+          </li>
+          <li class="ms-3">
+            <a class="social-link" href="tel:+541160112988">
+              <i class="fas fa-phone-square-alt fa-2x"></i>
+              <span class="fs-6 mx-2">+54 11 6011-2988</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
 
-    <div class="d-flex justify-content-between py-4 my-4 border-top">
-      <p>&copy; 2021 Company, Inc. All rights reserved.</p>
-      <ul class="list-unstyled d-flex">
-        <li class="ms-3">
-          <a class="link-dark" href="#">
-            <i class="far fa-envelope"></i>
-            somosfundacionmas@gmail.com
-          </a>
-        </li>
-        <li class="ms-3">
-          <a class="link-dark" href="#">
-            <i class="fab fa-instagram"></i>
-            SomosMas
-          </a>
-        </li>
-        <li class="ms-3">
-          <a class="link-dark" href="#">
-            <i class="fab fa-facebook-square"></i>
-            Somos_Mas
-          </a>
-        </li>
-        <li class="ms-3">
-          <a class="link-dark" href="#">
-            <i class="fas fa-phone-square-alt"></i>
-            +54 11 6011-2988
-          </a>
-        </li>
-      </ul>
+    <div class="d-flex justify-content-center py-4 my-4 border-top">
+      <p class="">&copy; 2021 Alkemy. Reservados todos los derechos.</p>
     </div>
   </footer>
 </div>

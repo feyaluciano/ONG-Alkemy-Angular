@@ -1,0 +1,12 @@
+.social-link, .nav-link{
+  color: blue;
+  text-decoration: none;
+}
+
+.social-link:hover, .nav-link:hover {
+  text-decoration: underline;
+}
+
+.social-link i {
+  color: #ef233c;
+}
