@@ -19,6 +19,8 @@ import { SkeletonComponent } from './skeleton/skeleton.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { LeafletMapComponent } from '../features/public/components/leaflet-map/leaflet-map.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { FooterPublicComponent } from './footerPublic/footerPublic.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -40,6 +42,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     ProgressComponent,
     SkeletonComponent,
     LeafletMapComponent,
+    FooterPublicComponent
     
   ],
   imports: [
@@ -50,7 +53,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     MaterialModule,
     MatProgressBarModule,
     NgxSkeletonLoaderModule,
-    PdfViewerModule 
+    PdfViewerModule ,
+    RouterModule
     
   ],
   exports: [
@@ -68,6 +72,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     CardComponent,
     SkeletonComponent,
     LeafletMapComponent,  
+    FooterPublicComponent
   ]
 })
 export class SharedModule { }

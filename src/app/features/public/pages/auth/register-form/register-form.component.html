@@ -40,7 +40,7 @@
             <div class="input-group-prepend">
               <div class="input-group-text"><span class="material-icons-outlined">lock </span></div>
             </div>
-          <input formControlName="confirmPassword" type="password" class="form-control"  id="password" placeholder="******">
+          <input formControlName="confirmPassword" type="password" class="form-control"  id="passwordconfirm" placeholder="******">
         </div>
           <div appMsgErrorForm  messageError="Este campo es requerido"  [valido]="haveErrorsInputForm('confirmPassword','required')" ></div>        
           <div class="text-error-form" *ngIf="passwordsAreEqualValue">La contraseñas no coiniciden</div>

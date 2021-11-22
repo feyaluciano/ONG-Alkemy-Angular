@@ -33,7 +33,6 @@ export class TestimonialFormComponent implements OnInit {
             this.isHome = false;
             this.testimonialsCompleted = true;
           }
-
       },
       (error: any) => {
 
