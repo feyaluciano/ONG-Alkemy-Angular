@@ -34,6 +34,7 @@ export class NewsFormComponent implements OnInit {
           } else {
             this.news = resp.data;
             this.isHome = false;
+            this.newsCompleted = true;
           }
        
       },
