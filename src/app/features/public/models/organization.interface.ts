@@ -4,7 +4,7 @@ export interface organization<T> {
     message: string;
 }
 
-export interface organResp{
+export interface organResp{ 
     id?:                number;
     name?:              string;
     logo?:              string;

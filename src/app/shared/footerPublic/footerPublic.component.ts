@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+
 import {  organization, organResp } from 'src/app/features/public/models/organization.interface';
 import { PublicService } from 'src/app/features/public/services/public.service';
 
