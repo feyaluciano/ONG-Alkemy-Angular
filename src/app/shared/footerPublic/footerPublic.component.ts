@@ -10,6 +10,7 @@ import { PublicService } from 'src/app/features/public/services/public.service';
 })
 export class FooterPublicComponent implements OnInit {
   organization!:organResp;
+  loader:boolean = true;
 
   constructor(private publicServices:PublicService) { }
 
@@ -17,7 +18,6 @@ export class FooterPublicComponent implements OnInit {
   ngOnInit(){
    return this.publicServices.getEntities<organization<organResp>>('http://ongapi.alkemy.org/api/organization').subscribe((resp)=>{
       this.organization  = resp.data;
-      console.log(this.organization)
     })
   }
 
