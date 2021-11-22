@@ -10,3 +10,46 @@
 .social-link i {
   color: #ef233c;
 }
+
+.custom-class-0 {
+  margin: auto;
+}
+
+.custom-class-1 {
+  display: none;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .custom-class-1 {
+    display: none;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .custom-class-1.custom-class-2 {
+    display: block;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .custom-class-1.custom-class-3 {
+    display: inline-block;
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .custom-class-1.custom-class-4 {
+    display: inline-block;
+  }
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+  .custom-class-1.custom-class-5 {
+    display: inline-block;
+  }
+}
