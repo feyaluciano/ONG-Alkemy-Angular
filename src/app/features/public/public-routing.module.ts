@@ -24,20 +24,21 @@ const routes: Routes = [
       {path:'',redirectTo:"home"},       
       {
         path: 'home',
-        component: HomeComponent,        
+        component: HomeComponent,
+        data: {animation: 'Home'}         
       },
-          { path: 'register', component: RegisterFormComponent },
-          { path : 'login' , component:LoginFormComponent},
-          { path: 'nosotros', component: MembersComponent } ,
-          { path: 'contacto', component: ContactComponent },
-          { path: 'actividades', component: ActivitiesComponent },
-          { path: 'actividad/:id', component: ActivityComponent },
-          { path: 'novedades', component: NewsFormComponent },
-          { path: 'testimonios', component: TestimonialFormComponent },
-          { path: 'donar', component: DonationComponent },
-          { path: 'gracias', component: ThanksComponent },
+          { path: 'register', component: RegisterFormComponent, data: {animation: 'Register'} },
+          { path : 'login' , component:LoginFormComponent, data: {animation: 'Login'}},
+          { path: 'nosotros', component: MembersComponent, data: {animation: 'Nosotros'} } ,
+          { path: 'contacto', component: ContactComponent, data: {animation: 'Contacto'} },
+          { path: 'actividades', component: ActivitiesComponent, data: {animation: 'Actividades'} },
+          { path: 'actividad/:id', component: ActivityComponent, data: {animation: 'Actividad'} },
+          { path: 'novedades', component: NewsFormComponent, data: {animation: 'Novedades'} },
+          { path: 'testimonios', component: TestimonialFormComponent, data: {animation: 'Testimonios'} },
+          { path: 'donar', component: DonationComponent, data: {animation: 'Donar'} },
+          { path: 'gracias', component: ThanksComponent, data: {animation: 'Gracias'} },
 
-          { path: 'escolar', component: SchoolCampaignComponent }
+          { path: 'escolar', component: SchoolCampaignComponent, data: {animation: 'Escolar'} }
 
     ]
     }
