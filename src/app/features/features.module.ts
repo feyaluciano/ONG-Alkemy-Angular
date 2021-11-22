@@ -4,9 +4,11 @@ import { RouterModule } from "@angular/router";
 import { CurrencyMaskInputMode, NgxCurrencyModule } from "ngx-currency";
 import { AppRoutingModule } from "./app-routing.module";
 
+
  
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   exports: [
     RouterModule,
     AppRoutingModule],

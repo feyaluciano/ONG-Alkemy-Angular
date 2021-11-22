@@ -31,7 +31,9 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { environment } from "src/environments/environment";
 import { SchoolCampaignComponent } from "./pages/school-campaign/school-campaign.component";
 import { HeaderSchoolCampaignComponent } from "./components/header-school-campaign/header-school-campaign.component";
-import { FooterSchoolCampaignComponent } from './components/footer-school-campaign/footer-school-campaign.component';
+import { FooterSchoolCampaignComponent } from "./components/footer-school-campaign/footer-school-campaign.component";
+
+
 
 export const customCurrencyMaskConfig = {
   align: "right",
