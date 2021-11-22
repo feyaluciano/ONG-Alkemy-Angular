@@ -25,18 +25,17 @@ export class NewsFormComponent implements OnInit {
     
     {  this.newsSvc.getNews()
       .subscribe((resp: any) => {
-        
-          if (this.router.url === '/home') {
+                 if (this.router.url === '/home') {
             const news = resp.data;
             this.news = news.slice(0, 4);
             this.isHome = true;
-            this.newsCompleted = true;
+            this.newsCompleted  = true;
           } else {
             this.news = resp.data;
             this.isHome = false;
-            this.newsCompleted = true;
+            this.newsCompleted  = true
           }
-       
+    
       },
       (error: any) => {
 
