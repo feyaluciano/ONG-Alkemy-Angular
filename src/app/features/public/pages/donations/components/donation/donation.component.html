@@ -6,31 +6,24 @@
     <div class="col-md-12">
       <div class="jumbotron">
         <h2>
-          ¡Donaciones!
-        </h2>
-        <p>
           {{ message }}
-        </p>
+        </h2>
       </div>
     </div>
 
     <div class="col-md-3">
       <form [formGroup]="form">
-        <div class="jumbotron">
-          <p>
-            <input class="form-control form-control-lg" currencyMask formControlName="value" />
+        <div class="input-group mb-3">
+            <input class="form-control form-control-lg customBorder" currencyMask formControlName="value" />
+            <div class="d-flex flex-wrap">
+              <button class="btn btn-primary btn-large me-3" (click)="donate()">Donar</button>
+              <app-spinner [diameter]="48" *ngIf="spinner"></app-spinner>
+            </div>
             <span
               appMsgErrorForm
-              messageError="Por favor, ingrese un valor"
+              messageError="Por favor, ingrese una cantidad"
               *ngIf="emptyValue"
             ></span>
-          </p>
-          
-          <div class="d-flex flex-wrap">
-          
-            <button class="btn btn-primary btn-large me-3" (click)="donate()">Donar</button>
-            <app-spinner [diameter]="48" *ngIf="spinner"></app-spinner>
-          </div>
         </div>
       </form>
     </div>

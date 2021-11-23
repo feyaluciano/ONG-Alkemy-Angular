@@ -1,3 +1,5 @@
 <app-header-public></app-header-public>
-<router-outlet></router-outlet>
+<div [@routeAnimations]="prepareRoute(outlet)" class="custom-class">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
 <app-footerPublic></app-footerPublic>
