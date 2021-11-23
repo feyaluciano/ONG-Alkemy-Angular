@@ -1,8 +1,12 @@
+
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { UserStatusService } from "src/app/core/services/user-status.service";
 import { User } from "../../../../models/User";
+import { RestCountriesService } from "../../../services/rest-countries.service";
+
+
 import { MatDialog } from '@angular/material/dialog';
 import { StandarDialogComponent } from "src/app/shared/components/standar-dialog/standar-dialog.component";
 
@@ -15,18 +19,27 @@ export class RegisterFormComponent implements OnInit {
   form: FormGroup;
   editing: boolean = false;
   passwordsAreEqualValue: boolean = false;
+  lat:any = 0;
+  lng:number = 0;
+  countries:any[] =[];
+  map = false;
+  direction = '';
+  directionArray:any =[];
+  errorDirection:boolean = false;
+
   termsOk: boolean = false;
   
   constructor(
     private userStatusService: UserStatusService,
     private _builder: FormBuilder,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private countriesServices:RestCountriesService
   ) {
     this.form = this._builder.group({
-      email: ["ejemplo@gmail.com", [Validators.required, Validators.email]],
+      email: ["", [Validators.required, Validators.email]],
       password: [
-        "aaaaaa5%",
+        "",
         [
           Validators.required,
           Validators.pattern(
@@ -34,7 +47,8 @@ export class RegisterFormComponent implements OnInit {
           ),
         ],
       ],
-      confirmPassword: ["aaaaaa5%", [Validators.required]],
+      confirmPassword: ["", [Validators.required]],
+      direction:[""]
     });
   }
 
@@ -68,17 +82,49 @@ export class RegisterFormComponent implements OnInit {
       const user: User = {
         email: this.form.get("email")?.value,
         password: this.form.get("password")?.value,
+        latitude: this.lat,
+        longitude: this.lng
       };
+      console.log(user)
       await this.userStatusService.setUser(user);      
       this.router.navigate(["/dashboard"]);
     } else {
       this.form.markAllAsTouched();
     }
+
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.editing = false;
+    this.countriesServices.getRestCountries().subscribe((resp:any)=>{
+      let data = resp;
+      this.countries = data.sort();
+    })
+    
   }
+
+
+  position(){
+    navigator.geolocation.getCurrentPosition(position =>{
+      this.lat = position.coords.latitude,
+      this.lng = position.coords.longitude
+    })
+    this.map = true;
+  }
+
+    addDirection(){
+      if(this.form.get("direction")?.value){
+        this.direction = this.form.get("direction")?.value;
+        this.directionArray  =  this.direction.split(',');
+        this.lat = parseInt(this.directionArray[0]) ; 
+        this.lng = parseInt(this.directionArray[1]) ; 
+          this.map = true;
+          this.errorDirection = false;
+        }else{
+          this.errorDirection = true;
+        }
+      }
+   
 
   readTerms() {
     let dialogRef = this.dialog.open(StandarDialogComponent, {

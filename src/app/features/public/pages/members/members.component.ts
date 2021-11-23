@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Member } from 'src/app/features/models/Member';
 import { MembersService } from 'src/app/features/services/members/members.service';
@@ -23,10 +23,9 @@ export class MembersComponent implements OnInit {
     
     {  this.membersSvc.getMember()
       .subscribe((resp: any) => {
-        setTimeout(() => {
           const members = resp.data;
           this.members = members.slice(0, 4);
-        }, 500);
+          this.membersCompleted = true;
       },
       (error: any) => {
 
@@ -62,11 +61,7 @@ export class MembersComponent implements OnInit {
           console.log(`Dialog result: ${result}`); 
         });
       },
-      () => {
-        setTimeout(() => {
-          this.membersCompleted = true;
-        }, 500);
-      });
+     );
   }
 
   private elementCard: any;
