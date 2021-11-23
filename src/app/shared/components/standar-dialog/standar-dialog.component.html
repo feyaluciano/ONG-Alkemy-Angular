@@ -68,20 +68,7 @@
     </ng-template>
 
   <ng-template #dialogTerms>
-    <div *ngIf="isLoaded" class="text-center my-3">
-      <button
-        class="btn btn-secondary"
-        (click)="prevPage()"
-        [disabled]="page === 1"
-      >Prev</button>
-      <span class="mx-3">{{ page }} / {{ totalPages }}</span>
-      <button
-        class="btn btn-secondary"
-        (click)="nextPage()"
-        [disabled]="page === totalPages"
-      >Next</button>
-    </div>
-    
+       
     <pdf-viewer src="assets/terms-and-conditions-justified.pdf"
                 [original-size]="true"
                 [fit-to-page]="true"
@@ -111,7 +98,7 @@
     <div class="text-center">
       <button 
         type="button" 
-        class="btn btn-danger mx-1"
+        class="btn btn-outline-primary mx-1"
         [disabled]="page !== totalPages"
         (click)="closeDialog('cancelTerms')"
       >Cancelar</button>
