@@ -1,13 +1,42 @@
+#title-container-image{
+    position:relative;   
+  }
+  
+  #title-container-text-title {
+    border-top:6px solid #EF233C;
+    position: absolute;
+    padding-top:20px;
+    padding-bottom:20px;   
+    padding-left:30px;
+    padding-right:30px;    
+    background-color: rgba(7, 4, 4, 0.7);
+    top: 30;
+    bottom: 140px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 400px;
+    font-family: 'Poppins';
+    color: #fff;
+  }
+  .title-sm{
+    text-align: center;
+    border-bottom:   3px solid #EF233C;
+    background-color: rgba(7, 4, 4, 0.7);
+    padding-top:3px;
+    font-family: 'Poppins';
+    color: #fff;
+  }
 h1 {  
     color: white;
     text-align: center;     
 }
 
-div {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background: #3774b1;
-}
+// div {
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: column;
+//     background: #3774b1;
+// }
 
 

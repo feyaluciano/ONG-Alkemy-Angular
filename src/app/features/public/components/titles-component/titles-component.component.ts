@@ -10,7 +10,7 @@ export class TitlesComponentComponent implements OnInit {
   @Input() title!: string | undefined;
   @Input() image!: string | undefined;
 
-  public defaultImage: string = "assets/slides3.jpg";
+  public defaultImage: string = "../assets/images/lapices4.png";
 
   constructor() {}
 

@@ -4,8 +4,27 @@
 
 .nav-link, .dropdown-item {
   font-size: large;
+  font-family: 'Poppins';
+  text-transform: uppercase;
+  padding-top:10px;padding-bottom: 10px;
 }
 
-.active>.nav-link {
-  color: #ef233c !important;
+.active-menu {
+  font-weight: bold !important;
+  color:#EF233C !important;
+}
+
+.ul-menu-padding {
+  padding-left: 30px
+}
+.first-item-dropdown{
+  margin-top: 0px;
+  padding-top: 0px;
+  border-top: 3px solid #EF233C;
+}
+.dropdown-menu {
+  border:0px;
+}
+.nav-item{  
+  font-weight:500 !important;
 }

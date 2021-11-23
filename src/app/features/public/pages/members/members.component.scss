@@ -2,3 +2,39 @@ a:link { COLOR: black; text-decoration: none; font-weight: normal }
 a:visited { COLOR: black; text-decoration: none; font-weight: normal }
 a:active { COLOR: black; text-decoration: none }
 a:hover { COLOR: #fa4a4a; text-decoration: none; font-weight: none }
+
+#img-header-big-presentation{
+    position:relative;       
+  }
+  
+  #text-header-big-presentation {
+    border-top:6px solid #EF233C;    
+    position: absolute;
+    padding-top:20px;
+    padding-bottom:20px;
+    min-width: 600px;
+    padding-left:30px;
+    padding-right:30px;    
+    background-color: rgba(7, 4, 4, 0.7);
+    top: auto;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 400px;
+    font-family: 'Poppins';
+  }
+
+  .title-text-float-header{
+      color:#fff;
+      font-size: 24px;
+      font-weight: 900px;
+      text-align:left;
+      font-family:'Poppins'
+  }
+
+  .body-text-float-header{
+    color:#fff;
+    font-size: 16px;
+    font-weight: 600px;
+}
