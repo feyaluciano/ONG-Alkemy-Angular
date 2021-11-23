@@ -6,6 +6,6 @@
   font-size: large;
 }
 
-.active {
-  font-weight: bold !important;
+.active>.nav-link {
+  color: #ef233c !important;
 }
