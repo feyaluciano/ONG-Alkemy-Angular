@@ -7,6 +7,7 @@ import { ActivityComponent } from './pages/activities/activity/activity.componen
 import { LoginFormComponent } from './pages/auth/login-form/login-form.component';
 import { RegisterFormComponent } from './pages/auth/register-form/register-form.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { DonationErrorComponent } from './pages/donations/components/donation-error/donation-error.component';
 import { DonationComponent } from './pages/donations/components/donation/donation.component';
 import { ThanksComponent } from './pages/donations/components/thanks/thanks.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -35,6 +36,7 @@ const routes: Routes = [
           { path: 'novedades', component: NewsFormComponent },
           { path: 'testimonios', component: TestimonialFormComponent },
           { path: 'donar', component: DonationComponent },
+          { path: 'donar/error', component: DonationErrorComponent },
           { path: 'gracias', component: ThanksComponent },
 
           { path: 'escolar', component: SchoolCampaignComponent }

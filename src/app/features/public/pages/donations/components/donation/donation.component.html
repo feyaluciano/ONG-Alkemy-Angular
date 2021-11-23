@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mb-2">
 
-    <app-titles-component title="Donaciones" image="" class="mb-5"></app-titles-component>
+    <app-titles-component title="Donaciones" class="mb-5"></app-titles-component>
 
     <div class="col-md-12">
       <div class="jumbotron">
@@ -25,9 +25,12 @@
               *ngIf="emptyValue"
             ></span>
           </p>
-          <p>
-            <button class="btn btn-primary btn-large" (click)="donate()">Donar</button>
-          </p>
+          
+          <div class="d-flex flex-wrap">
+          
+            <button class="btn btn-primary btn-large me-3" (click)="donate()">Donar</button>
+            <app-spinner [diameter]="48" *ngIf="spinner"></app-spinner>
+          </div>
         </div>
       </form>
     </div>
