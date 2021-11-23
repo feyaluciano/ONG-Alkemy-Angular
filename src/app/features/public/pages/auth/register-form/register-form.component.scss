@@ -25,6 +25,11 @@
     border-top-right-radius: 0;
   }
 
+
+  /* Set the size of the div element that contains the map */
+  agm-map {
+    height: 300px;
+  }
 .link {
   cursor: pointer;
 }

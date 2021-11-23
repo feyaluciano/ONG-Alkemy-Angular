@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { StandarDialogComponent } from '../../../../../shared/components/standar-dialog/standar-dialog.component';
 import { News } from '../../../../models/news.interface';
 import { NewsService } from '../../../../services/news/news.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-news-form',
@@ -13,18 +14,28 @@ export class NewsFormComponent implements OnInit {
 
   news!: News[];
   newsCompleted: boolean = false;
+  isHome!: boolean;
 
   constructor(
     private newsSvc: NewsService,
-    public dialog: MatDialog)
+    public dialog: MatDialog,
+    private router: Router
+  )
     
     
     {  this.newsSvc.getNews()
       .subscribe((resp: any) => {
-        setTimeout(() => {
-          const news = resp.data;
-          this.news = news.slice(0, 4);
-        }, 500);
+                 if (this.router.url === '/home') {
+            const news = resp.data;
+            this.news = news.slice(0, 4);
+            this.isHome = true;
+            this.newsCompleted  = true;
+          } else {
+            this.news = resp.data;
+            this.isHome = false;
+            this.newsCompleted  = true
+          }
+    
       },
       (error: any) => {
 
@@ -60,11 +71,7 @@ export class NewsFormComponent implements OnInit {
           console.log(`Dialog result: ${result}`); 
         });
       },
-      () => {
-        setTimeout(() => {
-          this.newsCompleted = true;
-        }, 500);
-      });
+     );
   }
 
   ngOnInit(): void {

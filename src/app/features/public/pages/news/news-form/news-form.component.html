@@ -1,29 +1,35 @@
-<div class="container">
-  <div class="d-flex justify-content-center">
-    <app-spinner
-    color="primary"
-    mode="indeterminate"
-    *ngIf="!newsCompleted"
-    ></app-spinner>
-  </div>
-    
-    <div class="row mb-2" *ngIf="newsCompleted">
-  
-      <app-titles-component title="Últimas Novedades" image="" class="mb-5"></app-titles-component>
-           
-      <div class="col-md-3" *ngFor="let new of news">
-
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-primary">{{ new?.slug || 'General'}}</strong>
-            <h3 class="mb-0">{{ new?.name }}</h3>
-            <div class="mb-1 text-muted">{{ new?.created_at | date }}</div>
-            <p class="card-text mb-auto" [innerHTML]="new?.content"></p>
-            <a href="#" class="stretched-link">Continuar leyendo</a>
-          </div>        
-        </div>
-        
-      </div>
+<div class="container-fluid mb-3 mb-4 mt-sm-3 ">
+  <div class="row text-center"> 
+    <div class=" text-center mb-5 title-section " *ngIf="isHome">
+     <span> Últimas novedades</span>
     </div>
+        <app-titles-component title="Novedades" image="" *ngIf="!isHome"></app-titles-component>
+  </div>
 </div>
+
+<div class="d-flex justify-content-center">
+  <app-spinner
+  color="primary"
+  mode="indeterminate"
+  *ngIf="!newsCompleted"
+  ></app-spinner>
+</div>
+
+<div class="container mt-4">
+
+  <div class="row " *ngIf="newsCompleted ">
+    <div class="col-md-3 "  [ngClass]="{'mt-5': !isHome}" *ngFor="let new of news" >  
+
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm  position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{{ new?.slug || 'General'}}</strong>
+          <h3 class="mb-0">{{ new?.name }}</h3>
+          <div class="mb-1 text-muted">{{ new?.created_at | date }}</div>
+          <p class="card-text mb-auto" [innerHTML]="new?.content"></p>
+          <a href="#" class="stretched-link">Continuar leyendo</a>
+        </div>        
+      </div>
+    </div>        
+  </div>
+
 

@@ -24,6 +24,7 @@ export class ActivitiesComponent implements OnInit {
     this.activitiesService.getActivities()
       .subscribe((data: any) => {
         this.activities = data.data;
+        this.activitiesCompleted = true;
       }, (error) => {
         let errorMessage = '';           
         switch(error.status) { 
@@ -55,10 +56,6 @@ export class ActivitiesComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
           this.activitiesError = true; 
         });
-      }, () => {
-        setTimeout(() => {
-          this.activitiesCompleted = true;
-        }, 500);
       });
   }
 
@@ -67,15 +64,6 @@ export class ActivitiesComponent implements OnInit {
 
   activityDetail(id: string | undefined) {
     this.router.navigate(['/actividad', id]);
-  }
-
-  viewDescription(id: number) {
-    let element = document.getElementById('album' + id);
-    if (element?.classList.contains('collapse')) {
-      element.classList.remove('collapse');
-    } else {
-      element?.classList.add('collapse');
-    }
   }
 
 }
