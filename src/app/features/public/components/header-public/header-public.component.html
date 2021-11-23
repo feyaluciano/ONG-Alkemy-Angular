@@ -11,9 +11,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" *ngFor="let link of links" [routerLinkActive]="['active-menu']">
-          <a class="nav-link" *ngIf="link.renderize" [routerLink]="[link.route]">{{ link.text }}</a>
-        </li>
+        <div *ngFor="let link of links">
+          <li class="nav-item" *ngIf="link.renderize" [routerLinkActive]="['active-menu']">
+            <a class="nav-link" [routerLink]="[link.route]">{{ link.text }}</a>
+          </li>
+        </div>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
@@ -32,8 +34,8 @@
             style="margin-right: 10px;" type="button">Entrar</button>
           <button *ngIf="loggedIn" (click)="logOut()" class="btn btn-outline-primary" style="margin-right: 10px;"
             type="button">Salir</button>
-          <button *ngIf="!loggedIn" [routerLink]="['register']" class="btn btn-primary"
-            type="submit">Registrarse</button>
+          <button *ngIf="!loggedIn" [routerLink]="['/register']" class="btn btn-primary"
+            type="button">Registrarse</button>
         </div>
       </form>
     </div>
