@@ -1,5 +1,5 @@
 <div class="container-fluid p-0 bg-light">
-  <footer class="pt-5">
+  <footer class="pt-3">
     <div class="row">
       <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
         <h5 class="custom-class-1 custom-class-2 mx-5 text-center">ONG Somos Más</h5>
@@ -13,7 +13,7 @@
 
       <div class="custom-class-1 custom-class-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 text-center">
         <h5 class="">Secciones</h5>
-        <ul class="nav flex-column fs-6">
+        <ul class="nav flex-column ">
           <div *ngFor="let link of links">
             <li class="nav-item mb-2" *ngIf="link.renderize">
               <a [routerLink]="[link.route]" class="nav-link p-0">{{ link.text }}</a>
@@ -25,35 +25,35 @@
       <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 offset-1 custom-class-0">
         <h5 class="custom-class-1 custom-class-4">Contacto</h5>
         <ul class="nav flex-column">
-          <li class="ms-3">
+          <li class="">
             <a class="social-link" href="mailto:somosfundacionmas@gmail.com">
-              <i class="far fa-envelope fa-2x"></i>
-              <span class="custom-class-1 custom-class-3 fs-6 mx-2">somosfundacionmas@gmail.com</span>
+              <fa-icon [icon]="faEnvelope"></fa-icon>
+              <span class="custom-class-1 custom-class-3 mx-2">somosfundacionmas@gmail.com</span>
             </a>
           </li>
-          <li class="ms-3">
+          <li class="">
             <a class="social-link" href="https://www.instagram.com/SomosMas/" target="_blank">
-              <i class="fab fa-instagram fa-2x"></i>
-              <span class="custom-class-1 custom-class-3 fs-6 mx-2">SomosMas</span>
+              <fa-icon [icon]="faInstagram"></fa-icon>
+              <span class="custom-class-1 custom-class-3 mx-2">SomosMas</span>
             </a>
           </li>
-          <li class="ms-3">
+          <li class="">
             <a class="social-link" href="https://www.facebook.com/Somos_Mas/" target="_blank">
-              <i class="fab fa-facebook-square fa-2x"></i>
-              <span class="custom-class-1 custom-class-3 fs-6 mx-2">Somos_Mas</span>
+              <fa-icon [icon]="faFacebook"></fa-icon>
+              <span class="custom-class-1 custom-class-3 mx-2">Somos_Mas</span>
             </a>
           </li>
-          <li class="ms-3">
+          <li class="">
             <a class="social-link" href="tel:+541160112988">
-              <i class="fas fa-phone-square-alt fa-2x"></i>
-              <span class="custom-class-1 custom-class-3 fs-6 mx-2">+54 11 6011-2988</span>
+              <fa-icon [icon]="faPhoneAlt"></fa-icon>
+              <span class="custom-class-1 custom-class-3 mx-2">+54 11 6011-2988</span>
             </a>
           </li>
         </ul>
       </div>
     </div>
 
-    <div class="d-flex justify-content-center border-top py-3">
+    <div class="d-flex justify-content-center border-top py-1">
       <h5>&copy; 2021 Alkemy. Reservados todos los derechos.</h5>
     </div>
   </footer>
