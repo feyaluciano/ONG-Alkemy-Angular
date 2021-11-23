@@ -10,6 +10,47 @@
 @import '././app/styles/components/component.scss';
 
 /* bootstrap */
+
+
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+   width: 90%; 
+   padding-right: var(--bs-gutter-x, 0.90rem);
+  padding-left: var(--bs-gutter-x, 0.90rem); 
+  
+}
+
+ @media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .container-md, .container-sm, .container {
+    max-width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .container-lg, .container-md, .container-sm, .container {
+    max-width: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 100%;
+  }
+}
+@media (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 90%;
+  }
+} 
+
 .btn {
   border-radius:0px !important;
 }
@@ -38,7 +79,7 @@
 .btn-outline-primary {
   color: black !important;
   background-color: #f9f9f9 !important;
-  border-color: #ef233c !important;
+  border-color: #EF233C !important;
   padding-top: 12px !important;  
   padding-bottom: 12px !important;
   padding-right: 24px !important;  
@@ -48,7 +89,7 @@
 .btn-outline-primary:active,
 .btn-outline-primary:visited,
 .btn-outline-primary:focus {
-  background-color: #f70c27d0 !important;
+  background-color: #EF233Cd0 !important;
   color: white !important;
 }
 
@@ -62,6 +103,33 @@
 /* end bootstrap */
 
 
+body{
+  font-family:'Poppins';
+}
+
+.title-section{
+font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  margin-top: 50px !important;
+  padding-bottom: 20px;
+  padding-top: 30px;
+  position: relative;
+}
+
+.title-section span::after{
+  content: "";
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #EF233C;
+    bottom: 0;
+    left: calc(50% - 25px);
+}
+
+
 .text-error-form{
   color:#FF084E
 }
@@ -70,7 +138,7 @@
   background-color: #9AC9FB;
 }
 .title-backoffice{
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins';
   font-size: 1.5rem;
   font-weight:600;
   color: #ffffff;
@@ -84,7 +152,8 @@
 }
 
 .blog-header-logo {
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+  font-family: 'Poppins';
+  /*rtl:Amiri, Georgia, "Times New Roman", serif*/;
   font-size: 2.25rem;
 }
 
@@ -94,11 +163,13 @@
 
 h1, h2, h3, h4, h5, h6 {
   // font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins';
+
 }
 
 p {
-  font-family: 'Playfair Display', serif; 
+  font-family: 'Poppins';
+
 }
 
 .display-4 {
@@ -245,5 +316,7 @@ p {
 // End CKeditor
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif}
-
+body { margin: 0;
+  font-family: 'Poppins';
+      
+}
