@@ -15,18 +15,15 @@
       <form [formGroup]="form">
         <div class="input-group mb-3">
             <input class="form-control form-control-lg customBorder" currencyMask formControlName="value" />
-            <!-- <button type="button" class="btn btn-primary btn-large" (click)="donate()">Donar</button> -->
+            <div class="d-flex flex-wrap">
+              <button class="btn btn-primary btn-large me-3" (click)="donate()">Donar</button>
+              <app-spinner [diameter]="48" *ngIf="spinner"></app-spinner>
+            </div>
             <span
               appMsgErrorForm
               messageError="Por favor, ingrese una cantidad"
               *ngIf="emptyValue"
             ></span>
-          
-          <div class="d-flex flex-wrap">
-          
-            <button class="btn btn-primary btn-large me-3" (click)="donate()">Donar</button>
-            <app-spinner [diameter]="48" *ngIf="spinner"></app-spinner>
-          </div>
         </div>
       </form>
     </div>
