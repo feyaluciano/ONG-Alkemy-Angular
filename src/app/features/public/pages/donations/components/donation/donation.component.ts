@@ -14,6 +14,8 @@ export class DonationComponent implements OnInit {
   public form: FormGroup;
   public message: string = 'Su donación es muy importante para nosotros.';
   public emptyValue: boolean = false;
+
+  spinner: boolean = false;
   
   constructor(
     private _builder: FormBuilder,
@@ -31,6 +33,9 @@ export class DonationComponent implements OnInit {
       this.emptyValue = true;
       return false;
     } else {
+
+      // spinner
+      this.spinner = true;
 
       // Checkout Pro MercadoPago
       let preference = {
@@ -53,6 +58,7 @@ export class DonationComponent implements OnInit {
 
     this.mercadopago.createPreference(preference).subscribe(r => {
       
+      this.spinner = false;
 
       window.location.href = r.sandbox_init_point;
 
