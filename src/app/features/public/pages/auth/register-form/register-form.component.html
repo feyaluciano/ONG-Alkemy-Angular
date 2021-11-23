@@ -8,14 +8,16 @@
 
 <div class="container">
 
-  <div class="row ">
-    <div class="col-md-6 offset-md-4">
-      <form [formGroup]="form" class="needs-validation cardStyles  text-center" novalidate>
+  <div class="row">
+    <div class="col-md-6 offset-md-3 cardStyles text-center pt-4 pb-4">
 
-        <img src="../../../../../../assets/images/LOGO-SOMOS.png" alt="">
-        <h2>REGISTRATE</h2>
-        <div class="m-2">
-          <label for="exampleInputEmail1" class="form-label">Email</label>
+      <img src="../../../../../../assets/images/LOGO-SOMOS.png" alt="">
+      <h2>REGISTRATE</h2>
+
+      <form [formGroup]="form" class="form-inline" >
+
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
           <input formControlName="email" type="text" class="form-control" id="email" type="text" class="form-control"
             id="inlineFormInputGroup" placeholder="ejemplo@ejemplo.com">
           <div appMsgErrorForm messageError="Ingrese un email válido" [valido]="haveErrorsInputForm('email','email')">
@@ -24,9 +26,8 @@
             [valido]="haveErrorsInputForm('email','required')"></div>
         </div>
 
-
-        <div class="m-2">
-          <label for="exampleInputEmail1" class="form-label">Contraseña</label>
+        <div class="form-group">
+          <label for="password" class="form-label">Contraseña</label>
           <input formControlName="password" type="password" class="form-control" id="password" placeholder="******">
           <div appMsgErrorForm
             messageError="La contraseña debe contener al menos un número, una letra y un símbolo (por ejemplo: @#$%)"
@@ -35,9 +36,8 @@
             [valido]="haveErrorsInputForm('password','required')"></div>
         </div>
 
-
-        <div class="m-2">
-          <label for="exampleInputEmail1" class="form-label">Repetir contraseña</label>
+        <div class="form-group">
+          <label for="repetir password" class="form-label">Repetir contraseña</label>
           <input formControlName="confirmPassword" type="password" class="form-control" id="passwordconfirm"
             placeholder="******">
           <div appMsgErrorForm messageError="Este campo es requerido"
@@ -45,23 +45,23 @@
           <div class="text-error-form" *ngIf="passwordsAreEqualValue">La contraseñas no coiniciden</div>
         </div>
 
-
-        <div class="m-2">
-
+        <div class="form-group">
           <button style="margin: 12px; " (click)="position()" class="btn btn-success">Añadir Direccion en Tiempo
             Real</button>
           <agm-map *ngIf="map" [latitude]="lat" [longitude]="lng" [zoom]="18">
             <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
           </agm-map>
         </div>
-        <div class="m-2">
-          <div class="col-sm-12">
+
+        <div class="form-group">
+          <div class="col-sm-12 mb-2">
             <a class="link" (click)="readTerms()">Leer los terminos y condiciones de la ONG</a>
           </div>
-
         </div>
 
+        <button (click)="save()" type="button" class="w-100 btn btn-primary btn-lg">Registrarme</button>
 
-        <div class="m-2 pb-4">
-          <button (click)="save()" type="button" class="w-100 btn btn-primary btn-lg">Registrarme</button>
-        </div>
+      </form>
+
+    </div>
+  </div>
