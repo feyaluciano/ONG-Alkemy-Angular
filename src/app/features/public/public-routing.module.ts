@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
 import { AppPublicComponent } from './app-public.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ActivitiesComponent } from './pages/activities/activities.component';
@@ -27,7 +28,7 @@ const routes: Routes = [
         path: 'home',
         component: HomeComponent,        
       },
-          { path: 'register', component: RegisterFormComponent },
+          { path: 'register', component: RegisterFormComponent,canActivate: [AuthGuard] },
           { path : 'login' , component:LoginFormComponent},
           { path: 'nosotros', component: MembersComponent } ,
           { path: 'contacto', component: ContactComponent },
