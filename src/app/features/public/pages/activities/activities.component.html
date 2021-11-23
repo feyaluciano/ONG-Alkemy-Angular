@@ -1,3 +1,12 @@
+
+<div class="container-fluid mb-3 mb-4 mt-sm-3 ">
+  <div class="row">
+    <div class="col-md-12 mt-5 ">
+      <app-titles-component title="Actividades" image=""></app-titles-component>
+    </div>
+  </div>
+</div>
+
 <div class="d-flex justify-content-center">
   <app-spinner
   color="primary"
@@ -5,26 +14,35 @@
   *ngIf="!activitiesCompleted"
   ></app-spinner>
 </div>
-<div class="container">
-  <div class="row" *ngIf="activitiesCompleted && !activitiesError">
-    
-    <app-titles-component [title]="title"></app-titles-component>
-         
-    <div class="col-md-3 my-5" *ngFor="let activity of activities; let i = index">
 
-      <div 
-        class="activity row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
-        (click)="activityDetail(activity.id)"
-      >
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">{{ activity?.slug || 'General'}}</strong>
-          <h3 class="mb-0">{{ activity?.name }}</h3>
-          <div class="mb-1 text-muted">{{ activity?.created_at | date }}</div>
-          <p class="card-text mb-auto" [innerHTML]="activity?.description"></p>
-          <img [src]="activity?.image" [alt]="i" class="activity_image">
-        </div>        
-      </div>
+<div class="container mt-4">
+
+  <div class="row " *ngIf="activitiesCompleted && !activitiesError">
+    <div class="col-md-4 text-center " *ngFor="let activity of activities; let i = index">
+      <div>
+        <div class="text-right animate__animated animate__zoomIn animate__slower">
+        
+
+          <div 
+          class="activity row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+          (click)="activityDetail(activity.id)"
+        >
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">{{ activity?.slug || 'General'}}</strong>
+            <h3 class="mb-0">{{ activity?.name }}</h3>
+            <div class="mb-1 text-muted">{{ activity?.created_at | date }}</div>
+            <p class="card-text mb-auto" [innerHTML]="activity?.description"></p>
+            <img [src]="activity?.image" [alt]="i" class="activity_image">
+          </div>        
+        </div>
+        
+        
+        
+        
+        </div>
       
+      
+      
+      </div>
     </div>
   </div>
-</div>

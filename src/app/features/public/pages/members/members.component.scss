@@ -3,20 +3,18 @@ a:visited { COLOR: black; text-decoration: none; font-weight: normal }
 a:active { COLOR: black; text-decoration: none }
 a:hover { COLOR: #fa4a4a; text-decoration: none; font-weight: none }
 
-#padre{
-    position:relative;   
+#img-header-big-presentation{
+    position:relative;       
   }
   
-  #hijo {
-    border-top:6px solid #EF233C;
+  #text-header-big-presentation {
+    border-top:6px solid #EF233C;    
     position: absolute;
     padding-top:20px;
     padding-bottom:20px;
     min-width: 600px;
-
     padding-left:30px;
-    padding-right:30px;
-    
+    padding-right:30px;    
     background-color: rgba(7, 4, 4, 0.7);
     top: auto;
     bottom: 50px;
