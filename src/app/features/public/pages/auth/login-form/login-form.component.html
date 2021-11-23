@@ -26,9 +26,7 @@
           <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input [class.is-invalid]="passwordInvalid" formControlName="password" type="password" class="form-control" id="password">
                 <small *ngIf="passwordInvalid">Ingrese un Password que contenga al menos una letra, un numero y un caracter especial</small>
-        </div>
-
-        
+        </div>        
 
         <div class="form-group">
           <button  type="submit" class="w-100 btn btn-primary btn-lg">Conectar</button>
