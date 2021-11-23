@@ -12,10 +12,16 @@ export class DonationComponent implements OnInit {
 
   public showThanks:boolean = false;
   public form: FormGroup;
-  public message: string = 'Su donación es muy importante para nosotros.';
+
+  title: string = 'Hola! Cómo estás?'
+  message: string = `En Somos Más trabajamos con los chicos y chicas, mamás y papás,
+  abuelos y vecinos del barrio La Cava generando procesos de crecimiento y de
+  inserción social. Estaremos eternamente agradecidos por tu aporte porque, por más pequeño que sea, nos va a permitir poder ayudar a más chicos. 
+  De verdad, GRACIAS!`;
+  spinner: boolean = false;
+
   public emptyValue: boolean = false;
 
-  spinner: boolean = false;
   
   constructor(
     private _builder: FormBuilder,
