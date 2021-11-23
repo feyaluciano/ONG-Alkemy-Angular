@@ -1,31 +1,45 @@
-<div class="container">
-  <div class="row mb-2">
+<div class="container-fluid">
+  <div class="row justify-content-center">
 
-    <app-titles-component title="Donaciones" class="mb-5"></app-titles-component>
-
-    <div class="col-md-12">
-      <div class="jumbotron">
-        <h2>
-          {{ message }}
-        </h2>
-      </div>
+    <div class="col-md-12 mb-5">
+      <app-titles-component title="Donaciones"></app-titles-component>
     </div>
 
-    <div class="col-md-3">
-      <form [formGroup]="form">
-        <div class="input-group mb-3">
-            <input class="form-control form-control-lg customBorder" currencyMask formControlName="value" />
-            <div class="d-flex flex-wrap">
-              <button class="btn btn-primary btn-large me-3" (click)="donate()">Donar</button>
-              <app-spinner [diameter]="48" *ngIf="spinner"></app-spinner>
-            </div>
-            <span
-              appMsgErrorForm
-              messageError="Por favor, ingrese una cantidad"
-              *ngIf="emptyValue"
-            ></span>
+    <div class="col-12 col-md-4">
+
+      <div class="cardStyles text-center p-5 mb-5">
+      
+        <img src="../../../../../../assets/images/LOGO-SOMOS.png" alt="logo-somos-mas">
+        <div class="mb-3">
+          <h2> {{title}} </h2>
+          <p>
+            {{ message }}
+          </p>
         </div>
-      </form>
+  
+        <form [formGroup]="form" class="form-inline" (ngSubmit)="donate()">
+  
+          <div class="form-group">
+            <!-- <label for="donaciones" class="form-label">Igrese un monto</label> -->
+            <input class="form-control form-control-lg mt-2 mb-2" currencyMask formControlName="value" />
+            <span  appMsgErrorForm messageError="Por favor, ingrese un valor" *ngIf="emptyValue"></span>
+          </div>
+  
+          
+
+          <div class="form-group d-flex flex-wrap justify-content-center mt-2">              
+            <button type="submit" class="w-100 btn btn-primary mb-3" >Donar</button>
+            <app-spinner [diameter]="48" *ngIf="spinner"></app-spinner>
+          </div>
+  
+          
+  
+        </form>
+  
+      </div>
+      
+
+      
     </div>
 
 
