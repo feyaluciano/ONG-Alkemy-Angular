@@ -14,9 +14,11 @@
       <div class="custom-class-1 custom-class-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 text-center">
         <h5 class="">Secciones</h5>
         <ul class="nav flex-column fs-6">
-          <li class="nav-item mb-2" *ngFor="let link of links">
-            <a *ngIf="link.renderize" [routerLink]="[link.route]" class="nav-link p-0">{{ link.text }}</a>
-          </li>
+          <div *ngFor="let link of links">
+            <li class="nav-item mb-2" *ngIf="link.renderize">
+              <a [routerLink]="[link.route]" class="nav-link p-0">{{ link.text }}</a>
+            </li>
+          </div>
         </ul>
       </div>
 
