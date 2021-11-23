@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { logout } from 'src/app/core/redux/actions/auth.actions';
@@ -19,23 +18,8 @@ export class HeaderPublicComponent implements OnInit {
   authentication$: Observable<boolean>;
 
   constructor(
-    private router: Router,
     private store: Store<AuthState>
   ) {
-    this.authentication$ = this.store.pipe(select(getAuth));
-    
-    this.authentication$.subscribe( auth => {
-
-      this.loggedIn = auth;
-
-      if (this.loggedIn) {
-        for (let link of this.links) {
-          link.renderize = true;
-        }
-      }
-
-    });
-
     this.links = [
       {
         route: '/home',
@@ -45,6 +29,11 @@ export class HeaderPublicComponent implements OnInit {
       {
         route: '/nosotros',
         text: 'Nosotros',
+        renderize: true
+      },
+      {
+        route: '/contacto',
+        text: 'Contacto',
         renderize: true
       },
       {
@@ -63,16 +52,38 @@ export class HeaderPublicComponent implements OnInit {
         renderize: false
       },
       {
-        route: '/contacto',
-        text: 'Contacto',
-        renderize: true
-      },
-      {
         route: '/donar',
         text: 'Contribuye',
         renderize: false
       }
     ];
+
+    this.authentication$ = this.store.pipe(select(getAuth));
+    
+    this.authentication$.subscribe( auth => {
+
+      this.loggedIn = auth;
+
+      if(!this.loggedIn) {
+        for (let link of this.links) {
+          if (
+            link.route === '/actividades' ||
+            link.route === '/novedades' ||
+            link.route === '/testimonios' ||
+            link.route === '/donar'
+          ) {
+            link.renderize = false;
+          }
+        }
+      }
+
+      if (this.loggedIn) {
+        for (let link of this.links) {
+          link.renderize = true;
+        }
+      }
+
+    });
   }
 
   ngOnInit() {}
@@ -81,16 +92,6 @@ export class HeaderPublicComponent implements OnInit {
 
     this.store.dispatch(logout());
 
-    for (let link of this.links) {
-      if (
-        link.route === '/actividades' ||
-        link.route === '/novedades' ||
-        link.route === '/testimonios' ||
-        link.route === '/donar'
-      ) {
-        link.renderize = false;
-      }
-    }
   }
 
 }
