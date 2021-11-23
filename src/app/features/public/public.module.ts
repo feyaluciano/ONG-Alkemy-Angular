@@ -31,6 +31,8 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { environment } from "src/environments/environment";
 import { SchoolCampaignComponent } from "./pages/school-campaign/school-campaign.component";
 import { HeaderSchoolCampaignComponent } from "./components/header-school-campaign/header-school-campaign.component";
+import { DonationErrorComponent } from "./pages/donations/components/donation-error/donation-error.component";
+
 
 
 
@@ -68,7 +70,8 @@ export const customCurrencyMaskConfig = {
     ThanksComponent,
     MembersComponent,
     SchoolCampaignComponent,
-    HeaderSchoolCampaignComponent
+    HeaderSchoolCampaignComponent,
+    DonationErrorComponent
   ],
   imports: [
     CommonModule,

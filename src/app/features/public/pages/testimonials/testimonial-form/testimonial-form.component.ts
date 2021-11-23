@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { StandarDialogComponent } from '../../../../../shared/components/standar-dialog/standar-dialog.component';
 import { Testimonial } from '../../../../models/testimonial.model';
-import { TestimonialsService } from '../../../../services/testimonials.service';
+
 import { Router } from '@angular/router';
+import { TestimonialsService } from 'src/app/features/services/testimonials/testimonials.service';
 
 @Component({
   selector: 'app-testimonial-form',
