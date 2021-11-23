@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-md  fixed-top navbar-light bg-light"   >
+<nav class="navbar navbar-expand-md  fixed-top navbar-light bg-light"    >
   <div class="container-fluid" >
     <a class="navbar-brand" href="#">
 
@@ -42,10 +42,10 @@
             class="btn btn-outline-primary"
             style="margin-right: 10px;"
             type="button">Salir</button>           
-          <a *ngIf="!loggedIn" 
+          <button *ngIf="!loggedIn" 
             [routerLink]="['register']"
             class="btn btn-primary"
-            type="submit">Registrarse</a>
+            type="submit">Registrarse</button>
         </div>
       </form>
     </div>
