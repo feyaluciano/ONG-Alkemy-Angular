@@ -79,7 +79,7 @@
 .btn-outline-primary {
   color: black !important;
   background-color: #f9f9f9 !important;
-  border-color: #ef233c !important;
+  border-color: #EF233C !important;
   padding-top: 12px !important;  
   padding-bottom: 12px !important;
   padding-right: 24px !important;  
@@ -89,7 +89,7 @@
 .btn-outline-primary:active,
 .btn-outline-primary:visited,
 .btn-outline-primary:focus {
-  background-color: #f70c27d0 !important;
+  background-color: #EF233Cd0 !important;
   color: white !important;
 }
 
@@ -106,6 +106,29 @@
 body{
   font-family:'Poppins';
 }
+
+.title-section{
+font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  margin-top: 50px !important;
+  padding-bottom: 20px;
+  padding-top: 30px;
+  position: relative;
+}
+
+.title-section span::after{
+  content: "";
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #EF233C;
+    bottom: 0;
+    left: calc(50% - 25px);
+}
+
 
 .text-error-form{
   color:#FF084E

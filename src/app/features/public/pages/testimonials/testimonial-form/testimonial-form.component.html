@@ -1,23 +1,49 @@
 
   <div class="row mb-2" style="width:100%">
           
-    <div class="display-4 fst-italic text-center mb-5" *ngIf="isHome">
-        Testimonios
-    </div>
+    <div class=" text-center mb-5 title-section " *ngIf="isHome">
+      <span>Testimonios</span>
+     </div>
 
     <app-titles-component title="Testimonios" image="" *ngIf="!isHome"></app-titles-component>
     
     
-    <div class="col-md-3" [ngClass]="{'mt-5': !isHome}" *ngFor="let testimonial of testimonials">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">World</strong>
+    <div class="col-md-3 mt-3 p-1" [ngClass]="{'mt-5': !isHome}" *ngFor="let testimonial of testimonials">
+
+      <div class="row g-0 border  overflow-hidden flex-md-row  shadow   position-relative">
+      <div class="col-md-12 text-center mt-2">
+        <img style="width:60px;"  alt="" src="http://ongapi.alkemy.org/storage/Mb7qJKMAWA.jpeg" class="rounded-circle" />
+
+      </div>
+
+      <div class="col-md-12 text-center mt-2 mb-2">
+        <span >{{testimonial.name}}</span>        
+      </div>
+      <hr>
+      <div class="col-md-12 text-center mt-2 pb-3 body-testimonial" >
+        <span innerHTML="{{testimonial.description}}"></span>        
+      </div>
+      
+
+
+
+
+      </div>
+      
+
+
+      <!-- <div class="row g-0 border  overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static " >
+
+          <img style="width:60px;"  alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" class="rounded-circle img-fluid" />
+
+          <strong class="d-inline-block mb-2 text-primary"  style="border-bottom: 2px solid;padding-bottom: 4px;font-size: 16px;">{{testimonial.name}}</strong>
           <h3 class="mb-0">Featured post</h3>
           <div class="mb-1 text-muted">Nov 12</div>
-          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text mb-auto">{{testimonial.description}}</p>
           <a href="#" class="stretched-link">Continue reading</a>
         </div>        
-      </div>
+      </div> -->
     </div>
 
 
