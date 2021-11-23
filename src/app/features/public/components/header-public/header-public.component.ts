@@ -5,6 +5,7 @@ import { logout } from 'src/app/core/redux/actions/auth.actions';
 import { AuthState } from 'src/app/core/redux/reducers/authReducer.reducer';
 import { getAuth } from 'src/app/core/redux/selectors/auth.selectors';
 import { Link } from '../../../models/link.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-public',
@@ -18,7 +19,8 @@ export class HeaderPublicComponent implements OnInit {
   authentication$: Observable<boolean>;
 
   constructor(
-    private store: Store<AuthState>
+    private store: Store<AuthState>,
+    private router: Router
   ) {
     this.links = [
       {
@@ -91,6 +93,8 @@ export class HeaderPublicComponent implements OnInit {
   logOut(){
 
     this.store.dispatch(logout());
+
+    this.router.navigate(['/home']);
 
   }
 
