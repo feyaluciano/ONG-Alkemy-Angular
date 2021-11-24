@@ -1,6 +1,6 @@
 <div class="container-fluid p-0 mt-5 bg-light">
   <footer class="pt-3">
-    <div class="row">
+    <div class="row pb-3">
       <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
         <h5 class="custom-class-1 custom-class-2 mx-5 text-center">ONG Somos Más</h5>
         <div class="d-flex justify-content-center">
@@ -15,7 +15,7 @@
         <h5 class="">Secciones</h5>
         <ul class="nav flex-column ">
           <div *ngFor="let link of links">
-            <li class="nav-item mb-2" *ngIf="link.renderize">
+            <li class="nav-item" *ngIf="link.renderize">
               <a [routerLink]="[link.route]" class="nav-link p-0">{{ link.text }}</a>
             </li>
           </div>
@@ -23,27 +23,29 @@
       </div>
 
       <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 offset-1 custom-class-0">
-        <h5 class="custom-class-1 custom-class-4">Contacto</h5>
-        <ul class="nav flex-column">
-          <li class="">
+        <div class="contact-style">
+          <h5 class="custom-class-1 custom-class-4">Contacto</h5>
+        </div>
+        <ul class="no-list-style">
+          <li class="social px-2">
             <a class="social-link" href="mailto:somosfundacionmas@gmail.com">
               <fa-icon [icon]="faEnvelope"></fa-icon>
               <span class="custom-class-1 custom-class-3 mx-2">somosfundacionmas@gmail.com</span>
             </a>
           </li>
-          <li class="">
+          <li class="social px-2">
             <a class="social-link" href="https://www.instagram.com/SomosMas/" target="_blank">
               <fa-icon [icon]="faInstagram"></fa-icon>
               <span class="custom-class-1 custom-class-3 mx-2">SomosMas</span>
             </a>
           </li>
-          <li class="">
+          <li class="social px-2">
             <a class="social-link" href="https://www.facebook.com/Somos_Mas/" target="_blank">
               <fa-icon [icon]="faFacebook"></fa-icon>
               <span class="custom-class-1 custom-class-3 mx-2">Somos_Mas</span>
             </a>
           </li>
-          <li class="">
+          <li class="social px-2">
             <a class="social-link" href="tel:+541160112988">
               <fa-icon [icon]="faPhoneAlt"></fa-icon>
               <span class="custom-class-1 custom-class-3 mx-2">+54 11 6011-2988</span>
