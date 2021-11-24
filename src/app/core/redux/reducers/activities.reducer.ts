@@ -2,11 +2,11 @@ import { Action, createReducer, on } from "@ngrx/store"
 import { Activity } from "src/app/features/models/Activity";
 import { setActivityListState } from "../actions/activities.actions";
 export interface ActivityListState{
-  activitiesList:Activity[] | null;
+  activityList:Activity[] | null;
 }
 
 export const initialState:ActivityListState = {
-  activitiesList:null
+  activityList:null
 };
 
 
@@ -14,7 +14,7 @@ export const _activityReducer = createReducer(
 initialState,
 on(setActivityListState, (state, setActivityListState) => ({
    ...state,
-    slideList:  setActivityListState.activitiesList
+    activityList:  setActivityListState.activitiesList
 })),
 );
 

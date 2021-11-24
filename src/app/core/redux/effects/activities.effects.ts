@@ -13,6 +13,7 @@ export class ActivityEffects {
     ofType(getActivityList),
     mergeMap(() => this.activityServices.getActivities()
       .pipe(
+        //map((activities:any)=> console.error(activities)),
         map((activities:any)=> setActivityListState({activitiesList:activities.data}),
         catchError(() => EMPTY)
       ))

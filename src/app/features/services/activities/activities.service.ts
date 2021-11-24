@@ -23,6 +23,10 @@ export class ActivitiesService {
     return this.publicService.getEntities(environment.activitiesApiUrl);
   }
 
+  searchActivities(text:string): Observable<HTTPResponse<Activity[]>> {
+    return this.publicService.getEntities(environment.activitiesApiUrl+"?search="+text);
+  }
+
 
   
   createActivity(url: string,activity:Activity): Observable<HTTPResponse<Activity>> {
