@@ -1,34 +1,49 @@
-// #EDF2F4
-
-.bg-campaign{
-    background-color: #EDF2F4;   
-    
+img {
+    width: 45%;
 }
 
-.bg-img1{
-    background-color: #2B2D42;
-}
+// X-Small devices (landscape phones, 576px and up)
+@media (min-width: 360px) { 
+    .img-hide {
+        display: none;
+    }
 
-.bg-img2{
-    background-color: #2B2D42;  
-}
-
-// Small devices (landscape phones, 576px and up)
-@media (max-width: 576px) { 
     #countdown {
         display: none;
     }
+}
 
-    .bg-img1 {
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { 
+    .img-hide {
         display: none;
     }
 
-    .bg-img2 {
+    #countdown {
         display: none;
     }
 }
 
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+    #countdown {
+        display: block;
+    }
+}
 
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    .img-hide {
+        display: block;
+    }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+    .bg-content{
+        background-color: #EDF2F4;
+    }
+}
 
 
 
