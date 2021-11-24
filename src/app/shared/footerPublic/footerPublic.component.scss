@@ -1,3 +1,14 @@
+.no-list-style {
+  list-style: none;
+  display: table;
+  margin: 0 auto;
+  margin-top: 16px;
+}
+
+.contact-style {
+  margin-left: 25%;
+}
+
 .social-link, .nav-link{
   color: blue;
   text-decoration: none;
@@ -7,7 +18,7 @@
   text-decoration: underline;
 }
 
-.social-link i {
+fa-icon {
   color: #ef233c;
 }
 
@@ -17,6 +28,11 @@
 
 .custom-class-1 {
   display: none;
+}
+
+.social {
+  display: inline;
+  font-size: 2em;
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -37,6 +53,14 @@
 @media (min-width: 992px) {
   .custom-class-1.custom-class-3 {
     display: inline-block;
+  }
+  .social {
+    display: block;
+    font-size: medium;
+  }
+  .no-list-style {
+    display: block;
+    margin-top: 0px;
   }
 }
 

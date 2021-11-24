@@ -6,9 +6,10 @@ import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { AuthState } from 'src/app/core/redux/reducers/authReducer.reducer';
 import { getAuth } from 'src/app/core/redux/selectors/auth.selectors';
-
-
-
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-footerPublic',
   templateUrl: './footerPublic.component.html',
@@ -20,6 +21,10 @@ export class FooterPublicComponent implements OnInit {
   links: Link[];
   authentication$: Observable<boolean>;
   loggedIn: boolean = false;
+  faEnvelope = faEnvelope;
+  faInstagram = faInstagram;
+  faFacebook = faFacebook;
+  faPhoneAlt = faPhoneAlt;
 
   constructor(
     private publicServices:PublicService,
@@ -78,13 +83,24 @@ export class FooterPublicComponent implements OnInit {
             link.route === '/donar'
           ) {
             link.renderize = false;
+          } else {
+            link.renderize = true;
           }
         }
       }
 
       if (this.loggedIn) {
         for (let link of this.links) {
-          link.renderize = true;
+          if (
+            link.route === '/home' ||
+            link.route === '/contacto' ||
+            link.route === '/nosotros' ||
+            link.route === '/donar'
+          ) {
+            link.renderize = false;
+          } else {
+            link.renderize = true;
+          }
         }
       }
 
