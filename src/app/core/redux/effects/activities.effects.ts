@@ -1,41 +1,28 @@
-import { Injectable } from "@angular/core";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
-
-
-
-import { catchError, exhaustMap, map, switchMap } from 'rxjs/operators';
-import { EMPTY, of } from 'rxjs';
-import { ActivitiesService } from "src/app/features/services/activities/activities.service";
-
-import { findAllActivities,findAllActivitiesSuccess,findAllActivitiesError } from '../actions/activities.actions';
-
-import { environment } from 'src/environments/environment';
-
-
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { EMPTY } from 'rxjs';
+import { map, mergeMap, catchError } from 'rxjs/operators';
+import { ActivitiesService } from 'src/app/features/services/activities/activities.service';
+import { getActivityList,setActivityListState } from '../actions/activities.actions';
 
 @Injectable()
-export class AuthEffects {
+export class ActivityEffects {
 
-    
 
-    findAllActivities$ = createEffect(() =>
-    this.actions$.pipe(     
-      ofType(findAllActivities),
-      switchMap(() =>
-        this.activitiesService.getActivities()
-      ),    
-     map(activities => JSON.parse(JSON.stringify(activities.data))),       
-      map(
-        (activitiesR) =>findAllActivitiesSuccess({payloadActivity:activitiesR}),         
-        catchError((error) =>
-          of(findAllActivitiesError({ error }))
-        )
-      )
+  loadActivity$ = createEffect(() => this.actions$.pipe(
+    ofType(getActivityList),
+    mergeMap(() => this.activityServices.getActivities()
+      .pipe(
+        map((activities:any)=> setActivityListState({activitiesList:activities.data}),
+        catchError(() => EMPTY)
+      ))
     )
-  );
+  ));
 
 
-    constructor(private actions$: Actions, private activitiesService: ActivitiesService ){
+constructor(
+  private actions$: Actions,
+  private activityServices:ActivitiesService
+) {}
 
-    }
 }
