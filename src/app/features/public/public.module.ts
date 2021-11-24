@@ -33,7 +33,6 @@ import { SchoolCampaignComponent } from "./pages/school-campaign/school-campaign
 import { HeaderSchoolCampaignComponent } from "./components/header-school-campaign/header-school-campaign.component";
 import { FooterSchoolCampaignComponent } from "./components/footer-school-campaign/footer-school-campaign.component";
 import { DonationErrorComponent } from "./pages/donations/components/donation-error/donation-error.component";
-import { ContentSchoolCampaignComponent } from './components/content-school-campaign/content-school-campaign.component';
 
 
 
@@ -74,7 +73,7 @@ export const customCurrencyMaskConfig = {
     SchoolCampaignComponent,
     HeaderSchoolCampaignComponent,
     FooterSchoolCampaignComponent,    
-    DonationErrorComponent, ContentSchoolCampaignComponent
+    DonationErrorComponent
   ],
   imports: [
     CommonModule,
