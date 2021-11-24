@@ -5,3 +5,38 @@
 .activity {
   cursor: pointer;
 }
+
+.activity-search .f-search .search-form form {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 3px 10px;
+  position: relative;
+}
+.activity-search .f-search .search-form form input[type=text] {
+  border: 0px !important;
+  padding: 4px;  
+  width: calc(100% - 40px);
+}
+
+.activity-search .f-search .search-form form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 0 15px;
+  margin: -1px;
+  background: #EF233C;
+  color: #fff;
+  transition: 0.3s;  
+  line-height: 0;
+  cursor: auto;
+}
+.activity-search .f-search .search-form form button i {
+  line-height: 0;
+}
+.activity-search .f-search .search-form form button:hover {
+  background: #f70c27d0;
+}

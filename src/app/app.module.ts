@@ -15,6 +15,7 @@ import { MaterialModule } from './features/material/material.module';
 import { SharedModule } from './shared/shared.module';
 import { slideReducer } from './core/redux/reducers/slides.reducer';
 import { SlideEffects } from './core/redux/effects/slide.effects';
+import { activityReducer } from './core/redux/reducers/activities.reducer';
 
 
 
@@ -35,7 +36,8 @@ import { SlideEffects } from './core/redux/effects/slide.effects';
     StoreModule.forRoot({ 
       authReducer: authReducer,
       userReducer: userReducer,
-      slideReducer: slideReducer
+      slideReducer: slideReducer,
+      activityReducer: activityReducer
     }),    
     EffectsModule.forRoot([
       AuthEffects,
