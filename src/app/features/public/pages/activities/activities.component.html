@@ -24,15 +24,15 @@
         
 
           <div 
-          class="activity row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+          class="activity row g-0 border  overflow-hidden flex-md-row mb-4 shadow p-3"
           (click)="activityDetail(activity.id)"
         >
-          <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-primary">{{ activity?.slug || 'General'}}</strong>
-            <h3 class="mb-0">{{ activity?.name }}</h3>
-            <div class="mb-1 text-muted">{{ activity?.created_at | date }}</div>
+          <div class="">
+            <strong class="title-section_activity "><span>{{ activity?.slug || 'General'}}</span></strong>
+            <h3 class="mb-0 mt-2">{{ activity?.name }}</h3>
+            <div class="mb-1 text-muted">{{ activity?.created_at | date: 'shortDate' }}</div>
             <p class="card-text mb-auto" [innerHTML]="activity?.description"></p>
-            <img [src]="activity?.image" [alt]="i" class="activity_image">
+            <img [src]="activity?.image" [alt]="i" class="img-thumbnail img-fluid mb-4">
           </div>        
         </div>
         
