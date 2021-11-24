@@ -21,7 +21,7 @@ import { LeafletMapComponent } from '../features/public/components/leaflet-map/l
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { FooterPublicComponent } from './footerPublic/footerPublic.component';
 import { RouterModule } from '@angular/router';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -54,8 +54,8 @@ import { RouterModule } from '@angular/router';
     MatProgressBarModule,
     NgxSkeletonLoaderModule,
     PdfViewerModule ,
-    RouterModule
-    
+    RouterModule,
+    FontAwesomeModule
   ],
   exports: [
     CarouselComponent,
@@ -72,7 +72,7 @@ import { RouterModule } from '@angular/router';
     CardComponent,
     SkeletonComponent,
     LeafletMapComponent,  
-    FooterPublicComponent
+    FooterPublicComponent,
   ]
 })
 export class SharedModule { }
