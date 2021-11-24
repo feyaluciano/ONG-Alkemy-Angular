@@ -14,7 +14,7 @@
       <img src="../../../../../../assets/images/LOGO-SOMOS.png" alt="">
       <h2>INGRESAR</h2>
 
-      <form [formGroup]="forma" class="form-inline" >
+      <form  class="form-inline" [formGroup]=forma (ngSubmit)="login()">
 
         <div class="form-group">
           <label for="exampleInputEmail1" class="form-label">Email</label>
