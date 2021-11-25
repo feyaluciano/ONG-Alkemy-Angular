@@ -33,17 +33,18 @@ export class ActivityFormComponent implements OnInit {
   public imageError=false;
   public anImage!:string;
 
-
+  public routeIs!:ActivatedRoute;
   
 
   constructor(
     private _builder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private ckeditorSvc: CkeditorService,
     private activitiesService:ActivitiesService,
     public dialog: MatDialog
   ) {
+    this.routeIs=route;
     this.form = this._builder.group({
       name: ["", [Validators.required]],
       description: ["",],
