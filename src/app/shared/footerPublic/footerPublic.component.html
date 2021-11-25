@@ -15,7 +15,7 @@
         <h5 class="">Secciones</h5>
         <ul class="nav flex-column ">
           <div *ngFor="let link of links">
-            <li class="nav-item" *ngIf="link.renderize">
+            <li class="nav-item mb-2" *ngIf="link.renderize">
               <a [routerLink]="[link.route]" class="nav-link p-0">{{ link.text }}</a>
             </li>
           </div>
@@ -27,25 +27,25 @@
           <h5 class="custom-class-1 custom-class-4">Contacto</h5>
         </div>
         <ul class="no-list-style">
-          <li class="social px-2">
+          <li class="social px-2 mb-2">
             <a class="social-link" href="mailto:somosfundacionmas@gmail.com">
               <fa-icon [icon]="faEnvelope"></fa-icon>
               <span class="custom-class-1 custom-class-3 mx-2">somosfundacionmas@gmail.com</span>
             </a>
           </li>
-          <li class="social px-2">
+          <li class="social px-2 mb-2">
             <a class="social-link" href="https://www.instagram.com/SomosMas/" target="_blank">
               <fa-icon [icon]="faInstagram"></fa-icon>
               <span class="custom-class-1 custom-class-3 mx-2">SomosMas</span>
             </a>
           </li>
-          <li class="social px-2">
+          <li class="social px-2 mb-2">
             <a class="social-link" href="https://www.facebook.com/Somos_Mas/" target="_blank">
               <fa-icon [icon]="faFacebook"></fa-icon>
               <span class="custom-class-1 custom-class-3 mx-2">Somos_Mas</span>
             </a>
           </li>
-          <li class="social px-2">
+          <li class="social px-2 mb-2">
             <a class="social-link" href="tel:+541160112988">
               <fa-icon [icon]="faPhoneAlt"></fa-icon>
               <span class="custom-class-1 custom-class-3 mx-2">+54 11 6011-2988</span>
