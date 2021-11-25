@@ -11,7 +11,7 @@ import { BackofficeRoutingModule } from '../../backoffice-routing.module';
 import { BackofficeModule } from '../../backoffice.module';
 
 
-
+//https://medium.com/@jorgeucano/introducci%C3%B3n-al-testing-en-angular-da415ef8c47
 
 import { ActivityFormComponent } from './activity-form.component';
 
@@ -31,9 +31,7 @@ describe('ActivityFormComponent', () => {
           AuthService
         ]
       }).compileComponents();
-    }));
-
-   
+    }));   
   it('should create', () => {
     const fixture = TestBed.createComponent(ActivityFormComponent);
     const appAct = fixture.componentInstance;
@@ -50,5 +48,5 @@ describe('ActivityFormComponent', () => {
   });
 
 
-  //ng test --main src/app/features/backoffice/pages/activity-form/activity-form.component.spec.ts
+  //ng test --include src/app/features/backoffice/pages/activity-form/activity-form.component.spec.ts
 });
