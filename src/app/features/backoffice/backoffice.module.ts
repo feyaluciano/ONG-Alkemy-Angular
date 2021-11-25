@@ -23,6 +23,7 @@ import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { UserslistComponent } from './pages/userslist/userslist.component';
 import { ActivitiesComponent } from './pages/activities/activities.component';
 import { MemberFinderComponent } from './components/member-finder/member-finder.component';
+import { MembersComponent } from './pages/members/members.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { MemberFinderComponent } from './components/member-finder/member-finder.
     UserslistComponent,
     SlidesComponent,
     UserFormComponent,
-    MemberFinderComponent
+    MemberFinderComponent,
+    MembersComponent
     
     
   ],
