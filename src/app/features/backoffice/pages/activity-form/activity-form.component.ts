@@ -40,7 +40,7 @@ export class ActivityFormComponent implements OnInit {
     private userStatusService: UserStatusService,
     private _builder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private httpService: HttpService,
     private ckeditorSvc: CkeditorService,
     private activitiesService:ActivitiesService,
