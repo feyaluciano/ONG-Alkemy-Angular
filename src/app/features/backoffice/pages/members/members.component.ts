@@ -95,34 +95,51 @@ export class MembersComponent implements OnInit {
   }
 
   deleteMember(id: string | undefined, index: number) {
-    this.membersSvc.deleteMember(id)
-      .subscribe(() => {
-        this.dialog.open(StandarDialogComponent, {
-          height: '300px',
-          width: '400px',
-          data: {
-            type: "info",
-            titleToShow:"",
-            messageToShow: "Miembro eliminado satisfatoriamente",
-            showButtonsOkCancel: false
-          }
+
+    const dialogRef = this.dialog.open(StandarDialogComponent, {
+      height: '300px',
+      width: '400px',
+      data: {
+        type: "confirm",
+        titleToShow:"",
+        messageToShow: `¿Seguro de eliminar al miembro con id ${id}?`,
+        showButtonsOkCancel: true
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.membersSvc.deleteMember(id)
+        .subscribe(() => {
+          this.dialog.open(StandarDialogComponent, {
+            height: '300px',
+            width: '400px',
+            data: {
+              type: "info",
+              titleToShow:"",
+              messageToShow: "Miembro eliminado satisfatoriamente",
+              showButtonsOkCancel: false
+            }
+          });
+        },
+        () => {
+          this.dialog.open(StandarDialogComponent, {
+            height: '300px',
+            width: '400px',
+            data: {
+              type: "error",
+              titleToShow:"",
+              messageToShow: "No se pudo eliminar",
+              showButtonsOkCancel: false
+            }
+          });
+        },
+        () => {
+          this.members.splice(index, 1);
         });
-      },
-      () => {
-        this.dialog.open(StandarDialogComponent, {
-          height: '300px',
-          width: '400px',
-          data: {
-            type: "error",
-            titleToShow:"",
-            messageToShow: "No se pudo eliminar",
-            showButtonsOkCancel: false
-          }
-        });
-      },
-      () => {
-        this.members.splice(index, 1);
-      });
+      }
+    });
+
+    
   }
 
 }
