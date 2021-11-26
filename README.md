@@ -1,21 +1,32 @@
-https://drive.google.com/file/d/1chnWpXP4uCcwgVJR3fv8gjyMF4nPY59V/viewNew 
+# Testing
 
-Caso 1: ONG - Somos Más.
+# Activity Form Testing
+## should have a parameter idActivity and tobe a number
+-In this test I check that the id sent in the url is a number
 
-Nombre de la ONG: Somos Más
+## should detect form is valid
+-In this test i check that the form is valid
 
-Datos de contacto:X
-Mail: somosfundacionmas@gmail.com
-Instagram: SomosMás
-Facebook: Somos_Más
-Teléfono de contacto: 1160112988
+## should not be able to submit
+-In this test i check that the user can submit the form
 
-sss
+## should be success in a get request
+-In this test i check a get request, which must be succes true
 
-Ong Somos mas
+## should be success in a post request
+-In this test i check a post request, which must be succes true
+
+## should be success in patch request
+-In this test i check a post request, which must be succes true
+
+## message should be 'La actividad fue agregada correctamente
+-In this test i check the creation message is this
+
+## message should be 'La actividad fue actualizada correctamente
+-In this test i check the update message is this
 
 
-# BaseOngAngularClient
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
 

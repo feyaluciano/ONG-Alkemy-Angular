@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { HttpClient, HttpResponse, HttpXhrBackend } from "@angular/common/http";
-import { TestBed } from "@angular/core/testing";
+import { TestBed, tick } from "@angular/core/testing";
 import { FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, convertToParamMap } from "@angular/router";
 import { Observable, of } from "rxjs";
@@ -21,10 +21,50 @@ import { ActivityFormComponent } from "./activity-form.component";
 describe("ActivityFormComponent", () => {
   let idActivityInRoute: string;
   let httpClientSpy: { post: jasmine.Spy };
-  let activityService: ActivitiesService;
+  let realActivityService: ActivitiesService;
   let httpClient: HttpClient;
   let backofficeService: PrivateBackofficeService;
   let publicService: PublicService;
+
+
+
+  
+
+  let mockActivityService = {
+    createActivity: (activity: Activity) => {
+      let act: Activity = {id: "872",name:"aname",description:"adesc",image:"animage"};
+      let anActivity:Observable<HTTPResponse<Activity>> =
+       of({
+        success: true,
+        message: " ",
+        data: act,
+      }); 
+      return anActivity;
+    },
+    updateActivity: (activity: Activity) => {
+      let act: Activity = {id: "872"};
+      let anActivity:Observable<HTTPResponse<Activity>> =
+       of({
+        success: true,
+        message: " ",
+        data: act,
+      }); 
+      return anActivity;
+    },
+    getActivityById: (id: string) => {
+      let act: Activity = {id: "872",name:"aname",description:"adesc",image:"animage"};
+      let anActivity:Observable<HTTPResponse<Activity>> =
+       of({
+        success: true,
+        message: " ",
+        data: act,
+      }); 
+      return anActivity;
+    }
+
+
+  }
+
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -34,15 +74,18 @@ describe("ActivityFormComponent", () => {
         HttpClient,
         AuthService,
         {
+          provide:ActivitiesService,
+          useValue: mockActivityService
+        },
+        {
           provide: ActivatedRoute,
           useValue: {
             params: of({ idActivity: "22" }),
-            snapshot: {
-              parent: {
+            snapshot: {              
                 params: {
                   idActivity: "22",
                 },
-              },
+              
               paramMap: {
                 get(idActivity: string): string {
                   return "";
@@ -56,65 +99,25 @@ describe("ActivityFormComponent", () => {
   });
 
 
-ESTE MOCK ESTA BIEN, PERO HAY Q PASARSELO AL SERVICIO ACTIVITIESSERVICE (ESTE PASARLO EN TestBed.configureTestingModule)
-  let mockService = {
-    createEntity: (activity: Activity) => {
-      let act: Activity = {id: "872"};
-      let anActivity:Observable<HTTPResponse<Activity>> =
-       of({
-        success: true,
-        message: " ",
-        data: act,
-      }); 
-      return anActivity;
-    },
-    updateEntity: (activity: Activity) => {
-      let act: Activity = {id: "872"};
-      let anActivity:Observable<HTTPResponse<Activity>> =
-       of({
-        success: true,
-        message: " ",
-        data: act,
-      }); 
-      return anActivity;
-    },
-    getEntityById: (id: string) => {
-      let act: Activity = {id: "872"};
-      let anActivity:Observable<HTTPResponse<Activity>> =
-       of({
-        success: true,
-        message: " ",
-        data: act,
-      }); 
-      return anActivity;
-    }
 
-
-  }
-  
-  
-  
-  it("should have a parameter idActivity and tobe a number", async () => {
-    const fixture = TestBed.createComponent(ActivityFormComponent);
-    const componentAct = fixture.componentInstance;
-    componentAct.route.params.subscribe((params) => {
-      idActivityInRoute = params.idActivity;
-      expect(idActivityInRoute).toMatch(/^([0-9])*$/);
-    });
-  });
-
-  
   
   it("should create", () => {
     const fixture = TestBed.createComponent(ActivityFormComponent);
     const appAct = fixture.componentInstance;
     expect(appAct).toBeTruthy();
   });
+  
+  it("should have a parameter idActivity and tobe a number", async () => {
+    const fixture = TestBed.createComponent(ActivityFormComponent);
+    const componentAct = fixture.componentInstance;    
+    componentAct.route.params.subscribe((params) => {
+      idActivityInRoute = params.idActivity;
+      expect(idActivityInRoute).toMatch(/^([0-9])*$/);
+    });
+  });
 
-  
-  
-  
-  it("should detect form is valid and and the user can send form  ", async () => {
+           
+  it("should detect form is valid", async () => {
     const fixture = TestBed.createComponent(ActivityFormComponent);
     const componentAct = fixture.componentInstance;
     componentAct.form.get("name")!.setValue("sdfsdf");
@@ -123,9 +126,16 @@ ESTE MOCK ESTA BIEN, PERO HAY Q PASARSELO AL SERVICIO ACTIVITIESSERVICE (ESTE PA
     expect(componentAct.form.invalid).toBeFalse();
   });
 
-  
-  
-  
+  it("should not be able to submit", async () => {
+    const fixture = TestBed.createComponent(ActivityFormComponent);
+    const componentAct = fixture.componentInstance;
+    componentAct.form.get("name")!.setValue("");
+    componentAct.form.get("description")!.setValue("");
+    componentAct.form.get("image")!.setValue("");
+    expect(componentAct.allowSend).toBeFalse();
+  });
+
+      
   it("should return expected activity with real service", async () => {
     httpClient = new HttpClient(
       new HttpXhrBackend({ build: () => new XMLHttpRequest() })
@@ -133,7 +143,7 @@ ESTE MOCK ESTA BIEN, PERO HAY Q PASARSELO AL SERVICIO ACTIVITIESSERVICE (ESTE PA
     let httpService = new HttpService(httpClient);
     publicService = new PublicService(httpService);
     backofficeService = new PrivateBackofficeService(httpService);
-    activityService = new ActivitiesService(backofficeService, publicService);
+    realActivityService = new ActivitiesService(backofficeService, publicService);
     const req = backofficeService
       .getEntityById("http://ongapi.alkemy.org/api/activities", "888")
       .toPromise();
@@ -144,34 +154,69 @@ ESTE MOCK ESTA BIEN, PERO HAY Q PASARSELO AL SERVICIO ACTIVITIESSERVICE (ESTE PA
 
    
   
-  ESTO ESTA MAL, ACA ESTOT TESTEANDO EL SERVICIO, TENGO Q TESTEAR EL COMPONENTE, POR ESO TENGO Q MOCKEAR
-  LOS SERVICIOS NECESARIOS Y EJECUTAR GETBYiD PERO SOBRE EL COMPONENTE
+  
   it("should be success in a get request", () => {          
-    mockService.getEntityById("872").subscribe((res) => {
-      let activity: HTTPResponse<Activity> = JSON.parse(JSON.stringify(res));
-      expect(activity.success).toBeTrue();
+    const fixture = TestBed.createComponent(ActivityFormComponent);
+    const componentAct = fixture.componentInstance;
+    componentAct.getActivity();    
+    expect(componentAct.resultData.success).toBeTrue();    
+  });
+
+
+  it("should be success in a post request", () => {   
+    const fixture = TestBed.createComponent(ActivityFormComponent);
+    const componentAct = fixture.componentInstance;    
+    let act: Activity = {id: idActivityInRoute};        
+    componentAct.activitiesService.createActivity("http://ongapi.alkemy.org/api/activities",act).subscribe((res) => {
+        expect(res.success).toBeTrue();    
     })   
   });
 
 
-  it("should be success in a post request", () => {       
-    let act: Activity = {id: "872"};        
-    mockService.createEntity(act).subscribe((res) => {
-      let activity: HTTPResponse<Activity> = JSON.parse(JSON.stringify(res));
-      expect(activity.success).toBeTrue();
+  it("should be success in a patch request", () => {   
+    const fixture = TestBed.createComponent(ActivityFormComponent);
+    const componentAct = fixture.componentInstance;    
+    let act: Activity = {id: idActivityInRoute};        
+    componentAct.activitiesService.updateActivity("http://ongapi.alkemy.org/api/activities",act).subscribe((res) => {
+        expect(res.success).toBeTrue();    
     })   
   });
 
 
   it("message should be 'La actividad fue agregada correctamente'", () => {       
-    let act: Activity = {id: "872"};
+    let act: Activity = {id: idActivityInRoute};
     const fixture = TestBed.createComponent(ActivityFormComponent);
-    const componentAct = fixture.componentInstance;        
-    mockService.createEntity(act).subscribe((res) => {
-      let activity: HTTPResponse<Activity> = JSON.parse(JSON.stringify(res));
-      expect(componentAct.alertMessage).toBe("La actividad fue agregada correctamente");
-    })   
+    const componentAct = fixture.componentInstance; 
+    
+    componentAct.form.get("name")!.setValue("sdfsdf");
+    componentAct.form.get("description")!.setValue("sasdasdasdAAs%123456");
+    componentAct.form.get("image")!.setValue("imagen-en-base-64");
+    componentAct.editing=false;
+    
+    componentAct.imageError=false;
+    componentAct.save();        
+    expect("La actividad fue agregada correctamente").toEqual(componentAct.alertMessage);
+       
   });
+
+
+  it("message should be 'La actividad fue editada correctamente'", () => {       
+    let act: Activity = {id: idActivityInRoute};
+    const fixture = TestBed.createComponent(ActivityFormComponent);
+    const componentAct = fixture.componentInstance; 
+    
+    componentAct.form.get("name")!.setValue("sdfsdf");
+    componentAct.form.get("description")!.setValue("sasdasdasdAAs%123456");
+    componentAct.form.get("image")!.setValue("imagen-en-base-64");
+    componentAct.editing=true;
+    
+    componentAct.imageError=false;
+    componentAct.save();        
+    expect("La actividad fue editada correctamente").toEqual(componentAct.alertMessage);
+       
+  });
+
+
 
 
  
