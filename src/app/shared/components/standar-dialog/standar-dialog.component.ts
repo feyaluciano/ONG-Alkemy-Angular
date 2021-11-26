@@ -50,6 +50,10 @@ export class StandarDialogComponent implements OnInit {
         this.template = this.noTerms;
         break;
       }
+      case "confirm": {
+        this.template = this.dialogConfirm;
+        break;
+      }
       default: { 
         this.template=this.dialogConfirm;
          break; 

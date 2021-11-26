@@ -22,6 +22,7 @@ import { SlidesComponent } from './pages/slides/slides.component';
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { UserslistComponent } from './pages/userslist/userslist.component';
 import { ActivitiesComponent } from './pages/activities/activities.component';
+import { MembersComponent } from './pages/members/members.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ActivitiesComponent } from './pages/activities/activities.component';
     NewsFormComponent,
     UserslistComponent,
     SlidesComponent,
-    UserFormComponent
+    UserFormComponent,
+    MembersComponent
     
     
   ],
