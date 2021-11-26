@@ -17,19 +17,19 @@
         <div class="col-12 col-md-6">
             <!-- <img src="assets/school-campaign/bus1.png" alt="bus"> -->
 
-            <div class="p-5 bg-content mb-5">
+            <div class="p-4 bg-content mb-5">
                 <h2>¿ Qué fecha es hoy ?</h2>
                 <p> {{ date | date:'shortDate'}} </p>
                 <h2>¿ Hora ?</h2>
                 <p> {{ date | date:'mediumTime'}} </p>
-                <p>Entonces para poder participar te quedan ...</p>
-                <div class="d-flex justify-content-center" *ngIf="schoolCampaign">
-                    <p class="p-2 fs-2 text-success"> {{schoolCampaign.days}} Días</p>
-                    <p class="p-2 fs-2 text-success"> {{schoolCampaign.hours}} Horas</p>
-                    <p class="p-2 fs-2 text-success"> {{schoolCampaign.minutes}} Minutos</p>
-                    <p class="p-2 fs-2 text-success"> {{schoolCampaign.seconds}} Segundos</p>
+                <p class="hide-content">Entonces para poder participar te quedan ...</p>
+                <div class="d-flex justify-content-center flex-wrap hide-content" *ngIf="schoolCampaign">
+                    <p class="p-2 fs-2 text-success hide-content"> {{schoolCampaign.days}} Días</p>
+                    <p class="p-2 fs-2 text-success hide-content"> {{schoolCampaign.hours}} Horas</p>
+                    <p class="p-2 fs-2 text-success hide-content"> {{schoolCampaign.minutes}} Minutos</p>
+                    <p class="p-2 fs-2 text-success hide-content"> {{schoolCampaign.seconds}} Segundos</p>
                 </div>
-                <p class="text-danger fs-2" *ngIf="!schoolCampaign"> {{message}} </p>
+                <p class="text-danger fs-2 hide-content" *ngIf="!schoolCampaign"> {{message}} </p>
                 <p>
                     Mediante nuestros programas educativos, buscamos incrementar la capacidad
                     intelectual, moral y afectiva de las personas de acuerdo con la cultura y las normas de

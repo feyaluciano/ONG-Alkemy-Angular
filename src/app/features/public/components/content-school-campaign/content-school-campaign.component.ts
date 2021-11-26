@@ -24,7 +24,7 @@ export class ContentSchoolCampaignComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.schoolCampaign);
+    
     
   }
 

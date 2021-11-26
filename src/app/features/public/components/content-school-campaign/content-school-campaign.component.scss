@@ -8,7 +8,7 @@ img {
         display: none;
     }
 
-    #countdown {
+    .hide-content {
         display: none;
     }
 }
@@ -19,14 +19,12 @@ img {
         display: none;
     }
 
-    #countdown {
-        display: none;
-    }
+    
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) { 
-    #countdown {
+    .hide-content {
         display: block;
     }
 }
