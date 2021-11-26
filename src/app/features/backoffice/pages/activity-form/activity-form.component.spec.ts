@@ -16,6 +16,9 @@ import { PrivateBackofficeService } from '../../services/private-backoffice.serv
 //https://medium.com/@jorgeucano/introducci%C3%B3n-al-testing-en-angular-da415ef8c47
 
 import { ActivityFormComponent } from './activity-form.component';
+
+
+//Esta función agrupa testeos segun su funcionalidad
 describe('ActivityFormComponent', () => {
   
 let idActivityInRoute:string;
@@ -28,8 +31,7 @@ let publicService: PublicService;
 
     beforeEach((() => {
 
-      httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-      let activitiesService: ActivitiesService;
+     
 
       TestBed.configureTestingModule({
         imports: [
@@ -69,6 +71,7 @@ let publicService: PublicService;
     componentAct.route.params.subscribe((params) => {
       idActivityInRoute = params.idActivity;
      expect(idActivityInRoute).toMatch(/^([0-9])*$/);
+     expect(idActivityInRoute==="22").toBeTrue()
   });
   });
     
@@ -89,7 +92,7 @@ let publicService: PublicService;
   });
 
 
-  it('should return expected activityr', async () => {
+  it('should return expected activity', async () => {
     httpClient = new HttpClient(
       new HttpXhrBackend({ build: () => new XMLHttpRequest() })
     );
