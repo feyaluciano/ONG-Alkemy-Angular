@@ -19,4 +19,8 @@ export class HeaderBackofficeComponent implements OnInit {
   ngOnInit() {
   }
 
+  goToPublic() {
+    this.router.navigate(['/home']);
+  }
+
 }

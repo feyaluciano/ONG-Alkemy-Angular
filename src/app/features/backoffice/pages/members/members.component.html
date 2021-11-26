@@ -1,0 +1,81 @@
+<div class="container-fluid">
+	<div class="row">
+	
+		<div class="col-md-12">
+              
+      <div class=" align-items-center p-3 my-3  ligth-blue  rounded shadow-sm">
+        
+        <div class="lh-1 title-backoffice">
+          <h3 class="h4 mb-0  lh-1">Miembros</h3>          
+        </div>
+      </div>  
+
+      <div class="container">
+        <form action="" [formGroup]="form">
+          <div class="input-group mb-3">
+            <input 
+              type="text" 
+              class="form-control" 
+              formControlName="search_member" 
+              id="search_member" 
+              name="search_member"
+              placeholder="Buscar miembro..."
+            >
+            <button class="btn btn-primary" type="button" id="button-addon2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg></button>
+          </div>
+        </form>
+      </div>
+
+      <div class="">
+        
+        <button 
+          class="btn btn-primary mb-4"
+          (click)="newMember()"
+        >+ Nuevo</button>
+        <div class="table-responsive">
+        <table class="table table-bordered border-info table-hover">
+          <thead>
+          <tr class="text-center">
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Facebook</th>
+            <th scope="col">LinkedIn</th>
+            <th scope="col">Actualizado</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let member of members; let i = index">
+            <th scope="row">{{ member?.id }}</th>
+            <td>{{ member?.name }}</td>
+            <td>
+              <img [src]="member?.image" alt="Miembro {{ member?.id }}" class="img-thumbnail">
+            </td>
+            <td [innerHTML]="member?.description"></td>
+            <td>{{ member?.facebookUrl }}</td>
+            <td>{{ member?.linkedinUrl }}</td>
+            <td>{{ member?.updated_at | date }}</td>
+            <td>
+              <div class="d-flex">
+                <button 
+                  class="btn btn-outline-primary mx-1"
+                  (click)="editMember(member?.id)"
+                >Editar</button>
+                <button 
+                  class="btn btn-primary mx-1"
+                  (click)="deleteMember(member.id, i)"
+                >Eliminar</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
