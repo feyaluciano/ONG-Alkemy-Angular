@@ -3,7 +3,11 @@ import { HttpClient, HttpResponse, HttpXhrBackend } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
+<<<<<<< HEAD
 import {  of } from 'rxjs';
+=======
+import {  Observable, of } from 'rxjs';
+>>>>>>> OT97-152-Luciano-test-to-activities-form
 import { AppModule } from 'src/app/app.module';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { HttpService } from 'src/app/core/services/http.service';
@@ -29,10 +33,14 @@ let backofficeService: PrivateBackofficeService;
 let publicService: PublicService;
   
 
+<<<<<<< HEAD
     beforeEach((() => {
 
      
 
+=======
+    beforeEach((() => {     
+>>>>>>> OT97-152-Luciano-test-to-activities-form
       TestBed.configureTestingModule({
         imports: [
           CommonModule,
@@ -71,7 +79,10 @@ let publicService: PublicService;
     componentAct.route.params.subscribe((params) => {
       idActivityInRoute = params.idActivity;
      expect(idActivityInRoute).toMatch(/^([0-9])*$/);
+<<<<<<< HEAD
      expect(idActivityInRoute==="22").toBeTrue()
+=======
+>>>>>>> OT97-152-Luciano-test-to-activities-form
   });
   });
     
@@ -85,13 +96,25 @@ let publicService: PublicService;
   it('should detect form is valid and and the user can send form  ', async () => { 
     const fixture = TestBed.createComponent(ActivityFormComponent);
     const componentAct = fixture.componentInstance;
+<<<<<<< HEAD
     componentAct.form.get("name")!.setValue("asasasas");
+=======
+    componentAct.form.get("name")!.setValue("sdfsdf");
+>>>>>>> OT97-152-Luciano-test-to-activities-form
     componentAct.form.get("description")!.setValue("sasdasdasdAAs%123456");
     componentAct.form.get("image")!.setValue("imagen-en-base-64");  
     expect(componentAct.form.invalid).toBeFalse();
   });
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> OT97-152-Luciano-test-to-activities-form
   it('should return expected activity', async () => {
     httpClient = new HttpClient(
       new HttpXhrBackend({ build: () => new XMLHttpRequest() })
@@ -108,5 +131,23 @@ let publicService: PublicService;
     let activity:HTTPResponse<Activity> = JSON.parse(JSON.stringify(res));
     expect(activity.success).toBeTrue();     
   });
+
+  it('should return success from service', () => {
+    let mockPrivateBackofficeService: jasmine.SpyObj<PrivateBackofficeService>;
+    mockPrivateBackofficeService = jasmine.createSpyObj('PrivateBackofficeService', ['getEntityById']);    
+    let act:Activity={
+      id: '872',           
+    };
+    let anActivity:HTTPResponse<Activity>={
+      success: false,
+      message: "Activity retrieved successfully",
+      data: act
+    };   
+     let obsActivity:Observable<HTTPResponse<Activity>>=of(anActivity);
+     obsActivity.subscribe(dat=>{
+       console.log("errrrrrr"+dat.success);
+       expect(dat.success).toBeTruthy();
+     })
+    })
 });
   //ng test --include src/app/features/backoffice/pages/activity-form/activity-form.component.spec.ts    

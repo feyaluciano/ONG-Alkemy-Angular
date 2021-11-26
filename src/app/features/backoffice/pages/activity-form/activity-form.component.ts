@@ -26,26 +26,25 @@ export class ActivityFormComponent implements OnInit {
   public sending: boolean = false;
   public action: string = "";
   public anActivity: Activity = {};
-  private alertMessage!: String;
+  public alertMessage!: String;
   public textEditor!:string;
 
   private imageFile!:ImageFile;
   public imageError=false;
   public anImage!:string;
 
-
+  public routeIs!:ActivatedRoute;
   
 
   constructor(
-    private userStatusService: UserStatusService,
     private _builder: FormBuilder,
     private router: Router,
     public route: ActivatedRoute,
-    private httpService: HttpService,
     private ckeditorSvc: CkeditorService,
     private activitiesService:ActivitiesService,
     public dialog: MatDialog
   ) {
+    this.routeIs=route;
     this.form = this._builder.group({
       name: ["", [Validators.required]],
       description: ["",],

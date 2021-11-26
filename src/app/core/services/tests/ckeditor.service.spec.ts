@@ -1,6 +1,6 @@
-// import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { CkeditorService } from '../ckeditor.service';
 
-// import { CkeditorService } from './ckeditor.service';
 
 // describe('CkeditorService', () => {
 //   let service: CkeditorService;
