@@ -26,7 +26,7 @@ export class ActivityFormComponent implements OnInit {
   public sending: boolean = false;
   public action: string = "";
   public anActivity: Activity = {};
-  private alertMessage!: String;
+  public alertMessage!: String;
   public textEditor!:string;
 
   private imageFile!:ImageFile;
@@ -40,7 +40,7 @@ export class ActivityFormComponent implements OnInit {
     private userStatusService: UserStatusService,
     private _builder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private httpService: HttpService,
     private ckeditorSvc: CkeditorService,
     private activitiesService:ActivitiesService,
