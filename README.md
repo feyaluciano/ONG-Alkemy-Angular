@@ -1,21 +1,57 @@
-https://drive.google.com/file/d/1chnWpXP4uCcwgVJR3fv8gjyMF4nPY59V/viewNew 
+# Testing
 
-Caso 1: ONG - Somos Más.
+# Activity Form Testing
 
-Nombre de la ONG: Somos Más
-
-Datos de contacto:X
-Mail: somosfundacionmas@gmail.com
-Instagram: SomosMás
-Facebook: Somos_Más
-Teléfono de contacto: 1160112988
-
-sss
-
-Ong Somos mas
+-Type:Funcionality
+-Description: the received id should be a number
+-Test Step: Input an number on the url
+-Expected Result : the variable editing is true 
 
 
-# BaseOngAngularClient
+-Type:Funcionality
+-Description:  the form should be valid
+-Test Step: enter all required fields
+-Expected Result : the form is not invalid
+
+-Type:Funcionality
+-Description:  the form should not be able to send
+-Test Step: not enter all required fields
+-Expected Result : the variable allowSend to be false
+
+-Type:Funcionality
+-Description:  the form should not be able to send
+-Test Step: not enter all required fields
+-Expected Result : the variable allowSend to be false
+
+
+-Type:Funcionality
+-Description:  the response success should be true on request get 
+-Test Step: input an id that exists in the database
+-Expected Result : the variable success in response to be true
+
+
+-Type:Funcionality
+-Description:  the response success should be true on request post 
+-Test Step: input an activitye
+-Expected Result : the variable success in response to be true
+
+-Type:Funcionality
+-Description:  the response success should be true on request patch 
+-Test Step: input an activitye
+-Expected Result : the variable success in response to be true
+
+-Type:Funcionality
+-Description:  the variable alertMessage should 'La actividad fue agregada correctamente'
+-Test Step: input an activity an send post
+-Expected Result : the variable success in response to be true
+
+-Type:Funcionality
+-Description:  the variable alertMessage should 'La actividad fue actualizada correctamente'
+-Test Step: input an activity an send patch
+-Expected Result : the variable success in response to be true
+
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
 

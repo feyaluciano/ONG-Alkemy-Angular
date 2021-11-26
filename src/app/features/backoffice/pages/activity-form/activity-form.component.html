@@ -48,7 +48,7 @@
 
             <div class="row">
               <div class="col-md-4 offset-md-4">
-                <button (click)="save()" [disabled]="sending" type="button"
+                <button (click)="save()" [disabled]="sending && !allowSend" type="button"
                   class="w-100 btn btn-primary btn-lg">Guardar</button>
               </div>
             </div>
