@@ -12,7 +12,7 @@ export class PrivateBackofficeService {
   
   private header_authorization!: string;
   
-  constructor(private httpService:HttpService,private userStatusService:UserStatusService) {
+  constructor(private httpService:HttpService) {
 
     this.header_authorization = this.verifyToken();
 

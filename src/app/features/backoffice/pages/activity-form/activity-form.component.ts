@@ -26,12 +26,16 @@ export class ActivityFormComponent implements OnInit {
   public sending: boolean = false;
   public action: string = "";
   public anActivity: Activity = {};
-  private alertMessage!: String;
+  public alertMessage: string="";
   public textEditor!:string;
 
   private imageFile!:ImageFile;
   public imageError=false;
   public anImage!:string;
+
+  public resultData!: HTTPResponse<Activity>;
+
+  public allowSend:boolean = false;
 
 
   
@@ -40,10 +44,10 @@ export class ActivityFormComponent implements OnInit {
     private userStatusService: UserStatusService,
     private _builder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private httpService: HttpService,
     private ckeditorSvc: CkeditorService,
-    private activitiesService:ActivitiesService,
+    public activitiesService:ActivitiesService,
     public dialog: MatDialog
   ) {
     this.form = this._builder.group({
@@ -61,6 +65,7 @@ export class ActivityFormComponent implements OnInit {
 
   save() {
     if (this.form.valid && !this.imageError) {
+      this.allowSend     = true;
       this.sending = true;      
       let activity: Activity = {
         name: this.form.get("name")?.value,
@@ -75,43 +80,44 @@ export class ActivityFormComponent implements OnInit {
         environment.activitiesApiUrl   
         let req:Observable<HTTPResponse<Activity>>= this.activitiesService.updateActivity(url,activity);         
         req.subscribe((response) => {         
-          let resultData: HTTPResponse<Activity> = response;   
+          this.resultData= response;   
               Swal.fire(this.alertMessage.toString()).then(() => {
                 this.router.navigate(["/dashboard"]);
               });
         });               
-      } else {        
-        this.alertMessage = "La actividad fue agregada correctamente";
+      } else {                   
         this.anActivity.id = "0";
         this.anActivity.image = this.anImage;
         const url: string =
         environment.activitiesApiUrl     
         const req:Observable<HTTPResponse<Activity>>= this.activitiesService.createActivity(url,activity);
         req.subscribe((response) => {
-          let resultData: any = JSON.parse(JSON.stringify(response));
-              this.alertMessage = resultData.message;
+          this.resultData = JSON.parse(JSON.stringify(response));
+              //this.alertMessage = this.resultData.message;
+              this.alertMessage = "La actividad fue agregada correctamente";      
               Swal.fire(this.alertMessage.toString()).then(() => {
                 this.router.navigate(["/dashboard"]);
               });
         });          
       }
     } else {
+      this.allowSend     = false;
       this.sending = false;
       this.form.markAllAsTouched();
       this.alertMessage = "Por favor complete los campos requeridos";
       Swal.fire(this.alertMessage.toString()).then(() => {});
     }
   }
-  
-   ngOnInit() {
-    
+
+
+  getActivity(){
     if (typeof this.route.snapshot.params["idActivity"] !== "undefined") {
       this.editing = true;
       this.action = "Editar actividad";     
         const req:Observable<HTTPResponse<Activity>> = this.activitiesService.getActivityById(this.route.snapshot.params["idActivity"]); 
         req.subscribe((response) => {
-          let resultData: HTTPResponse<Activity> = response;         
-          this.anActivity = JSON.parse(JSON.stringify(resultData.data));         
+          this.resultData = response;         
+          this.anActivity = JSON.parse(JSON.stringify(this.resultData.data));         
           this.ckeditorSvc.textEditor$.next(this.anActivity.description!)
           this.form.setValue({
             name: this.anActivity.name,
@@ -160,6 +166,11 @@ export class ActivityFormComponent implements OnInit {
     this.ckeditorSvc.getHandlerTextEditor$().subscribe((text) => {
       this.textEditor=text;
     });
+  }
+  
+   ngOnInit() {
+    
+    this.getActivity();
   }
 
 
