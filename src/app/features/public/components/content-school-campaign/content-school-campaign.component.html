@@ -22,8 +22,14 @@
                 <p> {{ date | date:'shortDate'}} </p>
                 <h2>¿ Hora ?</h2>
                 <p> {{ date | date:'mediumTime'}} </p>
-                <p>Entonces tenemos que decirte que...</p>
-                <h1 id="countdown">Te quedan 3 días, 9 hs y 26 minutos para participar!!!</h1>
+                <p>Entonces para poder participar te quedan ...</p>
+                <div class="d-flex justify-content-center" *ngIf="schoolCampaign">
+                    <p class="p-2 fs-2 text-success"> {{schoolCampaign.days}} Días</p>
+                    <p class="p-2 fs-2 text-success"> {{schoolCampaign.hours}} Horas</p>
+                    <p class="p-2 fs-2 text-success"> {{schoolCampaign.minutes}} Minutos</p>
+                    <p class="p-2 fs-2 text-success"> {{schoolCampaign.seconds}} Segundos</p>
+                </div>
+                <p class="text-danger fs-2" *ngIf="!schoolCampaign"> {{message}} </p>
                 <p>
                     Mediante nuestros programas educativos, buscamos incrementar la capacidad
                     intelectual, moral y afectiva de las personas de acuerdo con la cultura y las normas de
