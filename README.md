@@ -1,29 +1,54 @@
 # Testing
 
 # Activity Form Testing
-## should have a parameter idActivity and tobe a number
--In this test I check that the id sent in the url is a number
 
-## should detect form is valid
--In this test i check that the form is valid
+-Type:Funcionality
+-Description: the received id should be a number
+-Test Step: Input an number on the url
+-Expected Result : the variable editing is true 
 
-## should not be able to submit
--In this test i check that the user can submit the form
 
-## should be success in a get request
--In this test i check a get request, which must be succes true
+-Type:Funcionality
+-Description:  the form should be valid
+-Test Step: enter all required fields
+-Expected Result : the form is not invalid
 
-## should be success in a post request
--In this test i check a post request, which must be succes true
+-Type:Funcionality
+-Description:  the form should not be able to send
+-Test Step: not enter all required fields
+-Expected Result : the variable allowSend to be false
 
-## should be success in patch request
--In this test i check a post request, which must be succes true
+-Type:Funcionality
+-Description:  the form should not be able to send
+-Test Step: not enter all required fields
+-Expected Result : the variable allowSend to be false
 
-## message should be 'La actividad fue agregada correctamente
--In this test i check the creation message is this
 
-## message should be 'La actividad fue actualizada correctamente
--In this test i check the update message is this
+-Type:Funcionality
+-Description:  the response success should be true on request get 
+-Test Step: input an id that exists in the database
+-Expected Result : the variable success in response to be true
+
+
+-Type:Funcionality
+-Description:  the response success should be true on request post 
+-Test Step: input an activitye
+-Expected Result : the variable success in response to be true
+
+-Type:Funcionality
+-Description:  the response success should be true on request patch 
+-Test Step: input an activitye
+-Expected Result : the variable success in response to be true
+
+-Type:Funcionality
+-Description:  the variable alertMessage should 'La actividad fue agregada correctamente'
+-Test Step: input an activity an send post
+-Expected Result : the variable success in response to be true
+
+-Type:Funcionality
+-Description:  the variable alertMessage should 'La actividad fue actualizada correctamente'
+-Test Step: input an activity an send patch
+-Expected Result : the variable success in response to be true
 
 
 
