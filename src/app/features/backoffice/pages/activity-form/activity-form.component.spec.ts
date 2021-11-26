@@ -1,21 +1,35 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpResponse, HttpXhrBackend } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
-import {  of } from 'rxjs';
+import {  Observable, of } from 'rxjs';
 import { AppModule } from 'src/app/app.module';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { HttpService } from 'src/app/core/services/http.service';
+import { Activity } from 'src/app/features/models/Activity';
+import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
+import { PublicService } from 'src/app/features/public/services/public.service';
+import { ActivitiesService } from 'src/app/features/services/activities/activities.service';
+import { PrivateBackofficeService } from '../../services/private-backoffice.service';
 
 //https://medium.com/@jorgeucano/introducci%C3%B3n-al-testing-en-angular-da415ef8c47
 
 import { ActivityFormComponent } from './activity-form.component';
+
+
+//Esta función agrupa testeos segun su funcionalidad
 describe('ActivityFormComponent', () => {
   
 let idActivityInRoute:string;
-
+let httpClientSpy: { post: jasmine.Spy }; 
+let activityService: ActivitiesService;
+let httpClient: HttpClient;
+let backofficeService: PrivateBackofficeService;
+let publicService: PublicService;
   
 
-    beforeEach((() => {
+    beforeEach((() => {     
       TestBed.configureTestingModule({
         imports: [
           CommonModule,
@@ -25,6 +39,7 @@ let idActivityInRoute:string;
           ActivityFormComponent
         ],
         providers: [
+          HttpClient,
           AuthService,         
           {
           provide: ActivatedRoute, useValue: {
@@ -66,16 +81,51 @@ let idActivityInRoute:string;
   it('should detect form is valid and and the user can send form  ', async () => { 
     const fixture = TestBed.createComponent(ActivityFormComponent);
     const componentAct = fixture.componentInstance;
-    componentAct.form.get("name")!.setValue("asasasas");
+    componentAct.form.get("name")!.setValue("sdfsdf");
     componentAct.form.get("description")!.setValue("sasdasdasdAAs%123456");
     componentAct.form.get("image")!.setValue("imagen-en-base-64");  
     expect(componentAct.form.invalid).toBeFalse();
   });
 
-  
-  
-  //ng test --include src/app/features/backoffice/pages/activity-form/activity-form.component.spec.ts    
+
+
+
+
+
+
+  it('should return expected activity', async () => {
+    httpClient = new HttpClient(
+      new HttpXhrBackend({ build: () => new XMLHttpRequest() })
+    );
+    let httpService=new HttpService(httpClient);
+    publicService=new PublicService(httpService);
+
+    backofficeService=new PrivateBackofficeService(httpService);
+
+    activityService = new ActivitiesService(backofficeService,publicService);   
+    const req = backofficeService.getEntityById("http://ongapi.alkemy.org/api/activities","888").toPromise();
+          
+    const res = await req;
+    let activity:HTTPResponse<Activity> = JSON.parse(JSON.stringify(res));
+    expect(activity.success).toBeTrue();     
+  });
+
+  it('should return success from service', () => {
+    let mockPrivateBackofficeService: jasmine.SpyObj<PrivateBackofficeService>;
+    mockPrivateBackofficeService = jasmine.createSpyObj('PrivateBackofficeService', ['getEntityById']);    
+    let act:Activity={
+      id: '872',           
+    };
+    let anActivity:HTTPResponse<Activity>={
+      success: false,
+      message: "Activity retrieved successfully",
+      data: act
+    };   
+     let obsActivity:Observable<HTTPResponse<Activity>>=of(anActivity);
+     obsActivity.subscribe(dat=>{
+       console.log("errrrrrr"+dat.success);
+       expect(dat.success).toBeTruthy();
+     })
+    })
 });
-
-
-
+  //ng test --include src/app/features/backoffice/pages/activity-form/activity-form.component.spec.ts    
