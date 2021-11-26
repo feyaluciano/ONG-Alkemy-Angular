@@ -19,9 +19,9 @@
 
             <div class="p-4 bg-content mb-5">
                 <h2>¿ Qué fecha es hoy ?</h2>
-                <p> {{ date | date:'shortDate'}} </p>
+                <p> {{ today | date:'shortDate'}} </p>
                 <h2>¿ Hora ?</h2>
-                <p> {{ date | date:'mediumTime'}} </p>
+                <p> {{ today | date:'mediumTime'}} </p>
                 <p class="hide-content">Entonces para poder participar te quedan ...</p>
                 <div class="d-flex justify-content-center flex-wrap hide-content" *ngIf="schoolCampaign">
                     <p class="p-2 fs-2 text-success hide-content"> {{schoolCampaign.days}} Días</p>

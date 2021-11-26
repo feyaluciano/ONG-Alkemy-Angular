@@ -14,7 +14,7 @@ interface Countdown {
 })
 export class ContentSchoolCampaignComponent implements OnInit {
 
-  date: Date = new Date();
+  today: Date = new Date();
 
   schoolCampaign!: Countdown;
 
