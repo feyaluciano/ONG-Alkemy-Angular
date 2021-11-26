@@ -42,4 +42,12 @@ export class MembersService {
     return this.privateBackofficeService.updateEntity(`${this.member}/${id}`,member);
   }
 
+  deleteMember(id: string | undefined): Observable<HTTPResponse<Member>> {
+    return this.privateBackofficeService.deleteEntity(`${environment.membersApiUrl}/${id}`);
+  }
+
+  searchMembers(text: string): Observable<HTTPResponse<Member[]>> {
+    return this.privateBackofficeService.getEntities(environment.membersApiUrl+"?search="+text);
+  }
+
 }

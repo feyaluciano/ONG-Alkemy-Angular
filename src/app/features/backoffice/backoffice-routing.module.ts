@@ -7,6 +7,7 @@ import { BackofficeHomeComponent } from './pages/backoffice-home/backoffice-home
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MemberFormComponent } from './pages/member-form/member-form.component';
+import { MembersComponent } from './pages/members/members.component';
 import { NewsFormComponent } from './pages/news/news-form/news-form.component';
 import { OrganizationEditComponent } from './pages/organization-edit/organization-edit.component';
 import { OrganizationComponent } from './pages/organization/organization.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: 'slide/:id', component: SlideComponent, data: {animation: 'Slide'} },
       { path: 'categoria', component: CategoriesFormComponent, data: {animation: 'CrearCategoria'} },
       { path: 'categoria/:id', component: CategoriesFormComponent, data: {animation: 'Categoria'} },
+      { path: 'members', component: MembersComponent, data: { animation: 'Members' } },
       { path: 'member', component: MemberFormComponent, data: {animation: 'CrearMiembro'} },
       { path: 'member/edit/:idMember', component: MemberFormComponent, data: {animation: 'Miembro'}},
       { path: 'home', component: BackofficeHomeComponent, data: {animation: 'Home'} },
