@@ -16,6 +16,7 @@ export class StandarDialogComponent implements OnInit {
   @ViewChild(TemplateRef, { static: true }) template!: TemplateRef<any>;
   @ViewChild("dialogTerms", { static: true }) dialogTerms!: TemplateRef<any>;
   @ViewChild("noTerms", { static: true }) noTerms!: TemplateRef<any>;
+  @ViewChild("dialogSuccess", { static: true }) dialogSuccess!: TemplateRef<any>;
 
   page: number = 1;
   totalPages!: number;
@@ -34,6 +35,10 @@ export class StandarDialogComponent implements OnInit {
   ngOnInit() {
 
     switch(this.data.type) { 
+      case "success": {
+        this.template = this.dialogSuccess;
+        break;
+      }
       case "error": { 
          this.template=this.dialogError;
          break; 

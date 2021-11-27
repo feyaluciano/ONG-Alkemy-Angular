@@ -2,6 +2,28 @@
 </ng-container>
 
 
+<ng-template #dialogSuccess>
+<div class="content-standar-dialog">
+  <div>   
+    <span  class="material-icons animate__animated animate__rubberBand icon-standar-dialog-success">      
+      Éxito
+    </span>
+  </div>
+  <div style="text-align: center;">
+    {{data.titleToShow}}
+  </div>
+  <div mat-dialog-content>
+    <h1 mat-dialog-title class="messagge-to-show">{{data.messageToShow}}</h1>
+  </div>  
+  <button 
+    type="button" 
+    mat-raised-button 
+    color="primary"
+    (click)="closeDialog('Ok')"
+  >Aceptar</button> 
+</div>
+</ng-template>
+
 <ng-template #dialogInfo>
 <div class="content-standar-dialog">
   <div>   
