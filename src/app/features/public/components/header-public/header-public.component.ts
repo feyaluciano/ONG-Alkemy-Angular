@@ -6,6 +6,9 @@ import { AuthState } from 'src/app/core/redux/reducers/authReducer.reducer';
 import { getAuth } from 'src/app/core/redux/selectors/auth.selectors';
 import { Link } from '../../../models/link.model';
 import { Router } from '@angular/router';
+import * as fromFirebaseAuth from "firebase/auth";
+import { MatDialog } from '@angular/material/dialog';
+import { StandarDialogComponent } from 'src/app/shared/components/standar-dialog/standar-dialog.component';
 
 @Component({
   selector: 'app-header-public',
@@ -20,7 +23,8 @@ export class HeaderPublicComponent implements OnInit {
 
   constructor(
     private store: Store<AuthState>,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
     this.links = [
       {
@@ -93,9 +97,33 @@ export class HeaderPublicComponent implements OnInit {
   logOut(){
 
     this.store.dispatch(logout());
+    
+    const auth = fromFirebaseAuth.getAuth();
+    fromFirebaseAuth.signOut(auth).then(() => {
+      // Sign-out successful.
+      this.viewDialog('success', 'La sesión se cerró exitosamente');
+      
+    }).catch((error) => {
+      // An error happened.
+      this.viewDialog('error', 'Error al cerrar la sesión');
+      
+    });
 
     this.router.navigate(['/home']);
 
+  }
+
+  viewDialog(type: string, msg: string) {
+    this.dialog.open(StandarDialogComponent, {
+      height: '300px',
+      width: '400px',
+      data: {
+        type: type,
+        titleToShow:"",
+        messageToShow: msg,
+        showButtonsOkCancel: false
+      }
+    });
   }
 
 }
