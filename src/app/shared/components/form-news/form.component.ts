@@ -239,7 +239,7 @@ export class FormComponent implements OnInit {
   back(){
     this.ckeditorService.textEditor$.next("");
     this.form.reset();
-    this.router.navigate(['/backoffice/dashboard']);
+    this.router.navigate(['/backoffice/news']);
   }
 
   viewErrorDialog(message: string): void {

@@ -41,4 +41,12 @@ export class NewsService {
   updateNews(id:string, news: News):Observable<HTTPResponse<News>>{
     return this.privateBackofficeService.updateEntity(`${this.news}/${id}`,news);
   }
+
+  searchNews(text: string): Observable<HTTPResponse<News[]>> {
+    return this.privateBackofficeService.getEntities(environment.newsApiUrl+"?search="+text);
+  }
+
+  deleteNew(id: string | undefined): Observable<HTTPResponse<News>> {
+    return this.privateBackofficeService.deleteEntity(`${environment.newsApiUrl}/${id}`);
+  }
 }
