@@ -40,9 +40,14 @@ export class UserslistComponent implements OnInit {
     private fb: FormBuilder
   ) { 
     this.userList$ = this.store.pipe(select(getUser));
+    this.userList$.subscribe( r => {
+      if(r){
+        this.loader = false;
+      }
+    })
   }
 
-  ngOnInit(){
+  ngOnInit(){    
 
     this.store.dispatch(getUserList())
     setTimeout(()=>{
@@ -55,8 +60,7 @@ export class UserslistComponent implements OnInit {
     )
     .subscribe( data => {      
       
-      if(data.searchUser.length >= 2){
-        
+      if(data.searchUser.length >= 2){        
         
         this.store.dispatch(searchUsers({user: data.searchUser}));
         
