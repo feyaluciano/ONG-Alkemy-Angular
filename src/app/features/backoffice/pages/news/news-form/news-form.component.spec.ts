@@ -1,56 +1,70 @@
-import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { NewsFormComponent } from './news-form.component';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { News } from '../../../../models/news.interface';
+import { Observable, of } from 'rxjs';
+import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
+import { ActivatedRoute } from '@angular/router';
 
 describe('NewsFormComponent', () => {
+  
+  let mockNewsService = {
+    getNewById: () => {
+      let news: News = {
+        id: '1052',
+        name: 'newName',
+        content: 'newContent',
+        image:'newImage'
+      };
+      let aNew: Observable<HTTPResponse<News>> =
+       of({
+        success: true,
+        message: ' ',
+        data: news,
+      }); 
+      return aNew;
+    }
+  };
 
-  let component: NewsFormComponent;
-  let router: Router;
-  let fixture;
-
-  beforeEach(async () => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewsFormComponent ],
-      imports: [
-        // HttpClientModule,
-        HttpClientTestingModule,
-        RouterTestingModule
-        // ... whatever module you have
-      ],
-      providers:
-      [
+      imports: [CommonModule, AppModule],
+      declarations: [NewsFormComponent],
+      providers: [
+        HttpClient,
+        AuthService,
+        {
+          provide: NewsFormComponent,
+          useValue: mockNewsService
+        },
         {
           provide: ActivatedRoute,
           useValue: {
-            snapshot: {params: {id: '1052'}}
-          }
-        }
-      ]
-    })
-    .compileComponents();
-
-    // router = TestBed.get(Router);
+            params: of({ id: '1052' }),
+          },
+        },
+      ],
+    }).compileComponents();
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(NewsFormComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
-  it('Should create', () => {
-    expect(component).toBeTruthy();
-  });
 
-  it('If ID is provided, set text value', <any>fakeAsync(() => {
-    router.navigate(['/backoffice/news', '1052']);
-    tick(500);
-    expect(component.titlePage).toBe('Formulario Edición de Novedades');
-  }));
-  // A simple test:
-  // it('the sum 1 + 1 should be 2', () => {
-  //   expect(1+1).toEqual(2);
-  // });
+  
+  it('should create', () => {
+    const fixture = TestBed.createComponent(NewsFormComponent);
+    const appNew = fixture.componentInstance;
+    expect(appNew).toBeTruthy();
+  });
+  
+  it('should have a parameter id and tobe a number', async () => {
+    const fixture = TestBed.createComponent(NewsFormComponent);
+    const componentNew = fixture.componentInstance;    
+    componentNew.activatedRoute.params.subscribe((params) => {
+      const idNewInRoute = params.id;
+      expect(idNewInRoute).toMatch(/^[0-9]*$/);
+    });
+  });
 });

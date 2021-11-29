@@ -7,7 +7,9 @@ import { Category } from 'src/app/features/models/category.model';
 import Swal from 'sweetalert2';
 import { CategoriesService } from '../../../features/services/categories/categories.service';
 import { NewsService } from '../../../features/services/news/news.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { StandarDialogComponent } from '../standar-dialog/standar-dialog.component';
 
 
 @Component({
@@ -40,11 +42,9 @@ export class FormComponent implements OnInit {
     private ckeditorService: CkeditorService, 
     private categoriesServices: CategoriesService,
     private newsServices: NewsService,
-    private router: Router ) {
-
-      
-
-    }
+    private router: Router,
+    public dialog: MatDialog
+  ) { }
 
   
 
@@ -132,17 +132,87 @@ export class FormComponent implements OnInit {
           let id: string = this.news.id?.toString()!;
 
           this.newsServices.updateNews(id, news).subscribe( r => {
-            console.log(r.message);
+            
             this.form.reset();
             this.ckeditorService.textEditor$.next("");
-            // agregar sweet alert
+            
+          },
+          (error) => {
+
+            let errorMessage="";           
+            switch(error.status) { 
+              case 404: { 
+                errorMessage="Error al editar la Novedad"; 
+                 break; 
+              } 
+              case 401: {  
+                errorMessage="Usted no esta autorizado para acceder a este recurso";
+                 break; 
+              } 
+              default: { 
+                errorMessage="Error desconocido";
+                 break; 
+              } 
+            }    
+          
+            this.viewErrorDialog(errorMessage);
+
+          },
+          () => {
+
+            this.dialog.open(StandarDialogComponent, {
+              height: '300px',
+              width: '400px',
+              data: {
+                type: "success", 
+                titleToShow:"",
+                messageToShow: 'Novedad editada satisfactoriamente',
+                showButtonsOkCancel:false
+              },
+            });
+
           });
         } else {
           this.newsServices.createNews(news).subscribe( r => {
-            console.log(r.message);
+
             this.form.reset();
             this.ckeditorService.textEditor$.next("");
-            // agregar sweet alert
+
+          },
+          (error) => {
+
+            let errorMessage="";           
+            switch(error.status) { 
+              case 404: { 
+                errorMessage="Error al crear la Novedad"; 
+                 break; 
+              } 
+              case 401: {  
+                errorMessage="Usted no esta autorizado para acceder a este recurso";
+                 break; 
+              } 
+              default: { 
+                errorMessage="Error desconocido";
+                 break; 
+              } 
+            }    
+          
+            this.viewErrorDialog(errorMessage);
+
+          },
+          () => {
+
+            this.dialog.open(StandarDialogComponent, {
+              height: '300px',
+              width: '400px',
+              data: {
+                type: "success",
+                titleToShow:"",
+                messageToShow: 'Novedad guardada exitosamente',
+                showButtonsOkCancel:false
+              },
+            });
+
           });
         }
         
@@ -170,6 +240,21 @@ export class FormComponent implements OnInit {
     this.ckeditorService.textEditor$.next("");
     this.form.reset();
     this.router.navigate(['/backoffice/dashboard']);
+  }
+
+  viewErrorDialog(message: string): void {
+
+    this.dialog.open(StandarDialogComponent, {
+      height: '300px',
+      width: '400px',
+      data: {
+        type: "error", 
+        titleToShow:"",
+        messageToShow: message,
+        showButtonsOkCancel:false
+      },
+    });
+    
   }
 
 

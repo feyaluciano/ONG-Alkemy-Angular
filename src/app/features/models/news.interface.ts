@@ -1,12 +1,12 @@
 export interface News {
-    id?:          number;
+    id?:          string;
     name:        string;
+    slug?:        string | null;
     content:     string;
     image:       string;
-    category_id: number;
-    created_at:  string | null;
-    updated_at:  string | null;
-    slug:        string | null;
-    user_id:     number | null;
-    deleted_at:  string | null;
+    user_id?:     number | null;
+    category_id?: number;
+    created_at?:  string | null;
+    updated_at?:  string | null;
+    deleted_at?:  string | null;
 }

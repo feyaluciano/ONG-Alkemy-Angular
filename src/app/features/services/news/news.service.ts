@@ -26,7 +26,7 @@ export class NewsService {
    */
   getNewsById(id:string):Observable<HTTPResponse<News>>{
     
-    return this.privateBackofficeService.getEntityById(`${this.apiUrl}${this.news}/`,id);
+    return this.privateBackofficeService.getEntityById(environment.newsApiUrl,id);
   }
 
   /**
