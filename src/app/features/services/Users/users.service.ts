@@ -61,5 +61,9 @@ export class UsersService {
    deleteUserById(id: number | undefined):Observable<HTTPResponse<User>>{
     return this.privateBackofficeService.deleteEntity(`${environment.usersApiUrl}/${id}`);
   }
+
+  searchUsers(user: string): Observable<HTTPResponse<User[]>> {
+    return this.privateBackofficeService.getEntities(environment.usersApiUrl+"?search="+user);
+  }
   
 }
