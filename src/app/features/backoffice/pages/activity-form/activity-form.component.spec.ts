@@ -134,7 +134,7 @@ describe("ActivityFormComponent", () => {
     componentAct.form.get("image")!.setValue("");
     expect(componentAct.allowSend).toBeFalse();
   });
-
+ 
       
   it("should return expected activity with real service", async () => {
     httpClient = new HttpClient(
@@ -223,3 +223,4 @@ describe("ActivityFormComponent", () => {
 
 });
 //ng test --include src/app/features/backoffice/pages/activity-form/activity-form.component.spec.ts
+//ng test --include src/app/shared/components/contact-form/contact-form.component.spec.ts
