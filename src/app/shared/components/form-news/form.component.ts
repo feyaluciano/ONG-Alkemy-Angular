@@ -112,133 +112,117 @@ export class FormComponent implements OnInit {
 
     let date: string = (new Date()).toLocaleDateString() + " " + (new Date()).toLocaleTimeString();
 
-    if(this.contentCKeditor){
-
-      if(this.form.valid){
+    
       
-        let news: News = {
-          name: this.form.get('name')?.value,
-          content: this.contentCKeditor,
-          image: this.imageB64,
-          category_id: this.form.get('category_id')?.value,
-          created_at: date,
-          updated_at: null,
-          deleted_at: null,
-          slug: null,
-          user_id: null
-        }
+    let news: News = {
+      name: this.form.get('name')?.value,
+      content: this.contentCKeditor,
+      image: this.imageB64,
+      category_id: this.form.get('category_id')?.value,
+      created_at: date,
+      updated_at: null,
+      deleted_at: null,
+      slug: null,
+      user_id: null
+    }
+    
+    // For edits a news it's necessary add a new imgBase64
+    if(this.edit){
+
+      this.messageToShow = 'Novedad editada exitosamente';
+
+      let id: string = this.news.id?.toString()!;
+
+      this.newsServices.updateNews(id, news).subscribe( r => {
         
-        // For edits a news it's necessary add a new imgBase64
-        if(this.edit){
-
-          this.messageToShow = 'Novedad editada exitosamente';
-
-          let id: string = this.news.id?.toString()!;
-
-          this.newsServices.updateNews(id, news).subscribe( r => {
-            
-            this.form.reset();
-            this.ckeditorService.textEditor$.next("");
-            
-          },
-          (error) => {
-
-            let errorMessage="";           
-            switch(error.status) { 
-              case 404: { 
-                errorMessage="Error al editar la Novedad"; 
-                 break; 
-              } 
-              case 401: {  
-                errorMessage="Usted no esta autorizado para acceder a este recurso";
-                 break; 
-              } 
-              default: { 
-                errorMessage="Error desconocido";
-                 break; 
-              } 
-            }    
-          
-            this.viewErrorDialog(errorMessage);
-
-          },
-          () => {
-
-            this.dialog.open(StandarDialogComponent, {
-              height: '300px',
-              width: '400px',
-              data: {
-                type: "success", 
-                titleToShow:"",
-                messageToShow: this.messageToShow,
-                showButtonsOkCancel:false
-              },
-            });
-
-          });
-        } else {
-
-          this.messageToShow = 'Novedad guardada exitosamente';
-          this.newsServices.createNews(news).subscribe( r => {
-
-            this.form.reset();
-            this.ckeditorService.textEditor$.next("");
-
-          },
-          (error) => {
-
-            let errorMessage="";           
-            switch(error.status) { 
-              case 404: { 
-                errorMessage="Error al crear la Novedad"; 
-                 break; 
-              } 
-              case 401: {  
-                errorMessage="Usted no esta autorizado para acceder a este recurso";
-                 break; 
-              } 
-              default: { 
-                errorMessage="Error desconocido";
-                 break; 
-              } 
-            }    
-          
-            this.viewErrorDialog(errorMessage);
-
-          },
-          () => {
-  
-            this.dialog.open(StandarDialogComponent, {
-              height: '300px',
-              width: '400px',
-              data: {
-                type: "success",
-                titleToShow:"",
-                messageToShow: this.messageToShow,
-                showButtonsOkCancel:false
-              },
-            });
-
-          });
-        }
+        this.form.reset();
+        this.ckeditorService.textEditor$.next("");
         
+      },
+      (error) => {
 
+        let errorMessage="";           
+        switch(error.status) { 
+          case 404: { 
+            errorMessage="Error al editar la Novedad"; 
+              break; 
+          } 
+          case 401: {  
+            errorMessage="Usted no esta autorizado para acceder a este recurso";
+              break; 
+          } 
+          default: { 
+            errorMessage="Error desconocido";
+              break; 
+          } 
+        }    
+      
+        this.viewErrorDialog(errorMessage);
 
-      } else {
-        Swal.fire({
-          title: 'Error',
-          text: 'Campos incompletos.',
-          icon: 'error'
+      },
+      () => {
+
+        this.dialog.open(StandarDialogComponent, {
+          height: '300px',
+          width: '400px',
+          data: {
+            type: "success", 
+            titleToShow:"",
+            messageToShow: this.messageToShow,
+            showButtonsOkCancel:false
+          },
         });
-      }
+
+      });
     } else {
-      // ckEditor error
-      Swal.fire({
-        title: 'Error',
-        text: 'Ingrese una descripción.',
-        icon: 'error'
+
+      this.messageToShow = 'Novedad guardada exitosamente';
+      this.newsServices.createNews(news).subscribe( r => {
+
+        this.form.reset();
+        this.ckeditorService.textEditor$.next("");
+
+      },
+      (error) => {
+
+        let errorMessage="";           
+        switch(error.status) { 
+          case 404: { 
+            errorMessage="Error al crear la Novedad"; 
+              break; 
+          } 
+          case 401: {  
+            errorMessage="Usted no esta autorizado para acceder a este recurso";
+              break; 
+          } 
+          default: { 
+            errorMessage="Error desconocido";
+              break; 
+          } 
+        }    
+      
+        this.viewErrorDialog(errorMessage);
+
+      },
+      () => {
+
+        this.dialog.open(StandarDialogComponent, {
+          height: '300px',
+          width: '400px',
+          data: {
+            type: "success",
+            titleToShow:"",
+            messageToShow: this.messageToShow,
+            showButtonsOkCancel:false
+          },
+        });
+
       });
     }
+        
+
+
+     
     
   }
 
