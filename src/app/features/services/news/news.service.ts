@@ -35,7 +35,7 @@ export class NewsService {
    * @returns HttpResponse<News>
    */
   createNews(news:News):Observable<HTTPResponse<News>>{
-    return this.privateBackofficeService.createEntity(`${this.apiUrl}${this.news}`,news);
+    return this.privateBackofficeService.createEntity(environment.newsApiUrl,news);
   }
 
   updateNews(id:string, news: News):Observable<HTTPResponse<News>>{

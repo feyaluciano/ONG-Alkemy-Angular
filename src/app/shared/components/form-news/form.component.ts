@@ -33,15 +33,17 @@ export class FormComponent implements OnInit {
 
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(4)] ],
+    content: [''],
     image: ['', Validators.required ],
     category_id: ['', Validators.required ]
   });  
+  messageToShow: string = '';
 
   constructor( 
     private fb: FormBuilder, 
     private ckeditorService: CkeditorService, 
     private categoriesServices: CategoriesService,
-    private newsServices: NewsService,
+    public newsServices: NewsService,
     private router: Router,
     public dialog: MatDialog
   ) { }
@@ -129,6 +131,8 @@ export class FormComponent implements OnInit {
         // For edits a news it's necessary add a new imgBase64
         if(this.edit){
 
+          this.messageToShow = 'Novedad editada exitosamente';
+
           let id: string = this.news.id?.toString()!;
 
           this.newsServices.updateNews(id, news).subscribe( r => {
@@ -166,13 +170,15 @@ export class FormComponent implements OnInit {
               data: {
                 type: "success", 
                 titleToShow:"",
-                messageToShow: 'Novedad editada satisfactoriamente',
+                messageToShow: this.messageToShow,
                 showButtonsOkCancel:false
               },
             });
 
           });
         } else {
+
+          this.messageToShow = 'Novedad guardada exitosamente';
           this.newsServices.createNews(news).subscribe( r => {
 
             this.form.reset();
@@ -201,14 +207,14 @@ export class FormComponent implements OnInit {
 
           },
           () => {
-
+  
             this.dialog.open(StandarDialogComponent, {
               height: '300px',
               width: '400px',
               data: {
                 type: "success",
                 titleToShow:"",
-                messageToShow: 'Novedad guardada exitosamente',
+                messageToShow: this.messageToShow,
                 showButtonsOkCancel:false
               },
             });
