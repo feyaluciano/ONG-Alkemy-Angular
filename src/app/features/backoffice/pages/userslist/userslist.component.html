@@ -3,13 +3,30 @@
         <div class="col-12 col-md-12 mt-5">
             <h1>Lista de Usuarios</h1>
             <hr>
+
+            <form [formGroup]="searchForm" autocomplete="off">
+                <div class="input-group mb-3">
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Ingresar nombre" 
+                    aria-label="Ingresar nombre" 
+                    aria-describedby="button-addon2"
+                    formControlName="searchUser">
+                    <button class="btn btn-outline-danger" type="button" (click)="search()">Buscar</button>                    
+                </div>
+                <div appMsgErrorForm messageError="Este campo es requerido"
+                    [valido]="haveErrorsInputForm('searchUser','required')"></div>
+                    <div appMsgErrorForm messageError="Mínimo dos caracteres"
+                    [valido]="haveErrorsInputForm('searchUser','minLength')"></div>
+            </form>
             
         </div>
 
         
 
         <div class="col-12 col-md-12 mt-3">
-            <div class="card  animate__animated animate__zoomIn">
+            <div class="card  mb-2">
                 <div class="table-responsive p-4">
                     <table class="table table-striped table-hover caption-top table-bordered">
                         <caption>
@@ -30,8 +47,8 @@
                                 <td> {{user.email}} </td>
                                <td>
                                       <div class="i-container">
-                                        <i class="fas fa-user-edit fa-lg text-primary m-1" (click)="editUser(user.id)"></i>
-                                        <i class="far fa-trash-alt fa-lg text-danger m-1" (click)="deleteUser(user.id)"></i>
+                                        <i class="fas fa-user-edit fa-lg text-primary m-2" (click)="editUser(user.id)"></i>
+                                        <i class="far fa-trash-alt fa-lg text-danger m-2" (click)="deleteUser(user.id)"></i>
                                     </div>
                                 </td>       
                             </tr>
