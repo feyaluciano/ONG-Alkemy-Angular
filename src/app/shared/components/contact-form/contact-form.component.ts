@@ -9,6 +9,7 @@ import 'mapbox-gl-leaflet';
 })
 
 export class ContactFormComponent implements OnInit {
+  send:boolean = false;
 
   @ViewChild('map')
   private mapContainer!: ElementRef<HTMLElement>;
@@ -38,15 +39,19 @@ export class ContactFormComponent implements OnInit {
 
   onSubmit() {
 
-    // TODO: Remove console.logs and add logic here
-
-    console.log('name:', this.contactForm.value.name);
-
-    console.log('email:', this.contactForm.value.email);
+    if(this.contactForm.valid){
+      this.send = true;
+      const contact = {
+        name: this.contactForm.get("name")?.value,
+        email: this.contactForm.get("email")?.value,
+        phone: this.contactForm.get("phone")?.value,
+        message: this.contactForm.get("message")?.value
+      }
+      console.log(contact);
+      
     
-    console.log('phone:', this.contactForm.value.phone);
-    
-    console.log('message:', this.contactForm.value.message);
+
+    }
     
   }
 
