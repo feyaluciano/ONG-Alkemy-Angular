@@ -8,7 +8,7 @@ import { StandarDialogComponent } from 'src/app/shared/components/standar-dialog
 import Swal from 'sweetalert2';
 import { ImageFile } from '../../../../models/ImageFile';
 import { User } from '../../../../models/User';
-import { UsersService } from '../../../../services/Users/users.service';
+import { UsersService } from '../../../../services/users/users.service';
 
 @Component({
   selector: 'app-user-form',
