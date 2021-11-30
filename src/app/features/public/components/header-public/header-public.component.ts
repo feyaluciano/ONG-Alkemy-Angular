@@ -61,6 +61,11 @@ export class HeaderPublicComponent implements OnInit {
         route: '/donar',
         text: 'Contribuye',
         renderize: false
+      },
+      {
+        route: '/dashboard',
+        text: 'dashboard',
+        renderize: false
       }
     ];
 

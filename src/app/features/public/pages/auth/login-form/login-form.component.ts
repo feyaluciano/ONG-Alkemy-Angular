@@ -65,7 +65,7 @@ export class LoginFormComponent implements OnInit  {
   this.authentication$.subscribe( auth => {
     if(auth){
 
-      this.Router.navigate(["backoffice/dashboard"]);
+      this.Router.navigate(["home"]);
       
     }
   });
@@ -83,7 +83,7 @@ export class LoginFormComponent implements OnInit  {
      this.store.dispatch(loginGoogle());
      this.authentication$.subscribe( auth => {
       if(auth){
-  
+   
         this.Router.navigate(["home"]);
         
       }

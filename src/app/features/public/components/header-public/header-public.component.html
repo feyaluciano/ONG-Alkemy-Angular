@@ -32,10 +32,13 @@
         <div class="">
           <button *ngIf="!loggedIn" [routerLink]="['/login']" class="btn btn-outline-primary"
             style="margin-right: 10px;" type="button">Entrar</button>
+
           <button *ngIf="loggedIn" (click)="logOut()" class="btn btn-outline-primary" style="margin-right: 10px;"
             type="button">Salir</button>
+            
           <button *ngIf="!loggedIn" [routerLink]="['/register']" class="btn btn-primary"
             type="button">Registrarse</button>
+            
         </div>
       </form>
     </div>

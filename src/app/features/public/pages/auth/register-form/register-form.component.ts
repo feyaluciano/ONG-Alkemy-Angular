@@ -26,7 +26,7 @@ export class RegisterFormComponent implements OnInit {
   direction = '';
   directionArray:any =[];
   errorDirection:boolean = false;
-
+  register:boolean = false;
   termsOk: boolean = false;
   
   constructor(
@@ -87,7 +87,8 @@ export class RegisterFormComponent implements OnInit {
       };
       console.log(user)
       await this.userStatusService.setUser(user);      
-      this.router.navigate(["/dashboard"]);
+      this.router.navigate(["/home"]);
+      this.register = true;
     } else {
       this.form.markAllAsTouched();
     }
