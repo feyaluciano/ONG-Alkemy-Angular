@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormComponent } from './form.component';
 import { News } from '../../../features/models/news.interface';
@@ -12,8 +12,12 @@ import { ActivatedRoute } from '@angular/router';
 
 describe('FormComponent', () => {
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  let component: FormComponent;
+  let fixture: ComponentFixture<FormComponent>;
+  let services: NewsService;
+  
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [CommonModule, AppModule],
       declarations: [FormComponent],
       providers: [
@@ -28,6 +32,12 @@ describe('FormComponent', () => {
         },
       ],
     }).compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(FormComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it("should detect form is valid", async () => {
@@ -50,34 +60,36 @@ describe('FormComponent', () => {
     expect(componentForm.form.valid).toBeFalse();
   });
 
-  it("should be success in a POST request", () => {   
+  it("should be success in a POST request", (done: DoneFn) => {   
     const fixture = TestBed.createComponent(FormComponent);
     const componentForm = fixture.componentInstance;    
     const news: News = {
-      id: undefined,
-      name:"newName",
-      content:"newContent",
-      image:"newImage"
-    };       
-    componentForm.newsServices.createNews(news)
-      .subscribe((res) => {
-        expect(res.success).toBeTrue();    
-    });
-  });
-
-  it("should be success in a PATCH request", () => {   
-    const fixture = TestBed.createComponent(FormComponent);
-    const componentForm = fixture.componentInstance;    
-    const id = '1052';       
-    const news: News = {
-      id: undefined,
       name:"newName",
       content:"newContent",
       image:"newImage"
     };
+
+    componentForm.newsServices.createNews(news)
+      .subscribe((res) => {
+        expect(res.success).toBeTrue();  
+        done();  
+    });
+  });
+
+  it("should be success in a PATCH request", (done: DoneFn) => {   
+    const fixture = TestBed.createComponent(FormComponent);
+    const componentForm = fixture.componentInstance;    
+    const id = '1052';       
+    const news: News = {
+      name:"newName",
+      content:"newContent",
+      image:"newImage"
+    };
+
     componentForm.newsServices.updateNews(id, news)
       .subscribe((res) => {
-        expect(res.success).toBeTrue();    
+        expect(res.success).toBeTrue();
+        done();    
     });   
   });
 
