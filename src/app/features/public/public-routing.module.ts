@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
+import { LoginGuard } from 'src/app/core/guards/login.guard';
+import { BackofficeHomeComponent } from '../backoffice/pages/backoffice-home/backoffice-home.component';
+import { DashboardComponent } from '../backoffice/pages/dashboard/dashboard.component';
 import { AppPublicComponent } from './app-public.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ActivitiesComponent } from './pages/activities/activities.component';
@@ -30,7 +33,7 @@ const routes: Routes = [
         data: {animation: 'Home'}         
       },
           { path: 'register', component: RegisterFormComponent,canActivate: [AuthGuard], data: { animation: 'Register' } },
-          { path : 'login' , component:LoginFormComponent, data: { animation: 'Login' }},
+          { path : 'login' , component:LoginFormComponent,canActivate:[LoginGuard], data: { animation: 'Login' }},
           { path: 'nosotros', component: MembersComponent, data: { animation: 'Nosotros' } } ,
           { path: 'contacto', component: ContactComponent, data: { animation: 'Contacto' } },
           { path: 'actividades', component: ActivitiesComponent, data: { animation: 'Actividades' } },
@@ -38,6 +41,7 @@ const routes: Routes = [
           { path: 'novedades', component: NewsFormComponent, data: { animation: 'Novedades' } },
           { path: 'testimonios', component: TestimonialFormComponent, data: { animation: 'Testimonios' } },
           { path: 'donar', component: DonationComponent, data: { animation: 'Donar' } },
+          { path: 'dashboard', component: DashboardComponent, data: { animation: 'Donar' } },
           { path: 'donar/error', component: DonationErrorComponent, data: { animation: 'DonarError' } },
           { path: 'gracias', component: ThanksComponent, data: { animation: 'Gracias' } },
 
