@@ -26,7 +26,7 @@ export class NewsService {
    */
   getNewsById(id:string):Observable<HTTPResponse<News>>{
     
-    return this.privateBackofficeService.getEntityById(`${this.apiUrl}${this.news}/`,id);
+    return this.privateBackofficeService.getEntityById(environment.newsApiUrl,id);
   }
 
   /**
@@ -35,10 +35,18 @@ export class NewsService {
    * @returns HttpResponse<News>
    */
   createNews(news:News):Observable<HTTPResponse<News>>{
-    return this.privateBackofficeService.createEntity(`${this.apiUrl}${this.news}`,news);
+    return this.privateBackofficeService.createEntity(environment.newsApiUrl,news);
   }
 
   updateNews(id:string, news: News):Observable<HTTPResponse<News>>{
     return this.privateBackofficeService.updateEntity(`${this.news}/${id}`,news);
+  }
+
+  searchNews(text: string): Observable<HTTPResponse<News[]>> {
+    return this.privateBackofficeService.getEntities(environment.newsApiUrl+"?search="+text);
+  }
+
+  deleteNew(id: string | undefined): Observable<HTTPResponse<News>> {
+    return this.privateBackofficeService.deleteEntity(`${environment.newsApiUrl}/${id}`);
   }
 }
