@@ -7,7 +7,7 @@
             <form [formGroup]="searchForm" autocomplete="off">
                 <div class="input-group mb-3">
                     <input 
-                    type="text" 
+                    type="text"   
                     class="form-control" 
                     placeholder="Ingresar nombre" 
                     aria-label="Ingresar nombre" 
@@ -17,6 +17,7 @@
                 </div>
                 <div appMsgErrorForm messageError="Este campo es requerido"
                     [valido]="haveErrorsInputForm('searchUser','required')"></div>
+                    
                     <div appMsgErrorForm messageError="Mínimo dos caracteres"
                     [valido]="haveErrorsInputForm('searchUser','minLength')"></div>
             </form>
