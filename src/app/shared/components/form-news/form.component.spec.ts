@@ -145,3 +145,5 @@ describe('FormComponent', () => {
   });
     
 });
+
+// ng test --include src/app/shared/components/form-news/form.component.spec.ts
