@@ -1,3 +1,56 @@
+<<<<<<< HEAD
+# Test Cases
+
+# A - Activity Form Testing
+
+-Type:Funcionality
+-Description: the received id should be a number
+-Test Step: Input an number on the url
+-Expected Result : the variable editing is true 
+
+
+-Type:Funcionality
+-Description:  the form should be valid
+-Test Step: enter all required fields
+-Expected Result : the form is not invalid
+
+-Type:Funcionality
+-Description:  the form should not be able to send
+-Test Step: not enter all required fields
+-Expected Result : the variable allowSend to be false
+
+-Type:Funcionality
+-Description:  the form should not be able to send
+-Test Step: not enter all required fields
+-Expected Result : the variable allowSend to be false
+
+
+-Type:Funcionality
+-Description:  the response success should be true on request get 
+-Test Step: input an id that exists in the database
+-Expected Result : the variable success in response to be true
+
+
+-Type:Funcionality
+-Description:  the response success should be true on request post 
+-Test Step: input an activitye
+-Expected Result : the variable success in response to be true
+
+-Type:Funcionality
+-Description:  the response success should be true on request patch 
+-Test Step: input an activitye
+-Expected Result : the variable success in response to be true
+
+-Type:Funcionality
+-Description:  the variable alertMessage should 'La actividad fue agregada correctamente'
+-Test Step: input an activity an send post
+-Expected Result : the variable success in response to be true
+
+-Type:Funcionality
+-Description:  the variable alertMessage should 'La actividad fue actualizada correctamente'
+-Test Step: input an activity an send patch
+-Expected Result : the variable success in response to be true
+=======
 <h2># Testing</h2>
 
 <p><h3>A. Activity Form Testing</h3></p>
@@ -110,7 +163,29 @@
  <li>Expected results:The variable alertMessage should 'La actividad fue actualizada correctamente' and the variable success in response to be true </li>
 </ul>
 
+>>>>>>> main
 
+
+# B - Contact Form Testing
+
+    B.1: detect if the form is valid
+        * Entries: name, email, phone, message
+        * Step: 1) open the app
+                2) the fields are filled according to their type
+                3) check that it is not invalid
+        * Expected results: the app shows error messages when entering the data incorrectly
+
+    B.2: Do not send the form if it is not completed
+        * Entries: name, email, phone, message
+        * Step: 1) open the app
+                2) It is checked that the required fields are filled
+        * Expected results: the app displays alert messages indicating that the required fields must be filled out and does not allow the information to be sent until complete
+
+    B.3: test the correct http request
+        * Entries: name, email, phone, message, updated_at, created_at
+        * Step: 1) Open the app
+                2) the call to the api is made with the data correctly entered
+                3) if it is successful, the app returns a success response and show , and if it is not, it returns an error response
 
 
 

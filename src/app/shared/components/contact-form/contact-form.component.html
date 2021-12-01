@@ -1,6 +1,6 @@
 
     
-  <form
+  <form *ngIf="!response"
     [formGroup]="contactForm"
     class="needs-validation"
     novalidate
@@ -102,3 +102,11 @@
   </div>
 
   </form>
+
+  <div *ngIf="response">
+    <h1>Tu mensaje se ha Enviado Exitosamente</h1>
+  </div>
+
+  <div *ngIf="errorServidor">
+    <h1>Hay un problema con el Servidor Intentelo mas tarde</h1>
+  </div>
