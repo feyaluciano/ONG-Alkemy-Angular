@@ -196,26 +196,43 @@
  <li>Expected results: The message "Novedad guardada exitosamente" is displayed</li>
 </ul>
 
-# B - Contact Form Testing
 
-    B.1: detect if the form is valid
-        * Entries: name, email, phone, message
-        * Step: 1) open the app
-                2) the fields are filled according to their type
-                3) check that it is not invalid
-        * Expected results: the app shows error messages when entering the data incorrectly
+<p> <h3>B - Contact Form Testing </h3> </p>
 
-    B.2: Do not send the form if it is not completed
-        * Entries: name, email, phone, message
-        * Step: 1) open the app
-                2) It is checked that the required fields are filled
-        * Expected results: the app displays alert messages indicating that the required fields must be filled out and does not allow the information to be sent until complete
+   <p> <h4>B.1: detect if the form is valid </h4> </p>
+       <ul> <li>Entries: name, email, phone, message </li>
+            <li> Step: 
+                <ol> 
+                    <li>open the app</li>
+                    <li> the fields are filled according to their type </li>
+                    <li> check that it is not invalid </li> 
+                </ol>
+                <li> Expected results: the app shows error messages when entering the data incorrectly </li>
+            </li> 
+       </ul>
 
-    B.3: test the correct http request
-        * Entries: name, email, phone, message, updated_at, created_at
-        * Step: 1) Open the app
-                2) the call to the api is made with the data correctly entered
-                3) if it is successful, the app returns a success response and show , and if it is not, it returns an error response
+   <p> <h4> B.2: Do not send the form if it is not completed </h4> </p>
+         <ul> <li>Entries: name, email, phone, message </li>
+                <li>Step: 
+                    <ol>
+                        <li> open the app</li>
+                        <li> It is checked that the required fields are filled </li>
+                    </ol>
+                    <li> Expected results: the app displays alert messages indicating that the required fields must be filled out and does not allow the information to be sent until complete </li>
+                </li> 
+         </ul>
+
+   <p> <h4> B.3: test the correct http request </h4> </p>
+       <ul> <li> Entries: name, email, phone, message, updated_at, created_at </li>
+            <li>Step:
+               <ol>
+                 <li> Open the app</li>
+                 <li> the call to the api is made with the data correctly entered</li>
+               </ol>
+                 <li> Expected results: if it is successful, the app returns a success response and show the message, and if it is not, it returns an error response</li>
+            </li> 
+        </ul>
+
 
 
 
