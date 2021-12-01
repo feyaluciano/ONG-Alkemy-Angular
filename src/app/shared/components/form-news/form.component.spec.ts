@@ -15,6 +15,7 @@ describe('FormComponent', () => {
   let component: FormComponent;
   let fixture: ComponentFixture<FormComponent>;
   let services: NewsService;
+  let httpClientSpy: {post: jasmine.Spy, put: jasmine.Spy};
   
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,7 +24,7 @@ describe('FormComponent', () => {
       providers: [
         HttpClient,
         AuthService,
-        NewsService,
+        // NewsService,
         {
           provide: ActivatedRoute,
           useValue: {
@@ -38,6 +39,9 @@ describe('FormComponent', () => {
     fixture = TestBed.createComponent(FormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    httpClientSpy = jasmine.createSpyObj('http', ['post', 'put']);
+    services = new NewsService(httpClientSpy as any)
   });
 
   it("should detect form is valid", async () => {
@@ -63,13 +67,27 @@ describe('FormComponent', () => {
   it("should be success in a POST request", (done: DoneFn) => {   
     const fixture = TestBed.createComponent(FormComponent);
     const componentForm = fixture.componentInstance;    
+    
     const news: News = {
       name:"newName",
       content:"newContent",
       image:"newImage"
     };
 
-    componentForm.newsServices.createNews(news)
+    const mockNew = {
+      success:true,
+      data: {
+        id: "1052",
+        name: "newName",
+        content: "NewContent",
+        image: "newImage"
+      },
+      message: "New edited successfully"
+    };
+
+    httpClientSpy.post.and.returnValue(of(mockNew));
+
+    services.createNews(news)
       .subscribe((res) => {
         expect(res.success).toBeTrue();  
         done();  
@@ -86,7 +104,18 @@ describe('FormComponent', () => {
       image:"newImage"
     };
 
-    componentForm.newsServices.updateNews(id, news)
+    httpClientSpy.put.and.returnValue(of({
+      success:true,
+      data: {
+        id: "1052",
+        name: "newName",
+        content: "NewContent",
+        image: "newImage"
+      },
+      message: "New edited successfully"
+    }));
+    
+    services.updateNews(id, news)
       .subscribe((res) => {
         expect(res.success).toBeTrue();
         done();    

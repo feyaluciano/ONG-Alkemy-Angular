@@ -43,7 +43,7 @@ export class FormComponent implements OnInit {
     private fb: FormBuilder, 
     private ckeditorService: CkeditorService, 
     private categoriesServices: CategoriesService,
-    public newsServices: NewsService,
+    private newsServices: NewsService,
     private router: Router,
     public dialog: MatDialog
   ) { }
