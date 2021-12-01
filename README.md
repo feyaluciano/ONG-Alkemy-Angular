@@ -196,6 +196,27 @@
  <li>Expected results: The message "Novedad guardada exitosamente" is displayed</li>
 </ul>
 
+# B - Contact Form Testing
+
+    B.1: detect if the form is valid
+        * Entries: name, email, phone, message
+        * Step: 1) open the app
+                2) the fields are filled according to their type
+                3) check that it is not invalid
+        * Expected results: the app shows error messages when entering the data incorrectly
+
+    B.2: Do not send the form if it is not completed
+        * Entries: name, email, phone, message
+        * Step: 1) open the app
+                2) It is checked that the required fields are filled
+        * Expected results: the app displays alert messages indicating that the required fields must be filled out and does not allow the information to be sent until complete
+
+    B.3: test the correct http request
+        * Entries: name, email, phone, message, updated_at, created_at
+        * Step: 1) Open the app
+                2) the call to the api is made with the data correctly entered
+                3) if it is successful, the app returns a success response and show , and if it is not, it returns an error response
+
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
