@@ -40,7 +40,7 @@ describe('FormComponent', () => {
   let FakeNewsService = {
     createNews: (news: News) => {
       let aNew = of({
-        "success":true,
+        "success": true,
         "data": {news},
         "message": "New saved successfully"
       });
@@ -49,7 +49,7 @@ describe('FormComponent', () => {
 
     updateNews: (id: string, news: News) => {
       let aNew = of({
-        "success":true,
+        "success": true,
         "data": {
           "id": id,
           "news": news
@@ -100,7 +100,7 @@ describe('FormComponent', () => {
     };
 
     const data = {
-      "success":true,
+      "success": true,
       "data": {
         "name": "",
         "content": "",
@@ -134,7 +134,7 @@ describe('FormComponent', () => {
     };
 
     const data = {
-      "success":true,
+      "success": true,
       "data": {
         "name": "",
         "content": "",
