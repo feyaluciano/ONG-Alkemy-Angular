@@ -44,15 +44,6 @@ describe('ContactFormComponent', () => {
 
   })
 
-  it('No enviar el formulario sino se completo', ()=>{
-    const fixture = TestBed.createComponent(ContactFormComponent);
-    const  componentContact = fixture.componentInstance;
-    componentContact.contactForm.get("name")!.setValue("");
-    componentContact.contactForm.get("email")!.setValue("");
-    componentContact.contactForm.get("phone")!.setValue("");
-    componentContact.contactForm.get("message")!.setValue("");
-    expect( componentContact.send).toBeFalse();
-  })
 
   it('No enviar el formulario sino se completo', ()=>{
     const fixture = TestBed.createComponent(ContactFormComponent);

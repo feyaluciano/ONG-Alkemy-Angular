@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import 'mapbox-gl-leaflet';
+import { ContactFormService } from './contact-form.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -10,6 +11,8 @@ import 'mapbox-gl-leaflet';
 
 export class ContactFormComponent implements OnInit {
   send:boolean = false;
+  response:boolean = false;
+  errorServidor:boolean = false;
 
   @ViewChild('map')
   private mapContainer!: ElementRef<HTMLElement>;
@@ -32,7 +35,7 @@ export class ContactFormComponent implements OnInit {
     ])
   });
 
-  constructor() { }
+  constructor(private contactServices:ContactFormService) { }
 
   ngOnInit(): void {
   }
@@ -49,7 +52,11 @@ export class ContactFormComponent implements OnInit {
       }
       console.log(contact);
       
-    
+      this.contactServices.contactPost(contact).subscribe(resp=>{
+        this.response = true;
+      }, (error)=>{
+        this.errorServidor = true
+      })
 
     }
     
