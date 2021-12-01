@@ -17,7 +17,7 @@ export class NewsFormComponent implements OnInit {
   form: boolean = false;
 
 
-  constructor( private activatedRoute: ActivatedRoute, private newsServices: NewsService ) { }
+  constructor( public activatedRoute: ActivatedRoute, private newsServices: NewsService ) { }
 
   ngOnInit(): void {
 

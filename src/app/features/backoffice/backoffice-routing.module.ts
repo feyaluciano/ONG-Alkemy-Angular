@@ -15,6 +15,7 @@ import { SlideComponent } from './pages/slide/slide.component';
 import { SlidesComponent } from './pages/slides/slides.component';
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { UserslistComponent } from './pages/userslist/userslist.component';
+import { NewsComponent } from './pages/news/news/news.component';
 
 
 
@@ -39,7 +40,8 @@ const routes: Routes = [
       { path: 'home', component: BackofficeHomeComponent, data: {animation: 'Home'} },
       { path: 'organization', component: OrganizationComponent, data: {animation: 'CrearOrganization'} },
       { path: 'organization/edit', component: OrganizationEditComponent, data: {animation: 'Organization'} },
-      { path: 'news', component: NewsFormComponent, data: {animation: 'CrearNew'} },
+      { path: 'news', component: NewsComponent, data: { animation: 'News' } },
+      { path: 'news/create', component: NewsFormComponent, data: {animation: 'CrearNew'} },
       { path: 'news/:id', component: NewsFormComponent, data: {animation: 'New'}},
       { path: 'users', component: UserslistComponent, data: {animation: 'Users'} },
       { path: 'users/create', component: UserFormComponent, data: {animation: 'CreateUser'} },
