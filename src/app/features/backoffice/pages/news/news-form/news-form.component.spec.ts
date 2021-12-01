@@ -68,3 +68,5 @@ describe('NewsFormComponent', () => {
     });
   });
 });
+
+// ng test --include src/app/features/backoffice/pages/news/news-form/news-form.component.spec.ts

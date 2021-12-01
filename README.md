@@ -110,7 +110,91 @@
  <li>Expected results:The variable alertMessage should 'La actividad fue actualizada correctamente' and the variable success in response to be true </li>
 </ul>
 
+<p><h3>N. News Form Testing</h3></p>
+<p><h4>N1.: Should have a parameter id and tobe a number</h4></p>
+<ul>
+ <li>Pre-Conditions:</li>
+ <li>Entries: Input a number on the url /news/1</li>
+ <li>Steps: 
+ <ol>
+ <li>Open the web:</li>
+ <li>Navigate to edit an entity.</li> 
+</ol> 
+ </li>
+ <li>Expected results: The variable id is a number</li>
+</ul>
 
+<p><h3>F. Form Testing</h3></p>
+<p><h4>F1.: Should detect form is valid</h4></p>
+<ul>
+ <li>Pre-Conditions:</li>
+ <li>Entries: All required fields</li>
+ <li>Steps: 
+ <ol>
+ <li>Open the web:</li>
+ <li>Input text in fields</li> 
+</ol> 
+ </li>
+ <li>Expected results: The form is valid</li>
+</ul>
+
+
+<p><h4>F2.: Should not be able to submit when form is invalid</h4></p>
+<ul>
+ <li>Pre-Conditions:</li>
+ <li>Entries: No field completed</li>
+ <li>Steps: 
+ <ol>
+ <li>Open the web:</li>
+ <li>Leave the fields empty</li> 
+ <li>Click submit button</li> 
+</ol> 
+ </li>
+ <li>Expected results: The form is not able to submit</li>
+</ul>
+
+
+<p><h4>F3.: Should be success in a POST request</h4></p>
+<ul>
+ <li>Pre-Conditions:</li>
+ <li>Entries: All fields to a new</li>
+ <li>Steps: 
+ <ol>
+ <li>Open the web:</li>
+ <li>Input all fields.</li> 
+</ol> 
+ </li>
+ <li>Expected results: The POST request is successful</li>
+</ul>
+
+
+<p><h4>F4.: Should be success in a PATCH request</h4></p>
+<ul>
+ <li>Pre-Conditions:</li>
+ <li>Entries: Input all fields</li>
+ <li>Steps: 
+ <ol>
+ <li>Open the web:</li>
+ <li>Provide an id</li> 
+ <li>Fill in all fields</li> 
+</ol> 
+ </li>
+ <li>Expected results: The PATCH request is successful </li>
+</ul>
+
+
+<p><h4>F5.: On create a new, message should be 'Novedad guardada exitosamente'</h4></p>
+<ul>
+ <li>Pre-Conditions: </li>
+ <li>Entries: All fields to a new</li>
+ <li>Steps: 
+ <ol>
+ <li>Open the web:</li>
+ <li>Input all fields.</li> 
+</ol> 
+ </li>
+ <li>Expected results: The message "Novedad guardada exitosamente" is displayed</li>
+</ul>
 
 
 
