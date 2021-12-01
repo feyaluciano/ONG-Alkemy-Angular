@@ -2,20 +2,21 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormComponent } from './form.component';
 import { News } from '../../../features/models/news.interface';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { AppModule } from 'src/app/app.module';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { NewsService } from '../../../features/services/news/news.service';
 import { ActivatedRoute } from '@angular/router';
+import { HTTPResponse } from 'src/app/features/models/HTTPResponse';
 
 describe('FormComponent', () => {
 
   let component: FormComponent;
   let fixture: ComponentFixture<FormComponent>;
-  let services: NewsService;
-  let httpClientSpy: {post: jasmine.Spy, put: jasmine.Spy};
+  // let services: NewsService;
+  // let httpClientSpy: {post: jasmine.Spy, put: jasmine.Spy};
   
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -24,6 +25,7 @@ describe('FormComponent', () => {
       providers: [
         HttpClient,
         AuthService,
+        { provide: NewsService, useValue: FakeNewsService},
         // NewsService,
         {
           provide: ActivatedRoute,
@@ -35,13 +37,45 @@ describe('FormComponent', () => {
     }).compileComponents();
   });
 
+  let FakeNewsService = {
+    createNews: () => {
+      let news: News = {
+        name:"newName",
+        content:"newContent",
+        image:"newImage"
+      };
+      let aNew: Observable<HTTPResponse<News>> = of({
+        success:true,
+        data: news,
+        message: "New saved successfully"
+      });
+      return aNew;
+    },
+
+    updateNews: () => {
+      let id = '1052';
+      let news: News = {
+        id: id,
+        name:"newName",
+        content:"newContent",
+        image:"newImage"
+      }
+      let aNew: Observable<HTTPResponse<News>> = of({
+        success:true,
+        data: news,
+        message: "New edited successfully"
+      });
+      return aNew;
+    }
+  }
+
   beforeEach(() => {
     fixture = TestBed.createComponent(FormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    httpClientSpy = jasmine.createSpyObj('http', ['post', 'put']);
-    services = new NewsService(httpClientSpy as any)
+    // httpClientSpy = jasmine.createSpyObj('http', ['post', 'put']);
+    // services = new NewsService(httpClientSpy as any)
   });
 
   it("should detect form is valid", async () => {
@@ -67,7 +101,42 @@ describe('FormComponent', () => {
   it("should be success in a POST request", (done: DoneFn) => {   
     const fixture = TestBed.createComponent(FormComponent);
     const componentForm = fixture.componentInstance;    
+
+    const news: News = {
+      name:"newName",
+      content:"newContent",
+      image:"newImage"
+    };
+
+    const mockNew = {
+      success:true,
+      data: {
+        id: "1052",
+        name: "newName",
+        content: "NewContent",
+        image: "newImage"
+      },
+      message: "New saved successfully"
+    };
     
+    const spy = spyOn<any>(componentForm["newsServices"], "createNews").and.returnValue(of({mockNew}));
+    componentForm["newsServices"].createNews(news)
+      .subscribe((res) => {
+        expect(res.success).toBeTrue();
+        done();    
+    });  
+    // httpClientSpy.post.and.returnValue(of(mockNew));
+    // services.createNews(news)
+    //   .subscribe((res) => {
+    //     expect(res.success).toBeTrue();  
+    //     done();  
+    // });
+  });
+
+  it("should be success in a PATCH request", (done: DoneFn) => {   
+    const fixture = TestBed.createComponent(FormComponent);
+    const componentForm = fixture.componentInstance;    
+    const id = '1052';       
     const news: News = {
       name:"newName",
       content:"newContent",
@@ -85,41 +154,29 @@ describe('FormComponent', () => {
       message: "New edited successfully"
     };
 
-    httpClientSpy.post.and.returnValue(of(mockNew));
-
-    services.createNews(news)
-      .subscribe((res) => {
-        expect(res.success).toBeTrue();  
-        done();  
-    });
-  });
-
-  it("should be success in a PATCH request", (done: DoneFn) => {   
-    const fixture = TestBed.createComponent(FormComponent);
-    const componentForm = fixture.componentInstance;    
-    const id = '1052';       
-    const news: News = {
-      name:"newName",
-      content:"newContent",
-      image:"newImage"
-    };
-
-    httpClientSpy.put.and.returnValue(of({
-      success:true,
-      data: {
-        id: "1052",
-        name: "newName",
-        content: "NewContent",
-        image: "newImage"
-      },
-      message: "New edited successfully"
-    }));
-    
-    services.updateNews(id, news)
+    const spy = spyOn<any>(componentForm["newsServices"], "updateNews").and.returnValue(of({mockNew}));
+    componentForm["newsServices"].updateNews(id, news)
       .subscribe((res) => {
         expect(res.success).toBeTrue();
         done();    
-    });   
+    }); 
+
+    // httpClientSpy.put.and.returnValue(of({
+    //   success:true,
+    //   data: {
+    //     id: "1052",
+    //     name: "newName",
+    //     content: "NewContent",
+    //     image: "newImage"
+    //   },
+    //   message: "New edited successfully"
+    // }));
+    
+    // services.updateNews(id, news)
+    //   .subscribe((res) => {
+    //     expect(res.success).toBeTrue();
+    //     done();    
+    // });   
   });
 
   it("on create a new, message should be 'Novedad guardada exitosamente'", () => {       
