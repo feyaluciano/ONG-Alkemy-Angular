@@ -99,20 +99,20 @@ describe('FormComponent', () => {
       "image":"newImage"
     };
 
-    const mockNew = {
+    const data = {
       "success":true,
       "data": {
-        "name": "newName",
-        "content": "NewContent",
-        "image": "newImage"
+        "name": "",
+        "content": "",
+        "image": ""
       },
       "message": "New saved successfully"
     };
     
-    const spy = spyOn<any>(componentForm["newsServices"], "createNews").and.returnValue(of({mockNew}));
+    const spy = spyOn<any>(componentForm["newsServices"], "createNews").and.returnValue(of({data}));
     componentForm["newsServices"].createNews(news)
       .subscribe((res) => {
-        expect(res["success"]).toBe(true);
+        expect(res["success"]).toBeTruthy();
         done();    
     });  
     // httpClientSpy.post.and.returnValue(of(mockNew));
@@ -136,9 +136,9 @@ describe('FormComponent', () => {
     const data = {
       "success":true,
       "data": {
-        "name": "newName",
-        "content": "NewContent",
-        "image": "newImage"
+        "name": "",
+        "content": "",
+        "image": ""
       },
       "message": "New edited successfully"
     };
@@ -146,7 +146,7 @@ describe('FormComponent', () => {
     const spy = spyOn<any>(componentForm["newsServices"], "updateNews").and.returnValue(of({data}));
     componentForm["newsServices"].updateNews(id, news)
       .subscribe((res) => {
-        expect(res["success"]).toBe(true);
+        expect(res["success"]).toBeTruthy();
         done();    
     }); 
 
