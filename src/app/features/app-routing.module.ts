@@ -1,14 +1,15 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
+import { BackofficeGuard } from "../core/guards/backoffice.guard";
 
 
 const routes: Routes = [
   {
     path: 'backoffice',
     loadChildren: () => import('./backoffice/backoffice.module').then(
-      m => m.BackofficeModule
-      ),         
+      m => m.BackofficeModule,
+      ), canActivate:[BackofficeGuard]        
   },  
   {
     path: '',
