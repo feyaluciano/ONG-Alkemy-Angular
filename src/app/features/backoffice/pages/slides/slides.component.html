@@ -1,84 +1,109 @@
-<div class="col-md-12">
+<div class="container">
   <div class="row">
-    <div class="col-md-2">
-      <app-navbar></app-navbar>
-    </div>
-    <div class="col-md-10">
 
-      <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Panel</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-          </div>
+    <div class="col-md-12">
+        <div class="col-md-2">
+          <app-navbar></app-navbar>
         </div>
-      </div>
-      <div class="m-4">
-        <h3 class="text-center">{{action}}</h3>
-      </div>
-      <div class="d-flex justify-content-center">
-        <app-spinner
-          color="primary"
-          mode="indeterminate"
-          *ngIf="!slidesCompleted"
-        ></app-spinner>
-      </div>
-      <div class="m-4" *ngIf="slidesCompleted">
-        <div class="table-responsive">
-          <table class="table caption-top table-hover">
-            <caption>
-              <button
-                type="button"
-                class="btn btn-primary"
-                (click)="redirectToCreate()"
-              >+ Nuevo</button>
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col">Orden</th>
-                <th scope="col">Título</th>
-                <th scope="col">Imagen</th>
-                <th scope="col">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let slide of slideList$ | async; let i = index">
+        <div class="col-md-12">
 
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Panel</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group me-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+              </div>
+            </div>
+          </div>
+          <div class="m-4">
+            <h3 class="text-center">{{action}}</h3>
+          </div>
+
+
+          <form [formGroup]="searchSlides" autocomplete="off">
+            <div class="input-group mb-3">
+                <input 
+                type="text"   
+                class="form-control" 
+                placeholder="Ingresar nombre" 
+                aria-label="Ingresar nombre" 
+                aria-describedby="button-addon2"
+                formControlName="searchSlide">
+                <button class="btn btn-outline-danger" type="button" (click)="searchSlide()">Buscar</button>                    
+            </div>
+            <div appMsgErrorForm messageError="Este campo es requerido"
+                [valido]="haveErrorsInputForm('searchUser','required')"></div>
                 
+                <div appMsgErrorForm messageError="Mínimo dos caracteres"
+                [valido]="haveErrorsInputForm('searchUser','minLength')"></div>
+        </form>
 
-                <th scope="row">{{ slide?.order }}</th>
-                <td>{{ slide?.name }}</td>
-                <td>
-                  
-                  {{i}}
 
-                  <img
-                      [src]="slide?.image"
-                      [alt]="slide?.name"
-                      class="slide_image"
-                    />
-                </td>
-                <td>
-                  <div class="btn-group me-2">
-                    <button 
-                      type="button" 
-                      class="btn btn-sm btn-outline-info"
-                      (click)="editSlide(slide.id)"
-                    >Editar</button>
-                    <button 
-                      type="button" 
-                      class="btn btn-sm btn-outline-danger"
-                      (click)="deleteSlide(slide.id, i)"
-                    >Eliminar</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+
+          <div class="d-flex justify-content-center">
+            <app-spinner
+              color="primary"
+              mode="indeterminate"
+              *ngIf="!slidesCompleted"
+            ></app-spinner>
+          </div>
+          <div class="m-4" *ngIf="slidesCompleted">
+            <div class="table-responsive">
+              <table class="table caption-top table-hover">
+                <caption>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="redirectToCreate()"
+                  >+ Nuevo</button>
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Orden</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let slide of slideList$ | async; let i = index">
+
+                    
+
+                    <th scope="row">{{ slide?.order }}</th>
+                    <td>{{ slide?.name }}</td>
+                    <td>
+                      
+                      {{i}}
+
+                      <img
+                          [src]="slide?.image"
+                          [alt]="slide?.name"
+                          class="slide_image"
+                        />
+                    </td>
+                    <td>
+                      <div class="btn-group me-2">
+                        <button 
+                          type="button" 
+                          class="btn btn-sm btn-outline-info"
+                          (click)="editSlide(slide.id)"
+                        >Editar</button>
+                        <button 
+                          type="button" 
+                          class="btn btn-sm btn-outline-danger"
+                          (click)="deleteSlide(slide.id, i)"
+                        >Eliminar</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>

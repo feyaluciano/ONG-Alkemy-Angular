@@ -78,7 +78,7 @@ export class UserslistComponent implements OnInit {
     );
   }
 
-  search(){
+  search(){ 
 
     let searchText = this.searchForm.controls['searchUser'].value;
 
