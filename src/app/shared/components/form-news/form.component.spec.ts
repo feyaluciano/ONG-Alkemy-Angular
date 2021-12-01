@@ -38,32 +38,23 @@ describe('FormComponent', () => {
   });
 
   let FakeNewsService = {
-    createNews: () => {
-      let news: News = {
-        name:"newName",
-        content:"newContent",
-        image:"newImage"
-      };
-      let aNew: Observable<HTTPResponse<News>> = of({
-        success:true,
-        data: news,
-        message: "New saved successfully"
+    createNews: (news: News) => {
+      let aNew = of({
+        "success":true,
+        "data": {news},
+        "message": "New saved successfully"
       });
       return aNew;
     },
 
-    updateNews: () => {
-      let id = '1052';
-      let news: News = {
-        id: id,
-        name:"newName",
-        content:"newContent",
-        image:"newImage"
-      }
-      let aNew: Observable<HTTPResponse<News>> = of({
-        success:true,
-        data: news,
-        message: "New edited successfully"
+    updateNews: (id: string, news: News) => {
+      let aNew = of({
+        "success":true,
+        "data": {
+          "id": id,
+          "news": news
+        },
+        "message": "New edited successfully"
       });
       return aNew;
     }
@@ -103,26 +94,25 @@ describe('FormComponent', () => {
     const componentForm = fixture.componentInstance;    
 
     const news: News = {
-      name:"newName",
-      content:"newContent",
-      image:"newImage"
+      "name":"newName",
+      "content":"newContent",
+      "image":"newImage"
     };
 
     const mockNew = {
-      success:true,
-      data: {
-        id: "1052",
-        name: "newName",
-        content: "NewContent",
-        image: "newImage"
+      "success":true,
+      "data": {
+        "name": "newName",
+        "content": "NewContent",
+        "image": "newImage"
       },
-      message: "New saved successfully"
+      "message": "New saved successfully"
     };
     
     const spy = spyOn<any>(componentForm["newsServices"], "createNews").and.returnValue(of({mockNew}));
     componentForm["newsServices"].createNews(news)
       .subscribe((res) => {
-        expect(res.success).toBeTrue();
+        expect(res["success"]).toBe(true);
         done();    
     });  
     // httpClientSpy.post.and.returnValue(of(mockNew));
@@ -138,26 +128,25 @@ describe('FormComponent', () => {
     const componentForm = fixture.componentInstance;    
     const id = '1052';       
     const news: News = {
-      name:"newName",
-      content:"newContent",
-      image:"newImage"
+      "name":"newName",
+      "content":"newContent",
+      "image":"newImage"
     };
 
-    const mockNew = {
-      success:true,
-      data: {
-        id: "1052",
-        name: "newName",
-        content: "NewContent",
-        image: "newImage"
+    const data = {
+      "success":true,
+      "data": {
+        "name": "newName",
+        "content": "NewContent",
+        "image": "newImage"
       },
-      message: "New edited successfully"
+      "message": "New edited successfully"
     };
 
-    const spy = spyOn<any>(componentForm["newsServices"], "updateNews").and.returnValue(of({mockNew}));
+    const spy = spyOn<any>(componentForm["newsServices"], "updateNews").and.returnValue(of({data}));
     componentForm["newsServices"].updateNews(id, news)
       .subscribe((res) => {
-        expect(res.success).toBeTrue();
+        expect(res["success"]).toBe(true);
         done();    
     }); 
 
