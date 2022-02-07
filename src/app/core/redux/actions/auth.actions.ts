@@ -10,6 +10,8 @@ interface IAuthPropsResponse {
     token: string
 }
 
+
+//3-ACA ya esta definida la acion y los parametros que recibira 
 export const login        = createAction('[Authentication] Login', props<{email: string, password: string}>() );
 export const loginGoogle  = createAction('[Authentication] Login with Google');
 export const logout       = createAction('[Authentication] Logout');

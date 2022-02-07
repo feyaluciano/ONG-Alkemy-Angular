@@ -59,6 +59,14 @@ export class LoginFormComponent implements OnInit  {
   if( this.forma.valid ){
 
   // DISPATCH ACTION LOGIN
+
+  /*
+  Explicacion Redux Authentication
+  1. Obtengo el email y password del formulario
+  2. Dispacho la accion login incluida en import { login, loginGoogle } from 'src/app/core/redux/actions/auth.actions'; 
+  IR A login DE ACTIONS 
+  */
+
   let loginAction = { email: this.forma.get('email')!.value, password: this.forma.get('password')!.value};
   this.store.dispatch(login(loginAction));
 

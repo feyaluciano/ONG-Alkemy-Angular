@@ -44,7 +44,39 @@ import { activityReducer } from './core/redux/reducers/activities.reducer';
       UserEffects,
       SlideEffects
     ])
+    //EXPLICACION DE COMO TRABAJA REDUX
+    //COMO SE VE EN LA LINEA << activityReducer: activityReducer >>
+    /*
+    Estoy importando el reducer de la authentication (authReducer.reducer.ts),
+    Entonces la aplicacion se queda escuchando que sucede en el store, 
+    ver linea 28 en authReducer.reducer.ts (on(login, state => ({...state, auth: true, user: null, token: null })))
+    cuando se ejecuta la action login, realiza esa modificacion del store, pasandole el estado nuevo obtenido al ejecutar la action login
+    (  ofType(login))
+    Esta ejecuta dicho servicio y luego concatena con map a la action setAuthState
+     map( (resp:any) => setAuthState({success: resp.success, token: resp.data.token, data: resp.data.user}))
+El reducer se entera que se ejecuta esa accion (ver linea 20 de authReducer.reducer.ts)
+ on(setAuthState, (state , setAuthState ) => ({
+y le pasa al sotre el nuevo state que seria 
+export interface AuthState {
+    auth: boolean;
+    user: User | null;
+    token: string | null;
+}
+
+
+
+
+
+
+
+
+
     
+
+
+
+    y lo que hace es que cuando se ejecute el action de getActivityList,
+    */ 
     
     
   ],
